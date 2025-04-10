@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { categories } from './data/categories';
 import { allTools } from './data/tools';
 import { filterToolsBySearch } from './lib/utils';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Brain } from 'lucide-react';
 
 // Components
 import Header from './components/Header';
@@ -92,18 +92,32 @@ export default function Home() {
               />
               
               <div className="mt-4 space-y-3">
-                <button 
-                  className="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-xl shadow-md hover:from-blue-600 hover:to-purple-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                <motion.button 
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-3 px-6 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-xl shadow-lg hover:from-blue-600 hover:to-purple-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-300 relative overflow-hidden group"
                   onClick={() => setShowMentor(true)}
                 >
-                  Ask AI Mentor
-                </button>
-                <div className="flex items-center justify-center gap-2">
-                  <Sparkles className="h-4 w-4 text-blue-500" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="flex items-center justify-center gap-2 relative z-10">
+                    <Brain className="h-5 w-5" />
+                    <span>Ask AI Mentor</span>
+                  </div>
+                </motion.button>
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="flex items-center justify-center gap-2"
+                >
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-blue-100 rounded-full blur-sm" />
+                    <Sparkles className="h-4 w-4 text-blue-500 relative" />
+                  </div>
                   <p className="text-sm text-slate-500">
                     Your personal AI guide - Ask me anything!
                   </p>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           </motion.div>
