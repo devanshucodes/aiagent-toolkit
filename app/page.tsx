@@ -13,6 +13,7 @@ import FeaturedToolsSection from './components/FeaturedToolsSection';
 import CategorySection from './components/CategorySection';
 import SelectedCategoryView from './components/SelectedCategoryView';
 import EmptyState from './components/EmptyState';
+import ToolCard from './components/ui/ToolCard';
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -88,8 +89,24 @@ export default function Home() {
               />
             ) : (
               <>
+                {/* Search Results */}
+                {searchQuery && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mb-16"
+                  >
+                    <h2 className="text-2xl font-bold mb-6">Search Results</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {filteredTools.map((tool) => (
+                        <ToolCard key={tool.id} tool={tool} />
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+
                 {/* Featured Tools */}
-                {!selectedCategory && (
+                {!selectedCategory && !searchQuery && (
                   <FeaturedToolsSection tools={featuredTools} />
                 )}
 
@@ -100,7 +117,7 @@ export default function Home() {
                     tools={toolsInSelectedCategory}
                     onBack={() => setSelectedCategory(null)}
                   />
-                ) : (
+                ) : !searchQuery && (
                   <CategorySection 
                     categories={categories}
                     tools={filteredTools}

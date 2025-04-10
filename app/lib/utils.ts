@@ -50,13 +50,26 @@ export function truncateText(text: string, maxLength: number): string {
 export function filterToolsBySearch(tools: any[], query: string): any[] {
   if (!query) return tools;
   
-  const lowercaseQuery = query.toLowerCase();
+  const lowercaseQuery = query.toLowerCase().trim();
   
-  return tools.filter(tool => 
-    tool.name.toLowerCase().includes(lowercaseQuery) || 
-    tool.description.toLowerCase().includes(lowercaseQuery) ||
-    tool.tags.some((tag: string) => tag.toLowerCase().includes(lowercaseQuery))
-  );
+  return tools.filter(tool => {
+    // Search in name
+    if (tool.name.toLowerCase().includes(lowercaseQuery)) return true;
+    
+    // Search in description
+    if (tool.description.toLowerCase().includes(lowercaseQuery)) return true;
+    
+    // Search in tags
+    if (tool.tags.some((tag: string) => tag.toLowerCase().includes(lowercaseQuery))) return true;
+    
+    // Search in category
+    if (tool.category.toLowerCase().includes(lowercaseQuery)) return true;
+    
+    // Search in URL
+    if (tool.url.toLowerCase().includes(lowercaseQuery)) return true;
+    
+    return false;
+  });
 }
 
 /**
