@@ -318,5 +318,15 @@ export const categories: Category[] = [
     isMainCategory: false,
     parentCategory: "ai-dev-tools"
   },
- 
+  {
+    id: "mcp-servers",
+    name: "MCP Servers",
+    description: "List of some best MCP servers",
+    icon: "🗄️",
+    color: "text-blue-400",
+    count: 0,
+    isMainCategory: false,
+    parentCategory: "ai-agent-dev"
+  },
+  
 ];
