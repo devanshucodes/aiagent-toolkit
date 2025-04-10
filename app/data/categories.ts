@@ -126,8 +126,8 @@ export const categories: Category[] = [
   {
     id: "compute",
     name: "Compute Resources",
-    description: "Computing infrastructure and resources",
-    icon: "Cpu",
+    description: "Tools for running and managing AI workloads",
+    icon: "⚡️",
     color: "text-purple-400",
     count: 0,
     isMainCategory: false,
@@ -136,8 +136,8 @@ export const categories: Category[] = [
   {
     id: "memory",
     name: "Memory Systems",
-    description: "Memory and storage solutions",
-    icon: "HardDrive",
+    description: "Tools for storing and retrieving AI context and data",
+    icon: "🧠",
     color: "text-pink-400",
     count: 0,
     isMainCategory: false,
@@ -146,19 +146,9 @@ export const categories: Category[] = [
   {
     id: "web-scraping",
     name: "Web Scraping",
-    description: "Tools for web data extraction",
-    icon: "Globe",
+    description: "Tools for extracting and processing web data",
+    icon: "🕸️",
     color: "text-red-400",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-agent-dev"
-  },
-  {
-    id: "observability",
-    name: "Observability",
-    description: "Monitoring and logging tools",
-    icon: "Activity",
-    color: "text-orange-400",
     count: 0,
     isMainCategory: false,
     parentCategory: "ai-agent-dev"
@@ -166,23 +156,14 @@ export const categories: Category[] = [
   {
     id: "hosting",
     name: "Hosting & Serving",
-    description: "Deployment and hosting solutions",
-    icon: "Cloud",
+    description: "Tools for deploying and serving AI applications",
+    icon: "🚀",
     color: "text-yellow-400",
     count: 0,
     isMainCategory: false,
     parentCategory: "ai-agent-dev"
   },
-  {
-    id: "sandboxes",
-    name: "Sandboxes",
-    description: "Isolated testing environments",
-    icon: "Box",
-    color: "text-green-400",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-agent-dev"
-  },
+
   {
     id: "browser-automation",
     name: "Browser Automation",
@@ -253,16 +234,7 @@ export const categories: Category[] = [
     isMainCategory: false,
     parentCategory: "ai-agent-dev"
   },
-  {
-    id: "persistence",
-    name: "Persistence",
-    description: "Data persistence solutions",
-    icon: "Save",
-    color: "text-purple-300",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-agent-dev"
-  },
+
   {
     id: "blockchain-tools",
     name: "Blockchain Tools",
@@ -364,5 +336,145 @@ export const categories: Category[] = [
     count: 0,
     isMainCategory: false,
     parentCategory: "ai-dev-tools"
+  },
+  {
+    id: "vector-db",
+    name: "Vector Databases",
+    description: "Databases optimized for vector similarity search",
+    icon: "🗄️",
+    color: "text-blue-400",
+    count: 0,
+    isMainCategory: false,
+    parentCategory: "ai-agent-dev"
+  },
+  {
+    id: "rag",
+    name: "RAG Tools",
+    description: "Tools for Retrieval-Augmented Generation",
+    icon: "🔍",
+    color: "text-green-400",
+    count: 0,
+    isMainCategory: false,
+    parentCategory: "ai-agent-dev"
+  },
+  {
+    id: "agent-frameworks",
+    name: "Agent Frameworks",
+    description: "Frameworks for building AI agents",
+    icon: "🤖",
+    color: "text-indigo-400",
+    count: 0,
+    isMainCategory: false,
+    parentCategory: "ai-agent-dev"
+  },
+  {
+    id: "prompting",
+    name: "Prompt Engineering",
+    description: "Tools for crafting and optimizing prompts",
+    icon: "✍️",
+    color: "text-orange-400",
+    count: 0,
+    isMainCategory: false,
+    parentCategory: "ai-agent-dev"
+  },
+  {
+    id: "fine-tuning",
+    name: "Fine-Tuning",
+    description: "Tools for customizing AI models",
+    icon: "🎯",
+    color: "text-teal-400",
+    count: 0,
+    isMainCategory: false,
+    parentCategory: "ai-agent-dev"
+  },
+  {
+    id: "evaluation",
+    name: "Evaluation",
+    description: "Tools for testing and benchmarking AI systems",
+    icon: "📊",
+    color: "text-cyan-400",
+    count: 0,
+    isMainCategory: false,
+    parentCategory: "ai-agent-dev"
+  },
+  {
+    id: "audio",
+    name: "Audio Processing",
+    description: "Tools for working with audio data",
+    icon: "🎵",
+    color: "text-purple-400",
+    count: 0,
+    isMainCategory: false,
+    parentCategory: "ai-agent-dev"
+  },
+  {
+    id: "image",
+    name: "Image Processing",
+    description: "Tools for working with image data",
+    icon: "🖼️",
+    color: "text-pink-400",
+    count: 0,
+    isMainCategory: false,
+    parentCategory: "ai-agent-dev"
+  },
+  {
+    id: "video",
+    name: "Video Processing",
+    description: "Tools for working with video data",
+    icon: "🎥",
+    color: "text-red-400",
+    count: 0,
+    isMainCategory: false,
+    parentCategory: "ai-agent-dev"
+  },
+  {
+    id: "multimodal",
+    name: "Multimodal AI",
+    description: "Tools for working with multiple data types",
+    icon: "🎭",
+    color: "text-yellow-400",
+    count: 0,
+    isMainCategory: false,
+    parentCategory: "ai-agent-dev"
+  },
+  {
+    id: "automation",
+    name: "Automation",
+    description: "Tools for automating AI workflows",
+    icon: "⚙️",
+    color: "text-blue-400",
+    count: 0,
+    isMainCategory: false,
+    parentCategory: "ai-agent-dev"
+  },
+  {
+    id: "computer-vision",
+    name: "Computer Vision",
+    description: "Tools for visual AI applications",
+    icon: "👁️",
+    color: "text-green-400",
+    count: 0,
+    isMainCategory: false,
+    parentCategory: "ai-agent-dev"
+  },
+  {
+    id: "podcast",
+    name: "Podcasts",
+    description: "Audio content about AI and technology",
+    icon: "🎙️",
+    color: "text-indigo-400",
+    count: 0,
+    isMainCategory: false,
+    parentCategory: "ai-agent-dev"
+  },
+  {
+    id: "reading",
+    name: "Reading",
+    description: "Written content about AI and technology",
+    icon: "📚",
+    color: "text-orange-400",
+    count: 0,
+    isMainCategory: false,
+    parentCategory: "ai-agent-dev"
   }
 ];

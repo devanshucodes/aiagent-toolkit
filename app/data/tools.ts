@@ -1250,8 +1250,8 @@ export const tools: Tool[] = [
     id: "diffbot",
     name: "Diffbot",
     description: "Employs AI to structure unstructured web content, automating extraction of structured data from complicated or dynamic pages. Provides an AI-driven approach that can handle varied layouts and integrates via REST APIs.",
-    url: "https://www.diffbot.com",
-    tags: ["web-scraping", "ai", "structured-data", "api"],
+    url: "https://diffbot.com",
+    tags: ["web-scraping", "ai", "structured-data", "automation"],
     category: "web-scraping",
     featured: false
   },
@@ -1301,42 +1301,50 @@ export const tools: Tool[] = [
     featured: false
   },
 
-  // Observability
-  {
-    id: "prometheus",
-    name: "Prometheus",
-    description: "Monitoring and alerting toolkit",
-    url: "https://prometheus.io",
-    tags: ["monitoring", "metrics", "observability"],
-    category: "observability",
-    featured: false
-  },
-  {
-    id: "grafana",
-    name: "Grafana",
-    description: "Metrics visualization platform",
-    url: "https://grafana.com",
-    tags: ["monitoring", "visualization", "observability"],
-    category: "observability",
-    featured: false
-  },
-
   // Hosting & Serving
+
   {
-    id: "docker",
-    name: "Docker",
-    description: "Container platform",
-    url: "https://www.docker.com",
-    tags: ["containers", "deployment", "devops"],
+    id: "letta",
+    name: "Letta",
+    description: "Cloud-based hosting with automatic scaling, exposing RESTful APIs for agent interaction with integrated security and performance monitoring.",
+    url: "https://letta.ai",
+    tags: ["hosting", "scaling", "api", "monitoring"],
     category: "hosting",
     featured: false
   },
   {
-    id: "kubernetes",
-    name: "Kubernetes",
-    description: "Container orchestration platform",
-    url: "https://kubernetes.io",
-    tags: ["containers", "orchestration", "devops"],
+    id: "langgraph",
+    name: "LangGraph",
+    description: "Provides hosting and orchestration for agent workflows with support for multi-agent communication and structured deployment pipelines.",
+    url: "https://langgraph.ai",
+    tags: ["hosting", "orchestration", "multi-agent", "workflows"],
+    category: "hosting",
+    featured: false
+  },
+  {
+    id: "assistants-api",
+    name: "Assistants API / Agents API",
+    description: "Standardized API endpoints for integrating AI agents into applications, commonly used by enterprises to connect custom agents with existing systems.",
+    url: "https://openai.com/api",
+    tags: ["api", "integration", "enterprise", "standardization"],
+    category: "hosting",
+    featured: false
+  },
+  {
+    id: "amazon-bedrock-agents",
+    name: "Amazon Bedrock Agents",
+    description: "Managed service from AWS for hosting AI agents, providing enterprise-grade scaling, security, and integration with AWS services.",
+    url: "https://aws.amazon.com/bedrock",
+    tags: ["aws", "enterprise", "scaling", "security"],
+    category: "hosting",
+    featured: false
+  },
+  {
+    id: "livekit-agents",
+    name: "LiveKit Agents",
+    description: "Optimized for real-time interactions and low-latency serving, used in interactive applications such as chatbots and live customer support.",
+    url: "https://livekit.io",
+    tags: ["real-time", "low-latency", "chatbots", "scaling"],
     category: "hosting",
     featured: false
   },
@@ -1363,203 +1371,290 @@ export const tools: Tool[] = [
 
   // Browser Automation
   {
-    id: "playwright",
-    name: "Playwright",
-    description: "Browser automation framework",
-    url: "https://playwright.dev",
-    tags: ["automation", "testing", "browser"],
+    id: "steel-dev",
+    name: "Steel.dev",
+    description: "An open-source browser API designed specifically for AI agents and applications, enabling control of browser fleets in the cloud with full browser control, session management, proxy support, and anti-detection features.",
+    url: "https://steel.dev",
+    tags: ["browser-automation", "open-source", "cloud", "anti-detection"],
     category: "browser-automation",
     featured: false
   },
   {
-    id: "puppeteer",
-    name: "Puppeteer",
-    description: "Node.js browser automation",
-    url: "https://pptr.dev",
-    tags: ["automation", "testing", "browser"],
+    id: "hyperbrowser",
+    name: "Hyperbrowser",
+    description: "A cloud-based browser platform for scaling automated browser sessions, designed for high-concurrency AI applications with enterprise-grade scalability and global accessibility.",
+    url: "https://hyperbrowser.io",
+    tags: ["browser-automation", "cloud", "scaling", "enterprise"],
+    category: "browser-automation",
+    featured: false
+  },
+  {
+    id: "browserbase",
+    name: "Browserbase",
+    description: "A managed headless web browser API with comprehensive tools for automation, debugging, and logging, offering session recording, comprehensive logging, and secure environments.",
+    url: "https://browserbase.io",
+    tags: ["browser-automation", "managed", "debugging", "logging"],
     category: "browser-automation",
     featured: false
   },
 
   // Local Inference
+
   {
-    id: "onnx",
-    name: "ONNX",
-    description: "Open Neural Network Exchange",
-    url: "https://onnx.ai",
-    tags: ["inference", "ml", "models"],
+    id: "janhq",
+    name: "JanHQ",
+    description: "A privacy-focused AI assistant with OpenAI integration, offering chat interface, vision capabilities, and comprehensive privacy controls. Features include model management, markdown support, and customizable UI.",
+    url: "https://janhq.io",
+    tags: ["local-inference", "privacy", "openai", "vision"],
     category: "local-inference",
     featured: false
   },
   {
-    id: "tensorrt",
-    name: "TensorRT",
-    description: "NVIDIA's deep learning inference optimizer",
-    url: "https://developer.nvidia.com/tensorrt",
-    tags: ["inference", "ml", "gpu"],
+    id: "lm-studio",
+    name: "LM Studio",
+    description: "Desktop application for running Large Language Models locally, supporting various architectures including Llama, Mistral, and Phi. Features offline operation, model discovery, and OpenAI-compatible local server.",
+    url: "https://lmstudio.ai",
+    tags: ["local-inference", "offline", "llm", "desktop"],
+    category: "local-inference",
+    featured: false
+  },
+  {
+    id: "localgpt",
+    name: "LocalGPT",
+    description: "Open-source tool for secure, private conversations with documents locally. Supports various LLMs and embeddings, with GPU/CPU/MPS support and multiple file format compatibility.",
+    url: "https://github.com/localgpt",
+    tags: ["local-inference", "privacy", "rag", "documents"],
+    category: "local-inference",
+    featured: false
+  },
+  {
+    id: "ollama",
+    name: "Ollama",
+    description: "Tool for quick local LLM deployment with easy installation, model management, and REST API support. Features multi-modal capabilities and extensive community integrations.",
+    url: "https://ollama.ai",
+    tags: ["local-inference", "llm", "api", "multi-modal"],
+    category: "local-inference",
+    featured: false
+  },
+  {
+    id: "privategpt",
+    name: "PrivateGPT",
+    description: "Open-source project for private document interaction using LLMs. Features offline querying, OpenAI API compatibility, and RAG pipeline implementation.",
+    url: "https://github.com/zylon-ai/private-gpt",
+    tags: ["local-inference", "privacy", "rag", "documents"],
+    category: "local-inference",
+    featured: false
+  },
+  {
+    id: "pinokio",
+    name: "Pinokio",
+    description: "Browser application for local AI model execution with script automation and user-friendly interface. Features cross-platform compatibility and resource management.",
+    url: "https://github.com/pinokiocomputer/pinokio",
+    tags: ["local-inference", "automation", "browser", "cross-platform"],
+    category: "local-inference",
+    featured: false
+  },
+  {
+    id: "fastchat",
+    name: "FastChat",
+    description: "Open platform for training, serving, and evaluating chatbots based on LLMs. Features broad model support, OpenAI API compatibility, and multi-GPU support.",
+    url: "https://github.com/lm-sys/fastchat",
+    tags: ["local-inference", "chatbots", "training", "evaluation"],
     category: "local-inference",
     featured: false
   },
 
   // Prompt Engineering
+
   {
-    id: "promptfoo",
-    name: "Promptfoo",
-    description: "Testing framework for LLM prompts",
-    url: "https://promptfoo.dev",
-    tags: ["prompting", "testing", "llm"],
+    id: "analogical-prompting",
+    name: "Analogical Prompting",
+    description: "A method to enhance the reasoning capabilities of large language models by providing analogical examples within prompts. Automates reasoning through parallel scenarios and improves performance on complex tasks.",
+    url: "https://arxiv.org/abs/2310.01714",
+    tags: ["prompt-engineering", "reasoning", "analogies", "research"],
     category: "prompt-engineering",
     featured: false
   },
   {
-    id: "langsmith",
-    name: "LangSmith",
-    description: "LLM development platform",
-    url: "https://smith.langchain.com",
-    tags: ["prompting", "development", "llm"],
+    id: "evoprompt",
+    name: "Evoprompt",
+    description: "Merges evolutionary algorithms with large language models to optimize prompts. Uses evolutionary strategies to refine prompts iteratively and automate the process of finding effective prompts.",
+    url: "https://github.com/evoprompt",
+    tags: ["prompt-engineering", "optimization", "evolutionary", "automation"],
+    category: "prompt-engineering",
+    featured: false
+  },
+  {
+    id: "fooocus",
+    name: "Fooocus",
+    description: "A tool focused on enhancing prompt generation and interaction with language models. Provides a user-friendly interface for prompt management and simplifies the process of creating effective prompts.",
+    url: "https://github.com/fooocus",
+    tags: ["prompt-engineering", "interface", "user-friendly", "generation"],
+    category: "prompt-engineering",
+    featured: false
+  },
+  {
+    id: "langgpt",
+    name: "LangGPT",
+    description: "Aims to democratize prompt engineering by providing structured prompt creation. Makes prompt engineering accessible to non-experts through a structured approach to prompt design.",
+    url: "https://github.com/langgpt",
+    tags: ["prompt-engineering", "structured", "education", "accessibility"],
+    category: "prompt-engineering",
+    featured: false
+  },
+  {
+    id: "prompt-engineering-guide",
+    name: "Prompt Engineering Guide",
+    description: "An educational resource offering comprehensive guides, papers, and practical resources on prompt engineering. Includes practical examples, case studies, and community-driven updates.",
+    url: "https://github.com/prompt-engineering-guide",
+    tags: ["prompt-engineering", "education", "resources", "documentation"],
+    category: "prompt-engineering",
+    featured: false
+  },
+  {
+    id: "yival",
+    name: "Yival",
+    description: "An open-source framework for tuning and evaluating AI-generated content prompts. Supports iterative improvement with custom datasets and integrates evaluation and testing strategies.",
+    url: "https://github.com/yival",
+    tags: ["prompt-engineering", "evaluation", "tuning", "framework"],
+    category: "prompt-engineering",
+    featured: false
+  },
+  {
+    id: "guidance",
+    name: "Guidance",
+    description: "A language for controlling large language models, focusing on structured output. Allows for programmatic control over model outputs and supports complex generative tasks.",
+    url: "https://github.com/guidance",
+    tags: ["prompt-engineering", "structured", "control", "programming"],
+    category: "prompt-engineering",
+    featured: false
+  },
+  {
+    id: "outlines",
+    name: "Outlines",
+    description: "A framework for programming with generative models, emphasizing structured outputs. Enables developers to define the structure of model outputs and integrates with various generative models.",
+    url: "https://github.com/outlines",
+    tags: ["prompt-engineering", "structured", "framework", "generative"],
+    category: "prompt-engineering",
+    featured: false
+  },
+  {
+    id: "prompttools",
+    name: "PromptTools",
+    description: "Tools for testing and experimenting with prompts for language models and vector databases. Supports experimentation with multiple LLMs and provides tools for prompt comparison and optimization.",
+    url: "https://github.com/prompttools",
+    tags: ["prompt-engineering", "testing", "experimentation", "optimization"],
     category: "prompt-engineering",
     featured: false
   },
 
-  // Function Calling
-  {
-    id: "openai-functions",
-    name: "OpenAI Functions",
-    description: "Function calling for GPT models",
-    url: "https://platform.openai.com/docs/guides/function-calling",
-    tags: ["functions", "api", "llm"],
-    category: "function-calling",
-    featured: false
-  },
-  {
-    id: "anthropic-tools",
-    name: "Anthropic Tools",
-    description: "Function calling for Claude models",
-    url: "https://docs.anthropic.com/claude/docs/tools-overview",
-    tags: ["functions", "api", "llm"],
-    category: "function-calling",
-    featured: false
-  },
 
   // Authentication
   {
     id: "auth0",
     name: "Auth0",
-    description: "Identity platform",
+    description: "A cloud-based identity platform offering robust, multi-tenant architecture with extensive API and SDK support. Features seamless integration of authentication and user management with support for multiple authentication methods.",
     url: "https://auth0.com",
-    tags: ["auth", "identity", "security"],
+    tags: ["authentication", "identity", "oauth", "sso"],
     category: "authentication",
     featured: false
   },
   {
-    id: "keycloak",
-    name: "Keycloak",
-    description: "Open source identity and access management",
-    url: "https://www.keycloak.org",
-    tags: ["auth", "identity", "security"],
+    id: "clerk",
+    name: "Clerk",
+    description: "A modern authentication service that simplifies login flows with pre-built UI components. Features rapid setup with minimal configuration and pre-designed components for React and modern web frameworks.",
+    url: "https://clerk.com",
+    tags: ["authentication", "ui-components", "react", "low-code"],
+    category: "authentication",
+    featured: false
+  },
+  {
+    id: "okta",
+    name: "Okta",
+    description: "An enterprise-grade IAM platform offering robust SSO, adaptive MFA, and extensive directory integrations. Features advanced security, including adaptive MFA and granular policy controls.",
+    url: "https://www.okta.com",
+    tags: ["authentication", "enterprise", "sso", "mfa"],
+    category: "authentication",
+    featured: false
+  },
+  {
+    id: "openfga",
+    name: "OpenFGA",
+    description: "An open-source authorization engine inspired by Google's Zanzibar model, allowing highly granular access control and low-latency permission checks. Features custom RBAC/ABAC models and efficient permission handling.",
+    url: "https://openfga.dev",
+    tags: ["authentication", "authorization", "open-source", "rbac"],
+    category: "authentication",
+    featured: false
+  },
+  {
+    id: "anon",
+    name: "Anon",
+    description: "A tool that bridges authentication gaps for websites lacking formal APIs by simulating OAuth flows. Features broad integration capabilities and security-focused design without storing raw credentials.",
+    url: "https://anon.com",
+    tags: ["authentication", "oauth", "integration", "security"],
+    category: "authentication",
+    featured: false
+  },
+  {
+    id: "authzed",
+    name: "Authzed (SpiceDB)",
+    description: "A hosted authorization service built on SpiceDB, providing an easy-to-use playground and APIs for managing permissions. Features reliable, low-latency permission checks and expert support.",
+    url: "https://authzed.com",
+    tags: ["authentication", "authorization", "managed-service", "permissions"],
     category: "authentication",
     featured: false
   },
 
-  // ETL
-  {
-    id: "airbyte",
-    name: "Airbyte",
-    description: "Open source data integration platform",
-    url: "https://airbyte.com",
-    tags: ["etl", "data", "integration"],
-    category: "etl",
-    featured: false
-  },
-  {
-    id: "fivetran",
-    name: "Fivetran",
-    description: "Data pipeline platform",
-    url: "https://fivetran.com",
-    tags: ["etl", "data", "integration"],
-    category: "etl",
-    featured: false
-  },
+
 
   // Payment Systems
   {
-    id: "stripe",
-    name: "Stripe",
-    description: "Payment processing platform",
-    url: "https://stripe.com",
-    tags: ["payments", "fintech", "api"],
+    id: "opencommerce",
+    name: "OpenCommerce",
+    description: "Enables AI agents to autonomously handle payments via stablecoins, with an open SDK and license file for enforcing payment terms. Features automated micro-payments and instant on-chain processing.",
+    url: "https://opencommerce.io",
+    tags: ["payment", "blockchain", "stablecoin", "micro-payments"],
     category: "payment",
     featured: false
   },
   {
-    id: "plaid",
-    name: "Plaid",
-    description: "Financial data network",
-    url: "https://plaid.com",
-    tags: ["payments", "fintech", "api"],
+    id: "payman",
+    name: "Payman",
+    description: "Provides AI-first payment infrastructure with predictive funding, enabling AI agents to operate within secure sub-accounts. Features real-time payment operations and multi-currency support.",
+    url: "https://payman.ai",
+    tags: ["payment", "ai-infrastructure", "multi-currency", "enterprise"],
+    category: "payment",
+    featured: false
+  },
+  {
+    id: "skyfire",
+    name: "Skyfire",
+    description: "Enables autonomous agent transactions using stablecoins, with built-in KYC/KYB measures. Features real-time microtransactions and global payment capabilities.",
+    url: "https://skyfire.ai",
+    tags: ["payment", "stablecoin", "autonomous-agents", "kyc"],
+    category: "payment",
+    featured: false
+  },
+  {
+    id: "protegee-ai",
+    name: "Protegee AI",
+    description: "Specializes in voice-enabled payment processing for AI agents, providing secure IVR payment gateway integration. Features PCI compliance and streamlined voice payments.",
+    url: "https://protegee.ai",
+    tags: ["payment", "voice-payments", "pci-compliance", "ivr"],
+    category: "payment",
+    featured: false
+  },
+  {
+    id: "stripe-agent-sdk",
+    name: "Stripe Agent SDK",
+    description: "Extends Stripe's payment processing capabilities to autonomous AI agents. Features comprehensive API integration, global scalability, and support for various payment methods.",
+    url: "https://stripe.com/agent-sdk",
+    tags: ["payment", "api", "global-payments", "enterprise"],
     category: "payment",
     featured: false
   },
 
-  // Persistence
-  {
-    id: "postgresql",
-    name: "PostgreSQL",
-    description: "Open source relational database",
-    url: "https://www.postgresql.org",
-    tags: ["database", "sql", "persistence"],
-    category: "persistence",
-    featured: false
-  },
-  {
-    id: "mongodb",
-    name: "MongoDB",
-    description: "NoSQL database",
-    url: "https://www.mongodb.com",
-    tags: ["database", "nosql", "persistence"],
-    category: "persistence",
-    featured: false
-  },
 
-  // Blockchain Tools
-  {
-    id: "web3js",
-    name: "Web3.js",
-    description: "Ethereum JavaScript API",
-    url: "https://web3js.org",
-    tags: ["blockchain", "ethereum", "javascript"],
-    category: "blockchain-tools",
-    featured: false
-  },
-  {
-    id: "ethers",
-    name: "Ethers.js",
-    description: "Ethereum library for JavaScript",
-    url: "https://docs.ethers.org",
-    tags: ["blockchain", "ethereum", "javascript"],
-    category: "blockchain-tools",
-    featured: false
-  },
-
-  // Training & Deployment
-  {
-    id: "huggingface",
-    name: "Hugging Face",
-    description: "ML model hub and deployment platform",
-    url: "https://huggingface.co",
-    tags: ["training", "deployment", "ml"],
-    category: "training-deployment",
-    featured: false
-  },
-  {
-    id: "weights-biases",
-    name: "Weights & Biases",
-    description: "ML experiment tracking platform",
-    url: "https://wandb.ai",
-    tags: ["training", "tracking", "ml"],
-    category: "training-deployment",
-    featured: false
-  },
 
   // Reasoning & Planning
   {
@@ -3440,7 +3535,1067 @@ export const tools: Tool[] = [
     url: "https://cleanlab.ai",
     tags: ["data-processing", "data-cleaning", "quality-control", "machine-learning"],
     category: "data-processing"
-  }
+  },
+  {
+    id: "diffbot",
+    name: "Diffbot",
+    description: "Employs AI to structure unstructured web content, automating extraction of structured data from complicated or dynamic pages. Provides an AI-driven approach that can handle varied layouts and integrates via REST APIs.",
+    url: "https://diffbot.com",
+    tags: ["web-scraping", "ai", "structured-data", "automation"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "bland-ai-tools",
+    name: "Custom Tools by Bland AI",
+    description: "Bland AI allows for the creation of custom tools to extend AI agent capabilities. Features custom tool creation for specific business needs and telephony and voice interaction tools.",
+    url: "https://bland.ai",
+    tags: ["function-calling", "custom", "voice", "telephony"],
+    category: "function-calling",
+    featured: false
+  },
+  {
+    id: "brainsoup-tools",
+    name: "Brainsoup Custom Tools",
+    description: "Brainsoup by Nurgo Software offers custom tool creation for multi-agent systems. Features multi-agent interaction with custom tools and local resource utilization for tool execution.",
+    url: "https://nurgo-software.com",
+    tags: ["function-calling", "multi-agent", "custom", "local"],
+    category: "function-calling",
+    featured: false
+  },
+  {
+    id: "npi",
+    name: "NPI",
+    description: "NPI provides an open-source platform for AI tool use, focusing on research and development. Features open-source, community-driven development and research-oriented tool implementation.",
+    url: "https://github.com/npi",
+    tags: ["function-calling", "open-source", "research", "tools"],
+    category: "function-calling",
+    featured: false
+  },
+  {
+    id: "crewai-tools",
+    name: "CrewAI Tools",
+    description: "CrewAI's tools aim to enhance team-based AI agent functionalities with custom tools. Features tools for team coordination and task management with integration to various AI models.",
+    url: "https://github.com/joaomdmoura/crewAI",
+    tags: ["function-calling", "team", "collaboration", "tools"],
+    category: "function-calling",
+    featured: false
+  },
+  // ETL
+  {
+    id: "llamaindex",
+    name: "LlamaIndex",
+    description: "An open-source framework for orchestrating data ingestion workflows for LLM applications. Features modular data processing with loading, transforming, and storing stages, supporting hundreds of connectors for various data sources.",
+    url: "https://llamaindex.ai",
+    tags: ["etl", "data-orchestration", "llm", "open-source"],
+    category: "etl",
+    featured: false
+  },
+  {
+    id: "reducto",
+    name: "Reducto",
+    description: "A managed API service specializing in parsing, cleaning, and structuring unstructured documents. Features ML-based parsing for high accuracy extraction of tabular data, forms, and graphical elements.",
+    url: "https://reducto.ai",
+    tags: ["etl", "document-processing", "ml", "api"],
+    category: "etl",
+    featured: false
+  },
+  {
+    id: "datavolo",
+    name: "DATAVOLO",
+    description: "An open-source platform built on Apache NiFi for designing, executing, and monitoring ETL workflows. Features visual drag-and-drop interface, enterprise-grade scalability, and support for various data types.",
+    url: "https://datavolo.com",
+    tags: ["etl", "data-integration", "apache-nifi", "enterprise"],
+    category: "etl",
+    featured: false
+  },
+
+  // Memory Systems
+  {
+    id: "mem0",
+    name: "mem0.ai",
+    description: "Specialized solution that gives AI agents persistent memory by pairing with vector databases like Qdrant to store vector embeddings for quick retrieval. Enables context retention and personalization in AI conversations.",
+    url: "https://mem0.ai",
+    tags: ["memory", "vector-database", "embeddings", "context-retention"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "cognee",
+    name: "cognee.ai",
+    description: "Emerging tool for AI memory management, focusing on storing and organizing context data. Handles evolving conversation histories, preferences, and contextual data relevant to AI tasks with dynamic updating capabilities.",
+    url: "https://cognee.ai",
+    tags: ["memory", "context-management", "api", "dynamic-updating"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "neondatabase",
+    name: "Neon Database",
+    description: "Cloud-based PostgreSQL service that can be extended with PgVector for storing vector embeddings. Provides scalable and robust memory management for AI applications with easy integration capabilities.",
+    url: "https://neon.tech",
+    tags: ["memory", "postgresql", "vector-database", "cloud"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "langmem",
+    name: "LangMem",
+    description: "Designed to work alongside frameworks like LangChain to enable AI agents to store, update, and retrieve conversational history or contextual data. Supports multiple storage solutions and vector integration.",
+    url: "https://github.com/langmem",
+    tags: ["memory", "langchain", "vector-database", "context-retention"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "zep",
+    name: "Zep",
+    description: "Open-source memory store acting as a centralized chat history or memory database for AI applications. Features fast retrieval, persistent memory storage, and a dedicated API for easy integration.",
+    url: "https://github.com/getzep/zep",
+    tags: ["memory", "open-source", "chat-history", "vector-indexing"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "memgpt",
+    name: "memGPT",
+    description: "Extends GPT-based systems with persistent memory, allowing ChatGPT-like models to recall interactions across sessions. Features memory embeddings, persistent retrieval, and memory summarization capabilities.",
+    url: "https://github.com/memgpt",
+    tags: ["memory", "gpt", "embeddings", "context-retention"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "ai-research-agent",
+    name: "AI Research Agent with Memory",
+    description: "Streamlit app for searching academic papers on arXiv using GPT-4o-mini and storing context with Mem0 and Qdrant. Features enhanced research capabilities and improved context retention.",
+    url: "https://github.com/ai-research-agent",
+    tags: ["memory", "research", "streamlit", "academic"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "llm-personalized-app",
+    name: "LLM Personalized App with Memory",
+    description: "Chatbot app using GPT-4o with persistent memory maintained via Mem0 and Qdrant. Enables extended, context-rich conversations with personalized interactions and continuous context.",
+    url: "https://github.com/llm-personalized-app",
+    tags: ["memory", "chatbot", "personalization", "context-retention"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "ai-travel-agent",
+    name: "AI Travel Agent with Memory",
+    description: "Travel suggestion system storing user preferences via Mem0 and Qdrant. Leverages GPT-4o to provide dynamic recommendations with context awareness and tailored suggestions.",
+    url: "https://github.com/ai-travel-agent",
+    tags: ["memory", "travel", "recommendations", "context-aware"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "local-chatgpt",
+    name: "Local ChatGPT with Personal Memory",
+    description: "Fully local chatbot featuring Llama 3.1 via Ollama. Uses Nomic Embed for embeddings and stores them in a local Qdrant instance, providing privacy and full data ownership.",
+    url: "https://github.com/local-chatgpt",
+    tags: ["memory", "local", "privacy", "offline"],
+    category: "memory",
+    featured: false
+  },
+
+  // Web Scraping
+  {
+    id: "exa",
+    name: "Exa",
+    description: "A lightweight web scraping tool/library designed to simplify data extraction from modern websites. Offers a minimalistic yet efficient way to fetch and parse web content with built-in HTML parsing and basic JavaScript handling capabilities.",
+    url: "https://github.com/exa",
+    tags: ["web-scraping", "lightweight", "async", "html-parsing"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "perplexity",
+    name: "Perplexity",
+    description: "AI-powered search engine that uses language models to generate clear, concise answers by gathering and summarizing information from across the web. Performs automated web scraping and summarization to provide up-to-date answers to user queries.",
+    url: "https://perplexity.ai",
+    tags: ["web-scraping", "ai-search", "summarization", "real-time"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "tavily",
+    name: "Tavily",
+    description: "Search engine and API created for AI agents and RAG workflows. Offers real-time, LLM-optimized search results with customizable search depth and domain filtering. Provides citation-backed information for enhanced trust and transparency.",
+    url: "https://tavily.com",
+    tags: ["web-scraping", "rag", "ai-agents", "search"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "firecrawl",
+    name: "FireCrawl",
+    description: "Open-source crawler and scraper that converts entire websites into clean, markdown-formatted data. Handles dynamic, JavaScript-rendered content and provides comprehensive crawling capabilities even without sitemaps.",
+    url: "https://github.com/firecrawl",
+    tags: ["web-scraping", "open-source", "markdown", "crawler"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "duckduckgo",
+    name: "DuckDuckGo",
+    description: "Privacy-focused search engine that can serve as a data source in RAG pipelines. Provides up-to-date search results without tracking, offering an alternative retrieval source for enhancing search diversity and reducing bias in AI queries.",
+    url: "https://duckduckgo.com",
+    tags: ["web-scraping", "search", "privacy", "rag"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "scrapy",
+    name: "Scrapy",
+    description: "Robust framework capable of large-scale web crawling. Features asynchronous operation, high scalability, and extensive customization options. Includes powerful pipeline and middleware features for processing scraped data.",
+    url: "https://scrapy.org",
+    tags: ["web-scraping", "python", "async", "crawler"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "beautifulsoup",
+    name: "BeautifulSoup",
+    description: "Lightweight HTML and XML parser with a simple and intuitive API. Ideal for smaller, focused scraping tasks and can be flexibly combined with other libraries like requests for web scraping.",
+    url: "https://www.crummy.com/software/BeautifulSoup/",
+    tags: ["web-scraping", "python", "html-parsing", "lightweight"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "newspaper3k",
+    name: "Newspaper3k",
+    description: "Specialized in extracting news articles with automatic fetching of titles, authors, and publication dates. Handles many common news site formats out of the box and can quickly parse metadata like authors and summaries.",
+    url: "https://github.com/codelucas/newspaper",
+    tags: ["web-scraping", "news", "article-extraction", "metadata"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "apify",
+    name: "Apify",
+    description: "Cloud-based platform offering ready-made scraping 'actors' for common scraping scenarios. Provides managed crawling with minimal DevOps overhead, including scheduling and monitoring out of the box.",
+    url: "https://apify.com",
+    tags: ["web-scraping", "cloud", "managed", "automation"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "parsehub",
+    name: "ParseHub",
+    description: "Visual tool enabling users to click and drag their way to data extraction. Ideal for teams with limited coding experience, offering both cloud and desktop options for creating basic scrapers.",
+    url: "https://www.parsehub.com",
+    tags: ["web-scraping", "visual", "no-code", "automation"],
+    category: "web-scraping",
+    featured: false
+  },
+
+  // Blockchain Tools
+  {
+    id: "eliza-starter",
+    name: "Eliza Starter",
+    description: "Template for building autonomous AI agents with plugin system, built-in search, Docker support, and integration with Tavily and Exa APIs.",
+    url: "https://github.com/elizaOS/eliza-starter",
+    tags: ["blockchain", "ai-agents", "docker", "api-integration"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "safe-ai-agent-tutorial",
+    name: "Safe AI Agent Tutorial",
+    description: "Tutorial for setting up reliable agents with Safe wallet integration, LangChain capabilities, and multi-signature support.",
+    url: "https://github.com/5afe/safe-ai-agent-tutorial",
+    tags: ["blockchain", "ai-agents", "wallet", "langchain"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "agentipy",
+    name: "Agentipy",
+    description: "Python toolkit for connecting AI agents to Solana blockchain with token operations, trading, and DeFi capabilities.",
+    url: "https://agentipy.fun",
+    tags: ["blockchain", "solana", "python", "defi"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "cdp-agentkit",
+    name: "CDP Agentkit",
+    description: "Framework-agnostic toolkit for bringing AI Agents onchain with wallet management, token operations, and NFT deployment capabilities.",
+    url: "https://github.com/coinbase/cdp-agentkit",
+    tags: ["blockchain", "ai-agents", "wallet", "nft"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "goat",
+    name: "GOAT",
+    description: "Framework for connecting AI agents to 30+ blockchains with support for multiple agent frameworks and DeFi protocol interactions.",
+    url: "https://ohmygoat.dev",
+    tags: ["blockchain", "ai-agents", "defi", "multi-chain"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "hyperbolic-agentkit",
+    name: "Hyperbolic AgentKit",
+    description: "Template for running AI agents with blockchain and compute capabilities, including GPU operations and smart contract interactions.",
+    url: "https://github.com/HyperbolicLabs/Hyperbolic-AgentKit",
+    tags: ["blockchain", "ai-agents", "gpu", "smart-contracts"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "solana-agent-kit",
+    name: "Solana Agent Kit",
+    description: "Toolkit for connecting AI agents to Solana with multi-agent architecture, token management, and DeFi operations.",
+    url: "https://solanaagentkit.xyz",
+    tags: ["blockchain", "solana", "ai-agents", "defi"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "agent-tools",
+    name: "Agent Tools",
+    description: "TypeScript tools for Bitcoin/Stacks blockchain interaction with AI-focused tooling and Stacks.js integration.",
+    url: "https://github.com/aibtcdev/agent-tools-ts",
+    tags: ["blockchain", "bitcoin", "stacks", "typescript"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "bitte",
+    name: "Bitte",
+    description: "Create multi-chain blockchain transactions with natural language using AI agents and protocol automation.",
+    url: "https://bitte.ai",
+    tags: ["blockchain", "ai-agents", "multi-chain", "nlp"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "duckai",
+    name: "DuckAI",
+    description: "AI platform for blockchain analytics with market trend analysis, sentiment tracking, and real-time monitoring.",
+    url: "https://duckai.ai",
+    tags: ["blockchain", "analytics", "market-analysis", "sentiment"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "simulacrum",
+    name: "Simulacrum",
+    description: "AI agent tool for blockchain interaction through natural language commands via social media with DeFi support.",
+    url: "https://simulacrum.network",
+    tags: ["blockchain", "ai-agents", "social-media", "defi"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "mettalex",
+    name: "Mettalex",
+    description: "AI agent-based P2P order book DEX with Fetch.ai integration and digital asset trading capabilities.",
+    url: "https://mettalex.ai",
+    tags: ["blockchain", "dex", "trading", "p2p"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "token-metrics-ai",
+    name: "Token Metrics AI",
+    description: "AI-driven cryptocurrency investment platform with market analysis, portfolio management, and real-time trading signals.",
+    url: "https://tokenmetrics.com",
+    tags: ["blockchain", "trading", "ai-analysis", "portfolio"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "aiquant",
+    name: "AiQuant",
+    description: "Platform for autonomous AI agents focused on cryptocurrency trading with 24/7 market monitoring and data-driven decisions.",
+    url: "https://aiquant.fun",
+    tags: ["blockchain", "trading", "ai-agents", "automation"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "askjimmy",
+    name: "AskJimmy",
+    description: "Decentralized platform for sophisticated trading strategies with multi-agent system and on-chain trading capabilities.",
+    url: "https://askjimmy.xyz",
+    tags: ["blockchain", "trading", "defi", "multi-agent"],
+    category: "blockchain-tools",
+    featured: false
+  },
+
+  // Memory Systems
+  {
+    id: "hcp-diffusion",
+    name: "hcp-diffusion",
+    description: "Universal toolbox for Stable Diffusion models, providing functionalities for image generation and manipulation with support for various models and custom configurations.",
+    url: "https://github.com/7eu7d7/hcp-diffusion",
+    tags: ["training", "deployment", "stable-diffusion", "image-generation"],
+    category: "training-deployment",
+    featured: false
+  },
+  {
+    id: "lmdeploy",
+    name: "lmdeploy",
+    description: "Open-source toolkit for compression, deployment, and serving of Large Language Models with efficient inference and quantization support.",
+    url: "https://github.com/InternLM/lmdeploy",
+    tags: ["training", "deployment", "llm", "quantization"],
+    category: "training-deployment",
+    featured: false
+  },
+  {
+    id: "medusa",
+    name: "Medusa",
+    description: "Framework for accelerating LLM text generation using multiple decoding heads with parallel decoding strategies.",
+    url: "https://github.com/FasterDecoding/Medusa",
+    tags: ["training", "deployment", "llm", "text-generation"],
+    category: "training-deployment",
+    featured: false
+  },
+  {
+    id: "langchain-production-starter",
+    name: "langchain-production-starter",
+    description: "Starter kit for deploying LangChain agents with pre-configured Telegram bots and integration examples.",
+    url: "https://github.com/langchain-ai/langchain-production-starter",
+    tags: ["training", "deployment", "langchain", "telegram"],
+    category: "training-deployment",
+    featured: false
+  },
+  {
+    id: "llm-applications",
+    name: "llm-applications",
+    description: "Guide and toolkit for building RAG-based LLM applications optimized for production with performance benchmarks.",
+    url: "https://github.com/ray-project/llm-applications",
+    tags: ["training", "deployment", "rag", "llm"],
+    category: "training-deployment",
+    featured: false
+  },
+  {
+    id: "ludwig",
+    name: "Ludwig",
+    description: "Low-code framework for building machine learning models with AutoML capabilities and support for various architectures.",
+    url: "https://github.com/ludwig-ai/ludwig",
+    tags: ["training", "deployment", "automl", "low-code"],
+    category: "training-deployment",
+    featured: false
+  },
+  {
+    id: "onprem",
+    name: "onprem",
+    description: "Tool for running LLMs on-premises with focus on data privacy and support for model fine-tuning and inference.",
+    url: "https://github.com/amaiya/onprem",
+    tags: ["training", "deployment", "llm", "on-premises"],
+    category: "training-deployment",
+    featured: false
+  },
+  {
+    id: "prompt2model",
+    name: "prompt2model",
+    description: "Project for creating deployable AI models from natural language instructions with support for various AI tasks.",
+    url: "https://github.com/neulab/prompt2model",
+    tags: ["training", "deployment", "ai", "nlp"],
+    category: "training-deployment",
+    featured: false
+  },
+  {
+    id: "vllm",
+    name: "vLLM",
+    description: "Engine for high-throughput and memory-efficient LLM inference and serving with PagedAttention technology.",
+    url: "https://github.com/vllm-project/vllm",
+    tags: ["training", "deployment", "llm", "inference"],
+    category: "training-deployment",
+    featured: false
+  },
+
+  // Reasoning & Planning
+  {
+    id: "tree-of-thoughts",
+    name: "Tree of Thoughts",
+    description: "Reasoning framework for LLMs",
+    url: "https://github.com/ysymyth/tree-of-thoughts",
+    tags: ["reasoning", "llm", "framework"],
+    category: "reasoning-planning",
+    featured: false
+  },
+  {
+    id: "ensemble",
+    name: "Ensemble",
+    description: "The commerce framework that enables AI agents to thrive in the on-chain economy. By simplifying the building, configuring, and execution of automated workflows, Ensemble empowers humans and AI agents to seamlessly integrate into blockchain ecosystems, automate complex tasks, acquire or deliver services, and unlock new revenue streams—all in a secure, trustless manner.",
+    url: "https://ensemble.ai",
+    tags: ["web3", "commerce-framework", "automated-workflows", "blockchain-integration", "agent-economy"],
+    category: "web3-infrastructure",
+    featured: false
+  },
+  {
+    id: "fxn",
+    name: "FXN",
+    description: "Creates protocols for unified communication and commerce, enabling seamless interaction between agents in a swarm.",
+    url: "https://fxn.ai",
+    tags: ["web3", "unified-communication", "commerce-protocols", "agent-interaction"],
+    category: "web3-infrastructure",
+    featured: false
+  },
+  {
+    id: "virtuals",
+    name: "Virtuals",
+    description: "Enables agent-to-agent interaction and integrations, facilitating collaboration within swarms. Virtuals Protocol is building the co-ownership layer for AI agents in gaming and entertainment, allowing agents to operate across multiple platforms and applications.",
+    url: "https://virtuals.ai",
+    tags: ["web3", "agent-interaction", "integration-tools", "gaming", "entertainment"],
+    category: "web3-infrastructure",
+    featured: false
+  },
+  {
+    id: "blockai",
+    name: "BlockAI",
+    description: "A multi-language AI Agents infrastructure leveraging Python, Solidity, RIDE, and TypeScript, designed for seamless integration of blockchain and AI capabilities. The project empowers the creation of AI agents that autonomously handle tasks like data analysis, content generation, and decentralized decision-making. With cross-chain compatibility (Waves, Base, BNB), it ensures interoperability and scalability for blockchain-native and off-chain AI applications.",
+    url: "https://blockai.ai",
+    tags: ["web3", "blockchain-integrated-ai", "autonomous-agents", "cross-chain", "multi-language"],
+    category: "web3-infrastructure",
+    featured: false
+  },
+  {
+    id: "sqd-network",
+    name: "SQD Network",
+    description: "A decentralized indexing and querying solution for blockchain data, offering up to 100x faster indexing and 90% cost reduction compared to traditional RPC providers. Features a modular architecture with multiple products including SQD Network (distributed query engine), Squid SDK (TypeScript toolkit), SQD Cloud (PaaS), and SQD Firehose (subgraph adapter). Operates as a decentralized data lake with raw blockchain data storage, offering free historical data access with fixed subscription fees for chains, and enabling AI/ML applications through efficient data access and custom processing pipelines.",
+    url: "https://sqd.network",
+    tags: ["web3", "blockchain-data-indexing", "real-time-data-processing", "multi-chain-support", "customizable-data-pipelines"],
+    category: "web3-infrastructure",
+    featured: false
+  },
+  {
+    id: "space-and-time",
+    name: "Space and Time",
+    description: "A decentralized data warehouse with sub-second ZK coprocessor for SQL, enabling trustless data processing for smart contracts. Combines comprehensive blockchain indexing with the ability to join onchain and offchain data through their Proof of SQL technology, allowing smart contracts to query complex data with ZK-proven results. Features a decentralized data warehouse with encrypted storage and processing, enabling data-driven smart contracts with verifiable query results, and includes AI-powered query generation and analytics tools.",
+    url: "https://spaceandtime.io",
+    tags: ["web3", "zk-proven-sql", "blockchain-indexing", "data-warehousing", "smart-contract-integration", "ai-powered-analytics"],
+    category: "web3-infrastructure",
+    featured: false
+  },
+  {
+    id: "sqd-ai",
+    name: "SQD.AI",
+    description: "An AI agent data infrastructure platform designed to support the demands of billions of autonomous AI agents. It provides a decentralized data lake that enables these agents to access and manage data independently. SQD leverages blockchain technology to ensure transparency and security, with its token ($SQD) serving as a means of accessing and rewarding participants in the ecosystem. The platform is designed to scale with the growing need for real-time, high-throughput data in the AI industry.",
+    url: "https://sqd.ai",
+    tags: ["web3", "decentralized-data-lake", "ai-agent-support", "blockchain-technology", "real-time-data-access"],
+    category: "web3-infrastructure",
+    featured: false
+  },
+  {
+    id: "aethir",
+    name: "Aethir",
+    description: "AethirCloud is a decentralized compute network tailored for AI and Web3. It allows anyone with spare resources to join the network, offer their compute power, and earn rewards, addressing the scalability and cost issues of traditional cloud services. The platform provides scalable compute solutions tailored for AI and Web3, enables easy network participation, and reduces costs by leveraging decentralized compute resources.",
+    url: "https://aethir.com",
+    tags: ["web3", "decentralized-compute", "ai-workloads", "web3-infrastructure"],
+    category: "web3-infrastructure",
+    featured: false
+  },
+  {
+    id: "io",
+    name: "IO",
+    description: "io.net delivers scalable compute solutions for AI workloads, enabling efficient and cost-effective access to computational resources. It focuses on meeting the growing demands of AI by leveraging decentralized infrastructure. The platform delivers highly scalable compute solutions for AI workloads, provides efficient access to computational resources, and focuses on cost-effective solutions for AI compute needs.",
+    url: "https://io.net",
+    tags: ["web3", "scalable-compute", "ai-workloads", "decentralized-infrastructure"],
+    category: "web3-infrastructure",
+    featured: false
+  },
+  {
+    id: "cookiedotfun",
+    name: "Cookie DAO",
+    description: "Cookie DAO builds a modular data layer for AI agents and Swarm, providing APIs for on-chain and off-chain social data. It offers extensive mindshare indicators, real-time narrative tracking, trend detection, and historical pattern analysis with AI insights. The platform focuses on providing data metrics and insights rather than direct data ownership, enables monetization through data-driven insights and analytics, and supports AI development by providing high-quality data for training and analysis.",
+    url: "https://cookiedot.fun",
+    tags: ["web3", "data-metrics", "ai-insights", "real-time-tracking"],
+    category: "web3-infrastructure",
+    featured: false
+  },
+
+  // RAG Tools
+  {
+    id: "chroma",
+    name: "Chroma",
+    description: "Vector database for AI applications",
+    url: "https://github.com/chroma-core/chroma",
+    tags: ["rag", "vector-db", "python"],
+    category: "rag",
+    featured: false
+  },
+  {
+    id: "pinecone",
+    name: "Pinecone",
+    description: "Vector database for ML applications",
+    url: "https://www.pinecone.io",
+    tags: ["rag", "vector-db", "cloud"],
+    category: "rag",
+    featured: false
+  },
+
+  // Data Processing
+  {
+    id: "jina-ai",
+    name: "Jina.ai",
+    description: "Open-source neural search framework for building AI-driven search systems. Features plug-and-play components, scalable architecture, and active community support.",
+    url: "https://jina.ai",
+    tags: ["data-processing", "neural-search", "vector-search", "scalable"],
+    category: "data-processing"
+  },
+  {
+    id: "gitingest",
+    name: "gitingest",
+    description: "Specialized tool for ingesting data from Git repositories. Automates collecting code, documentation, and commit histories for AI pipelines.",
+    url: "https://github.com/gitingest",
+    tags: ["data-processing", "git", "code-analysis", "automation"],
+    category: "data-processing"
+  },
+  {
+    id: "llmstxt-generator",
+    name: "llmstxt-generator",
+    description: "Text-generation tool leveraging large language models for prototyping, data augmentation, or conversational AI with customizable prompts and output control.",
+    url: "https://github.com/llmstxt-generator",
+    tags: ["data-processing", "text-generation", "llm", "synthetic-data"],
+    category: "data-processing"
+  },
+  {
+    id: "neocortex",
+    name: "neocortex",
+    description: "Advanced reasoning and data processing tool with modules for understanding complex data and making intelligent inferences through structured data transformation.",
+    url: "https://neocortex.ai",
+    tags: ["data-processing", "reasoning", "cognitive", "structured-data"],
+    category: "data-processing"
+  },
+  {
+    id: "datasphere",
+    name: "DataSphere",
+    description: "Tool for aggregating and curating diverse data sources into a cohesive system. Features data aggregation, cleaning, enrichment, and integration interfaces.",
+    url: "https://datasphere.io",
+    tags: ["data-processing", "data-aggregation", "data-cleaning", "integration"],
+    category: "data-processing"
+  },
+  {
+    id: "dataweave",
+    name: "DataWeave",
+    description: "Data transformation language and runtime for converting data between formats. Features declarative transformations, multi-format support, and robust error handling.",
+    url: "https://docs.mulesoft.com/dataweave",
+    tags: ["data-processing", "data-transformation", "enterprise", "multi-format"],
+    category: "data-processing"
+  },
+  {
+    id: "synthai",
+    name: "SynthAI",
+    description: "Tool for generating synthetic data across text, images, and other modalities. Features customizable generation, scalability, and data augmentation capabilities.",
+    url: "https://synthai.io",
+    tags: ["data-processing", "synthetic-data", "data-augmentation", "generation"],
+    category: "data-processing"
+  },
+  {
+    id: "cleanlab",
+    name: "Cleanlab",
+    description: "Data-centric tool for automatically detecting and fixing issues in machine learning datasets. Features automatic issue detection, multi-modal support, and active learning integration.",
+    url: "https://cleanlab.ai",
+    tags: ["data-processing", "data-cleaning", "quality-control", "machine-learning"],
+    category: "data-processing"
+  },
+  {
+    id: "diffbot",
+    name: "Diffbot",
+    description: "Employs AI to structure unstructured web content, automating extraction of structured data from complicated or dynamic pages. Provides an AI-driven approach that can handle varied layouts and integrates via REST APIs.",
+    url: "https://diffbot.com",
+    tags: ["web-scraping", "ai", "structured-data", "automation"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "bland-ai-tools",
+    name: "Custom Tools by Bland AI",
+    description: "Bland AI allows for the creation of custom tools to extend AI agent capabilities. Features custom tool creation for specific business needs and telephony and voice interaction tools.",
+    url: "https://bland.ai",
+    tags: ["function-calling", "custom", "voice", "telephony"],
+    category: "function-calling",
+    featured: false
+  },
+  {
+    id: "brainsoup-tools",
+    name: "Brainsoup Custom Tools",
+    description: "Brainsoup by Nurgo Software offers custom tool creation for multi-agent systems. Features multi-agent interaction with custom tools and local resource utilization for tool execution.",
+    url: "https://nurgo-software.com",
+    tags: ["function-calling", "multi-agent", "custom", "local"],
+    category: "function-calling",
+    featured: false
+  },
+  {
+    id: "npi",
+    name: "NPI",
+    description: "NPI provides an open-source platform for AI tool use, focusing on research and development. Features open-source, community-driven development and research-oriented tool implementation.",
+    url: "https://github.com/npi",
+    tags: ["function-calling", "open-source", "research", "tools"],
+    category: "function-calling",
+    featured: false
+  },
+  {
+    id: "crewai-tools",
+    name: "CrewAI Tools",
+    description: "CrewAI's tools aim to enhance team-based AI agent functionalities with custom tools. Features tools for team coordination and task management with integration to various AI models.",
+    url: "https://github.com/joaomdmoura/crewAI",
+    tags: ["function-calling", "team", "collaboration", "tools"],
+    category: "function-calling",
+    featured: false
+  },
+  // ETL
+  {
+    id: "llamaindex",
+    name: "LlamaIndex",
+    description: "An open-source framework for orchestrating data ingestion workflows for LLM applications. Features modular data processing with loading, transforming, and storing stages, supporting hundreds of connectors for various data sources.",
+    url: "https://llamaindex.ai",
+    tags: ["etl", "data-orchestration", "llm", "open-source"],
+    category: "etl",
+    featured: false
+  },
+  {
+    id: "reducto",
+    name: "Reducto",
+    description: "A managed API service specializing in parsing, cleaning, and structuring unstructured documents. Features ML-based parsing for high accuracy extraction of tabular data, forms, and graphical elements.",
+    url: "https://reducto.ai",
+    tags: ["etl", "document-processing", "ml", "api"],
+    category: "etl",
+    featured: false
+  },
+  {
+    id: "datavolo",
+    name: "DATAVOLO",
+    description: "An open-source platform built on Apache NiFi for designing, executing, and monitoring ETL workflows. Features visual drag-and-drop interface, enterprise-grade scalability, and support for various data types.",
+    url: "https://datavolo.com",
+    tags: ["etl", "data-integration", "apache-nifi", "enterprise"],
+    category: "etl",
+    featured: false
+  },
+
+  // Memory Systems
+  {
+    id: "mem0",
+    name: "mem0.ai",
+    description: "Specialized solution that gives AI agents persistent memory by pairing with vector databases like Qdrant to store vector embeddings for quick retrieval. Enables context retention and personalization in AI conversations.",
+    url: "https://mem0.ai",
+    tags: ["memory", "vector-database", "embeddings", "context-retention"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "cognee",
+    name: "cognee.ai",
+    description: "Emerging tool for AI memory management, focusing on storing and organizing context data. Handles evolving conversation histories, preferences, and contextual data relevant to AI tasks with dynamic updating capabilities.",
+    url: "https://cognee.ai",
+    tags: ["memory", "context-management", "api", "dynamic-updating"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "neondatabase",
+    name: "Neon Database",
+    description: "Cloud-based PostgreSQL service that can be extended with PgVector for storing vector embeddings. Provides scalable and robust memory management for AI applications with easy integration capabilities.",
+    url: "https://neon.tech",
+    tags: ["memory", "postgresql", "vector-database", "cloud"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "langmem",
+    name: "LangMem",
+    description: "Designed to work alongside frameworks like LangChain to enable AI agents to store, update, and retrieve conversational history or contextual data. Supports multiple storage solutions and vector integration.",
+    url: "https://github.com/langmem",
+    tags: ["memory", "langchain", "vector-database", "context-retention"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "zep",
+    name: "Zep",
+    description: "Open-source memory store acting as a centralized chat history or memory database for AI applications. Features fast retrieval, persistent memory storage, and a dedicated API for easy integration.",
+    url: "https://github.com/getzep/zep",
+    tags: ["memory", "open-source", "chat-history", "vector-indexing"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "memgpt",
+    name: "memGPT",
+    description: "Extends GPT-based systems with persistent memory, allowing ChatGPT-like models to recall interactions across sessions. Features memory embeddings, persistent retrieval, and memory summarization capabilities.",
+    url: "https://github.com/memgpt",
+    tags: ["memory", "gpt", "embeddings", "context-retention"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "ai-research-agent",
+    name: "AI Research Agent with Memory",
+    description: "Streamlit app for searching academic papers on arXiv using GPT-4o-mini and storing context with Mem0 and Qdrant. Features enhanced research capabilities and improved context retention.",
+    url: "https://github.com/ai-research-agent",
+    tags: ["memory", "research", "streamlit", "academic"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "llm-personalized-app",
+    name: "LLM Personalized App with Memory",
+    description: "Chatbot app using GPT-4o with persistent memory maintained via Mem0 and Qdrant. Enables extended, context-rich conversations with personalized interactions and continuous context.",
+    url: "https://github.com/llm-personalized-app",
+    tags: ["memory", "chatbot", "personalization", "context-retention"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "ai-travel-agent",
+    name: "AI Travel Agent with Memory",
+    description: "Travel suggestion system storing user preferences via Mem0 and Qdrant. Leverages GPT-4o to provide dynamic recommendations with context awareness and tailored suggestions.",
+    url: "https://github.com/ai-travel-agent",
+    tags: ["memory", "travel", "recommendations", "context-aware"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "local-chatgpt",
+    name: "Local ChatGPT with Personal Memory",
+    description: "Fully local chatbot featuring Llama 3.1 via Ollama. Uses Nomic Embed for embeddings and stores them in a local Qdrant instance, providing privacy and full data ownership.",
+    url: "https://github.com/local-chatgpt",
+    tags: ["memory", "local", "privacy", "offline"],
+    category: "memory",
+    featured: false
+  },
+
+  // Web Scraping
+  {
+    id: "exa",
+    name: "Exa",
+    description: "A lightweight web scraping tool/library designed to simplify data extraction from modern websites. Offers a minimalistic yet efficient way to fetch and parse web content with built-in HTML parsing and basic JavaScript handling capabilities.",
+    url: "https://github.com/exa",
+    tags: ["web-scraping", "lightweight", "async", "html-parsing"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "perplexity",
+    name: "Perplexity",
+    description: "AI-powered search engine that uses language models to generate clear, concise answers by gathering and summarizing information from across the web. Performs automated web scraping and summarization to provide up-to-date answers to user queries.",
+    url: "https://perplexity.ai",
+    tags: ["web-scraping", "ai-search", "summarization", "real-time"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "tavily",
+    name: "Tavily",
+    description: "Search engine and API created for AI agents and RAG workflows. Offers real-time, LLM-optimized search results with customizable search depth and domain filtering. Provides citation-backed information for enhanced trust and transparency.",
+    url: "https://tavily.com",
+    tags: ["web-scraping", "rag", "ai-agents", "search"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "firecrawl",
+    name: "FireCrawl",
+    description: "Open-source crawler and scraper that converts entire websites into clean, markdown-formatted data. Handles dynamic, JavaScript-rendered content and provides comprehensive crawling capabilities even without sitemaps.",
+    url: "https://github.com/firecrawl",
+    tags: ["web-scraping", "open-source", "markdown", "crawler"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "duckduckgo",
+    name: "DuckDuckGo",
+    description: "Privacy-focused search engine that can serve as a data source in RAG pipelines. Provides up-to-date search results without tracking, offering an alternative retrieval source for enhancing search diversity and reducing bias in AI queries.",
+    url: "https://duckduckgo.com",
+    tags: ["web-scraping", "search", "privacy", "rag"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "scrapy",
+    name: "Scrapy",
+    description: "Robust framework capable of large-scale web crawling. Features asynchronous operation, high scalability, and extensive customization options. Includes powerful pipeline and middleware features for processing scraped data.",
+    url: "https://scrapy.org",
+    tags: ["web-scraping", "python", "async", "crawler"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "beautifulsoup",
+    name: "BeautifulSoup",
+    description: "Lightweight HTML and XML parser with a simple and intuitive API. Ideal for smaller, focused scraping tasks and can be flexibly combined with other libraries like requests for web scraping.",
+    url: "https://www.crummy.com/software/BeautifulSoup/",
+    tags: ["web-scraping", "python", "html-parsing", "lightweight"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "newspaper3k",
+    name: "Newspaper3k",
+    description: "Specialized in extracting news articles with automatic fetching of titles, authors, and publication dates. Handles many common news site formats out of the box and can quickly parse metadata like authors and summaries.",
+    url: "https://github.com/codelucas/newspaper",
+    tags: ["web-scraping", "news", "article-extraction", "metadata"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "apify",
+    name: "Apify",
+    description: "Cloud-based platform offering ready-made scraping 'actors' for common scraping scenarios. Provides managed crawling with minimal DevOps overhead, including scheduling and monitoring out of the box.",
+    url: "https://apify.com",
+    tags: ["web-scraping", "cloud", "managed", "automation"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "parsehub",
+    name: "ParseHub",
+    description: "Visual tool enabling users to click and drag their way to data extraction. Ideal for teams with limited coding experience, offering both cloud and desktop options for creating basic scrapers.",
+    url: "https://www.parsehub.com",
+    tags: ["web-scraping", "visual", "no-code", "automation"],
+    category: "web-scraping",
+    featured: false
+  },
+
+  // Blockchain Tools
+  {
+    id: "eliza-starter",
+    name: "Eliza Starter",
+    description: "Template for building autonomous AI agents with plugin system, built-in search, Docker support, and integration with Tavily and Exa APIs.",
+    url: "https://github.com/elizaOS/eliza-starter",
+    tags: ["blockchain", "ai-agents", "docker", "api-integration"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "safe-ai-agent-tutorial",
+    name: "Safe AI Agent Tutorial",
+    description: "Tutorial for setting up reliable agents with Safe wallet integration, LangChain capabilities, and multi-signature support.",
+    url: "https://github.com/5afe/safe-ai-agent-tutorial",
+    tags: ["blockchain", "ai-agents", "wallet", "langchain"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "agentipy",
+    name: "Agentipy",
+    description: "Python toolkit for connecting AI agents to Solana blockchain with token operations, trading, and DeFi capabilities.",
+    url: "https://agentipy.fun",
+    tags: ["blockchain", "solana", "python", "defi"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "cdp-agentkit",
+    name: "CDP Agentkit",
+    description: "Framework-agnostic toolkit for bringing AI Agents onchain with wallet management, token operations, and NFT deployment capabilities.",
+    url: "https://github.com/coinbase/cdp-agentkit",
+    tags: ["blockchain", "ai-agents", "wallet", "nft"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "goat",
+    name: "GOAT",
+    description: "Framework for connecting AI agents to 30+ blockchains with support for multiple agent frameworks and DeFi protocol interactions.",
+    url: "https://ohmygoat.dev",
+    tags: ["blockchain", "ai-agents", "defi", "multi-chain"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "hyperbolic-agentkit",
+    name: "Hyperbolic AgentKit",
+    description: "Template for running AI agents with blockchain and compute capabilities, including GPU operations and smart contract interactions.",
+    url: "https://github.com/HyperbolicLabs/Hyperbolic-AgentKit",
+    tags: ["blockchain", "ai-agents", "gpu", "smart-contracts"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "solana-agent-kit",
+    name: "Solana Agent Kit",
+    description: "Toolkit for connecting AI agents to Solana with multi-agent architecture, token management, and DeFi operations.",
+    url: "https://solanaagentkit.xyz",
+    tags: ["blockchain", "solana", "ai-agents", "defi"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "agent-tools",
+    name: "Agent Tools",
+    description: "TypeScript tools for Bitcoin/Stacks blockchain interaction with AI-focused tooling and Stacks.js integration.",
+    url: "https://github.com/aibtcdev/agent-tools-ts",
+    tags: ["blockchain", "bitcoin", "stacks", "typescript"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "bitte",
+    name: "Bitte",
+    description: "Create multi-chain blockchain transactions with natural language using AI agents and protocol automation.",
+    url: "https://bitte.ai",
+    tags: ["blockchain", "ai-agents", "multi-chain", "nlp"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "duckai",
+    name: "DuckAI",
+    description: "AI platform for blockchain analytics with market trend analysis, sentiment tracking, and real-time monitoring.",
+    url: "https://duckai.ai",
+    tags: ["blockchain", "analytics", "market-analysis", "sentiment"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "simulacrum",
+    name: "Simulacrum",
+    description: "AI agent tool for blockchain interaction through natural language commands via social media with DeFi support.",
+    url: "https://simulacrum.network",
+    tags: ["blockchain", "ai-agents", "social-media", "defi"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "mettalex",
+    name: "Mettalex",
+    description: "AI agent-based P2P order book DEX with Fetch.ai integration and digital asset trading capabilities.",
+    url: "https://mettalex.ai",
+    tags: ["blockchain", "dex", "trading", "p2p"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "token-metrics-ai",
+    name: "Token Metrics AI",
+    description: "AI-driven cryptocurrency investment platform with market analysis, portfolio management, and real-time trading signals.",
+    url: "https://tokenmetrics.com",
+    tags: ["blockchain", "trading", "ai-analysis", "portfolio"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "aiquant",
+    name: "AiQuant",
+    description: "Platform for autonomous AI agents focused on cryptocurrency trading with 24/7 market monitoring and data-driven decisions.",
+    url: "https://aiquant.fun",
+    tags: ["blockchain", "trading", "ai-agents", "automation"],
+    category: "blockchain-tools",
+    featured: false
+  },
+  {
+    id: "askjimmy",
+    name: "AskJimmy",
+    description: "Decentralized platform for sophisticated trading strategies with multi-agent system and on-chain trading capabilities.",
+    url: "https://askjimmy.xyz",
+    tags: ["blockchain", "trading", "defi", "multi-agent"],
+    category: "blockchain-tools",
+    featured: false
+  },
+
+  // Memory Systems
 ];
 
 // Tutorials
@@ -3660,7 +4815,346 @@ export const tutorials: Tool[] = [
     authors: ["Isa Fulford", "Andrew Ng"],
     date: "2023-12-10",
     frameworks: ["General"]
-  }
+  },
+  {
+    id: "analogical-prompting",
+    name: "Analogical Prompting",
+    description: "A method to enhance the reasoning capabilities of large language models by providing analogical examples within prompts. Automates reasoning through parallel scenarios and improves performance on complex tasks.",
+    url: "https://arxiv.org/abs/2310.01714",
+    tags: ["prompt-engineering", "reasoning", "analogies", "research"],
+    category: "prompt-engineering",
+    featured: false
+  },
+  {
+    id: "evoprompt",
+    name: "Evoprompt",
+    description: "Merges evolutionary algorithms with large language models to optimize prompts. Uses evolutionary strategies to refine prompts iteratively and automate the process of finding effective prompts.",
+    url: "https://github.com/evoprompt",
+    tags: ["prompt-engineering", "optimization", "evolutionary", "automation"],
+    category: "prompt-engineering",
+    featured: false
+  },
+  {
+    id: "fooocus",
+    name: "Fooocus",
+    description: "A tool focused on enhancing prompt generation and interaction with language models. Provides a user-friendly interface for prompt management and simplifies the process of creating effective prompts.",
+    url: "https://github.com/fooocus",
+    tags: ["prompt-engineering", "interface", "user-friendly", "generation"],
+    category: "prompt-engineering",
+    featured: false
+  },
+  {
+    id: "langgpt",
+    name: "LangGPT",
+    description: "Aims to democratize prompt engineering by providing structured prompt creation. Makes prompt engineering accessible to non-experts through a structured approach to prompt design.",
+    url: "https://github.com/langgpt",
+    tags: ["prompt-engineering", "structured", "education", "accessibility"],
+    category: "prompt-engineering",
+    featured: false
+  },
+  {
+    id: "prompt-engineering-guide",
+    name: "Prompt Engineering Guide",
+    description: "An educational resource offering comprehensive guides, papers, and practical resources on prompt engineering. Includes practical examples, case studies, and community-driven updates.",
+    url: "https://github.com/prompt-engineering-guide",
+    tags: ["prompt-engineering", "education", "resources", "documentation"],
+    category: "prompt-engineering",
+    featured: false
+  },
+  {
+    id: "yival",
+    name: "Yival",
+    description: "An open-source framework for tuning and evaluating AI-generated content prompts. Supports iterative improvement with custom datasets and integrates evaluation and testing strategies.",
+    url: "https://github.com/yival",
+    tags: ["prompt-engineering", "evaluation", "tuning", "framework"],
+    category: "prompt-engineering",
+    featured: false
+  },
+  {
+    id: "guidance",
+    name: "Guidance",
+    description: "A language for controlling large language models, focusing on structured output. Allows for programmatic control over model outputs and supports complex generative tasks.",
+    url: "https://github.com/guidance",
+    tags: ["prompt-engineering", "structured", "control", "programming"],
+    category: "prompt-engineering",
+    featured: false
+  },
+  {
+    id: "outlines",
+    name: "Outlines",
+    description: "A framework for programming with generative models, emphasizing structured outputs. Enables developers to define the structure of model outputs and integrates with various generative models.",
+    url: "https://github.com/outlines",
+    tags: ["prompt-engineering", "structured", "framework", "generative"],
+    category: "prompt-engineering",
+    featured: false
+  },
+  {
+    id: "prompttools",
+    name: "PromptTools",
+    description: "Tools for testing and experimenting with prompts for language models and vector databases. Supports experimentation with multiple LLMs and provides tools for prompt comparison and optimization.",
+    url: "https://github.com/prompttools",
+    tags: ["prompt-engineering", "testing", "experimentation", "optimization"],
+    category: "prompt-engineering",
+    featured: false
+  },
+
+  // Function Calling
+  {
+    id: "openai-functions",
+    name: "OpenAI Functions",
+    description: "Function calling for GPT models",
+    url: "https://platform.openai.com/docs/guides/function-calling",
+    tags: ["functions", "api", "llm"],
+    category: "function-calling",
+    featured: false
+  },
+  {
+    id: "anthropic-tools",
+    name: "Anthropic Tools",
+    description: "Function calling for Claude models",
+    url: "https://docs.anthropic.com/claude/docs/tools-overview",
+    tags: ["functions", "api", "llm"],
+    category: "function-calling",
+    featured: false
+  },
+  {
+    id: "groq",
+    name: "Groq",
+    description: "Groq provides tool use capabilities for building AI assistants that can interact with external services. Features custom tool creation for specific tasks and real-time interaction with external APIs.",
+    url: "https://groq.com",
+    tags: ["function-calling", "hardware", "api", "tools"],
+    category: "function-calling",
+    featured: false
+  },
+  {
+    id: "command-r-plus",
+    name: "Command R+ by Cohere",
+    description: "Command R+ by Cohere supports function calling to enhance AI interactions with external systems. Features direct API calls for tool execution and is scalable for enterprise use.",
+    url: "https://cohere.com",
+    tags: ["function-calling", "cohere", "enterprise", "api"],
+    category: "function-calling",
+    featured: false
+  },
+  {
+    id: "langchain-tools",
+    name: "LangChain Tools",
+    description: "LangChain offers a framework for integrating tools with LLMs, enhancing AI agents' capabilities. Features an extensive library of pre-built tools and supports chaining of multiple tools for complex tasks.",
+    url: "https://python.langchain.com/docs/modules/agents/tools/",
+    tags: ["function-calling", "framework", "python", "tools"],
+    category: "function-calling",
+    featured: false
+  },
+  {
+    id: "langchain-js-tools",
+    name: "LangChain JS Tools",
+    description: "Similar to Python version but tailored for JavaScript environments, facilitating function calling in web applications. Features JavaScript-specific implementations for tool integration and cross-platform compatibility.",
+    url: "https://js.langchain.com/docs/modules/agents/tools/",
+    tags: ["function-calling", "framework", "javascript", "web"],
+    category: "function-calling",
+    featured: false
+  },
+  {
+    id: "llamaindex-tools",
+    name: "LlamaIndex Tools",
+    description: "LlamaIndex focuses on data retrieval and indexing, extending to tool use for AI agents. Features specialized tools for managing and querying large datasets.",
+    url: "https://llamaindex.ai",
+    tags: ["function-calling", "data", "indexing", "retrieval"],
+    category: "function-calling",
+    featured: false
+  },
+  {
+    id: "composio",
+    name: "Composio",
+    description: "Composio provides a platform for building AI agents with tool integration for automation. Features integrated tools for various apps like GitHub, Notion, with a focus on agentic automation.",
+    url: "https://composio.dev",
+    tags: ["function-calling", "automation", "integration", "tools"],
+    category: "function-calling",
+    featured: false
+  },
+
+  // Memory Systems
+  {
+    id: "mem0",
+    name: "mem0.ai",
+    description: "Specialized solution that gives AI agents persistent memory by pairing with vector databases like Qdrant to store vector embeddings for quick retrieval. Enables context retention and personalization in AI conversations.",
+    url: "https://mem0.ai",
+    tags: ["memory", "vector-database", "embeddings", "context-retention"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "cognee",
+    name: "cognee.ai",
+    description: "Emerging tool for AI memory management, focusing on storing and organizing context data. Handles evolving conversation histories, preferences, and contextual data relevant to AI tasks with dynamic updating capabilities.",
+    url: "https://cognee.ai",
+    tags: ["memory", "context-management", "api", "dynamic-updating"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "neondatabase",
+    name: "Neon Database",
+    description: "Cloud-based PostgreSQL service that can be extended with PgVector for storing vector embeddings. Provides scalable and robust memory management for AI applications with easy integration capabilities.",
+    url: "https://neon.tech",
+    tags: ["memory", "postgresql", "vector-database", "cloud"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "langmem",
+    name: "LangMem",
+    description: "Designed to work alongside frameworks like LangChain to enable AI agents to store, update, and retrieve conversational history or contextual data. Supports multiple storage solutions and vector integration.",
+    url: "https://github.com/langmem",
+    tags: ["memory", "langchain", "vector-database", "context-retention"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "zep",
+    name: "Zep",
+    description: "Open-source memory store acting as a centralized chat history or memory database for AI applications. Features fast retrieval, persistent memory storage, and a dedicated API for easy integration.",
+    url: "https://github.com/getzep/zep",
+    tags: ["memory", "open-source", "chat-history", "vector-indexing"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "memgpt",
+    name: "memGPT",
+    description: "Extends GPT-based systems with persistent memory, allowing ChatGPT-like models to recall interactions across sessions. Features memory embeddings, persistent retrieval, and memory summarization capabilities.",
+    url: "https://github.com/memgpt",
+    tags: ["memory", "gpt", "embeddings", "context-retention"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "ai-research-agent",
+    name: "AI Research Agent with Memory",
+    description: "Streamlit app for searching academic papers on arXiv using GPT-4o-mini and storing context with Mem0 and Qdrant. Features enhanced research capabilities and improved context retention.",
+    url: "https://github.com/ai-research-agent",
+    tags: ["memory", "research", "streamlit", "academic"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "llm-personalized-app",
+    name: "LLM Personalized App with Memory",
+    description: "Chatbot app using GPT-4o with persistent memory maintained via Mem0 and Qdrant. Enables extended, context-rich conversations with personalized interactions and continuous context.",
+    url: "https://github.com/llm-personalized-app",
+    tags: ["memory", "chatbot", "personalization", "context-retention"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "ai-travel-agent",
+    name: "AI Travel Agent with Memory",
+    description: "Travel suggestion system storing user preferences via Mem0 and Qdrant. Leverages GPT-4o to provide dynamic recommendations with context awareness and tailored suggestions.",
+    url: "https://github.com/ai-travel-agent",
+    tags: ["memory", "travel", "recommendations", "context-aware"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "local-chatgpt",
+    name: "Local ChatGPT with Personal Memory",
+    description: "Fully local chatbot featuring Llama 3.1 via Ollama. Uses Nomic Embed for embeddings and stores them in a local Qdrant instance, providing privacy and full data ownership.",
+    url: "https://github.com/local-chatgpt",
+    tags: ["memory", "local", "privacy", "offline"],
+    category: "memory",
+    featured: false
+  },
+
+  // Web Scraping
+  {
+    id: "exa",
+    name: "Exa",
+    description: "A lightweight web scraping tool/library designed to simplify data extraction from modern websites. Offers a minimalistic yet efficient way to fetch and parse web content with built-in HTML parsing and basic JavaScript handling capabilities.",
+    url: "https://github.com/exa",
+    tags: ["web-scraping", "lightweight", "async", "html-parsing"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "perplexity",
+    name: "Perplexity",
+    description: "AI-powered search engine that uses language models to generate clear, concise answers by gathering and summarizing information from across the web. Performs automated web scraping and summarization to provide up-to-date answers to user queries.",
+    url: "https://perplexity.ai",
+    tags: ["web-scraping", "ai-search", "summarization", "real-time"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "tavily",
+    name: "Tavily",
+    description: "Search engine and API created for AI agents and RAG workflows. Offers real-time, LLM-optimized search results with customizable search depth and domain filtering. Provides citation-backed information for enhanced trust and transparency.",
+    url: "https://tavily.com",
+    tags: ["web-scraping", "rag", "ai-agents", "search"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "firecrawl",
+    name: "FireCrawl",
+    description: "Open-source crawler and scraper that converts entire websites into clean, markdown-formatted data. Handles dynamic, JavaScript-rendered content and provides comprehensive crawling capabilities even without sitemaps.",
+    url: "https://github.com/firecrawl",
+    tags: ["web-scraping", "open-source", "markdown", "crawler"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "duckduckgo",
+    name: "DuckDuckGo",
+    description: "Privacy-focused search engine that can serve as a data source in RAG pipelines. Provides up-to-date search results without tracking, offering an alternative retrieval source for enhancing search diversity and reducing bias in AI queries.",
+    url: "https://duckduckgo.com",
+    tags: ["web-scraping", "search", "privacy", "rag"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "scrapy",
+    name: "Scrapy",
+    description: "Robust framework capable of large-scale web crawling. Features asynchronous operation, high scalability, and extensive customization options. Includes powerful pipeline and middleware features for processing scraped data.",
+    url: "https://scrapy.org",
+    tags: ["web-scraping", "python", "async", "crawler"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "beautifulsoup",
+    name: "BeautifulSoup",
+    description: "Lightweight HTML and XML parser with a simple and intuitive API. Ideal for smaller, focused scraping tasks and can be flexibly combined with other libraries like requests for web scraping.",
+    url: "https://www.crummy.com/software/BeautifulSoup/",
+    tags: ["web-scraping", "python", "html-parsing", "lightweight"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "newspaper3k",
+    name: "Newspaper3k",
+    description: "Specialized in extracting news articles with automatic fetching of titles, authors, and publication dates. Handles many common news site formats out of the box and can quickly parse metadata like authors and summaries.",
+    url: "https://github.com/codelucas/newspaper",
+    tags: ["web-scraping", "news", "article-extraction", "metadata"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "apify",
+    name: "Apify",
+    description: "Cloud-based platform offering ready-made scraping 'actors' for common scraping scenarios. Provides managed crawling with minimal DevOps overhead, including scheduling and monitoring out of the box.",
+    url: "https://apify.com",
+    tags: ["web-scraping", "cloud", "managed", "automation"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "parsehub",
+    name: "ParseHub",
+    description: "Visual tool enabling users to click and drag their way to data extraction. Ideal for teams with limited coding experience, offering both cloud and desktop options for creating basic scrapers.",
+    url: "https://www.parsehub.com",
+    tags: ["web-scraping", "visual", "no-code", "automation"],
+    category: "web-scraping",
+    featured: false
+  },
 ];
 
 // Combine all tools and tutorials
