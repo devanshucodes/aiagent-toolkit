@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { X, Send, Brain, Sparkles, Bot, MessageSquare } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -13,6 +14,8 @@ export default function AIMentor({ onClose }: { onClose: () => void }) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showLevelButtons, setShowLevelButtons] = useState(false);
+  const [showTopicButtons, setShowTopicButtons] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -23,15 +26,32 @@ export default function AIMentor({ onClose }: { onClose: () => void }) {
     scrollToBottom();
   }, [messages]);
 
-  const handleSend = async () => {
-    if (!input.trim() || isLoading) return;
+  const handleLevelSelect = (level: string) => {
+    const levelMessage = `I am a ${level}`;
+    setInput(levelMessage);
+    setShowLevelButtons(false);
+    handleSend(levelMessage);
+  };
 
-    const userMessage = input.trim();
+  const handleTopicSelect = (option: string) => {
+    const topicMessage = `I would like to ${option}`;
+    setInput(topicMessage);
+    setShowTopicButtons(false);
+    handleSend(topicMessage);
+  };
+
+  const handleSend = async (customMessage?: string) => {
+    const messageToSend = customMessage || input.trim();
+    if (!messageToSend || isLoading) return;
+
+    // Hide all buttons when sending a new message
+    setShowLevelButtons(false);
+    setShowTopicButtons(false);
     setInput('');
     
     setMessages(prev => [...prev, { 
       role: 'user', 
-      content: userMessage,
+      content: messageToSend,
       id: Date.now().toString() 
     }]);
     
@@ -98,7 +118,7 @@ Remember:
 - Keep up with the latest in AI and Web3`
             },
             ...messages.map(msg => ({ role: msg.role, content: msg.content })),
-            { role: 'user', content: userMessage }
+            { role: 'user', content: messageToSend }
           ],
           temperature: 0.7,
         }),
@@ -121,6 +141,16 @@ Remember:
         content: assistantMessage,
         id: (Date.now() + 1).toString()
       }]);
+
+      // Check if the message contains level selection prompt
+      if (assistantMessage.toLowerCase().includes('beginner') && 
+          assistantMessage.toLowerCase().includes('intermediate') && 
+          assistantMessage.toLowerCase().includes('expert')) {
+        setShowLevelButtons(true);
+      } else if (assistantMessage.toLowerCase().includes('explore') || 
+                 assistantMessage.toLowerCase().includes('example')) {
+        setShowTopicButtons(true);
+      }
     } catch (error) {
       console.error('Error:', error);
       setMessages(prev => [...prev, { 
@@ -204,6 +234,58 @@ Remember:
                   </div>
                 </div>
               ))}
+              {showLevelButtons && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex justify-end gap-2 mt-4"
+                >
+                  <button
+                    onClick={() => handleLevelSelect('beginner')}
+                    className="px-4 py-2 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition-colors"
+                  >
+                    Beginner
+                  </button>
+                  <button
+                    onClick={() => handleLevelSelect('intermediate')}
+                    className="px-4 py-2 bg-purple-500 text-white rounded-xl hover:bg-purple-600 transition-colors"
+                  >
+                    Intermediate
+                  </button>
+                  <button
+                    onClick={() => handleLevelSelect('expert')}
+                    className="px-4 py-2 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 transition-colors"
+                  >
+                    Expert
+                  </button>
+                </motion.div>
+              )}
+              {showTopicButtons && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex justify-end gap-2 mt-4"
+                >
+                  <button
+                    onClick={() => handleTopicSelect('explore more topics')}
+                    className="px-4 py-2 bg-green-500 text-white rounded-xl hover:bg-green-600 transition-colors"
+                  >
+                    Explore More Topics
+                  </button>
+                  <button
+                    onClick={() => handleTopicSelect('see some examples')}
+                    className="px-4 py-2 bg-yellow-500 text-white rounded-xl hover:bg-yellow-600 transition-colors"
+                  >
+                    Show Examples
+                  </button>
+                  <button
+                    onClick={() => handleTopicSelect('move on to something else')}
+                    className="px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-colors"
+                  >
+                    Move On
+                  </button>
+                </motion.div>
+              )}
             </div>
           )}
           {isLoading && (
@@ -232,7 +314,7 @@ Remember:
               </div>
             </div>
             <button
-              onClick={handleSend}
+              onClick={() => handleSend()}
               disabled={isLoading}
               className={`p-3 rounded-xl ${
                 isLoading
