@@ -934,80 +934,369 @@ export const tools: Tool[] = [
 
   // Data Processing
   {
-    id: "pandas",
-    name: "Pandas",
-    description: "Data manipulation and analysis library",
-    url: "https://pandas.pydata.org",
-    tags: ["data", "python", "analysis"],
-    category: "data-processing",
-    featured: false
+    id: "jina-ai",
+    name: "Jina.ai",
+    description: "Open-source neural search framework for building AI-driven search systems. Features plug-and-play components, scalable architecture, and active community support.",
+    url: "https://jina.ai",
+    tags: ["data-processing", "neural-search", "vector-search", "scalable"],
+    category: "data-processing"
   },
   {
-    id: "numpy",
-    name: "NumPy",
-    description: "Scientific computing library",
-    url: "https://numpy.org",
-    tags: ["data", "python", "scientific"],
-    category: "data-processing",
-    featured: false
+    id: "gitingest",
+    name: "gitingest",
+    description: "Specialized tool for ingesting data from Git repositories. Automates collecting code, documentation, and commit histories for AI pipelines.",
+    url: "https://github.com/gitingest",
+    tags: ["data-processing", "git", "code-analysis", "automation"],
+    category: "data-processing"
+  },
+  {
+    id: "llmstxt-generator",
+    name: "llmstxt-generator",
+    description: "Text-generation tool leveraging large language models for prototyping, data augmentation, or conversational AI with customizable prompts and output control.",
+    url: "https://github.com/llmstxt-generator",
+    tags: ["data-processing", "text-generation", "llm", "synthetic-data"],
+    category: "data-processing"
+  },
+  {
+    id: "neocortex",
+    name: "neocortex",
+    description: "Advanced reasoning and data processing tool with modules for understanding complex data and making intelligent inferences through structured data transformation.",
+    url: "https://neocortex.ai",
+    tags: ["data-processing", "reasoning", "cognitive", "structured-data"],
+    category: "data-processing"
+  },
+  {
+    id: "datasphere",
+    name: "DataSphere",
+    description: "Tool for aggregating and curating diverse data sources into a cohesive system. Features data aggregation, cleaning, enrichment, and integration interfaces.",
+    url: "https://datasphere.io",
+    tags: ["data-processing", "data-aggregation", "data-cleaning", "integration"],
+    category: "data-processing"
+  },
+  {
+    id: "dataweave",
+    name: "DataWeave",
+    description: "Data transformation language and runtime for converting data between formats. Features declarative transformations, multi-format support, and robust error handling.",
+    url: "https://docs.mulesoft.com/dataweave",
+    tags: ["data-processing", "data-transformation", "enterprise", "multi-format"],
+    category: "data-processing"
+  },
+  {
+    id: "synthai",
+    name: "SynthAI",
+    description: "Tool for generating synthetic data across text, images, and other modalities. Features customizable generation, scalability, and data augmentation capabilities.",
+    url: "https://synthai.io",
+    tags: ["data-processing", "synthetic-data", "data-augmentation", "generation"],
+    category: "data-processing"
+  },
+  {
+    id: "cleanlab",
+    name: "Cleanlab",
+    description: "Data-centric tool for automatically detecting and fixing issues in machine learning datasets. Features automatic issue detection, multi-modal support, and active learning integration.",
+    url: "https://cleanlab.ai",
+    tags: ["data-processing", "data-cleaning", "quality-control", "machine-learning"],
+    category: "data-processing"
   },
 
   // Compute Resources
   {
-    id: "aws-sagemaker",
-    name: "AWS SageMaker",
-    description: "Machine learning platform",
-    url: "https://aws.amazon.com/sagemaker",
-    tags: ["compute", "cloud", "ml"],
+    id: "open-interpreter",
+    name: "Open‑Interpreter",
+    description: "Open‑Interpreter lets you control your computer using natural language. It's like having ChatGPT or another large language model (LLM) on your desktop. You can type or speak commands and the system will understand your intent and execute corresponding actions.",
+    url: "https://github.com/KillianLucas/open-interpreter",
+    tags: ["compute", "automation", "local", "natural-language"],
     category: "compute",
     featured: false
   },
   {
-    id: "google-vertex",
-    name: "Google Vertex AI",
-    description: "ML platform for building and deploying models",
-    url: "https://cloud.google.com/vertex-ai",
-    tags: ["compute", "cloud", "ml"],
+    id: "stagehand",
+    name: "Stagehand",
+    description: "An open‑source tool that facilitates interactive, agent‑driven workflows in your browser. Provides a low‑code or no‑code environment for assembling AI components, making it straightforward to prototype or demo AI agent applications.",
+    url: "https://github.com/browserbase/stagehand",
+    tags: ["compute", "browser", "low-code", "prototyping"],
+    category: "compute",
+    featured: false
+  },
+  {
+    id: "anthropic-computer-use",
+    name: "Anthropic's Computer Use AI",
+    description: "Technology that allows you to control your computer using plain‑language instructions. Combines natural language processing with computer vision to understand and execute tasks across different operating systems and applications.",
+    url: "https://www.anthropic.com",
+    tags: ["compute", "automation", "computer-vision", "cross-platform"],
+    category: "compute",
+    featured: false
+  },
+  {
+    id: "autohotkey-automator",
+    name: "Traditional Scripting Tools",
+    description: "AutoHotkey (Windows) and Automator (Mac) are long‑standing tools that let you automate tasks by writing simple scripts. They allow automation of repetitive actions like opening applications, clicking buttons, or complex workflows.",
+    url: "https://www.autohotkey.com",
+    tags: ["compute", "automation", "scripting", "workflow"],
+    category: "compute",
+    featured: false
+  },
+  {
+    id: "autopy-yolo",
+    name: "Automation Libraries with Computer Vision",
+    description: "Combination of autopy (Python library for mouse/keyboard control) and YOLO (real‑time object detection) to build AI agents that monitor computer displays and perform actions based on visual cues.",
+    url: "https://github.com/autopilot-rs/autopy",
+    tags: ["compute", "automation", "computer-vision", "python"],
+    category: "compute",
+    featured: false
+  },
+  {
+    id: "cognosysai-browser",
+    name: "CognosysAI/browser",
+    description: "Open‑source AI Web Operator that empowers computers to interact with web content through natural language commands. Leverages Browserbase and Vercel AI SDK with vision capabilities via Anthropic's Claude API.",
+    url: "https://github.com/CognosysAI/browser",
+    tags: ["compute", "browser", "automation", "vision"],
+    category: "compute",
+    featured: false
+  },
+  {
+    id: "self-operating-computer",
+    name: "Self Operating Computer",
+    description: "Open-source framework that enables multimodal AI models to autonomously operate a computer. Supports various models including GPT-4, Gemini Pro Vision, Claude 3, and LLaVa across multiple operating systems.",
+    url: "https://www.hyperwriteai.com/self-operating-computer",
+    tags: ["compute", "automation", "multimodal", "cross-platform"],
     category: "compute",
     featured: false
   },
 
   // Memory Systems
   {
-    id: "redis",
-    name: "Redis",
-    description: "In-memory data structure store",
-    url: "https://redis.io",
-    tags: ["memory", "cache", "database"],
+    id: "mem0",
+    name: "mem0.ai",
+    description: "Specialized solution that gives AI agents persistent memory by pairing with vector databases like Qdrant to store vector embeddings for quick retrieval. Enables context retention and personalization in AI conversations.",
+    url: "https://mem0.ai",
+    tags: ["memory", "vector-database", "embeddings", "context-retention"],
     category: "memory",
     featured: false
   },
   {
-    id: "faiss",
-    name: "FAISS",
-    description: "Vector similarity search library",
-    url: "https://github.com/facebookresearch/faiss",
-    tags: ["memory", "vector-search", "ml"],
+    id: "cognee",
+    name: "cognee.ai",
+    description: "Emerging tool for AI memory management, focusing on storing and organizing context data. Handles evolving conversation histories, preferences, and contextual data relevant to AI tasks with dynamic updating capabilities.",
+    url: "https://cognee.ai",
+    tags: ["memory", "context-management", "api", "dynamic-updating"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "neondatabase",
+    name: "Neon Database",
+    description: "Cloud-based PostgreSQL service that can be extended with PgVector for storing vector embeddings. Provides scalable and robust memory management for AI applications with easy integration capabilities.",
+    url: "https://neon.tech",
+    tags: ["memory", "postgresql", "vector-database", "cloud"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "langmem",
+    name: "LangMem",
+    description: "Designed to work alongside frameworks like LangChain to enable AI agents to store, update, and retrieve conversational history or contextual data. Supports multiple storage solutions and vector integration.",
+    url: "https://github.com/langmem",
+    tags: ["memory", "langchain", "vector-database", "context-retention"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "zep",
+    name: "Zep",
+    description: "Open-source memory store acting as a centralized chat history or memory database for AI applications. Features fast retrieval, persistent memory storage, and a dedicated API for easy integration.",
+    url: "https://github.com/getzep/zep",
+    tags: ["memory", "open-source", "chat-history", "vector-indexing"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "memgpt",
+    name: "memGPT",
+    description: "Extends GPT-based systems with persistent memory, allowing ChatGPT-like models to recall interactions across sessions. Features memory embeddings, persistent retrieval, and memory summarization capabilities.",
+    url: "https://github.com/memgpt",
+    tags: ["memory", "gpt", "embeddings", "context-retention"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "ai-research-agent",
+    name: "AI Research Agent with Memory",
+    description: "Streamlit app for searching academic papers on arXiv using GPT-4o-mini and storing context with Mem0 and Qdrant. Features enhanced research capabilities and improved context retention.",
+    url: "https://github.com/ai-research-agent",
+    tags: ["memory", "research", "streamlit", "academic"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "llm-personalized-app",
+    name: "LLM Personalized App with Memory",
+    description: "Chatbot app using GPT-4o with persistent memory maintained via Mem0 and Qdrant. Enables extended, context-rich conversations with personalized interactions and continuous context.",
+    url: "https://github.com/llm-personalized-app",
+    tags: ["memory", "chatbot", "personalization", "context-retention"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "ai-travel-agent",
+    name: "AI Travel Agent with Memory",
+    description: "Travel suggestion system storing user preferences via Mem0 and Qdrant. Leverages GPT-4o to provide dynamic recommendations with context awareness and tailored suggestions.",
+    url: "https://github.com/ai-travel-agent",
+    tags: ["memory", "travel", "recommendations", "context-aware"],
+    category: "memory",
+    featured: false
+  },
+  {
+    id: "local-chatgpt",
+    name: "Local ChatGPT with Personal Memory",
+    description: "Fully local chatbot featuring Llama 3.1 via Ollama. Uses Nomic Embed for embeddings and stores them in a local Qdrant instance, providing privacy and full data ownership.",
+    url: "https://github.com/local-chatgpt",
+    tags: ["memory", "local", "privacy", "offline"],
     category: "memory",
     featured: false
   },
 
   // Web Scraping
   {
+    id: "exa",
+    name: "Exa",
+    description: "A lightweight web scraping tool/library designed to simplify data extraction from modern websites. Offers a minimalistic yet efficient way to fetch and parse web content with built-in HTML parsing and basic JavaScript handling capabilities.",
+    url: "https://github.com/exa",
+    tags: ["web-scraping", "lightweight", "async", "html-parsing"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "perplexity",
+    name: "Perplexity",
+    description: "AI-powered search engine that uses language models to generate clear, concise answers by gathering and summarizing information from across the web. Performs automated web scraping and summarization to provide up-to-date answers to user queries.",
+    url: "https://perplexity.ai",
+    tags: ["web-scraping", "ai-search", "summarization", "real-time"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "tavily",
+    name: "Tavily",
+    description: "Search engine and API created for AI agents and RAG workflows. Offers real-time, LLM-optimized search results with customizable search depth and domain filtering. Provides citation-backed information for enhanced trust and transparency.",
+    url: "https://tavily.com",
+    tags: ["web-scraping", "rag", "ai-agents", "search"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "firecrawl",
+    name: "FireCrawl",
+    description: "Open-source crawler and scraper that converts entire websites into clean, markdown-formatted data. Handles dynamic, JavaScript-rendered content and provides comprehensive crawling capabilities even without sitemaps.",
+    url: "https://github.com/firecrawl",
+    tags: ["web-scraping", "open-source", "markdown", "crawler"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "duckduckgo",
+    name: "DuckDuckGo",
+    description: "Privacy-focused search engine that can serve as a data source in RAG pipelines. Provides up-to-date search results without tracking, offering an alternative retrieval source for enhancing search diversity and reducing bias in AI queries.",
+    url: "https://duckduckgo.com",
+    tags: ["web-scraping", "search", "privacy", "rag"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
     id: "scrapy",
     name: "Scrapy",
-    description: "Web scraping framework",
+    description: "Robust framework capable of large-scale web crawling. Features asynchronous operation, high scalability, and extensive customization options. Includes powerful pipeline and middleware features for processing scraped data.",
     url: "https://scrapy.org",
-    tags: ["scraping", "python", "web"],
+    tags: ["web-scraping", "python", "async", "crawler"],
     category: "web-scraping",
     featured: false
   },
   {
     id: "beautifulsoup",
-    name: "Beautiful Soup",
-    description: "HTML parsing library",
-    url: "https://www.crummy.com/software/BeautifulSoup",
-    tags: ["scraping", "python", "html"],
+    name: "BeautifulSoup",
+    description: "Lightweight HTML and XML parser with a simple and intuitive API. Ideal for smaller, focused scraping tasks and can be flexibly combined with other libraries like requests for web scraping.",
+    url: "https://www.crummy.com/software/BeautifulSoup/",
+    tags: ["web-scraping", "python", "html-parsing", "lightweight"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "newspaper3k",
+    name: "Newspaper3k",
+    description: "Specialized in extracting news articles with automatic fetching of titles, authors, and publication dates. Handles many common news site formats out of the box and can quickly parse metadata like authors and summaries.",
+    url: "https://github.com/codelucas/newspaper",
+    tags: ["web-scraping", "news", "article-extraction", "metadata"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "apify",
+    name: "Apify",
+    description: "Cloud-based platform offering ready-made scraping 'actors' for common scraping scenarios. Provides managed crawling with minimal DevOps overhead, including scheduling and monitoring out of the box.",
+    url: "https://apify.com",
+    tags: ["web-scraping", "cloud", "managed", "automation"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "parsehub",
+    name: "ParseHub",
+    description: "Visual tool enabling users to click and drag their way to data extraction. Ideal for teams with limited coding experience, offering both cloud and desktop options for creating basic scrapers.",
+    url: "https://www.parsehub.com",
+    tags: ["web-scraping", "visual", "no-code", "automation"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "diffbot",
+    name: "Diffbot",
+    description: "Employs AI to structure unstructured web content, automating extraction of structured data from complicated or dynamic pages. Provides an AI-driven approach that can handle varied layouts and integrates via REST APIs.",
+    url: "https://www.diffbot.com",
+    tags: ["web-scraping", "ai", "structured-data", "api"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "gitingest",
+    name: "Gitingest",
+    description: "Open-source tool that transforms GitHub repositories into text formats optimized for Large Language Models. Provides browser extensions and CLI tools for converting codebases into prompt-friendly text.",
+    url: "https://gitingest.com",
+    tags: ["web-scraping", "github", "llm", "code-analysis"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "datafuel",
+    name: "DataFuel",
+    description: "Web scraping API that converts entire websites and knowledge bases into clean, structured data suitable for LLMs. Features comprehensive website scraping, structured data output, and AI-powered extraction capabilities.",
+    url: "https://datafuel.ai",
+    tags: ["web-scraping", "api", "structured-data", "llm"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "bloop",
+    name: "Bloop",
+    description: "AI-powered tool for enhancing code search within repositories using natural language queries. Features semantic search, regex search, and code navigation capabilities while maintaining privacy for proprietary code.",
+    url: "https://bloop.ai",
+    tags: ["web-scraping", "code-search", "ai", "privacy"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "buildt",
+    name: "Buildt",
+    description: "Solution for developers to search through codebases using natural language. Features contextual code search, line-by-line analysis, and privacy protection through synthetic datasets for training.",
+    url: "https://www.buildt.ai",
+    tags: ["web-scraping", "code-search", "ai", "privacy"],
+    category: "web-scraping",
+    featured: false
+  },
+  {
+    id: "metaphor",
+    name: "Metaphor",
+    description: "AI-driven search engine that focuses on semantic understanding rather than traditional keyword matching. Features semantic search, AI-powered query interpretation, and link prediction capabilities.",
+    url: "https://metaphor.systems",
+    tags: ["web-scraping", "ai-search", "semantic", "search"],
     category: "web-scraping",
     featured: false
   },
@@ -3003,6 +3292,154 @@ export const tools: Tool[] = [
     category: "hackathons",
     date: "2025-04-11",
     authors: ["BUIDL Asia"]
+  },
+
+  // RAG Frameworks
+  {
+    id: "langchain-rag",
+    name: "LangChain",
+    description: "Robust Python toolkit for integrating LLMs with external data sources. Features plug-and-play modules for prompt chaining, wide-ranging compatibility with vector stores, and flexible architecture for chatbots, Q&A, and summarization.",
+    url: "https://langchain.com",
+    tags: ["rag", "python", "llm", "vector-stores"],
+    category: "rag-frameworks"
+  },
+  {
+    id: "llamaindex",
+    name: "LlamaIndex",
+    description: "Optimized for high-speed indexing and retrieval at scale. Supports various index structures and accelerates data lookups in projects with large or dynamic datasets.",
+    url: "https://llamaindex.ai",
+    tags: ["rag", "indexing", "retrieval", "scalable"],
+    category: "rag-frameworks"
+  },
+  {
+    id: "haystack",
+    name: "Haystack",
+    description: "Comprehensive NLP framework supporting a full spectrum of RAG tasks. Features interchangeable backends and modules for semantic search, question answering, and summarization.",
+    url: "https://haystack.deepset.ai",
+    tags: ["rag", "nlp", "enterprise", "semantic-search"],
+    category: "rag-frameworks"
+  },
+  {
+    id: "swirl",
+    name: "SWIRL",
+    description: "Addresses data security by enabling on-premises RAG without moving data outside secure environments. Features seamless integration with major large language models.",
+    url: "https://swirlai.com",
+    tags: ["rag", "security", "on-prem", "compliance"],
+    category: "rag-frameworks"
+  },
+  {
+    id: "cognita",
+    name: "Cognita",
+    description: "Emphasizes modular, API-driven design with user-friendly interfaces for Q&A tasks and incremental indexing for minimal overhead during frequent updates.",
+    url: "https://cognita.ai",
+    tags: ["rag", "api", "modular", "enterprise"],
+    category: "rag-frameworks"
+  },
+  {
+    id: "llm-ware",
+    name: "LLM-Ware",
+    description: "Tailored for resource-constrained deployments with fine-tuned smaller models designed to run effectively on CPUs. Built for large-scale, cost-sensitive enterprise contexts.",
+    url: "https://llmware.ai",
+    tags: ["rag", "resource-efficient", "enterprise", "cpu-optimized"],
+    category: "rag-frameworks"
+  },
+  {
+    id: "rag-flow",
+    name: "RAG Flow",
+    description: "Known for robust document comprehension. Handles PDFs, images, and structured data while offering citation-grounded answers.",
+    url: "https://ragflow.io",
+    tags: ["rag", "document-processing", "citations", "research"],
+    category: "rag-frameworks"
+  },
+  {
+    id: "graph-rag",
+    name: "Graph RAG",
+    description: "Incorporates knowledge graphs to uncover relationships among data points. Features graph-based retrieval for complex queries and enhanced semantic depth.",
+    url: "https://graphrag.ai",
+    tags: ["rag", "knowledge-graphs", "semantic", "enterprise"],
+    category: "rag-frameworks"
+  },
+  {
+    id: "storm",
+    name: "Storm",
+    description: "Automates knowledge curation to produce Wikipedia-style reports. Features automated retrieval, synthesis, user collaboration, and in-line citations.",
+    url: "https://storm.ai",
+    tags: ["rag", "content-generation", "collaboration", "citations"],
+    category: "rag-frameworks"
+  },
+  {
+    id: "ragbuilder",
+    name: "RagBuilder.io",
+    description: "Features hyperparameter tuning using Bayesian optimization for critical RAG parameters including chunking strategy, chunk sizes, and retrieval settings.",
+    url: "https://ragbuilder.io",
+    tags: ["rag", "optimization", "tuning", "automation"],
+    category: "rag-frameworks"
+  },
+
+  // Data Processing Tools
+  {
+    id: "jina-ai",
+    name: "Jina.ai",
+    description: "Open-source neural search framework for building AI-driven search systems. Features plug-and-play components, scalable architecture, and active community support.",
+    url: "https://jina.ai",
+    tags: ["data-processing", "neural-search", "vector-search", "scalable"],
+    category: "data-processing"
+  },
+  {
+    id: "gitingest",
+    name: "gitingest",
+    description: "Specialized tool for ingesting data from Git repositories. Automates collecting code, documentation, and commit histories for AI pipelines.",
+    url: "https://github.com/gitingest",
+    tags: ["data-processing", "git", "code-analysis", "automation"],
+    category: "data-processing"
+  },
+  {
+    id: "llmstxt-generator",
+    name: "llmstxt-generator",
+    description: "Text-generation tool leveraging large language models for prototyping, data augmentation, or conversational AI with customizable prompts and output control.",
+    url: "https://github.com/llmstxt-generator",
+    tags: ["data-processing", "text-generation", "llm", "synthetic-data"],
+    category: "data-processing"
+  },
+  {
+    id: "neocortex",
+    name: "neocortex",
+    description: "Advanced reasoning and data processing tool with modules for understanding complex data and making intelligent inferences through structured data transformation.",
+    url: "https://neocortex.ai",
+    tags: ["data-processing", "reasoning", "cognitive", "structured-data"],
+    category: "data-processing"
+  },
+  {
+    id: "datasphere",
+    name: "DataSphere",
+    description: "Tool for aggregating and curating diverse data sources into a cohesive system. Features data aggregation, cleaning, enrichment, and integration interfaces.",
+    url: "https://datasphere.io",
+    tags: ["data-processing", "data-aggregation", "data-cleaning", "integration"],
+    category: "data-processing"
+  },
+  {
+    id: "dataweave",
+    name: "DataWeave",
+    description: "Data transformation language and runtime for converting data between formats. Features declarative transformations, multi-format support, and robust error handling.",
+    url: "https://docs.mulesoft.com/dataweave",
+    tags: ["data-processing", "data-transformation", "enterprise", "multi-format"],
+    category: "data-processing"
+  },
+  {
+    id: "synthai",
+    name: "SynthAI",
+    description: "Tool for generating synthetic data across text, images, and other modalities. Features customizable generation, scalability, and data augmentation capabilities.",
+    url: "https://synthai.io",
+    tags: ["data-processing", "synthetic-data", "data-augmentation", "generation"],
+    category: "data-processing"
+  },
+  {
+    id: "cleanlab",
+    name: "Cleanlab",
+    description: "Data-centric tool for automatically detecting and fixing issues in machine learning datasets. Features automatic issue detection, multi-modal support, and active learning integration.",
+    url: "https://cleanlab.ai",
+    tags: ["data-processing", "data-cleaning", "quality-control", "machine-learning"],
+    category: "data-processing"
   }
 ];
 

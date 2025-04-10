@@ -84,20 +84,29 @@ export const categories: Category[] = [
     isMainCategory: true
   },
   {
-    id: "tech-stack",
-    name: "Tech Stack",
-    description: "Technology stack components",
+    id: "no-code-tools",
+    name: "No-Code Tools",
+    description: "No-code development tools and platforms",
     icon: "Layers",
     color: "text-emerald-500",
+    count: 0,
+    isMainCategory: true
+  },
+  {
+    id: "low-code-tools",
+    name: "Low-Code Tools",
+    description: "Low-code development platforms and tools",
+    icon: "Code2",
+    color: "text-amber-500",
     count: 0,
     isMainCategory: true
   },
 
   // Subcategories under AI Agent Development
   {
-    id: "rag",
-    name: "RAG",
-    description: "Retrieval Augmented Generation tools",
+    id: "rag-frameworks",
+    name: "RAG Frameworks",
+    description: "Retrieval Augmented Generation frameworks and tools",
     icon: "Search",
     color: "text-blue-400",
     count: 0,
@@ -107,7 +116,7 @@ export const categories: Category[] = [
   {
     id: "data-processing",
     name: "Data Processing",
-    description: "Tools for processing and transforming data",
+    description: "Data Tools Libraries for AI Agents",
     icon: "Database",
     color: "text-indigo-400",
     count: 0,
