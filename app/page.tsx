@@ -14,11 +14,13 @@ import CategorySection from './components/CategorySection';
 import SelectedCategoryView from './components/SelectedCategoryView';
 import EmptyState from './components/EmptyState';
 import ToolCard from './components/ui/ToolCard';
+import AIMentor from './components/AIMentor';
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showMentor, setShowMentor] = useState(false);
   
   useEffect(() => {
     setIsLoaded(true);
@@ -87,6 +89,13 @@ export default function Home() {
                 value={searchQuery}
                 onChange={setSearchQuery}
               />
+              
+              <button 
+                className="mt-4 w-full py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-xl shadow-md hover:from-blue-600 hover:to-purple-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                onClick={() => setShowMentor(true)}
+              >
+                Ask AI Mentor
+              </button>
             </motion.div>
           </motion.div>
 
@@ -192,6 +201,8 @@ export default function Home() {
           © {new Date().getFullYear()} AI Agent Toolkit. All rights reserved.
         </motion.p>
       </footer>
+
+      {showMentor && <AIMentor onClose={() => setShowMentor(false)} />}
     </div>
   );
 }

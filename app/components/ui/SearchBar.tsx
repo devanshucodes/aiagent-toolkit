@@ -69,7 +69,7 @@ export default function SearchBar({
         
         <div className="relative flex items-center">
           <motion.div 
-            className="absolute left-3 flex items-center pointer-events-none"
+            className="absolute inset-y-0 left-3 flex items-center pointer-events-none"
             animate={{ 
               color: isFocused ? '#3b82f6' : '#94a3b8',
               scale: isFocused ? 1.1 : 1
