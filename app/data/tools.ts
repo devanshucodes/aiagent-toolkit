@@ -1,5 +1,15 @@
 import { Tool } from '../types';
 
+export interface ResearchItem {
+  id: string;
+  title: string;
+  description: string;
+  url: string;
+  category: 'podcast' | 'reading';
+  date?: string;
+  author?: string;
+}
+
 // Sample data - you can expand this with real tools
 export const tools: Tool[] = [
   // Frameworks
@@ -1932,6 +1942,1067 @@ export const tools: Tool[] = [
     tags: ["web3", "assistance", "information", "solutions"],
     category: "web3-agents",
     featured: false
+  },
+
+  // Podcasts
+  {
+    id: "jansen-teng-virtuals",
+    name: "Inside Virtuals' Meteoric Rise, Race to Billion-Dollar Crypto-AI Agents, Life after AGI",
+    description: "Jansen Teng discusses Virtuals' rapid growth and the future of crypto-AI agents",
+    url: "https://example.com/jansen-teng-virtuals",
+    tags: ["podcast", "virtuals", "crypto-ai", "agi"],
+    category: "podcasts",
+    featured: false,
+    date: "2025-01-11",
+    authors: ["Jansen Teng"]
+  },
+  {
+    id: "zerebro-rise",
+    name: "Zerebro's PARABOLIC Rise & The Future of Crypto AI Agents",
+    description: "Founders Jeffy Yu & Tint discuss Zerebro's growth and the future of crypto AI agents",
+    url: "https://example.com/zerebro-rise",
+    tags: ["podcast", "zerebro", "crypto-ai", "founders"],
+    category: "podcasts",
+    featured: false,
+    date: "2025-01-09",
+    authors: ["Jeffy Yu", "Tint"]
+  },
+  {
+    id: "eliza-rise",
+    name: "The Rise of ai16z's Eliza—Crypto × AI Agents, a $2.5B Valuation, Trending Globally on GitHub",
+    description: "Shaw discusses Eliza's success and impact on the crypto-AI space",
+    url: "https://example.com/eliza-rise",
+    tags: ["podcast", "eliza", "ai16z", "crypto-ai"],
+    category: "podcasts",
+    featured: false,
+    date: "2025-01-06",
+    authors: ["Shaw"]
+  },
+  {
+    id: "ai-vs-crypto",
+    name: "AI vs. Crypto: Clash of Scarcity and Abundance - The Chopping Block",
+    description: "Discussion on the intersection and contrast between AI and crypto technologies",
+    url: "https://example.com/ai-vs-crypto",
+    tags: ["podcast", "ai", "crypto", "technology"],
+    category: "podcasts",
+    featured: false,
+    date: "2025-01-05",
+    authors: ["The Chopping Block"]
+  },
+  {
+    id: "ai-trade-cycle",
+    name: "Why AI is the Trade of the Cycle w/ Ejaaz",
+    description: "Ejaaz discusses why AI represents a significant opportunity in the current market cycle",
+    url: "https://example.com/ai-trade-cycle",
+    tags: ["podcast", "ai", "trading", "market"],
+    category: "podcasts",
+    featured: false,
+    date: "2025-01-04",
+    authors: ["Ejaaz"]
+  },
+  {
+    id: "ai-crypto-bankless",
+    name: "Everything You Need to Know About AI & Crypto",
+    description: "Comprehensive discussion about the intersection of AI and crypto technologies",
+    url: "https://example.com/ai-crypto-bankless",
+    tags: ["podcast", "ai", "crypto", "education"],
+    category: "podcasts",
+    featured: false,
+    date: "2024-10-28",
+    authors: ["Bankless"]
+  },
+  {
+    id: "crypto-market-state",
+    name: "State of The Crypto Market | AI, Memes, and Majors | EP 66",
+    description: "Analysis of the current crypto market with focus on AI, memes, and major trends",
+    url: "https://example.com/crypto-market-state",
+    tags: ["podcast", "crypto", "market", "ai"],
+    category: "podcasts",
+    featured: false,
+    date: "2024-10-27",
+    authors: ["Good Game"]
+  },
+  {
+    id: "crypto-ai-definitive",
+    name: "Crypto x AI Agents: The Definitive Podcast with Ai16z, Virtuals, MyShell, NOUS, and CENTS",
+    description: "Comprehensive discussion with leading companies in the crypto-AI space",
+    url: "https://example.com/crypto-ai-definitive",
+    tags: ["podcast", "crypto-ai", "industry", "leaders"],
+    category: "podcasts",
+    featured: false,
+    date: "2024-10-23",
+    authors: ["Delphi Digital"]
+  },
+  {
+    id: "vertical-ai-agents",
+    name: "Vertical AI Agents Could Be 10X Bigger Than SaaS",
+    description: "Discussion on the potential scale of vertical AI agents compared to SaaS",
+    url: "https://example.com/vertical-ai-agents",
+    tags: ["podcast", "ai-agents", "saas", "business"],
+    category: "podcasts",
+    featured: false,
+    date: "2024-10-22",
+    authors: ["Y Combinator"]
+  },
+
+  // Blogs
+  {
+    id: "ai-agents-scale-framework",
+    name: "AI Agents Need Framework Built for Scale",
+    description: "Analysis of the need for scalable frameworks in AI agent development",
+    url: "https://example.com/ai-agents-scale-framework",
+    tags: ["blog", "ai-agents", "frameworks", "scalability"],
+    category: "blogs",
+    featured: false,
+    date: "2025-02-08",
+    authors: ["Delphi Digital"]
+  },
+  {
+    id: "a16z-voice-agents",
+    name: "New a16z thesis - An Update on AI Voice Agents",
+    description: "Latest insights on AI voice agents from a16z",
+    url: "https://example.com/a16z-voice-agents",
+    tags: ["blog", "ai-voice", "a16z", "thesis"],
+    category: "blogs",
+    featured: false,
+    date: "2025-01-29",
+    authors: ["a16z"]
+  },
+  {
+    id: "virtuals-gaming-insights",
+    name: "Summary & Top Insights from Virtuals' Twitter Space on AI Agents in Gaming",
+    description: "Key takeaways from Virtuals' discussion on AI agents in gaming",
+    url: "https://example.com/virtuals-gaming-insights",
+    tags: ["blog", "gaming", "virtuals", "ai-agents"],
+    category: "blogs",
+    featured: false,
+    date: "2025-01-09",
+    authors: ["Defi0xJeff"]
+  },
+  {
+    id: "onchain-ai-reading",
+    name: "Onchain AI Reading List",
+    description: "Comprehensive reading list for onchain AI development",
+    url: "https://example.com/onchain-ai-reading",
+    tags: ["blog", "onchain", "ai", "reading-list"],
+    category: "blogs",
+    featured: false,
+    date: "2024-12-25",
+    authors: ["terrytjw"]
+  },
+  {
+    id: "crypto-ai-newsletter",
+    name: "Best Crypto x AI Newsletter",
+    description: "Top insights and updates in the crypto-AI space",
+    url: "https://example.com/crypto-ai-newsletter",
+    tags: ["blog", "crypto", "ai", "newsletter"],
+    category: "blogs",
+    featured: false,
+    date: "2024-12-25",
+    authors: ["Chain of Thought"]
+  },
+  {
+    id: "crypto-agentic-community",
+    name: "Broader Thesis on Crypto Enabling Funding + Agentic Community Management",
+    description: "Analysis of crypto's role in funding and managing agentic communities",
+    url: "https://example.com/crypto-agentic-community",
+    tags: ["blog", "crypto", "community", "funding"],
+    category: "blogs",
+    featured: false,
+    date: "2024-12-25",
+    authors: ["YB Effect"]
+  },
+  {
+    id: "zerebro-playbook",
+    name: "The Zerebro Playbook",
+    description: "Comprehensive guide to the Zerebro ecosystem",
+    url: "https://example.com/zerebro-playbook",
+    tags: ["blog", "zerebro", "playbook", "ecosystem"],
+    category: "blogs",
+    featured: false,
+    date: "2024-12-25",
+    authors: ["YB Effect"]
+  },
+  {
+    id: "crypto-consumer-ai",
+    name: "Crypto x Consumer AI",
+    description: "Analysis of consumer applications in crypto-AI space",
+    url: "https://example.com/crypto-consumer-ai",
+    tags: ["blog", "crypto", "consumer", "ai"],
+    category: "blogs",
+    featured: false,
+    date: "2024-12-25",
+    authors: ["Collab+Currency"]
+  },
+  {
+    id: "ai-autonomy-x",
+    name: "Chase B: The Dawn of AI Autonomy on X",
+    description: "Exploration of AI autonomy in social media platforms",
+    url: "https://example.com/ai-autonomy-x",
+    tags: ["blog", "ai", "autonomy", "social-media"],
+    category: "blogs",
+    featured: false,
+    date: "2024-12-25",
+    authors: ["Chase B"]
+  },
+  {
+    id: "frameworks-20b",
+    name: "A Deep Dive into Frameworks: A Sector we think Could Grow to $20b+",
+    description: "Analysis of the potential growth in AI framework sector",
+    url: "https://example.com/frameworks-20b",
+    tags: ["blog", "frameworks", "market-analysis", "growth"],
+    category: "blogs",
+    featured: false,
+    date: "2024-12-25",
+    authors: ["DV Memetics"]
+  },
+  {
+    id: "ai-agents-2024-recap",
+    name: "AI Agents in 2024: A Recap and What's Next (Part 2/2)",
+    description: "Comprehensive review of AI agents in 2024 and future outlook",
+    url: "https://example.com/ai-agents-2024-recap",
+    tags: ["blog", "ai-agents", "recap", "future"],
+    category: "blogs",
+    featured: false,
+    date: "2024-12-22",
+    authors: ["Defi0xJeff"]
+  },
+  {
+    id: "crypto-agentic-economy",
+    name: "The Role of Crypto in an Agentic Economy",
+    description: "Analysis of crypto's role in the emerging agentic economy",
+    url: "https://example.com/crypto-agentic-economy",
+    tags: ["blog", "crypto", "agentic", "economy"],
+    category: "blogs",
+    featured: false,
+    date: "2024-12-04",
+    authors: ["Robbie Petersen"]
+  },
+  {
+    id: "vertical-apps-ai",
+    name: "Vertical Apps x AI",
+    description: "Analysis of vertical applications in AI development",
+    url: "https://example.com/vertical-apps-ai",
+    tags: ["blog", "vertical-apps", "ai", "development"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-25",
+    authors: ["Andrew Chen"]
+  },
+  {
+    id: "simulators",
+    name: "Simulators",
+    description: "Analysis of simulation technologies in AI development",
+    url: "https://example.com/simulators",
+    tags: ["blog", "simulation", "ai", "development"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-25",
+    authors: ["LessWrong"]
+  },
+  {
+    id: "agentic-tokens-portfolio",
+    name: "terry's portfolio of agentic tokens (23 Nov '24 update)",
+    description: "Updated portfolio analysis of agentic tokens",
+    url: "https://example.com/agentic-tokens-portfolio",
+    tags: ["blog", "tokens", "portfolio", "analysis"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-23",
+    authors: ["terrytjw"]
+  },
+  {
+    id: "agentic-tokens-value",
+    name: "how do agentic tokens accrue value?",
+    description: "Analysis of value accrual in agentic tokens",
+    url: "https://example.com/agentic-tokens-value",
+    tags: ["blog", "tokens", "value", "analysis"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-18",
+    authors: ["terrytjw"]
+  },
+  {
+    id: "web2-ai-agents",
+    name: "Web2 AI agents landscape",
+    description: "Analysis of AI agents in Web2 ecosystem",
+    url: "https://example.com/web2-ai-agents",
+    tags: ["blog", "web2", "ai-agents", "landscape"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-17",
+    authors: ["0xPrismatic"]
+  },
+  {
+    id: "onchain-ai-thesis-ii",
+    name: "the Onchain AI thesis part II - deeper dive",
+    description: "In-depth analysis of onchain AI development",
+    url: "https://example.com/onchain-ai-thesis-ii",
+    tags: ["blog", "onchain", "ai", "thesis"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-15",
+    authors: ["terrytjw"]
+  },
+  {
+    id: "builders-test-prod",
+    name: "the best builders test in prod",
+    description: "Analysis of production testing in development",
+    url: "https://example.com/builders-test-prod",
+    tags: ["blog", "development", "testing", "production"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-15",
+    authors: ["terrytjw"]
+  },
+  {
+    id: "attention-utility",
+    name: "attention or utility?",
+    description: "Analysis of attention vs utility in product development",
+    url: "https://example.com/attention-utility",
+    tags: ["blog", "attention", "utility", "analysis"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-14",
+    authors: ["kelxyz_"]
+  },
+  {
+    id: "onchain-ai-thesis-i",
+    name: "the Onchain AI thesis part I: picking the winners",
+    description: "Analysis of promising onchain AI projects",
+    url: "https://example.com/onchain-ai-thesis-i",
+    tags: ["blog", "onchain", "ai", "thesis"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-14",
+    authors: ["terrytjw"]
+  },
+  {
+    id: "web4-agi",
+    name: "Web4: we are AGI",
+    description: "Analysis of AGI in Web4 development",
+    url: "https://example.com/web4-agi",
+    tags: ["blog", "web4", "agi", "development"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-14",
+    authors: ["jyu_eth"]
+  },
+  {
+    id: "uiux-moat-ai",
+    name: "UIUX as moat in the age of AI",
+    description: "Analysis of UI/UX as competitive advantage in AI era",
+    url: "https://example.com/uiux-moat-ai",
+    tags: ["blog", "uiux", "ai", "competitive-advantage"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-13",
+    authors: ["terrytjw"]
+  },
+  {
+    id: "hardware-onchain-ai",
+    name: "potential hardware angle in the onchain AI meta?",
+    description: "Analysis of hardware implications in onchain AI",
+    url: "https://example.com/hardware-onchain-ai",
+    tags: ["blog", "hardware", "onchain", "ai"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-13",
+    authors: ["terrytjw"]
+  },
+  {
+    id: "future-kols",
+    name: "our future KOLs/celebrities/personalities",
+    description: "Analysis of future key opinion leaders in digital space",
+    url: "https://example.com/future-kols",
+    tags: ["blog", "kols", "future", "analysis"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-12",
+    authors: ["terrytjw"]
+  },
+  {
+    id: "zerebro-playbook-bayc",
+    name: "The Zerebro Playbook: BAYC of Onchain Agents",
+    description: "Analysis of Zerebro's position in onchain agents",
+    url: "https://example.com/zerebro-playbook-bayc",
+    tags: ["blog", "zerebro", "bayc", "onchain-agents"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-12",
+    authors: ["yb_effect"]
+  },
+  {
+    id: "future-ai-agents-crypto",
+    name: "Exploring the Future of AI Agents in Crypto",
+    description: "Analysis of AI agents' future in cryptocurrency",
+    url: "https://example.com/future-ai-agents-crypto",
+    tags: ["blog", "ai-agents", "crypto", "future"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-12",
+    authors: ["Binance Research"]
+  },
+  {
+    id: "onchain-ai-case-study",
+    name: "Onchain AI case study: @0xzerebro & @jyu_eth",
+    description: "Case study of onchain AI implementation",
+    url: "https://example.com/onchain-ai-case-study",
+    tags: ["blog", "onchain", "ai", "case-study"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-10",
+    authors: ["terrytjw"]
+  },
+  {
+    id: "pmf-attention-economy",
+    name: "pmf redefined in the attention economy",
+    description: "Analysis of product-market fit in attention economy",
+    url: "https://example.com/pmf-attention-economy",
+    tags: ["blog", "pmf", "attention-economy", "analysis"],
+    category: "blogs",
+    featured: false,
+    date: "2024-10-25",
+    authors: ["terrytjw"]
+  },
+  {
+    id: "neural-networks-creative",
+    name: "Exploration of Neural Networks as Creative Tools",
+    description: "Analysis of neural networks in creative applications",
+    url: "https://example.com/neural-networks-creative",
+    tags: ["blog", "neural-networks", "creative", "analysis"],
+    category: "blogs",
+    featured: false,
+    date: "2024-10-24",
+    authors: ["Eclectic Capital"]
+  },
+  {
+    id: "ai-lifetime-opportunity",
+    name: "Massive Lifetime Opportunity in AI",
+    description: "Analysis of long-term opportunities in AI development",
+    url: "https://example.com/ai-lifetime-opportunity",
+    tags: ["blog", "ai", "opportunity", "analysis"],
+    category: "blogs",
+    featured: false,
+    date: "2024-09-30",
+    authors: ["Chain of Thought"]
+  },
+  {
+    id: "ai16z-flywheel",
+    name: "the ai16z flywheel",
+    description: "Analysis of ai16z's growth strategy",
+    url: "https://example.com/ai16z-flywheel",
+    tags: ["blog", "ai16z", "flywheel", "strategy"],
+    category: "blogs",
+    featured: false,
+    date: "N/A",
+    authors: ["internetphysics"]
+  },
+  {
+    id: "ico-ai-agents",
+    name: "you're staring at your 2017 ico, but for ai agents",
+    description: "Analysis of AI agent token offerings",
+    url: "https://example.com/ico-ai-agents",
+    tags: ["blog", "ico", "ai-agents", "tokens"],
+    category: "blogs",
+    featured: false,
+    date: "N/A",
+    authors: ["terrytjw"]
+  },
+  {
+    id: "front-run-big-boys",
+    name: "you wanna front run the big boys? well now's your chance",
+    description: "Analysis of early opportunities in AI development",
+    url: "https://example.com/front-run-big-boys",
+    tags: ["blog", "opportunity", "ai", "early-adoption"],
+    category: "blogs",
+    featured: false,
+    date: "N/A",
+    authors: ["terrytjw"]
+  },
+  {
+    id: "ai-defi-market-map",
+    name: "AI x DeFI Market Map",
+    description: "Comprehensive market map of AI in DeFi",
+    url: "https://example.com/ai-defi-market-map",
+    tags: ["blog", "ai", "defi", "market-map"],
+    category: "blogs",
+    featured: false,
+    date: "2025-02-04",
+    authors: ["Kat Tong"]
+  },
+  {
+    id: "freysa-framework",
+    name: "Freysa ($FAI) - The first fully autonomous and sovereign AI Agent Framework",
+    description: "Analysis of Freysa's autonomous AI framework",
+    url: "https://example.com/freysa-framework",
+    tags: ["blog", "freysa", "autonomous", "framework"],
+    category: "blogs",
+    featured: false,
+    date: "2025-01-14",
+    authors: ["Taran"]
+  },
+  {
+    id: "ai-autonomous-systems",
+    name: "AI Agents and Autonomous Systems",
+    description: "Analysis of autonomous systems in AI development",
+    url: "https://example.com/ai-autonomous-systems",
+    tags: ["blog", "ai", "autonomous", "systems"],
+    category: "blogs",
+    featured: false,
+    date: "2025-01-14",
+    authors: ["Roberto Talamas"]
+  },
+  {
+    id: "defai-sector-resilience",
+    name: "DeFAI Sector Resilience Amid Bearish Market",
+    description: "Analysis of DeFAI sector performance in bear market",
+    url: "https://example.com/defai-sector-resilience",
+    tags: ["blog", "defai", "resilience", "market"],
+    category: "blogs",
+    featured: false,
+    date: "2025-01-14",
+    authors: ["0xJeff"]
+  },
+  {
+    id: "unreleased-defai-coins",
+    name: "5 Unreleased DeFAI coins on track for $100M+ valuations",
+    description: "Analysis of promising unreleased DeFAI tokens",
+    url: "https://example.com/unreleased-defai-coins",
+    tags: ["blog", "defai", "tokens", "valuation"],
+    category: "blogs",
+    featured: false,
+    date: "2025-01-14",
+    authors: ["Xremlin"]
+  },
+  {
+    id: "ai-crypto-america",
+    name: "AI, Crypto, and America",
+    description: "Analysis of AI and crypto development in America",
+    url: "https://example.com/ai-crypto-america",
+    tags: ["blog", "ai", "crypto", "america"],
+    category: "blogs",
+    featured: false,
+    date: "2025-01-07",
+    authors: ["Derek Edws", "Collab+Currency"]
+  },
+  {
+    id: "virtual-creatorbid-battle",
+    name: "VIRTUAL vs CreatorBid: The Battle Begins!",
+    description: "Analysis of competition between VIRTUAL and CreatorBid",
+    url: "https://example.com/virtual-creatorbid-battle",
+    tags: ["blog", "virtual", "creatorbid", "competition"],
+    category: "blogs",
+    featured: false,
+    date: "2025-01-05",
+    authors: ["the_smart_ape"]
+  },
+  {
+    id: "defai-new-defi",
+    name: "DeFAI is the New DeFi",
+    description: "Analysis of DeFAI as the next evolution of DeFi",
+    url: "https://example.com/defai-new-defi",
+    tags: ["blog", "defai", "defi", "evolution"],
+    category: "blogs",
+    featured: false,
+    date: "2025-01-05",
+    authors: ["Defi0xJeff"]
+  },
+  {
+    id: "ai-agent-development",
+    name: "AI Agent Development: A Collaborative Exploration, Not Competition",
+    description: "Analysis of collaborative approach to AI agent development",
+    url: "https://example.com/ai-agent-development",
+    tags: ["blog", "ai-agents", "development", "collaboration"],
+    category: "blogs",
+    featured: false,
+    date: "2025-01-01",
+    authors: ["ayoubedeth"]
+  },
+  {
+    id: "crypto-ai-thesis",
+    name: "Crypto X AI Thesis (Part 1) - We are at a Step Function Moment",
+    description: "Analysis of crypto-AI intersection at critical moment",
+    url: "https://example.com/crypto-ai-thesis",
+    tags: ["blog", "crypto", "ai", "thesis"],
+    category: "blogs",
+    featured: false,
+    date: "2025-01-01",
+    authors: ["karsenthil"]
+  },
+  {
+    id: "internet-agents-ii",
+    name: "The Internet of Agents — Part 2",
+    description: "Analysis of agent-based internet evolution",
+    url: "https://example.com/internet-agents-ii",
+    tags: ["blog", "agents", "internet", "evolution"],
+    category: "blogs",
+    featured: false,
+    date: "2025-01-01",
+    authors: ["Davide Crapis"]
+  },
+  {
+    id: "agentic-rag-survey",
+    name: "Agentic Retrieval-Augmented Generation: A Survey on Agentic RAG",
+    description: "Comprehensive survey of agentic RAG systems",
+    url: "https://example.com/agentic-rag-survey",
+    tags: ["blog", "rag", "agents", "survey"],
+    category: "blogs",
+    featured: false,
+    date: "2025-01-01",
+    authors: ["Unknown"]
+  },
+  {
+    id: "web3-ai-apps",
+    name: "The Rise of Web3 AI Apps",
+    description: "Analysis of Web3 AI application development",
+    url: "https://example.com/web3-ai-apps",
+    tags: ["blog", "web3", "ai", "apps"],
+    category: "blogs",
+    featured: false,
+    date: "2024-12-28",
+    authors: ["Defi0xJeff"]
+  },
+  {
+    id: "ai-agent-space-vi",
+    name: "Where the AI Agent Space Stands Right Now - Part 6",
+    description: "Current state analysis of AI agent space",
+    url: "https://example.com/ai-agent-space-vi",
+    tags: ["blog", "ai-agents", "space", "analysis"],
+    category: "blogs",
+    featured: false,
+    date: "2024-12-27",
+    authors: ["Defi0xJeff"]
+  },
+  {
+    id: "top-ai-content-vi",
+    name: "Top 10 Must Read AI Content for this Weekend PT.6",
+    description: "Curated list of essential AI content",
+    url: "https://example.com/top-ai-content-vi",
+    tags: ["blog", "ai", "content", "curation"],
+    category: "blogs",
+    featured: false,
+    date: "2024-12-27",
+    authors: ["Defi0xJeff"]
+  },
+  {
+    id: "ai-agents-status",
+    name: "AI Agents as Status Seeking Monkeys: A Behavioral Analysis",
+    description: "Behavioral analysis of AI agents",
+    url: "https://example.com/ai-agents-status",
+    tags: ["blog", "ai-agents", "behavior", "analysis"],
+    category: "blogs",
+    featured: false,
+    date: "2024-12-26",
+    authors: ["davidwithbull"]
+  },
+  {
+    id: "position-agentic-cycle",
+    name: "How to Position Yourself in This Agentic Cycle",
+    description: "Guide to positioning in agentic development cycle",
+    url: "https://example.com/position-agentic-cycle",
+    tags: ["blog", "agentic", "cycle", "positioning"],
+    category: "blogs",
+    featured: false,
+    date: "2024-12-26",
+    authors: ["Defi0xJeff"]
+  },
+  {
+    id: "solana-base-revolution",
+    name: "From Solana to Base: The AI Agent (3,3) Revolution Begins",
+    description: "Analysis of AI agent revolution across chains",
+    url: "https://example.com/solana-base-revolution",
+    tags: ["blog", "solana", "base", "revolution"],
+    category: "blogs",
+    featured: false,
+    date: "2024-12-25",
+    authors: ["Defi0xJeff"]
+  },
+  {
+    id: "game-virtuals-ecosystem",
+    name: "G.A.M.E - The AI Infrastructure Powering the $3B Virtuals Ecosystem",
+    description: "Analysis of G.A.M.E infrastructure in Virtuals ecosystem",
+    url: "https://example.com/game-virtuals-ecosystem",
+    tags: ["blog", "game", "virtuals", "infrastructure"],
+    category: "blogs",
+    featured: false,
+    date: "2024-12-25",
+    authors: ["JavierAng_"]
+  },
+  {
+    id: "spore-agents-tokens",
+    name: "How Spore.fun Agents Issue Tokens Automatically with Anti-Sniper Mechanisms",
+    description: "Analysis of Spore.fun's token issuance system",
+    url: "https://example.com/spore-agents-tokens",
+    tags: ["blog", "spore", "tokens", "anti-sniper"],
+    category: "blogs",
+    featured: false,
+    date: "2024-12-25",
+    authors: ["marvin_tong"]
+  },
+  {
+    id: "0xreisearch-framework",
+    name: "0xReisearch Framework Documentation",
+    description: "Documentation of 0xReisearch framework",
+    url: "https://example.com/0xreisearch-framework",
+    tags: ["blog", "0xreisearch", "framework", "documentation"],
+    category: "blogs",
+    featured: false,
+    date: "2024-12-15",
+    authors: ["0xReisearch"]
+  },
+  {
+    id: "crypto-accelerationism",
+    name: "Crypto Enabled Accelerationism Bubble",
+    description: "Analysis of accelerationism in crypto development",
+    url: "https://example.com/crypto-accelerationism",
+    tags: ["blog", "crypto", "accelerationism", "bubble"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-23",
+    authors: ["YB Effect"]
+  },
+  {
+    id: "crypto-consumer-ai-ii",
+    name: "Crypto x Consumer AI",
+    description: "Analysis of consumer applications in crypto-AI space",
+    url: "https://example.com/crypto-consumer-ai-ii",
+    tags: ["blog", "crypto", "consumer", "ai"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-18",
+    authors: ["Collab+Currency"]
+  },
+  {
+    id: "ai-autonomy-70m",
+    name: "The Dawn of AI Autonomy: How Two AI Agents Created a $70M Cryptocurrency",
+    description: "Case study of AI agents creating cryptocurrency",
+    url: "https://example.com/ai-autonomy-70m",
+    tags: ["blog", "ai", "autonomy", "cryptocurrency"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-16",
+    authors: ["Chase B"]
+  },
+  {
+    id: "zerebro-playbook-bayc-ii",
+    name: "The Zerebro Playbook: BAYC of Onchain Agents",
+    description: "Analysis of Zerebro's position in onchain agents",
+    url: "https://example.com/zerebro-playbook-bayc-ii",
+    tags: ["blog", "zerebro", "bayc", "onchain-agents"],
+    category: "blogs",
+    featured: false,
+    date: "2024-11-13",
+    authors: ["YB Effect"]
+  },
+  {
+    id: "memecoins-memetic-hygiene",
+    name: "Memecoins as memetic hygiene for LLM backrooms",
+    description: "Analysis of memecoins in LLM development",
+    url: "https://example.com/memecoins-memetic-hygiene",
+    tags: ["blog", "memecoins", "llm", "memetic"],
+    category: "blogs",
+    featured: false,
+    date: "2024-10-18",
+    authors: ["YB"]
+  },
+  {
+    id: "crpc-protocol",
+    name: "The Commit-Reveal Pairwise Comparison Protocol (CRPC)",
+    description: "Analysis of CRPC protocol in blockchain development",
+    url: "https://example.com/crpc-protocol",
+    tags: ["blog", "crpc", "protocol", "blockchain"],
+    category: "blogs",
+    featured: false,
+    date: "2024-10-02",
+    authors: ["Tim Cotten"]
+  },
+  {
+    id: "crypto-ai-thesis-i",
+    name: "Our Crypto AI Thesis (Part I): The Massive Lifetime Opportunity",
+    description: "Analysis of crypto-AI intersection opportunities",
+    url: "https://example.com/crypto-ai-thesis-i",
+    tags: ["blog", "crypto", "ai", "thesis"],
+    category: "blogs",
+    featured: false,
+    date: "2024-09-30",
+    authors: ["Chain of Thought"]
+  },
+  {
+    id: "internet-agents-i",
+    name: "The Internet of Agents",
+    description: "Analysis of agent-based internet evolution",
+    url: "https://example.com/internet-agents-i",
+    tags: ["blog", "agents", "internet", "evolution"],
+    category: "blogs",
+    featured: false,
+    date: "2024-03-11",
+    authors: ["Davide Crapis"]
+  },
+  {
+    id: "crypto-ai-frameworks",
+    name: "An Analytical Comparison for Crypto x AI Frameworks",
+    description: "Comparative analysis of crypto-AI frameworks",
+    url: "https://example.com/crypto-ai-frameworks",
+    tags: ["blog", "crypto", "ai", "frameworks"],
+    category: "blogs",
+    featured: false,
+    date: "2024-01-24",
+    authors: ["arndxt_xo"]
+  },
+  {
+    id: "agentic-outlook",
+    name: "AGENTIC OUTLOOK 」- v.4",
+    description: "Comprehensive outlook on agentic development",
+    url: "https://example.com/agentic-outlook",
+    tags: ["blog", "agentic", "outlook", "analysis"],
+    category: "blogs",
+    featured: false,
+    date: "2024-01-18",
+    authors: ["tombxbt"]
+  },
+  {
+    id: "autonomous-virtual-beings",
+    name: "Autonomous Virtual Beings",
+    description: "Analysis of autonomous virtual beings development",
+    url: "https://example.com/autonomous-virtual-beings",
+    tags: ["blog", "autonomous", "virtual", "beings"],
+    category: "blogs",
+    featured: false,
+    date: "2024-01-05",
+    authors: ["Tim Cotten"]
+  },
+
+  // Hackathons
+  {
+    id: "worlds-shortest-hackathon",
+    name: "The World's Shortest Hackathon",
+    description: "2-hour coding challenge with 100 developers and live mentoring from Vercel and NVIDIA experts",
+    url: "https://example.com/worlds-shortest-hackathon",
+    tags: ["hackathon", "web3", "ai", "sf"],
+    category: "hackathons",
+    date: "2024-01-16",
+    authors: ["San Francisco"]
+  },
+  {
+    id: "cdp-builder-grants",
+    name: "CDP Builder Grants - AgentKit Edition",
+    description: "Part of Coinbase's Developer Platform, focusing on building with AgentKit",
+    url: "https://example.com/cdp-builder-grants",
+    tags: ["hackathon", "web3", "ai", "online"],
+    category: "hackathons",
+    date: "2024-12-11",
+    authors: ["Coinbase"]
+  },
+  {
+    id: "starkware-realms-hackathon",
+    name: "Starkware x Realms World Agent Hackathon",
+    description: "Collaboration between Starkware and Realms World, focusing on building agents in Web3",
+    url: "https://example.com/starkware-realms-hackathon",
+    tags: ["hackathon", "web3", "ai", "online"],
+    category: "hackathons",
+    date: "2024-12-18",
+    authors: ["Starkware", "Realms World"]
+  },
+  {
+    id: "hackindia-2025",
+    name: "HackIndia 2025",
+    description: "Multiple events throughout 2025 across 150 universities in India (hybrid format) with grants, mentorship, and career opportunities",
+    url: "https://example.com/hackindia-2025",
+    tags: ["hackathon", "web3", "ai", "hybrid"],
+    category: "hackathons",
+    date: "2025-01-01",
+    authors: ["India"]
+  },
+  {
+    id: "agent-payment-hackathon",
+    name: "Agent to Agent PAYMENT$ Hackathon",
+    description: "Build functional agent-to-agent payment systems in hybrid format (Waterloo and virtual)",
+    url: "https://example.com/agent-payment-hackathon",
+    tags: ["hackathon", "web3", "ai", "hybrid"],
+    category: "hackathons",
+    date: "2025-01-25",
+    authors: ["Kitchener"]
+  },
+  {
+    id: "agentic-ethereum",
+    name: "Agentic Ethereum",
+    description: "Part of ETHGlobal's hackathon series, focusing on agent-based applications on Ethereum",
+    url: "https://example.com/agentic-ethereum",
+    tags: ["hackathon", "web3", "ai", "online"],
+    category: "hackathons",
+    date: "2025-01-31",
+    authors: ["ETHGlobal"]
+  },
+  {
+    id: "sozu-haus-denver",
+    name: "Sozu Haus Denver",
+    description: "Coincides with ETHDenver",
+    url: "https://example.com/sozu-haus-denver",
+    tags: ["hackathon", "web3", "ai", "denver"],
+    category: "hackathons",
+    date: "2025-02-22",
+    authors: ["Denver"]
+  },
+  {
+    id: "ethdenver-2025",
+    name: "ETHDenver 2025",
+    description: "3-4 day hackathon for Ethereum developers with seminars, discussions, and masterclasses",
+    url: "https://example.com/ethdenver-2025",
+    tags: ["hackathon", "web3", "ai", "denver"],
+    category: "hackathons",
+    date: "2025-02-23",
+    authors: ["ETHDenver"]
+  },
+  {
+    id: "press-start-shipathon",
+    name: "Press Start AI Agent SHIP-A-THON",
+    description: "Focus on shipping AI agent products",
+    url: "https://example.com/press-start-shipathon",
+    tags: ["hackathon", "ai", "online"],
+    category: "hackathons",
+    date: "2025-03-03",
+    authors: ["Press Start"]
+  },
+  {
+    id: "deai-bootcamp",
+    name: "DEAI Bootcamp by Encode",
+    description: "Educational bootcamp format focusing on decentralized AI development",
+    url: "https://example.com/deai-bootcamp",
+    tags: ["hackathon", "web3", "ai", "online"],
+    category: "hackathons",
+    date: "2025-03-03",
+    authors: ["Encode"]
+  },
+  {
+    id: "madrid-web3-ai-hackathon",
+    name: "Madrid Web3 + AI Hackathon",
+    description: "Organized by Qubic and Vottun",
+    url: "https://example.com/madrid-web3-ai-hackathon",
+    tags: ["hackathon", "web3", "ai", "madrid"],
+    category: "hackathons",
+    date: "2025-03-22",
+    authors: ["Madrid"]
+  },
+  {
+    id: "farcon-builders-day",
+    name: "FarCon | Builders Day",
+    description: "One-day builder focused event, part of FarCon NYC",
+    url: "https://example.com/farcon-builders-day",
+    tags: ["hackathon", "web3", "ai", "nyc"],
+    category: "hackathons",
+    date: "2025-05-01",
+    authors: ["FarCon"]
+  },
+  {
+    id: "easya-consensus-hackathon",
+    name: "EasyA Consensus Hackathon",
+    description: "Mentorship and networking with top investors. Past winners secured funding from leading VCs",
+    url: "https://example.com/easya-consensus-hackathon",
+    tags: ["hackathon", "web3", "ai", "hong-kong"],
+    category: "hackathons",
+    date: "2025-05-14",
+    authors: ["EasyA"]
+  },
+  {
+    id: "mode-ai-agent-hackathon",
+    name: "Mode AI Agent Hackathon Sprint 2",
+    description: "Focus on AI agents in Web3, organized by Mode Network",
+    url: "https://example.com/mode-ai-agent-hackathon",
+    tags: ["hackathon", "web3", "ai", "online"],
+    category: "hackathons",
+    date: "TBA",
+    authors: ["Mode Network"]
+  },
+  {
+    id: "alliance-1day-event",
+    name: "Alliance 1-Day Event with ai16z and Solana",
+    description: "Collaborative event with ai16z and Solana",
+    url: "https://example.com/alliance-1day-event",
+    tags: ["hackathon", "web3", "ai", "online"],
+    category: "hackathons",
+    date: "2025",
+    authors: ["Alliance", "ai16z", "Solana"]
+  },
+  {
+    id: "alliance-global-hackathon",
+    name: "Alliance 2-Week Global Hackathon",
+    description: "Global participation encouraged",
+    url: "https://example.com/alliance-global-hackathon",
+    tags: ["hackathon", "web3", "ai", "online"],
+    category: "hackathons",
+    date: "2025",
+    authors: ["Alliance"]
+  },
+  {
+    id: "vault-hacker-house",
+    name: "The Vault: AI Agent Hacker House",
+    description: "Collaboration between Eliza Labs & EigenLayer, focus on AI agent development",
+    url: "https://example.com/vault-hacker-house",
+    tags: ["hackathon", "web3", "ai", "hybrid"],
+    category: "hackathons",
+    date: "2025-02-22",
+    authors: ["Eliza Labs", "EigenLayer"]
+  },
+  {
+    id: "raidguild-herdao-hackathon",
+    name: "RaidGuild x H.E.R. DAO Hacker House ETHdenver 2025",
+    description: "Collaborative event between RaidGuild and H.E.R. DAO, part of ETHDenver 2025",
+    url: "https://example.com/raidguild-herdao-hackathon",
+    tags: ["hackathon", "web3", "ai", "denver"],
+    category: "hackathons",
+    date: "2025-02-25",
+    authors: ["RaidGuild", "H.E.R. DAO"]
+  },
+  {
+    id: "super-agent-hackathon",
+    name: "Super Agent Hackathon",
+    description: "Organized by Story Protocol, focus on agent development",
+    url: "https://example.com/super-agent-hackathon",
+    tags: ["hackathon", "ai", "online"],
+    category: "hackathons",
+    date: "2025-02-26",
+    authors: ["Story Protocol"]
+  },
+  {
+    id: "avail-unification-house",
+    name: "Avail Unification House",
+    description: "Focus on Avail ecosystem",
+    url: "https://example.com/avail-unification-house",
+    tags: ["hackathon", "web3", "ai", "hybrid"],
+    category: "hackathons",
+    date: "2025-02-26",
+    authors: ["Avail"]
+  },
+  {
+    id: "ethsf-hackathon",
+    name: "ETHSF Hackathon",
+    description: "Major Ethereum hackathon",
+    url: "https://example.com/ethsf-hackathon",
+    tags: ["hackathon", "web3", "ai", "sf"],
+    category: "hackathons",
+    date: "2025-03-10",
+    authors: ["ETHSF"]
+  },
+  {
+    id: "just-frame-it",
+    name: "JUST FRAME IT",
+    description: "Multi-month event organized by Builders Garden",
+    url: "https://example.com/just-frame-it",
+    tags: ["hackathon", "web3", "ai", "hybrid"],
+    category: "hackathons",
+    date: "2025-04-01",
+    authors: ["Builders Garden"]
+  },
+  {
+    id: "buidl-ai-2025",
+    name: "BUIDL AI 2025 Hackathon",
+    description: "Part of BUIDL Asia series",
+    url: "https://example.com/buidl-ai-2025",
+    tags: ["hackathon", "web3", "ai", "hybrid"],
+    category: "hackathons",
+    date: "2025-04-11",
+    authors: ["BUIDL Asia"]
   }
 ];
 

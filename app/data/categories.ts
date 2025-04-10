@@ -48,20 +48,20 @@ export const categories: Category[] = [
     isMainCategory: true
   },
   {
-    id: "research",
-    name: "Research",
-    description: "Research papers and findings",
-    icon: "Microscope",
+    id: "podcasts",
+    name: "Podcasts",
+    description: "AI and Web3 podcasts",
+    icon: "Headphones",
     color: "text-red-500",
     count: 0,
     isMainCategory: true
   },
   {
-    id: "people",
-    name: "People",
-    description: "AI researchers and developers",
-    icon: "Users",
-    color: "text-orange-500",
+    id: "blogs",
+    name: "Blogs",
+    description: "AI and Web3 blog posts and articles",
+    icon: "Newspaper",
+    color: "text-red-500",
     count: 0,
     isMainCategory: true
   },
@@ -71,24 +71,6 @@ export const categories: Category[] = [
     description: "AI and Web3 hackathons",
     icon: "Trophy",
     color: "text-teal-500",
-    count: 0,
-    isMainCategory: true
-  },
-  {
-    id: "web3-apps",
-    name: "Web3 Agent Apps",
-    description: "Applications built with Web3 agents",
-    icon: "AppWindow",
-    color: "text-cyan-500",
-    count: 0,
-    isMainCategory: true
-  },
-  {
-    id: "templates",
-    name: "Templates",
-    description: "Ready-to-use agent templates",
-    icon: "Copy",
-    color: "text-lime-500",
     count: 0,
     isMainCategory: true
   },
