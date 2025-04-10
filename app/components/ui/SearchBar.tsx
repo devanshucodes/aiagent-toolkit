@@ -108,17 +108,6 @@ export default function SearchBar({
           </AnimatePresence>
         </div>
       </div>
-      
-      {/* AI-powered search indicator */}
-      <motion.div 
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-        className="flex items-center justify-center mt-2 text-xs text-slate-500"
-      >
-        <Sparkles className="h-3 w-3 mr-1 text-blue-500" />
-        AI-powered search
-      </motion.div>
     </motion.div>
   );
 }

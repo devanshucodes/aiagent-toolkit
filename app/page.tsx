@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { categories } from './data/categories';
 import { allTools } from './data/tools';
 import { filterToolsBySearch } from './lib/utils';
+import { Sparkles } from 'lucide-react';
 
 // Components
 import Header from './components/Header';
@@ -90,12 +91,20 @@ export default function Home() {
                 onChange={setSearchQuery}
               />
               
-              <button 
-                className="mt-4 w-full py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-xl shadow-md hover:from-blue-600 hover:to-purple-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                onClick={() => setShowMentor(true)}
-              >
-                Ask AI Mentor
-              </button>
+              <div className="mt-4 space-y-3">
+                <button 
+                  className="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-xl shadow-md hover:from-blue-600 hover:to-purple-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  onClick={() => setShowMentor(true)}
+                >
+                  Ask AI Mentor
+                </button>
+                <div className="flex items-center justify-center gap-2">
+                  <Sparkles className="h-4 w-4 text-blue-500" />
+                  <p className="text-sm text-slate-500">
+                    Your personal AI guide - Ask me anything!
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
 
