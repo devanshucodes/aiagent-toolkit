@@ -256,16 +256,6 @@ export const categories: Category[] = [
     parentCategory: "ai-agent-dev"
   },
   {
-    id: "reasoning-planning",
-    name: "Reasoning & Planning",
-    description: "AI reasoning and planning tools",
-    icon: "GitBranch",
-    color: "text-orange-300",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-agent-dev"
-  },
-  {
     id: "chat-ui",
     name: "Chat UI Development",
     description: "Chat interface development tools",
@@ -278,8 +268,8 @@ export const categories: Category[] = [
 
   // AI Development Tools & Assistants Section
   {
-    id: "ai-dev-tools",
-    name: "AI Development Tools & Assistants",
+    id: "ai-code-editors",
+    name: "AI Code Editors",
     description: "Tools and assistants for AI development",
     icon: "Code",
     color: "text-amber-600",
@@ -287,16 +277,7 @@ export const categories: Category[] = [
     isMainCategory: true
   },
   // Subcategories under AI Development Tools
-  {
-    id: "coding-assistants",
-    name: "Coding Assistants",
-    description: "AI-powered coding assistants",
-    icon: "Code",
-    color: "text-green-300",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-dev-tools"
-  },
+ 
   {
     id: "shell-assistants",
     name: "Shell Assistants",
@@ -337,144 +318,5 @@ export const categories: Category[] = [
     isMainCategory: false,
     parentCategory: "ai-dev-tools"
   },
-  {
-    id: "vector-db",
-    name: "Vector Databases",
-    description: "Databases optimized for vector similarity search",
-    icon: "🗄️",
-    color: "text-blue-400",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-agent-dev"
-  },
-  {
-    id: "rag",
-    name: "RAG Tools",
-    description: "Tools for Retrieval-Augmented Generation",
-    icon: "🔍",
-    color: "text-green-400",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-agent-dev"
-  },
-  {
-    id: "agent-frameworks",
-    name: "Agent Frameworks",
-    description: "Frameworks for building AI agents",
-    icon: "🤖",
-    color: "text-indigo-400",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-agent-dev"
-  },
-  {
-    id: "prompting",
-    name: "Prompt Engineering",
-    description: "Tools for crafting and optimizing prompts",
-    icon: "✍️",
-    color: "text-orange-400",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-agent-dev"
-  },
-  {
-    id: "fine-tuning",
-    name: "Fine-Tuning",
-    description: "Tools for customizing AI models",
-    icon: "🎯",
-    color: "text-teal-400",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-agent-dev"
-  },
-  {
-    id: "evaluation",
-    name: "Evaluation",
-    description: "Tools for testing and benchmarking AI systems",
-    icon: "📊",
-    color: "text-cyan-400",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-agent-dev"
-  },
-  {
-    id: "audio",
-    name: "Audio Processing",
-    description: "Tools for working with audio data",
-    icon: "🎵",
-    color: "text-purple-400",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-agent-dev"
-  },
-  {
-    id: "image",
-    name: "Image Processing",
-    description: "Tools for working with image data",
-    icon: "🖼️",
-    color: "text-pink-400",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-agent-dev"
-  },
-  {
-    id: "video",
-    name: "Video Processing",
-    description: "Tools for working with video data",
-    icon: "🎥",
-    color: "text-red-400",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-agent-dev"
-  },
-  {
-    id: "multimodal",
-    name: "Multimodal AI",
-    description: "Tools for working with multiple data types",
-    icon: "🎭",
-    color: "text-yellow-400",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-agent-dev"
-  },
-  {
-    id: "automation",
-    name: "Automation",
-    description: "Tools for automating AI workflows",
-    icon: "⚙️",
-    color: "text-blue-400",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-agent-dev"
-  },
-  {
-    id: "computer-vision",
-    name: "Computer Vision",
-    description: "Tools for visual AI applications",
-    icon: "👁️",
-    color: "text-green-400",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-agent-dev"
-  },
-  {
-    id: "podcast",
-    name: "Podcasts",
-    description: "Audio content about AI and technology",
-    icon: "🎙️",
-    color: "text-indigo-400",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-agent-dev"
-  },
-  {
-    id: "reading",
-    name: "Reading",
-    description: "Written content about AI and technology",
-    icon: "📚",
-    color: "text-orange-400",
-    count: 0,
-    isMainCategory: false,
-    parentCategory: "ai-agent-dev"
-  }
+ 
 ];
