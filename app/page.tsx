@@ -225,7 +225,14 @@ export default function Home() {
         </motion.p>
       </footer>
 
-      {showMentor && <AIMentor onClose={() => setShowMentor(false)} />}
+      {showMentor && (
+        <AIMentor 
+          onClose={() => setShowMentor(false)} 
+          tools={allTools}
+          categories={categories}
+          onSelectCategory={setSelectedCategory}
+        />
+      )}
     </div>
   );
 }

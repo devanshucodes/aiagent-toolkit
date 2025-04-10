@@ -1,22 +1,107 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { X, Send, Brain, Sparkles, Bot, MessageSquare } from 'lucide-react';
+import { X, Send, Brain, Sparkles, Bot, MessageSquare, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Tool, Category } from '../types';
+
+// Initialize embeddings for tools and categories
+const initializeEmbeddings = async (tools: Tool[], categories: Category[]) => {
+  // Create embeddings for tools
+  const toolEmbeddings = await Promise.all(
+    tools.map(async (tool) => {
+      const text = `${tool.name} ${tool.description} ${tool.tags.join(' ')} ${tool.category}`;
+      const embedding = await getEmbedding(text);
+      return { ...tool, embedding };
+    })
+  );
+
+  // Create embeddings for categories
+  const categoryEmbeddings = await Promise.all(
+    categories.map(async (category) => {
+      const text = `${category.name} ${category.description}`;
+      const embedding = await getEmbedding(text);
+      return { ...category, embedding };
+    })
+  );
+
+  return { toolEmbeddings, categoryEmbeddings };
+};
+
+// Get embedding for text using OpenAI API
+const getEmbedding = async (text: string): Promise<number[]> => {
+  try {
+    const response = await fetch('https://api.openai.com/v1/embeddings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: 'text-embedding-ada-002',
+        input: text,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.data[0].embedding;
+  } catch (error) {
+    console.error('Error getting embedding:', error);
+    return [];
+  }
+};
+
+// Calculate cosine similarity between two vectors
+const cosineSimilarity = (a: number[], b: number[]): number => {
+  if (a.length !== b.length) return 0;
+  
+  const dotProduct = a.reduce((sum, val, i) => sum + val * b[i], 0);
+  const magnitudeA = Math.sqrt(a.reduce((sum, val) => sum + val * val, 0));
+  const magnitudeB = Math.sqrt(b.reduce((sum, val) => sum + val * val, 0));
+  
+  return dotProduct / (magnitudeA * magnitudeB);
+};
 
 interface Message {
   role: 'user' | 'assistant';
   content: string;
   id: string;
+  suggestions?: {
+    tools: Tool[];
+    categories: Category[];
+  };
 }
 
-export default function AIMentor({ onClose }: { onClose: () => void }) {
+interface AIMentorProps {
+  onClose: () => void;
+  tools: Tool[];
+  categories: Category[];
+  onSelectCategory: (category: string | null) => void;
+}
+
+export default function AIMentor({ onClose, tools, categories, onSelectCategory }: AIMentorProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showLevelButtons, setShowLevelButtons] = useState(false);
   const [showTopicButtons, setShowTopicButtons] = useState(false);
+  const [toolEmbeddings, setToolEmbeddings] = useState<Array<Tool & { embedding: number[] }>>([]);
+  const [categoryEmbeddings, setCategoryEmbeddings] = useState<Array<Category & { embedding: number[] }>>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Initialize embeddings when component mounts
+  useEffect(() => {
+    const init = async () => {
+      const { toolEmbeddings, categoryEmbeddings } = await initializeEmbeddings(tools, categories);
+      setToolEmbeddings(toolEmbeddings);
+      setCategoryEmbeddings(categoryEmbeddings);
+    };
+    init();
+  }, [tools, categories]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -25,6 +110,93 @@ export default function AIMentor({ onClose }: { onClose: () => void }) {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  const isInitialGreeting = (text: string): boolean => {
+    // List of basic greetings
+    const greetings = [
+      'hi', 'hello', 'hey', 'how are you', 'what\'s up', 'good morning', 'good afternoon',
+      'good evening', 'nice to meet you', 'how\'s it going', 'how do you do', 'what\'s new',
+      'long time no see', 'good to see you'
+    ];
+
+    const lowerText = text.toLowerCase().trim();
+    
+    // Check if it's exactly a greeting or starts with a greeting
+    return greetings.some(greeting => 
+      lowerText === greeting ||
+      lowerText.startsWith(greeting + ' ') ||
+      lowerText.endsWith(' ' + greeting)
+    );
+  };
+
+  const findRelevantTools = async (query: string, assistantResponse?: string): Promise<Tool[]> => {
+    // Skip suggestions only for the initial greeting
+    if (messages.length === 0 && isInitialGreeting(query)) {
+      return [];
+    }
+
+    // Combine user query and assistant response for better context
+    const searchText = assistantResponse ? `${query} ${assistantResponse}` : query;
+    
+    // Get embedding for the search text
+    const searchEmbedding = await getEmbedding(searchText);
+    
+    if (searchEmbedding.length === 0) return [];
+
+    // Calculate similarity scores for all tools
+    const scoredTools = toolEmbeddings.map(tool => ({
+      tool,
+      score: cosineSimilarity(searchEmbedding, tool.embedding)
+    }));
+
+    // Sort by score and get top matches
+    return scoredTools
+      .sort((a, b) => b.score - a.score)
+      .filter(item => item.score > 0.5) // Only include tools with good similarity
+      .slice(0, 3)
+      .map(item => ({
+        id: item.tool.id,
+        name: item.tool.name,
+        description: item.tool.description,
+        url: item.tool.url,
+        category: item.tool.category,
+        tags: item.tool.tags
+      }));
+  };
+
+  const findRelevantCategories = async (query: string, assistantResponse?: string): Promise<Category[]> => {
+    // Skip suggestions only for the initial greeting
+    if (messages.length === 0 && isInitialGreeting(query)) {
+      return [];
+    }
+
+    // Combine user query and assistant response for better context
+    const searchText = assistantResponse ? `${query} ${assistantResponse}` : query;
+    
+    // Get embedding for the search text
+    const searchEmbedding = await getEmbedding(searchText);
+    
+    if (searchEmbedding.length === 0) return [];
+
+    // Calculate similarity scores for all categories
+    const scoredCategories = categoryEmbeddings.map(category => ({
+      category,
+      score: cosineSimilarity(searchEmbedding, category.embedding)
+    }));
+
+    // Sort by score and get top matches
+    return scoredCategories
+      .sort((a, b) => b.score - a.score)
+      .filter(item => item.score > 0.5) // Only include categories with good similarity
+      .slice(0, 2)
+      .map(item => ({
+        id: item.category.id,
+        name: item.category.name,
+        description: item.category.description,
+        icon: item.category.icon,
+        color: item.category.color
+      }));
+  };
 
   const handleLevelSelect = (level: string) => {
     const levelMessage = `I am a ${level}`;
@@ -49,10 +221,11 @@ export default function AIMentor({ onClose }: { onClose: () => void }) {
     setShowTopicButtons(false);
     setInput('');
     
+    // Add user message first
     setMessages(prev => [...prev, { 
       role: 'user', 
       content: messageToSend,
-      id: Date.now().toString() 
+      id: Date.now().toString()
     }]);
     
     setIsLoading(true);
@@ -71,51 +244,45 @@ export default function AIMentor({ onClose }: { onClose: () => void }) {
               role: 'system',
               content: `You are an AI Mentor who knows everything about the latest AI and Web3 technologies. You're like a knowledgeable friend who makes learning fun and easy. Here's how you roll:
 
-1. LATEST KNOWLEDGE:
-   - Stay updated with newest AI frameworks and tools
-   - Know about cutting-edge Web3 AI developments
-   - Understand latest LLM advancements
-   - Keep track of new AI agent platforms
-   - Follow emerging AI trends and applications
+1. FIRST INTERACTION:
+   - ALWAYS start with a friendly greeting like "Hey buddy!" or "GM buddy!"
+   - Be warm and welcoming
+   - Make the user feel comfortable
 
-2. FRIENDLY APPROACH:
-   - Start with "Hey buddy!" or "What's up!"
-   - Be casual but knowledgeable
-   - Make learning feel like a conversation
-   - Share your excitement about AI
-   - Be encouraging and supportive
-
-3. LEVEL-BASED LEARNING:
-   - ALWAYS ask about their experience level first
-   - Use this format: "Would you like me to explain this as if you're:
+2. EXPERIENCE LEVEL CHECK:
+   - For ANY technical question, ALWAYS ask about their experience level FIRST
+   - Use this EXACT format: "Would you like me to explain this as if you're:
      * A beginner (like you're 10 years old - super simple)
      * An intermediate (some AI knowledge)
      * An expert (deep technical details)"
-   - Adapt your explanation to their level
-   - Make sure they understand before moving on
+   - Wait for their level selection before explaining
+   - Adapt your explanation to their chosen level
 
-4. INTERACTIVE LEARNING:
-   - After explaining, ask: "Would you like:
-     * A practical example to understand better?
-     * To explore more about this topic?
-     * To move on to something else?"
-   - Encourage questions and curiosity
-   - Share real-world applications
-   - Make learning hands-on and fun
+3. EXPLANATION:
+   - After they select their level, provide a clear explanation
+   - Use examples and analogies for beginners
+   - Include technical details for experts
+   - Keep it engaging and interactive
 
-5. EXPERTISE AREAS:
-   - AI Agents & Autonomous Systems
-   - Web3 & Blockchain AI Integration
-   - LLMs and their applications
-   - AI Development Tools & Frameworks
-   - Latest AI Research & Trends
+4. FOLLOW-UP OPTIONS:
+   - After explaining, ALWAYS offer these options:
+     * "Would you like to explore more about this topic?"
+     * "Should I show you some practical examples?"
+     * "Would you like to move on to something else?"
+   - Wait for their choice before proceeding
+
+5. SUGGESTIONS:
+   - After explaining a topic, suggest relevant tools or categories
+   - Make suggestions based on their experience level
+   - Keep suggestions relevant to the current discussion
 
 Remember:
-- Be a friendly expert, not a robot
-- Always check their knowledge level first
-- Make complex topics simple and fun
-- Encourage exploration and questions
-- Keep up with the latest in AI and Web3`
+- Always start with a warm greeting
+- ALWAYS check their knowledge level first
+- Wait for their level selection before explaining
+- Offer follow-up options after each explanation
+- Keep the conversation natural and friendly
+- Make complex topics simple and fun`
             },
             ...messages.map(msg => ({ role: msg.role, content: msg.content })),
             { role: 'user', content: messageToSend }
@@ -136,10 +303,18 @@ Remember:
 
       const assistantMessage = data.choices[0].message.content;
       
+      // Find relevant tools and categories using RAG approach
+      const relevantTools = await findRelevantTools(messageToSend, assistantMessage);
+      const relevantCategories = await findRelevantCategories(messageToSend, assistantMessage);
+      
       setMessages(prev => [...prev, { 
         role: 'assistant', 
         content: assistantMessage,
-        id: (Date.now() + 1).toString()
+        id: (Date.now() + 1).toString(),
+        suggestions: {
+          tools: relevantTools,
+          categories: relevantCategories
+        }
       }]);
 
       // Check if the message contains level selection prompt
@@ -229,6 +404,40 @@ Remember:
                           : 'bg-slate-100 text-slate-800 rounded-tl-none'
                       }`}>
                         <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
+                        
+                        {/* Compact Suggestions */}
+                        {message.role === 'assistant' && message.suggestions && 
+                         (message.suggestions.tools.length > 0 || message.suggestions.categories.length > 0) && (
+                          <div className="mt-3 pt-3 border-t border-slate-200">
+                            <div className="flex flex-wrap gap-2">
+                              {message.suggestions.tools.map(tool => (
+                                <a
+                                  key={tool.id}
+                                  href={tool.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white rounded-lg border border-slate-200 hover:border-blue-500 transition-colors text-xs"
+                                >
+                                  <span className="font-medium text-slate-800">{tool.name}</span>
+                                  <ExternalLink className="h-3 w-3 text-slate-400" />
+                                </a>
+                              ))}
+                              {message.suggestions.categories.map(category => (
+                                <button
+                                  key={category.id}
+                                  onClick={() => {
+                                    onSelectCategory(category.id);
+                                    onClose();
+                                  }}
+                                  className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white rounded-lg border border-slate-200 hover:border-purple-500 transition-colors text-xs"
+                                >
+                                  <span className="font-medium text-slate-800">{category.name}</span>
+                                  <ExternalLink className="h-3 w-3 text-slate-400" />
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
