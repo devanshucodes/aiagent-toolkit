@@ -5,13 +5,21 @@ import { X, Send, Brain, Sparkles, Bot, MessageSquare, ExternalLink } from 'luci
 import { motion } from 'framer-motion';
 import { Tool, Category } from '../types';
 
+// Cache for embeddings
+const embeddingCache = new Map<string, number[]>();
+
 // Initialize embeddings for tools and categories
 const initializeEmbeddings = async (tools: Tool[], categories: Category[]) => {
   // Create embeddings for tools
   const toolEmbeddings = await Promise.all(
     tools.map(async (tool) => {
+      const cacheKey = `tool-${tool.id}`;
+      if (embeddingCache.has(cacheKey)) {
+        return { ...tool, embedding: embeddingCache.get(cacheKey)! };
+      }
       const text = `${tool.name} ${tool.description} ${tool.tags.join(' ')} ${tool.category}`;
       const embedding = await getEmbedding(text);
+      embeddingCache.set(cacheKey, embedding);
       return { ...tool, embedding };
     })
   );
@@ -19,8 +27,13 @@ const initializeEmbeddings = async (tools: Tool[], categories: Category[]) => {
   // Create embeddings for categories
   const categoryEmbeddings = await Promise.all(
     categories.map(async (category) => {
+      const cacheKey = `category-${category.id}`;
+      if (embeddingCache.has(cacheKey)) {
+        return { ...category, embedding: embeddingCache.get(cacheKey)! };
+      }
       const text = `${category.name} ${category.description}`;
       const embedding = await getEmbedding(text);
+      embeddingCache.set(cacheKey, embedding);
       return { ...category, embedding };
     })
   );
@@ -129,30 +142,28 @@ export default function AIMentor({ onClose, tools, categories, onSelectCategory 
     );
   };
 
+  // Optimized findRelevantTools function
   const findRelevantTools = async (query: string, assistantResponse?: string): Promise<Tool[]> => {
-    // Skip suggestions only for the initial greeting
     if (messages.length === 0 && isInitialGreeting(query)) {
       return [];
     }
 
-    // Combine user query and assistant response for better context
     const searchText = assistantResponse ? `${query} ${assistantResponse}` : query;
-    
-    // Get embedding for the search text
     const searchEmbedding = await getEmbedding(searchText);
     
     if (searchEmbedding.length === 0) return [];
 
-    // Calculate similarity scores for all tools
-    const scoredTools = toolEmbeddings.map(tool => ({
-      tool,
-      score: cosineSimilarity(searchEmbedding, tool.embedding)
-    }));
+    // Use cached embeddings and parallel processing
+    const scoredTools = await Promise.all(
+      toolEmbeddings.map(async (tool) => ({
+        tool,
+        score: cosineSimilarity(searchEmbedding, tool.embedding)
+      }))
+    );
 
-    // Sort by score and get top matches
     return scoredTools
       .sort((a, b) => b.score - a.score)
-      .filter(item => item.score > 0.5) // Only include tools with good similarity
+      .filter(item => item.score > 0.5)
       .slice(0, 3)
       .map(item => ({
         id: item.tool.id,
@@ -164,30 +175,28 @@ export default function AIMentor({ onClose, tools, categories, onSelectCategory 
       }));
   };
 
+  // Optimized findRelevantCategories function
   const findRelevantCategories = async (query: string, assistantResponse?: string): Promise<Category[]> => {
-    // Skip suggestions only for the initial greeting
     if (messages.length === 0 && isInitialGreeting(query)) {
       return [];
     }
 
-    // Combine user query and assistant response for better context
     const searchText = assistantResponse ? `${query} ${assistantResponse}` : query;
-    
-    // Get embedding for the search text
     const searchEmbedding = await getEmbedding(searchText);
     
     if (searchEmbedding.length === 0) return [];
 
-    // Calculate similarity scores for all categories
-    const scoredCategories = categoryEmbeddings.map(category => ({
-      category,
-      score: cosineSimilarity(searchEmbedding, category.embedding)
-    }));
+    // Use cached embeddings and parallel processing
+    const scoredCategories = await Promise.all(
+      categoryEmbeddings.map(async (category) => ({
+        category,
+        score: cosineSimilarity(searchEmbedding, category.embedding)
+      }))
+    );
 
-    // Sort by score and get top matches
     return scoredCategories
       .sort((a, b) => b.score - a.score)
-      .filter(item => item.score > 0.5) // Only include categories with good similarity
+      .filter(item => item.score > 0.5)
       .slice(0, 2)
       .map(item => ({
         id: item.category.id,
@@ -212,16 +221,15 @@ export default function AIMentor({ onClose, tools, categories, onSelectCategory 
     handleSend(topicMessage);
   };
 
+  // Optimized handleSend function
   const handleSend = async (customMessage?: string) => {
     const messageToSend = customMessage || input.trim();
     if (!messageToSend || isLoading) return;
 
-    // Hide all buttons when sending a new message
     setShowLevelButtons(false);
     setShowTopicButtons(false);
     setInput('');
     
-    // Add user message first
     setMessages(prev => [...prev, { 
       role: 'user', 
       content: messageToSend,
@@ -231,18 +239,20 @@ export default function AIMentor({ onClose, tools, categories, onSelectCategory 
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
-        },
-        body: JSON.stringify({
-          model: 'gpt-3.5-turbo',
-          messages: [
-            {
-              role: 'system',
-              content: `You are an AI Mentor who knows everything about the latest AI and Web3 technologies. You're like a knowledgeable friend who makes learning fun and easy. Here's how you roll:
+      // Parallel API calls
+      const [response, relevantTools, relevantCategories] = await Promise.all([
+        fetch('https://api.openai.com/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
+          },
+          body: JSON.stringify({
+            model: 'gpt-3.5-turbo',
+            messages: [
+              {
+                role: 'system',
+                content: `You are an AI Mentor who knows everything about the latest AI and Web3 technologies. You're like a knowledgeable friend who makes learning fun and easy. Here's how you roll:
 
 1. FIRST INTERACTION:
    - ALWAYS start with a friendly greeting like "Hey buddy!" or "GM buddy!"
@@ -283,13 +293,16 @@ Remember:
 - Offer follow-up options after each explanation
 - Keep the conversation natural and friendly
 - Make complex topics simple and fun`
-            },
-            ...messages.map(msg => ({ role: msg.role, content: msg.content })),
-            { role: 'user', content: messageToSend }
-          ],
-          temperature: 0.7,
+              },
+              ...messages.map(msg => ({ role: msg.role, content: msg.content })),
+              { role: 'user', content: messageToSend }
+            ],
+            temperature: 0.7,
+          }),
         }),
-      });
+        findRelevantTools(messageToSend),
+        findRelevantCategories(messageToSend)
+      ]);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -303,10 +316,6 @@ Remember:
 
       const assistantMessage = data.choices[0].message.content;
       
-      // Find relevant tools and categories using RAG approach
-      const relevantTools = await findRelevantTools(messageToSend, assistantMessage);
-      const relevantCategories = await findRelevantCategories(messageToSend, assistantMessage);
-      
       setMessages(prev => [...prev, { 
         role: 'assistant', 
         content: assistantMessage,
@@ -317,7 +326,7 @@ Remember:
         }
       }]);
 
-      // Check if the message contains level selection prompt
+      // Check for level selection prompt
       if (assistantMessage.toLowerCase().includes('beginner') && 
           assistantMessage.toLowerCase().includes('intermediate') && 
           assistantMessage.toLowerCase().includes('expert')) {
@@ -340,14 +349,19 @@ Remember:
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
-      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden">
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        className="relative bg-white rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden"
+      >
         {/* Header */}
         <div className="relative p-6 border-b border-slate-200">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="relative">
-                <div className="absolute inset-0 bg-blue-100 rounded-full blur-lg" />
-                <Brain className="h-8 w-8 text-blue-500" />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-lg" />
+                <Brain className="h-8 w-8 text-blue-500 relative" />
               </div>
               <div>
                 <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
@@ -371,7 +385,7 @@ Remember:
             <div className="flex flex-col items-center justify-center h-full text-center">
               <div className="mb-4">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-blue-100 rounded-full blur-lg" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-lg" />
                   <MessageSquare className="h-12 w-12 text-blue-500 relative" />
                 </div>
               </div>
@@ -385,8 +399,10 @@ Remember:
           ) : (
             <div className="space-y-4">
               {messages.map((message) => (
-                <div
+                <motion.div
                   key={message.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div className={`max-w-[80%] ${message.role === 'user' ? 'ml-4' : 'mr-4'}`}>
@@ -400,7 +416,7 @@ Remember:
                       </div>
                       <div className={`p-4 rounded-2xl ${
                         message.role === 'user'
-                          ? 'bg-blue-500 text-white rounded-tr-none'
+                          ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-tr-none'
                           : 'bg-slate-100 text-slate-800 rounded-tl-none'
                       }`}>
                         <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
@@ -441,7 +457,7 @@ Remember:
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
               {showLevelButtons && (
                 <motion.div 
@@ -451,19 +467,19 @@ Remember:
                 >
                   <button
                     onClick={() => handleLevelSelect('beginner')}
-                    className="px-4 py-2 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition-colors"
+                    className="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     Beginner
                   </button>
                   <button
                     onClick={() => handleLevelSelect('intermediate')}
-                    className="px-4 py-2 bg-purple-500 text-white rounded-xl hover:bg-purple-600 transition-colors"
+                    className="px-4 py-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-xl hover:from-purple-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     Intermediate
                   </button>
                   <button
                     onClick={() => handleLevelSelect('expert')}
-                    className="px-4 py-2 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 transition-colors"
+                    className="px-4 py-2 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white rounded-xl hover:from-indigo-600 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     Expert
                   </button>
@@ -477,19 +493,19 @@ Remember:
                 >
                   <button
                     onClick={() => handleTopicSelect('explore more topics')}
-                    className="px-4 py-2 bg-green-500 text-white rounded-xl hover:bg-green-600 transition-colors"
+                    className="px-4 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     Explore More Topics
                   </button>
                   <button
                     onClick={() => handleTopicSelect('see some examples')}
-                    className="px-4 py-2 bg-yellow-500 text-white rounded-xl hover:bg-yellow-600 transition-colors"
+                    className="px-4 py-2 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-xl hover:from-yellow-600 hover:to-yellow-700 transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     Show Examples
                   </button>
                   <button
                     onClick={() => handleTopicSelect('move on to something else')}
-                    className="px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-colors"
+                    className="px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-xl hover:from-red-600 hover:to-red-700 transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     Move On
                   </button>
@@ -499,7 +515,12 @@ Remember:
           )}
           {isLoading && (
             <div className="flex items-center gap-2 text-slate-500">
-              <Brain className="h-5 w-5" />
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              >
+                <Brain className="h-5 w-5" />
+              </motion.div>
               <span>Thinking...</span>
             </div>
           )}
@@ -516,7 +537,7 @@ Remember:
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                 placeholder="Type your message here..."
-                className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 pr-12 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent"
+                className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 pr-12 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all duration-300"
               />
               <div className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
                 <MessageSquare className="h-5 w-5" />
@@ -528,14 +549,14 @@ Remember:
               className={`p-3 rounded-xl ${
                 isLoading
                   ? 'bg-slate-100 text-slate-400'
-                  : 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
+                  : 'bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl'
               }`}
             >
               <Send className="h-5 w-5" />
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

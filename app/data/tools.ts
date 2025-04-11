@@ -17,7 +17,7 @@ export const tools: Tool[] = [
     id: "elizaos",
     name: "ElizaOS",
     description: "A TypeScript-based framework by AI16z with ~60% market share. Features extensive multi-agent simulation capabilities, cross-platform social engagement, and a thriving community of 6,000+ GitHub stars. Leading framework for creating AI agents that handle trading, social interactions, and community management.",
-    url: "https://github.com/ai16z/elizaos",
+    url: "https://github.com/elizaOS/eliza",
     tags: ["framework", "typescript", "multi-agent", "social", "trading"],
     category: "frameworks",
     featured: true
@@ -26,7 +26,7 @@ export const tools: Tool[] = [
     id: "langchain",
     name: "LangChain",
     description: "A framework for developing applications powered by language models, featuring components for working with LLMs, prompt management, memory systems, and agent tools. Supports both Python and JavaScript.",
-    url: "https://github.com/langchain-ai/langchain",
+    url: "https://www.langchain.com/",
     tags: ["framework", "llm", "python", "typescript", "vector-stores", "memory"],
     category: "frameworks",
     featured: true
@@ -35,7 +35,7 @@ export const tools: Tool[] = [
     id: "autogen",
     name: "AutoGen",
     description: "A framework for developing multi-agent conversations that enables autonomous and chat-based agents. Features automated task solving, human-AI collaboration, and customizable agent roles with conversational memory.",
-    url: "https://github.com/microsoft/autogen",
+    url: "https://microsoft.github.io/autogen/stable//index.html",
     tags: ["framework", "multi-agent", "python", "conversational-memory", "task-automation"],
     category: "frameworks",
     featured: false
@@ -44,7 +44,7 @@ export const tools: Tool[] = [
     id: "zerepy",
     name: "Zerepy",
     description: "A Python-based framework (~5% market share) by Zerebro team for deploying creative AI agents on X. Built from a modularized version of the Zerebro backend, focusing on artistic outputs and social media automation.",
-    url: "https://github.com/zerebro/zerepy",
+    url: "https://github.com/blorm-network/ZerePy",
     tags: ["framework", "python", "social-media", "creative", "nft"],
     category: "frameworks",
     featured: false
@@ -53,7 +53,7 @@ export const tools: Tool[] = [
     id: "rig",
     name: "Rig",
     description: "A Rust-based framework (~15% market share) for building portable, modular, and high-performance Fullstack AI Agents. Specializes in enterprise-grade applications with emphasis on retrieval-augmented generation, particularly within the Solana ecosystem.",
-    url: "https://github.com/rig-ai/rig",
+    url: "https://rig.rs/",
     tags: ["framework", "rust", "enterprise", "rag", "solana"],
     category: "frameworks",
     featured: false
@@ -62,7 +62,7 @@ export const tools: Tool[] = [
     id: "rei",
     name: "REI",
     description: "A framework with innovative Oracle and ERCData systems for enhanced external data integration and hierarchical data storage. Features multi-layered cognitive architecture focusing on pattern recognition and context awareness.",
-    url: "https://github.com/rei-framework/rei",
+    url: "https://docs.rei.network/",
     tags: ["framework", "oracle", "ercdata", "pattern-recognition", "ethereum"],
     category: "frameworks",
     featured: false
@@ -71,7 +71,7 @@ export const tools: Tool[] = [
     id: "heurist",
     name: "Heurist",
     description: "A Python-based lightweight framework offering decentralized AI infrastructure with compute through miners, file storage, open-source LLM APIs, and native crypto wallet integration. Focuses on cost-effectiveness and decentralization.",
-    url: "https://github.com/heurist-ai/heurist",
+    url: "https://github.com/heurist-network/heurist-agent-framework",
     tags: ["framework", "python", "decentralized", "lightweight", "chatbots"],
     category: "frameworks",
     featured: false
@@ -80,7 +80,7 @@ export const tools: Tool[] = [
     id: "game",
     name: "GAME",
     description: "The Generative Autonomous Multimodal Entities framework by Virtuals (~20% market share) designed for gaming agents. Features 200+ projects, 150K daily requests, and rapid weekly growth. Includes built-in ERC6551 wallets, knowledge graphs, memory embeddings, and reinforcement learning.",
-    url: "https://github.com/virtuals/game",
+    url: "https://docs.game.virtuals.io/",
     tags: ["framework", "gaming", "social-media", "multimodal", "solana"],
     category: "frameworks",
     featured: false
@@ -89,7 +89,7 @@ export const tools: Tool[] = [
     id: "nexus",
     name: "Nexus",
     description: "Fully onchain autonomous AI agents built on Sui Move. Nexus enables developers to create Talus Agents - AI-powered digital assistants that live and operate directly on Talus Network with censorship resistance, transparency, and composability.",
-    url: "https://github.com/nexus-ai/nexus",
+    url: "https://talus.network/",
     tags: ["framework", "onchain", "sui", "autonomous", "transparent"],
     category: "frameworks",
     featured: false
@@ -98,7 +98,7 @@ export const tools: Tool[] = [
     id: "x-box",
     name: "X-box",
     description: "A dedicated fine-tuning framework for creating Xenobots - dynamic data agents that evolve through continuous data gathering and integration. The framework provides a robust pipeline for processing, refining, and integrating datasets to create unique conversational agents.",
-    url: "https://github.com/x-box/x-box",
+    url: "https://xenobots.tech/",
     tags: ["framework", "fine-tuning", "data-agents", "evolution", "conversational"],
     category: "frameworks",
     featured: false
@@ -107,7 +107,7 @@ export const tools: Tool[] = [
     id: "ag2",
     name: "AG2",
     description: "An open-source AgentOS framework for building production-ready multi-agent systems. Enables seamless orchestration of multiple AI agents that can collaborate autonomously or with human oversight.",
-    url: "https://github.com/ag2/ag2",
+    url: "https://ag2.ai/",
     tags: ["framework", "multi-agent", "production", "orchestration", "enterprise"],
     category: "frameworks",
     featured: false
@@ -116,7 +116,7 @@ export const tools: Tool[] = [
     id: "crewai",
     name: "CrewAI",
     description: "A framework for orchestrating role-playing autonomous AI agents. Enables collaborative task completion through agents working together, with built-in task planning, delegation, and execution capabilities.",
-    url: "https://github.com/crewai/crewai",
+    url: "https://www.crewai.com/",
     tags: ["framework", "role-playing", "collaboration", "task-planning", "autonomous"],
     category: "frameworks",
     featured: false
@@ -125,7 +125,7 @@ export const tools: Tool[] = [
     id: "dspy",
     name: "DSPy",
     description: "A framework for solving AI tasks with language models through programmatic prompt optimization. Features automatic prompt improvement, structured prediction, and compiler-like optimization of LLM programs.",
-    url: "https://github.com/stanfordnlp/dspy",
+    url: "https://dspy.ai/",
     tags: ["framework", "prompt-optimization", "llm", "structured-prediction", "automated-reasoning"],
     category: "frameworks",
     featured: false
@@ -134,7 +134,7 @@ export const tools: Tool[] = [
     id: "phidata",
     name: "Phidata",
     description: "A toolkit for building AI-powered applications and autonomous AI agents using Python. Features include LLM workflows, vector stores, and streamlined deployment to AWS/local environments.",
-    url: "https://github.com/phidatahq/phidata",
+    url: "https://docs.phidata.com/",
     tags: ["framework", "python", "ai-applications", "autonomous-agents", "deployment"],
     category: "frameworks",
     featured: false
@@ -143,7 +143,7 @@ export const tools: Tool[] = [
     id: "open-autonomy",
     name: "Open Autonomy",
     description: "A framework for developing autonomous economic agents that can participate in decentralized markets and perform complex economic operations.",
-    url: "https://github.com/valory-ai/open-autonomy",
+    url: "https://docs.autonolas.network/",
     tags: ["framework", "autonomous", "economic", "decentralized", "ethereum"],
     category: "frameworks",
     featured: false
@@ -152,7 +152,7 @@ export const tools: Tool[] = [
     id: "bittensor",
     name: "Bittensor",
     description: "A decentralized machine learning network that allows for the creation and deployment of AI models in a peer-to-peer network.",
-    url: "https://github.com/opentensor/bittensor",
+    url: "https://bittensor.com/",
     tags: ["framework", "decentralized", "ml", "peer-to-peer", "incentivized"],
     category: "frameworks",
     featured: false
@@ -161,7 +161,7 @@ export const tools: Tool[] = [
     id: "ailice",
     name: "AIlice",
     description: "An AI agent framework focused on natural conversation and task automation with advanced memory management.",
-    url: "https://github.com/ailice-ai/ailice",
+    url: "https://alice-ai.com/",
     tags: ["framework", "conversation", "task-automation", "memory-management", "natural-dialogue"],
     category: "frameworks",
     featured: false
@@ -170,7 +170,7 @@ export const tools: Tool[] = [
     id: "shellagent",
     name: "ShellAgent",
     description: "A framework for building AI agents that can interact with shell commands and system operations.",
-    url: "https://github.com/shellagent/shellagent",
+    url: "https://myshell.ai/",
     tags: ["framework", "shell", "system-operations", "command-interaction", "automation"],
     category: "frameworks",
     featured: false
@@ -179,7 +179,7 @@ export const tools: Tool[] = [
     id: "langgraph",
     name: "LangGraph",
     description: "A library for building stateful, multi-agent applications with LangChain.",
-    url: "https://github.com/langchain-ai/langgraph",
+    url: "https://python.langchain.com/docs/langgraph",
     tags: ["framework", "stateful", "multi-agent", "langchain", "graph-based"],
     category: "frameworks",
     featured: false
@@ -188,7 +188,7 @@ export const tools: Tool[] = [
     id: "jido",
     name: "Jido",
     description: "A foundational framework for building autonomous, distributed agent systems in Elixir.",
-    url: "https://github.com/jido/jido",
+    url: "https://hexdocs.pm/jido/getting-started.html",
     tags: ["framework", "elixir", "autonomous", "distributed", "agent-systems"],
     category: "frameworks",
     featured: false
@@ -197,7 +197,7 @@ export const tools: Tool[] = [
     id: "intentkit",
     name: "IntentKit",
     description: "An autonomous agent framework that enables the creation and management of AI agents with various capabilities including blockchain interactions, social media management, and custom skill integration.",
-    url: "https://github.com/intentkit/intentkit",
+    url: "https://crestal.network/",
     tags: ["framework", "autonomous", "blockchain", "social-media", "plugin-system"],
     category: "frameworks",
     featured: false
@@ -206,7 +206,7 @@ export const tools: Tool[] = [
     id: "aether",
     name: "Aether Framework",
     description: "A modular, decentralized AI framework designed to empower autonomous agents with advanced capabilities such as reinforcement learning, swarm intelligence, multi-modal processing, blockchain interaction, and democratic decision-making.",
-    url: "https://github.com/aether/aether",
+    url: "http://aetherframework.fun/",
     tags: ["framework", "decentralized", "swarm-intelligence", "reinforcement-learning", "solana"],
     category: "frameworks",
     featured: false
@@ -215,7 +215,7 @@ export const tools: Tool[] = [
     id: "agent-llm",
     name: "Agent-LLM",
     description: "A framework for building autonomous agents powered by large language models, featuring advanced reasoning capabilities and task automation.",
-    url: "https://github.com/agent-llm/agent-llm",
+    url: "https://github.com/Josh-XT/Agent-LLM",
     tags: ["framework", "llm", "autonomous", "reasoning", "task-automation"],
     category: "frameworks",
     featured: false
@@ -233,7 +233,7 @@ export const tools: Tool[] = [
     id: "agentscope",
     name: "AgentScope",
     description: "A framework for developing context-aware AI agents with advanced memory and reasoning capabilities.",
-    url: "https://github.com/agentscope/agentscope",
+    url: "https://github.com/simonmesmith/agentflow",
     tags: ["framework", "context-aware", "memory", "reasoning", "autonomous"],
     category: "frameworks",
     featured: false
@@ -251,7 +251,7 @@ export const tools: Tool[] = [
     id: "botpress",
     name: "Botpress",
     description: "An open-source conversational AI platform for building chatbots and AI assistants with visual flow editing and natural language understanding.",
-    url: "https://github.com/botpress/botpress",
+    url: "https://botpress.com/",
     tags: ["framework", "chatbot", "conversational-ai", "nlp", "visual-editor"],
     category: "frameworks",
     featured: false
@@ -260,7 +260,7 @@ export const tools: Tool[] = [
     id: "dust",
     name: "Dust",
     description: "A framework for building and deploying AI agents with a focus on data processing and analysis capabilities.",
-    url: "https://github.com/dust-ai/dust",
+    url: "https://github.com/dust-tt/dust",
     tags: ["framework", "data-processing", "analysis", "deployment", "automation"],
     category: "frameworks",
     featured: false
@@ -269,7 +269,7 @@ export const tools: Tool[] = [
     id: "haystack",
     name: "Haystack",
     description: "A framework for building search systems that work intelligently over large document collections, with support for various retrieval methods and LLM integration.",
-    url: "https://github.com/deepset-ai/haystack",
+    url: "https://haystack.deepset.ai/",
     tags: ["framework", "search", "retrieval", "llm", "document-processing"],
     category: "frameworks",
     featured: false
@@ -278,7 +278,7 @@ export const tools: Tool[] = [
     id: "lagent",
     name: "Lagent",
     description: "A lightweight framework for building AI agents with a focus on efficiency and ease of use.",
-    url: "https://github.com/lagent-ai/lagent",
+    url: "https://github.com/InternLM/lagent",
     tags: ["framework", "lightweight", "efficient", "easy-to-use", "autonomous"],
     category: "frameworks",
     featured: false
@@ -287,7 +287,7 @@ export const tools: Tool[] = [
     id: "llama-agentic-system",
     name: "llama-agentic-system",
     description: "A framework for building autonomous agents based on the Llama architecture, featuring advanced reasoning and task execution capabilities.",
-    url: "https://github.com/llama-agentic-system/llama-agentic-system",
+    url: "https://github.com/meta-llama/llama-agentic-system",
     tags: ["framework", "llama", "autonomous", "reasoning", "task-execution"],
     category: "frameworks",
     featured: false
@@ -296,7 +296,7 @@ export const tools: Tool[] = [
     id: "llamaindex",
     name: "LlamaIndex",
     description: "A framework for building LLM applications over custom data sources, with support for various data formats and retrieval methods.",
-    url: "https://github.com/run-llama/llama_index",
+    url: "https://www.llamaindex.ai/",
     tags: ["framework", "llm", "data-integration", "retrieval", "custom-data"],
     category: "frameworks",
     featured: false
@@ -305,7 +305,7 @@ export const tools: Tool[] = [
     id: "maestro",
     name: "Maestro",
     description: "A framework for orchestrating complex AI agent workflows with a focus on reliability and scalability.",
-    url: "https://github.com/maestro-ai/maestro",
+    url: "https://github.com/Doriandarko/maestro",
     tags: ["framework", "orchestration", "workflow", "reliable", "scalable"],
     category: "frameworks",
     featured: false
@@ -314,7 +314,7 @@ export const tools: Tool[] = [
     id: "metagpt",
     name: "MetaGPT",
     description: "A framework for building multi-agent systems with role-based collaboration and task decomposition capabilities.",
-    url: "https://github.com/geekan/MetaGPT",
+    url: "https://docs.deepwisdom.ai/",
     tags: ["framework", "multi-agent", "role-based", "collaboration", "task-decomposition"],
     category: "frameworks",
     featured: false
@@ -323,7 +323,7 @@ export const tools: Tool[] = [
     id: "semantic-kernel",
     name: "Semantic Kernel",
     description: "A framework for building AI applications with a focus on semantic understanding and natural language processing.",
-    url: "https://github.com/microsoft/semantic-kernel",
+    url: "https://learn.microsoft.com/semantic-kernel/",
     tags: ["framework", "semantic", "nlp", "ai-applications", "microsoft"],
     category: "frameworks",
     featured: false
@@ -332,7 +332,7 @@ export const tools: Tool[] = [
     id: "swarm",
     name: "Swarm",
     description: "A framework for building and managing swarms of AI agents with collective intelligence and emergent behavior capabilities.",
-    url: "https://github.com/swarm-ai/swarm",
+    url: "https://github.com/openai/swarm",
     tags: ["framework", "swarm", "collective-intelligence", "emergent-behavior", "multi-agent"],
     category: "frameworks",
     featured: false
@@ -341,7 +341,7 @@ export const tools: Tool[] = [
     id: "transformers-agents",
     name: "Transformers Agents",
     description: "A framework for building AI agents using the Transformers architecture, with support for various tasks and modalities.",
-    url: "https://github.com/huggingface/transformers",
+    url: "https://huggingface.co/docs/transformers/transformers_agents",
     tags: ["framework", "transformers", "multi-modal", "task-specific", "huggingface"],
     category: "frameworks",
     featured: false
@@ -350,7 +350,7 @@ export const tools: Tool[] = [
     id: "olas",
     name: "Olas",
     description: "A framework for building autonomous agents with a focus on blockchain integration and decentralized operations.",
-    url: "https://github.com/olas-ai/olas",
+    url: "https://olas.network/",
     tags: ["framework", "blockchain", "decentralized", "autonomous", "web3"],
     category: "frameworks",
     featured: false
@@ -359,7 +359,7 @@ export const tools: Tool[] = [
     id: "hyperai",
     name: "HyperAi",
     description: "A framework for building hyper-intelligent AI agents with advanced learning and adaptation capabilities.",
-    url: "https://github.com/hyperai/hyperai",
+    url: "https://hyperai.trade/",
     tags: ["framework", "hyper-intelligent", "learning", "adaptation", "autonomous"],
     category: "frameworks",
     featured: false
@@ -368,7 +368,7 @@ export const tools: Tool[] = [
     id: "airbus",
     name: "Airbus",
     description: "A framework for building AI agents specialized in aerospace and aviation applications.",
-    url: "https://github.com/airbus-ai/airbus",
+    url: "https://arbius.ai/",
     tags: ["framework", "aerospace", "aviation", "specialized", "industry-specific"],
     category: "frameworks",
     featured: false
@@ -386,7 +386,7 @@ export const tools: Tool[] = [
     id: "orchestra",
     name: "Orchestra",
     description: "A framework for orchestrating complex AI agent workflows with a focus on reliability and performance.",
-    url: "https://github.com/orchestra-ai/orchestra",
+    url: "https://orchestra.org/",
     tags: ["framework", "orchestration", "workflow", "reliable", "performance"],
     category: "frameworks",
     featured: false
@@ -395,7 +395,7 @@ export const tools: Tool[] = [
     id: "gaia",
     name: "Gaia",
     description: "A framework for building autonomous agents with a focus on environmental and sustainability applications.",
-    url: "https://github.com/gaia-ai/gaia",
+    url: "https://www.gaianet.ai/",
     tags: ["framework", "environmental", "sustainability", "autonomous", "specialized"],
     category: "frameworks",
     featured: false
@@ -404,7 +404,7 @@ export const tools: Tool[] = [
     id: "freysa",
     name: "Freysa",
     description: "A framework for building AI agents with advanced natural language understanding and generation capabilities.",
-    url: "https://github.com/freysa-ai/freysa",
+    url: "https://www.freysa.ai/",
     tags: ["framework", "nlp", "language-understanding", "language-generation", "ai-agents"],
     category: "frameworks",
     featured: false
@@ -413,7 +413,7 @@ export const tools: Tool[] = [
     id: "automata-network",
     name: "Automata Network",
     description: "A framework for building decentralized AI agent networks with privacy-preserving features.",
-    url: "https://github.com/automata-network/automata",
+    url: "https://www.ata.network/",
     tags: ["framework", "decentralized", "privacy", "network", "web3"],
     category: "frameworks",
     featured: false
@@ -422,7 +422,7 @@ export const tools: Tool[] = [
     id: "libertai",
     name: "LibertAI",
     description: "A framework for building autonomous AI agents with a focus on privacy and ethical considerations.",
-    url: "https://github.com/libertai/libertai",
+    url: "https://pypi.org/project/libertai-agents/",
     tags: ["framework", "privacy", "ethics", "autonomous", "responsible-ai"],
     category: "frameworks",
     featured: false
@@ -431,7 +431,7 @@ export const tools: Tool[] = [
     id: "agi-open-network",
     name: "AGI Open Network (AON)",
     description: "A framework for building and connecting AI agents in an open network environment.",
-    url: "https://github.com/agi-open-network/aon",
+    url: "https://agiopen.network/",
     tags: ["framework", "open-network", "agi", "connectivity", "collaboration"],
     category: "frameworks",
     featured: false
@@ -440,7 +440,7 @@ export const tools: Tool[] = [
     id: "eidolon",
     name: "Eidolon",
     description: "A framework for building AI agents with advanced reasoning and decision-making capabilities.",
-    url: "https://github.com/eidolon-ai/eidolon",
+    url: "https://www.eidolonai.com/",
     tags: ["framework", "reasoning", "decision-making", "autonomous", "ai-agents"],
     category: "frameworks",
     featured: false
@@ -449,7 +449,7 @@ export const tools: Tool[] = [
     id: "vity-toolkit",
     name: "Vity Toolkit",
     description: "A framework for building AI agents with advanced visualization and data analysis capabilities.",
-    url: "https://github.com/vity-toolkit/vity",
+    url: "https://vity-toolkit.gitbook.io/",
     tags: ["framework", "visualization", "data-analysis", "ai-agents", "analytics"],
     category: "frameworks",
     featured: false
@@ -458,7 +458,7 @@ export const tools: Tool[] = [
     id: "tape-agents",
     name: "TapeAgents",
     description: "A framework for building AI agents with advanced audio processing and speech recognition capabilities.",
-    url: "https://github.com/tape-agents/tape",
+    url: "https://arxiv.org/abs/2412.08445",
     tags: ["framework", "audio", "speech-recognition", "ai-agents", "processing"],
     category: "frameworks",
     featured: false
@@ -467,7 +467,7 @@ export const tools: Tool[] = [
     id: "emp-agents",
     name: "emp-agents",
     description: "A framework for building AI agents with a focus on emotional intelligence and human-like interaction.",
-    url: "https://github.com/emp-agents/emp",
+    url: "https://emp-agents.empyrealsdk.com/",
     tags: ["framework", "emotional-intelligence", "human-interaction", "ai-agents", "empathy"],
     category: "frameworks",
     featured: false
@@ -476,7 +476,7 @@ export const tools: Tool[] = [
     id: "pippin-framework",
     name: "Pippin Framework",
     description: "A framework for building AI agents with advanced learning and adaptation capabilities.",
-    url: "https://github.com/pippin-framework/pippin",
+    url: "https://pippin.love/framework.html",
     tags: ["framework", "learning", "adaptation", "ai-agents", "autonomous"],
     category: "frameworks",
     featured: false
@@ -485,7 +485,7 @@ export const tools: Tool[] = [
     id: "saios",
     name: "Saios",
     description: "A framework for building AI agents with advanced security and privacy features.",
-    url: "https://github.com/saios-ai/saios",
+    url: "https://saios.app/",
     tags: ["framework", "security", "privacy", "ai-agents", "protected"],
     category: "frameworks",
     featured: false
@@ -494,7 +494,7 @@ export const tools: Tool[] = [
     id: "inferium-ai",
     name: "Inferium AI",
     description: "A framework for building AI agents with advanced inference and prediction capabilities.",
-    url: "https://github.com/inferium-ai/inferium",
+    url: "https://inferium.io/",
     tags: ["framework", "inference", "prediction", "ai-agents", "analytics"],
     category: "frameworks",
     featured: false
@@ -512,7 +512,7 @@ export const tools: Tool[] = [
     id: "dify-ai",
     name: "Dify.AI",
     description: "A framework for building AI agents with advanced dialogue and conversation capabilities.",
-    url: "https://github.com/dify-ai/dify",
+    url: "https://dify.ai/",
     tags: ["framework", "dialogue", "conversation", "ai-agents", "interaction"],
     category: "frameworks",
     featured: false
@@ -521,7 +521,7 @@ export const tools: Tool[] = [
     id: "matrix-one",
     name: "Matrix One",
     description: "A framework for building AI agents with advanced matrix operations and mathematical capabilities.",
-    url: "https://github.com/matrix-one/matrix",
+    url: "https://www.matrix.one/",
     tags: ["framework", "matrix", "mathematics", "ai-agents", "computing"],
     category: "frameworks",
     featured: false
@@ -530,7 +530,7 @@ export const tools: Tool[] = [
     id: "cel-ai",
     name: "Cel.ai",
     description: "A framework for building AI agents with advanced cellular automata and pattern recognition capabilities.",
-    url: "https://github.com/cel-ai/cel",
+    url: "https://docs.sentio.ai/introduction",
     tags: ["framework", "cellular-automata", "pattern-recognition", "ai-agents", "simulation"],
     category: "frameworks",
     featured: false
@@ -539,7 +539,7 @@ export const tools: Tool[] = [
     id: "openserv-ai",
     name: "OpenServ AI",
     description: "A framework for building AI agents with advanced service-oriented architecture capabilities.",
-    url: "https://github.com/openserv-ai/openserv",
+    url: "https://openserv.ai/",
     tags: ["framework", "service-oriented", "architecture", "ai-agents", "enterprise"],
     category: "frameworks",
     featured: false
@@ -548,7 +548,7 @@ export const tools: Tool[] = [
     id: "cheshire-cat-ai",
     name: "Cheshire Cat AI",
     description: "A framework for building AI agents with advanced memory and context management capabilities.",
-    url: "https://github.com/cheshire-cat-ai/cheshire",
+    url: "https://cheshirecat.ai/",
     tags: ["framework", "memory", "context-management", "ai-agents", "autonomous"],
     category: "frameworks",
     featured: false
@@ -557,7 +557,7 @@ export const tools: Tool[] = [
     id: "enso",
     name: "Enso",
     description: "A framework for building AI agents with advanced data processing and visualization capabilities.",
-    url: "https://github.com/enso-ai/enso",
+    url: "https://www.enso.build/",
     tags: ["framework", "data-processing", "visualization", "ai-agents", "analytics"],
     category: "frameworks",
     featured: false

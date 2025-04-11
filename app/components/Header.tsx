@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Github, BrainCircuit, Sparkles } from 'lucide-react';
+import { Github, BrainCircuit, Sparkles, Upload } from 'lucide-react';
 
 export default function Header() {
   return (
@@ -85,6 +85,15 @@ export default function Header() {
           transition={{ duration: 0.5 }}
           className="flex items-center space-x-4"
         >
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+            onClick={() => window.open('https://t.me/devanshu_0_1', '_blank')}
+          >
+            <Upload className="h-4 w-4" />
+            <span>Submit</span>
+          </motion.button>
           <motion.a 
             href="https://github.com/devanshucodes/AI-Resources" 
             target="_blank" 

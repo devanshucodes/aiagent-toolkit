@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { categories } from './data/categories';
 import { allTools } from './data/tools';
 import { filterToolsBySearch } from './lib/utils';
-import { Sparkles, Brain } from 'lucide-react';
+import { Sparkles, Brain, Upload, Github } from 'lucide-react';
+import Link from 'next/link';
 
 // Components
 import Header from './components/Header';
