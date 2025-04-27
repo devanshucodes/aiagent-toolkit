@@ -15,14 +15,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
       
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center">
         <div className="flex-1 relative py-8">
-          <div className="absolute left-6 top-10 h-[200px] flex items-start">
-            <div className="w-px bg-gray-700 h-full"></div>
+          <div className="absolute left-6 top-9 h-[160px] flex items-start">
+            <div className="w-px bg-gray-600 opacity-40 h-full"></div>
           </div>
           <div className="max-w-xl text-left ml-12">
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white mb-4 font-mono">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-3 font-mono">
               AI Agent Toolkit
             </h1>
-            <p className="text-base text-gray-400 mb-8 max-w-2xl font-mono">
+            <p className="text-sm text-gray-400 mb-5 max-w-2xl font-mono">
               A curated collection of the best AI tools, frameworks, and resources
               for building intelligent agents
             </p>
@@ -30,11 +30,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
               <input
                 type="text"
                 placeholder="Search tools, frameworks, resources ..."
-                className="flex-grow py-3 px-4 bg-gray-800 text-gray-400 border-none rounded-none font-mono text-base focus:outline-none focus:ring-0"
+                className="flex-grow py-2 px-3 bg-gray-800 text-gray-400 border-none rounded-none font-mono text-sm focus:outline-none focus:ring-0"
               />
               <button
                 type="submit"
-                className="ml-0 -ml-px px-8 py-3 bg-red-900/80 hover:bg-red-800 text-white font-mono text-base border border-red-700 border-l-0 pentagon-btn transition-colors duration-200"
+                className="ml-0 -ml-px px-5 py-2 bg-red-900/80 hover:bg-red-800 text-white font-mono text-sm border border-red-700 border-l-0 pentagon-btn transition-colors duration-200"
               >
                 Search
               </button>
