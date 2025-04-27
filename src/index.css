@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Space Mono', monospace;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  @apply bg-black text-gray-200;
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-red-900;
+}
+
+/* Pixel-perfect font rendering */
+.font-mono {
+  font-feature-settings: "zero" 1;
+  letter-spacing: -0.025em;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Remove focus outlines for non-keyboard navigation */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Maintain focus visibility for keyboard navigation */
+*:focus-visible {
+  @apply outline-none ring-2 ring-red-500;
+}

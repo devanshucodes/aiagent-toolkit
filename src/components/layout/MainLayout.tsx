@@ -1,0 +1,90 @@
+import React, { useState } from 'react';
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
+import HeroSection from '../sections/HeroSection';
+import ToolsSection from '../sections/ToolsSection';
+import { aiTools, aiApps } from '../../data/toolsData';
+import { filterGroups } from '../../data/filterData';
+import { FilterGroup, ThemeMode } from '../../types';
+import { createPortal } from 'react-dom';
+
+const MainLayout: React.FC = () => {
+  const [filters, setFilters] = useState<FilterGroup[]>(filterGroups);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [theme, setTheme] = useState<ThemeMode>('dark');
+  
+  const toggleFilter = (category: string, id: string) => {
+    setFilters(prevFilters => 
+      prevFilters.map(group => 
+        group.category === category
+          ? {
+              ...group,
+              options: group.options.map(option => 
+                option.id === id
+                  ? { ...option, active: !option.active }
+                  : option
+              )
+            }
+          : group
+      )
+    );
+  };
+  
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    // Implement search logic here
+  };
+  
+  const toggleTheme = () => {
+    setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark');
+  };
+  
+  // Apply theme to document body
+  React.useEffect(() => {
+    document.body.className = theme === 'dark' ? 'bg-black text-white' : 'bg-white text-gray-900';
+  }, [theme]);
+  
+  // Add special CSS for the pixel font effect
+  React.useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+      
+      .font-pixel {
+        font-family: 'Space Mono', monospace;
+        letter-spacing: -0.05em;
+      }
+      
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
+  return (
+    <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
+      
+      <HeroSection onSearch={handleSearch} />
+      
+      <div className="flex-1 flex flex-col lg:flex-row">
+        <Sidebar filters={filters} onToggleFilter={toggleFilter} />
+        
+        <main className="flex-1 overflow-auto p-4 lg:p-8">
+          <div className="max-w-7xl mx-auto">
+            <ToolsSection title="AI Agent Tools" tools={aiTools} />
+            <ToolsSection title="Top AI Agent Apps" tools={aiApps} />
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+};
+
+export default MainLayout;
