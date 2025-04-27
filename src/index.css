@@ -60,3 +60,7 @@ body {
 *:focus-visible {
   @apply outline-none ring-2 ring-red-500;
 }
+
+.pentagon-btn {
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 90% 100%, 0 100%);
+}
