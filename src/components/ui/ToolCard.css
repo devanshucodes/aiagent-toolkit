@@ -71,25 +71,30 @@
 }
 .tool-card-footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   margin-top: auto;
   padding-top: 0.75rem;
   border-top: 1px solid #1f2937;
+  gap: 0.75rem;
+}
+.tool-card-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .tool-card-type-label,
 .tool-card-rating-label {
-  color: #FFFFFF99; /* Slightly less opaque for labels */
+  color: #FFFFFF99;
   font-size: 0.75rem;
   font-family: 'Kode Mono', monospace;
   text-transform: uppercase;
-  display: block;
-  margin-bottom: 0.25rem;
+  letter-spacing: 0.05em;
 }
 .tool-card-type {
-  color: inherit; /* Inherit from .tool-card-inner */
   font-size: 0.75rem;
   font-family: 'Kode Mono', monospace;
+  padding: 2px 8px;
+  border-radius: 2px;
 }
 .tool-card-type-free {
   color: #22c55e;
@@ -151,4 +156,40 @@
   transition: background 0.2s;
   /* Pentagon with notch on the left */
   clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%, 0 80%);
+}
+
+.tool-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.tool-card-rating-value {
+  color: #22c55e;
+  font-size: 0.75rem;
+  font-family: 'Kode Mono', monospace;
+}
+
+.tool-card-rating-count {
+  color: #FFFFFF80;
+  font-size: 0.75rem;
+  font-family: 'Kode Mono', monospace;
+}
+
+.tool-card-rating-lines {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+}
+
+.rating-line {
+  width: 5px;
+  height: 20px;
+  background: #414045;
+  transition: background-color 0.2s ease;
+}
+
+.rating-line.active {
+  background: #FF846C;
 } 

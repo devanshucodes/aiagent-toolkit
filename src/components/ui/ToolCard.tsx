@@ -9,9 +9,22 @@ interface ToolCardProps {
 }
 
 const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
+  const renderRatingLines = (rating: number) => {
+    const lines = [];
+    for (let i = 0; i < 5; i++) {
+      lines.push(
+        <div 
+          key={i} 
+          className={`rating-line ${i < rating ? 'active' : ''}`}
+        />
+      );
+    }
+    return <div className="tool-card-rating-lines">{lines}</div>;
+  };
+
   return (
     <div className="tool-card">
-      <a href={tool.url} className="tool-card-link pentagon-corner-btn" style={{position: 'absolute', top: 0, right: 0, width: '28px', height: '28px', background: 'rgba(255,255,255,0.10)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2}}>
+      <a href={tool.url} className="tool-card-link pentagon-corner-btn" style={{position: 'absolute', top: 0, right: 0, width: '30px', height: '30px', background: 'rgba(255,255,255,0.10)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2}}>
         <ExternalLink size={16} color="#fff" />
       </a>
       <div className="tool-card-inner" style={{position: 'relative'}}>
@@ -37,15 +50,13 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
         </div>
         <p className="tool-card-desc">{tool.description}</p>
         <div className="tool-card-footer">
-          <div>
+          <div className="tool-card-footer-row">
             <span className="tool-card-type-label">Type</span>
-            <span className={`tool-card-type tool-card-type-${tool.type.toLowerCase()}`}>
-              {tool.type}
-            </span>
+            <span className="tool-card-type tool-card-type-free">Free</span>
           </div>
-          <div>
-            <span className="tool-card-rating-label">RATING</span>
-            <Rating value={tool.rating} />
+          <div className="tool-card-footer-row">
+            <span className="tool-card-rating-label">Rating</span>
+            {renderRatingLines(tool.rating)}
           </div>
         </div>
       </div>

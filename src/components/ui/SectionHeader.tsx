@@ -13,20 +13,22 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, onNext, onPrevious
       <h2 className="text-2xl font-bold text-white" style={{fontFamily: 'Kode Mono, monospace'}}>{title}</h2>
       
       {(onNext || onPrevious) && (
-        <div className="flex space-x-2">
+        <div className="flex space-x-0.5" style={{ marginRight: '0.3rem' }}>
           <button 
             onClick={onPrevious}
-            className="p-1 rounded bg-gray-800 border border-gray-700 hover:bg-gray-700 transition-colors duration-200"
+            className="p-0.5 hover:bg-gray-700 transition-colors duration-200"
+            style={{ background: '#27262b', border: '1px solid #414045' }}
             aria-label="Previous"
           >
-            <ChevronLeft size={20} className="text-gray-400" />
+            <ChevronLeft size={16} className="text-gray-400" />
           </button>
           <button 
             onClick={onNext}
-            className="p-1 rounded bg-gray-800 border border-gray-700 hover:bg-gray-700 transition-colors duration-200"
+            className="p-0.5 hover:bg-gray-700 transition-colors duration-200"
+            style={{ background: '#27262b', border: '1px solid #414045' }}
             aria-label="Next"
           >
-            <ChevronRight size={20} className="text-gray-400" />
+            <ChevronRight size={16} className="text-gray-400" />
           </button>
         </div>
       )}
