@@ -9,7 +9,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ filters, onToggleFilter }) => {
   return (
-    <aside className="w-64 min-w-64 bg-black border-r border-gray-900 p-4">
+    <aside className="w-64 min-w-64 bg-black border-r border-gray-900 p-4 ml-24">
       {filters.map((filterGroup) => (
         <FilterGroup 
           key={filterGroup.category} 
