@@ -157,3 +157,11 @@ body {
   color: #9ca3af;
   border: 1px solid #1f2937;
 }
+
+.filter-divider {
+  border-bottom: 0.2px solid #302e2e;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  margin-right: -1rem;
+  width: auto;
+}

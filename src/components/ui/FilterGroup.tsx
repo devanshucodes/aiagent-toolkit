@@ -8,19 +8,30 @@ interface FilterGroupProps {
 }
 
 const FilterGroup: React.FC<FilterGroupProps> = ({ filterGroup, onToggleFilter }) => {
+  const isSpecial = [
+    'Language',
+    'Genre',
+    'Subscription',
+    'Categories',
+  ].includes(filterGroup.category);
   return (
-    <div className="mb-6">
-      <h3 className="text-gray-300 font-medium mb-2" style={{fontFamily: 'Kode Mono, monospace'}}>{filterGroup.category}</h3>
-      <div className="flex flex-wrap" style={{fontFamily: 'Kode Mono, monospace'}}>
-        {filterGroup.options.map(option => (
-          <FilterTag 
-            key={option.id} 
-            option={option} 
-            onToggle={(id) => onToggleFilter(filterGroup.category, id)} 
-          />
-        ))}
+    <>
+      <div>
+        <h3 className="text-gray-300 font-medium mb-2" style={{fontFamily: 'Kode Mono, monospace'}}>{filterGroup.category}</h3>
+        {isSpecial && <div className="filter-divider" />}
+        <div className="flex flex-wrap" style={{fontFamily: 'Kode Mono, monospace'}}>
+          {filterGroup.options.map(option => (
+            <FilterTag 
+              key={option.id} 
+              option={option} 
+              onToggle={(id) => onToggleFilter(filterGroup.category, id)} 
+            />
+          ))}
+        </div>
+        {isSpecial && <div className="filter-divider" />}
       </div>
-    </div>
+      {!isSpecial && <div className="filter-divider" />}
+    </>
   );
 };
 
