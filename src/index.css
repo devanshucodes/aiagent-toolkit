@@ -140,7 +140,7 @@ body {
 }
 
 .filter-option {
-  background: #27262b;
+  background: #3d3c40;
   color: #9ca3af;
   border: 1px solid #1f2937;
 }
@@ -156,6 +156,7 @@ body {
   background: #27262b;
   color: #9ca3af;
   border: 1px solid #1f2937;
+  padding-left: 10px;
 }
 
 .filter-divider {
