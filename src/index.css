@@ -64,3 +64,10 @@ body {
 .pentagon-btn {
   clip-path: polygon(0 0, 100% 0, 100% 80%, 90% 100%, 0 100%);
 }
+
+.main-container {
+  padding-right: 4rem;
+}
+.tool-card{
+  margin: 0.3rem;
+}

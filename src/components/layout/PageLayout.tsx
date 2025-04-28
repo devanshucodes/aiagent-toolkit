@@ -47,15 +47,17 @@ const PageLayout: React.FC<PageLayoutProps> = ({
       
       {showHero && <HeroSection onSearch={() => {}} />}
 
-      <div className="max-w-7xl mx-auto flex flex-row gap-x-12">
+      <div className="flex flex-1">
         <div className="ml-24">
           <Sidebar filters={filters} onToggleFilter={toggleFilter} />
         </div>
-        <main className="flex-1 pr-24 -ml-4">
-          <div className="max-w-none">
-            {children}
-          </div>
-        </main>
+        <div className="main-container">
+          <main className="flex-1 overflow-auto p-4 lg:p-8">
+            <div className="max-w-7xl mx-auto">
+              {children}
+            </div>
+          </main>
+        </div>
       </div>
     </div>
   );

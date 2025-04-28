@@ -1,0 +1,99 @@
+.tool-card {
+  background: rgba(17, 24, 39, 0.4); /* bg-gray-900/40 */
+  border: 1px solid #1f2937;          /* border-gray-800 */
+  border-radius: 0;                   /* rounded-none */
+  overflow: hidden;
+  transition: border-color 0.3s;
+  width: 19rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+.tool-card:hover {
+  border-color: #7c3aed;              /* hover:border-purple-800 */
+}
+.tool-card-inner {
+  padding: 0.75rem; /* p-3 */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.tool-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+.tool-card-title-row {
+  display: flex;
+  align-items: center;
+}
+.tool-card-logo {
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+  margin-right: 0.75rem;
+}
+.tool-card-title {
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Space Mono', monospace;
+}
+.tool-card-link {
+  color: #6b7280;
+  transition: color 0.2s;
+}
+.tool-card-link:hover {
+  color: #d1d5db;
+}
+.tool-card-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.tool-card-category {
+  font-size: 0.75rem;
+  font-family: 'Space Mono', monospace;
+  background: #1f2937;
+  color: #9ca3af;
+  padding: 0.25rem 0.5rem;
+}
+.tool-card-desc {
+  color: #6b7280;
+  font-size: 0.75rem;
+  font-family: 'Space Mono', monospace;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+.tool-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid #1f2937;
+}
+.tool-card-type-label,
+.tool-card-rating-label {
+  font-size: 0.75rem;
+  color: #4b5563;
+  font-family: 'Space Mono', monospace;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.tool-card-type {
+  font-size: 0.75rem;
+  font-family: 'Space Mono', monospace;
+}
+.tool-card-type-free {
+  color: #22c55e;
+}
+.tool-card-type-paid {
+  color: #f59e42;
+}
+.tool-card-type-freemium {
+  color: #3b82f6;
+} 

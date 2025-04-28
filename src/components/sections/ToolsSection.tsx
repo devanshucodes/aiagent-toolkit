@@ -2,6 +2,7 @@ import React from 'react';
 import SectionHeader from '../ui/SectionHeader';
 import ToolCard from '../ui/ToolCard';
 import { Tool } from '../../types';
+import './ToolsSection.css';
 
 interface ToolsSectionProps {
   title: string;
@@ -34,7 +35,7 @@ const ToolsSection: React.FC<ToolsSectionProps> = ({ title, tools }) => {
         onPrevious={prevPage} 
       />
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[4px]">
+      <div className="tools-grid">
         {displayedTools.map((tool) => (
           <ToolCard key={tool.id} tool={tool} />
         ))}

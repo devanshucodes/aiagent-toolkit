@@ -76,12 +76,14 @@ const MainLayout: React.FC = () => {
       <div className="flex-1 flex flex-col lg:flex-row">
         <Sidebar filters={filters} onToggleFilter={toggleFilter} />
         
-        <main className="flex-1 overflow-auto p-4 lg:p-8">
-          <div className="max-w-7xl mx-auto">
-            <ToolsSection title="AI Agent Tools" tools={aiTools} />
-            <ToolsSection title="Top AI Agent Apps" tools={aiApps} />
-          </div>
-        </main>
+        <div className="main-container">
+          <main className="flex-1 overflow-auto p-4 lg:p-8">
+            <div>
+              <ToolsSection title="AI Agent Tools" tools={aiTools} />
+              <ToolsSection title="Top AI Agent Apps" tools={aiApps} />
+            </div>
+          </main>
+        </div>
       </div>
     </div>
   );

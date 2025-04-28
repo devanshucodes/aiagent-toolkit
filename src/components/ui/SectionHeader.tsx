@@ -13,7 +13,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, onNext, onPrevious
       <h2 className="text-2xl font-bold text-white">{title}</h2>
       
       {(onNext || onPrevious) && (
-        <div className="flex space-x-2 mr-16">
+        <div className="flex space-x-2">
           <button 
             onClick={onPrevious}
             className="p-1 rounded bg-gray-800 border border-gray-700 hover:bg-gray-700 transition-colors duration-200"

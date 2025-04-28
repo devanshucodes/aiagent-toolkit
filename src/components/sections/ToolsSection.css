@@ -1,0 +1,15 @@
+.tools-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+}
+@media (min-width: 768px) {
+  .tools-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1024px) {
+  .tools-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+} 
