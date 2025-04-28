@@ -8,7 +8,7 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
   return (
-    <div className="relative bg-black overflow-hidden">
+    <div className="relative bg-black overflow-hidden" style={{border: 'none'}}>
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-transparent z-10" />
       </div>
@@ -49,6 +49,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
           className="hidden lg:block absolute -scale-x-100 w-2/3 md:w-1/2 lg:w-1/3 h-auto top-[-20%] right-8 object-contain rounded-none shadow-lg"
         />
       </div>
+      <div style={{position: 'absolute', left: 0, right: 0, bottom: 0, height: '2px', background: '#27262b', opacity: 0.7, zIndex: 20}} />
     </div>
   );
 };

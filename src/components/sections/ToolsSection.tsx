@@ -28,7 +28,7 @@ const ToolsSection: React.FC<ToolsSectionProps> = ({ title, tools }) => {
   );
 
   return (
-    <section className="py-8">
+    <section className="pb-4" style={{paddingTop: 0, paddingBottom: '1rem'}}>
       <SectionHeader 
         title={title} 
         onNext={nextPage} 

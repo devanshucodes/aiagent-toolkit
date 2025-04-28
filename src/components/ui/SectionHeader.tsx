@@ -10,7 +10,7 @@ interface SectionHeaderProps {
 const SectionHeader: React.FC<SectionHeaderProps> = ({ title, onNext, onPrevious }) => {
   return (
     <div className="flex items-center mb-4 justify-between">
-      <h2 className="text-2xl font-bold text-white">{title}</h2>
+      <h2 className="text-2xl font-bold text-white" style={{fontFamily: 'Kode Mono, monospace'}}>{title}</h2>
       
       {(onNext || onPrevious) && (
         <div className="flex space-x-2">
