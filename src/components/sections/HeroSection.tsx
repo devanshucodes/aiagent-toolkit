@@ -30,7 +30,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
               <input
                 type="text"
                 placeholder="Search tools, frameworks, resources ..."
-                className="flex-grow py-2 px-3 bg-gray-800 text-gray-400 border-none rounded-none font-mono text-sm focus:outline-none focus:ring-0"
+                className="search-box flex-grow py-2 px-3 font-mono text-sm focus:outline-none focus:ring-0"
               />
               <button
                 type="submit"

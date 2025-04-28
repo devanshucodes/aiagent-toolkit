@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400;500;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Kode Mono', monospace;
   line-height: 1.5;
   font-weight: 400;
 
@@ -16,6 +17,7 @@
 }
 
 body {
+  font-family: 'Kode Mono', monospace;
   @apply bg-black text-gray-200;
   margin: 0;
   min-height: 100vh;
@@ -40,6 +42,7 @@ body {
 
 /* Pixel-perfect font rendering */
 .font-mono {
+  font-family: 'Kode Mono', monospace;
   font-feature-settings: "zero" 1;
   letter-spacing: -0.025em;
 }
@@ -70,4 +73,23 @@ body {
 }
 .tool-card{
   margin: 0.3rem;
+}
+
+.filter-option {
+  background: #27262b;
+  color: #9ca3af;
+  border: 1px solid #1f2937;
+}
+
+.filter-option.active {
+  background: #3a2323;
+  color: #fff;
+  border: 1.5px solid #a15a4a;
+  box-shadow: 0 0 0 2px #a15a4a33;
+}
+
+.search-box {
+  background: #27262b;
+  color: #9ca3af;
+  border: 1px solid #1f2937;
 }

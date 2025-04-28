@@ -17,7 +17,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
       <input
         type="text"
         placeholder="Search tools, frameworks, resources ..."
-        className="flex-grow py-2 px-4 bg-gray-900/60 text-gray-400 border border-gray-800 rounded-none focus:outline-none focus:border-purple-500 focus:ring-0 font-mono text-sm"
+        className="search-box flex-grow py-2 px-4 font-mono text-sm"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
