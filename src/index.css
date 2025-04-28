@@ -64,8 +64,72 @@ body {
   @apply outline-none ring-2 ring-red-500;
 }
 
-.pentagon-btn {
+.pentagon-search-btn {
   clip-path: polygon(0 0, 100% 0, 100% 80%, 90% 100%, 0 100%);
+  border: 1px solid #FF846C;
+  border-left: none !important;
+  margin-left: 0 !important;
+  height: 100%;
+  box-sizing: border-box;
+  background: #7C2B22;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Kode Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: background 0.2s, border 0.2s;
+}
+
+.pentagon-search-btn:hover {
+  background: #a13a2a;
+  border-color: #FF846C;
+}
+
+.pentagon-card-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  background: rgba(255,255,255,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  cursor: pointer;
+  transition: background 0.2s;
+  clip-path: polygon(0 0, 100% 0, 100% 60%, 80% 100%, 0 100%);
+  border: 1.5px solid #FF846C40;
+}
+
+.pentagon-card-btn:hover {
+  background: rgba(255,255,255,0.18);
+  border-color: #FF846C;
+}
+
+.pentagon-corner-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  background: rgba(255,255,255,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  cursor: pointer;
+  transition: background 0.2s;
+  /* Pentagon with notch on the left */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%, 0 80%);
+
+}
+
+.pentagon-corner-btn:hover {
+  background: rgba(255,255,255,0.18);
+  border-color: #FF846C;
 }
 
 .main-container {

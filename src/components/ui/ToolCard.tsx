@@ -11,7 +11,10 @@ interface ToolCardProps {
 const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
   return (
     <div className="tool-card">
-      <div className="tool-card-inner">
+      <a href={tool.url} className="tool-card-link pentagon-corner-btn" style={{position: 'absolute', top: 0, right: 0, width: '28px', height: '28px', background: 'rgba(255,255,255,0.10)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2}}>
+        <ExternalLink size={16} color="#fff" />
+      </a>
+      <div className="tool-card-inner" style={{position: 'relative'}}>
         <div className="tool-card-header">
           <div className="tool-card-title-row">
             <img 
@@ -21,9 +24,6 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
             />
             <h3 className="tool-card-title">{tool.name}</h3>
           </div>
-          <a href={tool.url} className="tool-card-link">
-            <ExternalLink size={16} />
-          </a>
         </div>
         <div className="tool-card-categories">
           {tool.category.map((cat, index) => (

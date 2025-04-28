@@ -26,19 +26,21 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
               A curated collection of the best AI tools, frameworks, and resources
               for building intelligent agents
             </p>
-            <div className="flex">
+            <form style={{display: 'flex', width: '100%', maxWidth: 600, margin: '0 auto', alignItems: 'stretch'}}>
               <input
                 type="text"
                 placeholder="Search tools, frameworks, resources ..."
-                className="search-box flex-grow py-2 px-3 font-mono text-sm focus:outline-none focus:ring-0"
+                className="search-box font-mono text-sm focus:outline-none focus:ring-0"
+                style={{flex: 1, borderTopRightRadius: 0, borderBottomRightRadius: 0, borderRight: 'none'}}
               />
               <button
                 type="submit"
-                className="ml-0 -ml-px px-5 py-2 bg-red-900/80 hover:bg-red-800 text-white font-mono text-sm border border-red-700 border-l-0 pentagon-btn transition-colors duration-200"
+                className="px-5 py-2 bg-red-900/80 hover:bg-red-800 text-white font-mono text-sm border border-red-700 border-l-0 pentagon-search-btn transition-colors duration-200"
+                style={{flex: 'none', borderTopLeftRadius: 0, borderBottomLeftRadius: 0, marginLeft: 0, height: '100%'}}
               >
                 Search
               </button>
-            </div>
+            </form>
           </div>
         </div>
         <img 

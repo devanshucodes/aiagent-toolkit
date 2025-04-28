@@ -9,9 +9,10 @@
   display: flex;
   flex-direction: column;
   justify-content: stretch;
+  position: relative;
 }
 .tool-card:hover {
-  border-color: #7c3aed;              /* hover:border-purple-800 */
+  border-color: #FF846C40;
 }
 .tool-card-inner {
   padding: 0.75rem; /* p-3 */
@@ -98,4 +99,22 @@
 }
 .tool-card-type-freemium {
   color: #3b82f6;
+}
+
+.pentagon-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.pentagon-btn:hover {
+  background: rgba(255,255,255,0.16);
 } 
