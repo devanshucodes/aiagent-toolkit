@@ -132,15 +132,13 @@ body {
   border-color: #FF846C;
 }
 
-.main-container {
-  padding-right: 4rem;
-}
+
 .tool-card{
   margin: 0.3rem;
 }
 
 .filter-option {
-  background: #3d3c40;
+  background: #27262b;
   color: #9ca3af;
   border: 1px solid #1f2937;
 }

@@ -1,0 +1,143 @@
+.ecosystem-map-section {
+  width: 100%;
+  min-height: 100vh;
+  background: #18171b;
+  padding: 1.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ecosystem-map-inner {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.ecosystem-map-title {
+  font-family: 'Kode Mono', monospace;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.ecosystem-map-desc {
+  font-family: 'Kode Mono', monospace;
+  color: #b0b0b0;
+  font-size: 0.8rem;
+  margin-bottom: 2.5rem;
+  text-align: left;
+  max-width: 600px;
+}
+
+.ecosystem-map-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  width: 100%;
+  align-items: start;
+}
+
+@media (max-width: 1200px) {
+  .ecosystem-map-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 700px) {
+  .ecosystem-map-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ecosystem-card {
+  background: #232228;
+  border: 1px solid #FF846C40;
+  box-shadow: none;
+  padding: 1rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
+  transition: none;
+}
+
+.ecosystem-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #35343a;
+  padding-bottom: 0.7rem;
+}
+
+.ecosystem-card-title {
+  font-family: 'Kode Mono', monospace;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.main-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1400px;
+}
+
+.ecosystem-card-bars {
+  display: flex;
+  gap: 2px;
+}
+.ecosystem-card-bar {
+  display: inline-block;
+  width: 2.5px;
+  height: 18px;
+  background: #35343a;
+}
+
+.ecosystem-card-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ecosystem-card-item {
+  display: flex;
+  align-items: center;
+  background: #35343a;
+  padding: 0.3rem 0.7rem;
+  margin: 0;
+  border-radius: 0;
+  gap: 1rem;
+}
+
+.ecosystem-card-icon {
+  width: 2.1rem;
+  height: 2.1rem;
+  background: #44434a;
+  display: inline-block;
+  margin-right: 0.2rem;
+}
+
+.ecosystem-card-item-text {
+  font-family: 'Kode Mono', monospace;
+  color: #ffffff;
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
+}
+
+.ecosystem-card {
+  width: 100%;
+  max-width: 500px;
+  min-width: 260px;
+  transition: width 0.2s;
+}
+
+@media (max-width: 600px) {
+  .ecosystem-card {
+    width: 100%;
+    max-width: 100%;
+  }
+} 

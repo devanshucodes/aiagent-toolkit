@@ -8,6 +8,7 @@ import HeroSection from '../sections/HeroSection';
 interface PageLayoutProps {
   children: React.ReactNode;
   showHero?: boolean;
+  showSidebar?: boolean;
   customFilters?: FilterGroup[];
   isToolsPage?: boolean;
   onToggleFilter?: (category: string, id: string) => void;
@@ -16,6 +17,7 @@ interface PageLayoutProps {
 const PageLayout: React.FC<PageLayoutProps> = ({ 
   children, 
   showHero = true,
+  showSidebar = true,
   customFilters,
   isToolsPage = false,
   onToggleFilter
@@ -56,13 +58,15 @@ const PageLayout: React.FC<PageLayoutProps> = ({
       {showHero && <HeroSection onSearch={() => {}} />}
 
       <div className="flex flex-1">
-        <div>
-          <Sidebar 
-            filters={filters} 
-            onToggleFilter={toggleFilter}
-            isToolsPage={isToolsPage}
-          />
-        </div>
+        {showSidebar && (
+          <div>
+            <Sidebar 
+              filters={filters} 
+              onToggleFilter={toggleFilter}
+              isToolsPage={isToolsPage}
+            />
+          </div>
+        )}
         <div className="main-container">
           <main className="flex-1 overflow-auto p-4 lg:p-8">
             <div className="max-w-7xl mx-auto">

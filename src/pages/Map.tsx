@@ -1,5 +1,6 @@
 import React from 'react';
 import PageLayout from '../components/layout/PageLayout';
+import '../styles/ecosystem-map.css'; // Import the custom CSS file
 
 const Map: React.FC = () => {
   const frameworks = [
@@ -22,41 +23,43 @@ const Map: React.FC = () => {
   ];
 
   return (
-    <PageLayout>
-      <div className="space-y-8">
+    <PageLayout showSidebar={false} showHero={true}>
+      <div style={{ width: '100%', marginBottom: '2.5rem' }}>
         <input
           type="text"
-          placeholder="Search Ecosystems"
-          className="w-full mb-8 py-2 px-4 bg-gray-900/60 text-gray-400 border border-gray-800 font-mono text-sm"
+          placeholder="Search Ecosystem"
+          className="search-box font-mono text-sm focus:outline-none focus:ring-0"
+          style={{ width: '420px', background: '#0F0E14', color: '#b0b0b0', border: '1px solid #35343a', padding: '0.75rem 1.2rem', fontFamily: 'Kode Mono, monospace' }}
         />
-        
-        <h1 className="text-4xl font-mono text-white mb-4">Web3 AI Ecosystem Map</h1>
-        <p className="text-gray-400 font-mono text-sm mb-8">
-          A curated collection of the best AI tools, frameworks, and resources for building intelligent agents
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {frameworks.map((section, index) => (
-            <div key={index} className="space-y-4">
-              <div className="bg-gray-900/40 border border-gray-800 p-4">
-                <h3 className="text-white font-mono mb-4 flex items-center justify-between">
-                  {section.title}
-                  <div className="space-x-0.5">
+      </div>
+      <div className="ecosystem-map-section">
+        <div className="ecosystem-map-inner">
+          <h1 className="ecosystem-map-title">Web3 AI Ecosystem Map</h1>
+          <p className="ecosystem-map-desc">
+            A curated collection of the best AI tools, frameworks, and resources for building intelligent agents
+          </p>
+          <div className="ecosystem-map-grid">
+            {frameworks.map((section, index) => (
+              <div key={index} className="ecosystem-card">
+                <div className="ecosystem-card-header">
+                  <span className="ecosystem-card-title">{section.title}</span>
+                  <span className="ecosystem-card-bars">
                     {[...Array(4)].map((_, i) => (
-                      <div key={i} className="inline-block w-0.5 h-3 bg-gray-700" />
+                      <span key={i} className="ecosystem-card-bar" />
                     ))}
-                  </div>
-                </h3>
-                <div className="space-y-2">
+                  </span>
+                </div>
+                <div className="ecosystem-card-items">
                   {section.items.map((item, idx) => (
-                    <div key={idx} className="bg-gray-800/50 p-2">
-                      <span className="text-gray-400 font-mono text-sm">{item}</span>
+                    <div key={idx} className="ecosystem-card-item">
+                      <span className="ecosystem-card-icon" />
+                      <span className="ecosystem-card-item-text">{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </PageLayout>
