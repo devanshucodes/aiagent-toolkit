@@ -6,19 +6,22 @@ import Communities from './pages/Communities';
 import Map from './pages/Map';
 import CoursesAndTutorials from './pages/CoursesAndTutorials';
 import Glossary from './pages/Glossary';
+import ScreenSizeCheck from './components/ScreenSizeCheck';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<MainLayout />} />
-        <Route path="/tools-libraries" element={<ToolsLibraries />} />
-        <Route path="/communities" element={<Communities />} />
-        <Route path="/map" element={<Map />} />
-        <Route path="/courses-tutorials" element={<CoursesAndTutorials />} />
-        <Route path="/glossary" element={<Glossary />} />
-      </Routes>
-    </Router>
+    <ScreenSizeCheck>
+      <Router>
+        <Routes>
+          <Route path="/" element={<MainLayout />} />
+          <Route path="/tools-libraries" element={<ToolsLibraries />} />
+          <Route path="/communities" element={<Communities />} />
+          <Route path="/map" element={<Map />} />
+          <Route path="/courses-tutorials" element={<CoursesAndTutorials />} />
+          <Route path="/glossary" element={<Glossary />} />
+        </Routes>
+      </Router>
+    </ScreenSizeCheck>
   );
 }
 
