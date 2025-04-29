@@ -14,13 +14,7 @@ const Navbar: React.FC = () => {
             
             <div className="hidden lg:block ml-16">
               <div className="flex items-center gap-2">
-                <NavLink
-                  to="/"
-                  className="px-3 py-2 text-xs font-mono text-gray-400 hover:text-white hover:bg-red-900/20 transition-colors duration-200 whitespace-nowrap"
-                >
-                  Agents
-                </NavLink>
-                {navItems.filter(item => item.label !== 'Agents').map((item) => (
+                {navItems.map((item) => (
                   <NavLink
                     key={item.id}
                     to={item.id ? `/${item.id}` : '/'}
