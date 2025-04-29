@@ -1,8 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { navItems } from '../../data/filterData';
+import { ThemeMode } from '../../types';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  theme: ThemeMode;
+  toggleTheme: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   return (
     <nav className="bg-black border-b border-gray-900 sticky top-0 z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,7 +41,13 @@ const Navbar: React.FC = () => {
             </div>
           </div>
           
-          <div className="flex items-center">
+          <div className="flex items-center gap-4">
+            <button
+              onClick={toggleTheme}
+              className="text-gray-400 hover:text-white transition-colors duration-200"
+            >
+              {theme === 'dark' ? '🌞' : '🌙'}
+            </button>
             <button className="bg-red-900/80 hover:bg-red-800 text-white px-4 py-1.5 text-xs font-mono uppercase tracking-wider transition-colors duration-200">
               Submit
             </button>

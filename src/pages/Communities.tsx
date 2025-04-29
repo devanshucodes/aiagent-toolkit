@@ -68,7 +68,7 @@ const Communities: React.FC = () => {
       customFilters={filters} 
       onToggleFilter={handleToggleFilter}
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {communities.map((community, index) => (
           <div 
             key={index} 
@@ -78,7 +78,7 @@ const Communities: React.FC = () => {
               height: '20rem',
               background: '#27262b',
               border: '1px solid #FF846C40',
-              margin: '0.3rem'
+              margin: '0'
             }}
           >
             <div className="tool-card-inner" style={{padding: '1rem', height: '100%', position: 'relative'}}>

@@ -52,14 +52,14 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   };
 
   return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
+    <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       
       {showHero && <HeroSection onSearch={() => {}} />}
 
-      <div className="flex flex-1">
+      <div className="flex-1 flex flex-col lg:flex-row max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
         {showSidebar && (
-          <div>
+          <div className="lg:w-64 lg:flex-shrink-0">
             <Sidebar 
               filters={filters} 
               onToggleFilter={toggleFilter}
@@ -67,11 +67,9 @@ const PageLayout: React.FC<PageLayoutProps> = ({
             />
           </div>
         )}
-        <div className="main-container">
+        <div className="flex-1">
           <main className="flex-1 overflow-auto p-4 lg:p-8">
-            <div className="max-w-7xl mx-auto">
-              {children}
-            </div>
+            {children}
           </main>
         </div>
       </div>

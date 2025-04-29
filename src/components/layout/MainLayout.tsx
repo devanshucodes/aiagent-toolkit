@@ -73,10 +73,12 @@ const MainLayout: React.FC = () => {
       
       <HeroSection onSearch={handleSearch} />
       
-      <div className="flex-1 flex flex-col lg:flex-row">
-        <Sidebar filters={filters} onToggleFilter={toggleFilter} />
+      <div className="flex-1 flex flex-col lg:flex-row max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+        <div className="lg:w-64 lg:flex-shrink-0">
+          <Sidebar filters={filters} onToggleFilter={toggleFilter} />
+        </div>
         
-        <div className="main-container">
+        <div className="flex-1">
           <main className="flex-1 overflow-auto p-4 lg:p-8">
             <div>
               <ToolsSection title="AI Agent Tools" tools={aiTools} />
