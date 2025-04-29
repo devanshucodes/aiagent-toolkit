@@ -19,13 +19,19 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
               <span className="text-lg font-mono tracking-wider text-white">LOGO</span>
             </Link>
             
-            <div className="hidden md:block">
-              <div className="flex items-center space-x-1">
-                {navItems.map((item) => (
+            <div className="hidden lg:block">
+              <div className="flex items-center gap-1">
+                <Link
+                  to="/"
+                  className="px-3 py-2 text-xs font-mono text-gray-400 hover:text-white hover:bg-red-900/20 transition-colors duration-200 whitespace-nowrap"
+                >
+                  Agents
+                </Link>
+                {navItems.filter(item => item.label !== 'Agents').map((item) => (
                   <Link
                     key={item.id}
                     to={`/${item.id}`}
-                    className="px-3 py-2 text-xs font-mono text-gray-400 hover:text-white hover:bg-red-900/20 transition-colors duration-200"
+                    className="px-3 py-2 text-xs font-mono text-gray-400 hover:text-white hover:bg-red-900/20 transition-colors duration-200 whitespace-nowrap"
                   >
                     {item.label}
                   </Link>
