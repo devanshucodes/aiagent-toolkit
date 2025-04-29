@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import PageLayout from '../components/layout/PageLayout';
+import '../styles/glossary.css';
 
 const Glossary: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [currentLetter, setCurrentLetter] = useState('#');
   
   const alphabet = '#ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
   
@@ -25,24 +27,41 @@ const Glossary: React.FC = () => {
     }
   ];
 
+  const filteredItems = glossaryItems.filter(item => {
+    const firstChar = item.term[0].toUpperCase();
+    const matchesLetter = currentLetter === '#' 
+      ? !isNaN(Number(firstChar))
+      : firstChar === currentLetter;
+    
+    if (searchTerm) {
+      return item.term.toLowerCase().includes(searchTerm.toLowerCase());
+    }
+    return matchesLetter;
+  });
+
   return (
     <PageLayout showSidebar={false}>
-      <div className="space-y-8">
-        <div className="mb-8">
+      <div className="glossary-container">
+        <div className="glossary-header">
           <input
             type="text"
-            placeholder="Search Ecosystems"
-            className="w-full mb-4 py-2 px-4 bg-gray-900/60 text-gray-400 border border-gray-800 font-mono text-sm"
+            placeholder="Search Ecosystem"
+            className="glossary-search"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           
-          <div className="flex flex-wrap gap-4 text-gray-400 font-mono">
+          <div className="alphabet-nav">
             {alphabet.map((letter) => (
               <a
                 key={letter}
-                href={`#${letter}`}
-                className="hover:text-white transition-colors duration-200"
+                href="#"
+                className={currentLetter === letter ? 'active' : ''}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setCurrentLetter(letter);
+                  setSearchTerm('');
+                }}
               >
                 {letter}
               </a>
@@ -50,13 +69,19 @@ const Glossary: React.FC = () => {
           </div>
         </div>
         
-        <div className="space-y-8">
-          {glossaryItems.map((item, index) => (
-            <div key={index} className="border-b border-gray-800 pb-6">
-              <h2 className="text-2xl font-mono text-white mb-2">{item.term}</h2>
-              <p className="text-gray-400 font-mono text-sm">{item.definition}</p>
-            </div>
-          ))}
+        <div className="glossary-content">
+          <div className="current-letter">
+            {currentLetter}
+          </div>
+          
+          <div className="glossary-items">
+            {filteredItems.map((item, index) => (
+              <div key={index} className="glossary-item">
+                <h2 className="glossary-term">{item.term}</h2>
+                <p className="glossary-definition">{item.definition}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </PageLayout>

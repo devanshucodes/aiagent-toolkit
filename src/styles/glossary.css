@@ -1,0 +1,91 @@
+.glossary-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.glossary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.glossary-search {
+  width: 275px;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #b0b0b0;
+  font-family: 'Kode Mono', monospace;
+  font-size: 14px;
+}
+
+.glossary-search:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.alphabet-nav {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.alphabet-nav a {
+  color: #b0b0b0;
+  text-decoration: none;
+  font-family: 'Kode Mono', monospace;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.alphabet-nav a:hover,
+.alphabet-nav a.active {
+  color: white;
+}
+
+.glossary-content {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 40px;
+  margin-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 40px;
+}
+
+.current-letter {
+  font-family: 'Kode Mono', monospace;
+  font-size: 64px;
+  color: white;
+  opacity: 0.8;
+}
+
+.glossary-items {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.glossary-item {
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glossary-item:last-child {
+  border-bottom: none;
+}
+
+.glossary-term {
+  font-family: 'Kode Mono', monospace;
+  font-size: 24px;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.glossary-definition {
+  font-family: 'Kode Mono', monospace;
+  font-size: 14px;
+  color: #b0b0b0;
+  line-height: 1.6;
+} 
