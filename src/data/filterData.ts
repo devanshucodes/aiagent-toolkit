@@ -2,23 +2,33 @@ import { FilterGroup } from '../types';
 
 export const toolsFilters: FilterGroup[] = [
   {
+    category: 'Subscription',
+    options: [
+      { id: 'free-to-use', label: 'Free to use', active: false },
+      { id: 'paid', label: 'Paid', active: false },
+      { id: 'freemium', label: 'Freemium', active: false }
+    ]
+  },
+  {
     category: 'Categories',
     options: [
-      { id: 'inference-apis', label: 'Inference APIs', active: false },
       { id: 'data-processing', label: 'Data Processing', active: false },
       { id: 'rag', label: 'RAG', active: false },
       { id: 'memory', label: 'Memory', active: false },
       { id: 'compute', label: 'Compute', active: false },
-      { id: 'observability', label: 'Observability', active: false },
+      { id: 'vector-database', label: 'Vector Database', active: false },
+      { id: 'embeddings', label: 'Embeddings', active: false },
       { id: 'web-scraping', label: 'Web Scraping', active: false },
       { id: 'hosting', label: 'Hosting', active: false },
       { id: 'sandboxing', label: 'Sandboxing', active: false },
+      { id: 'security', label: 'Security', active: false },
+      { id: 'monitoring', label: 'Monitoring', active: false },
+      { id: 'analytics', label: 'Analytics', active: false },
       { id: 'browser-automation', label: 'Browser Automation', active: false },
-      { id: 'workflow-automation', label: 'Workflow Automation', active: false },
+      { id: 'workflow', label: 'Workflow', active: false },
       { id: 'authentication', label: 'Authentication', active: false },
       { id: 'payment', label: 'Payment', active: false },
-      { id: 'blockchain', label: 'Blockchain', active: false },
-      { id: 'reasoning', label: 'Reasoning', active: false }
+      { id: 'task-automation', label: 'Task Automation', active: false }
     ]
   }
 ];

@@ -1,39 +1,68 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import PageLayout from '../components/layout/PageLayout';
+import ToolsSection from '../components/sections/ToolsSection';
 import { toolsFilters } from '../data/filterData';
+import { inferenceTools, observabilityTools, automationTools } from '../data/toolsData';
+import { Tool, FilterGroup } from '../types';
 
 const ToolsLibraries: React.FC = () => {
+  const [filters, setFilters] = useState<FilterGroup[]>(toolsFilters);
+
+  const getActiveFilters = (category: string) => {
+    const group = filters.find(g => g.category === category);
+    return group ? group.options.filter(opt => opt.active).map(opt => opt.id) : [];
+  };
+
+  const filterTools = (tools: Tool[]) => {
+    const activeSubscriptions = getActiveFilters('Subscription');
+    const activeCategories = getActiveFilters('Categories');
+
+    return tools.filter(tool => {
+      const subscriptionMatch = activeSubscriptions.length === 0 || 
+        (activeSubscriptions.includes('free-to-use') && tool.type === 'Free') ||
+        (activeSubscriptions.includes('paid') && tool.type === 'Paid') ||
+        (activeSubscriptions.includes('freemium') && tool.type === 'Freemium');
+
+      const categoryMatch = activeCategories.length === 0 || 
+        tool.category.some(cat => 
+          activeCategories.includes(cat.toLowerCase().replace(/\s+/g, '-'))
+        );
+
+      return subscriptionMatch && categoryMatch;
+    });
+  };
+
+  const filteredInferenceTools = useMemo(() => filterTools(inferenceTools), [filters]);
+  const filteredObservabilityTools = useMemo(() => filterTools(observabilityTools), [filters]);
+  const filteredAutomationTools = useMemo(() => filterTools(automationTools), [filters]);
+
+  const handleToggleFilter = (category: string, id: string) => {
+    setFilters(prevFilters => 
+      prevFilters.map(group => 
+        group.category === category
+          ? {
+              ...group,
+              options: group.options.map(option => 
+                option.id === id
+                  ? { ...option, active: !option.active }
+                  : option
+              )
+            }
+          : group
+      )
+    );
+  };
+
   return (
-    <PageLayout customFilters={toolsFilters}>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="bg-gray-900/40 border border-gray-800 p-4">
-          <h2 className="text-xl font-mono text-white mb-4">Inference APIs</h2>
-          <div className="space-y-2">
-            <div className="text-gray-400 font-mono text-sm">Data Processing</div>
-            <div className="text-gray-400 font-mono text-sm">RAG</div>
-            <div className="text-gray-400 font-mono text-sm">Memory</div>
-            <div className="text-gray-400 font-mono text-sm">Compute</div>
-          </div>
-        </div>
-        
-        <div className="bg-gray-900/40 border border-gray-800 p-4">
-          <h2 className="text-xl font-mono text-white mb-4">Observability</h2>
-          <div className="space-y-2">
-            <div className="text-gray-400 font-mono text-sm">Web Scraping</div>
-            <div className="text-gray-400 font-mono text-sm">Hosting</div>
-            <div className="text-gray-400 font-mono text-sm">Sandboxing</div>
-          </div>
-        </div>
-        
-        <div className="bg-gray-900/40 border border-gray-800 p-4">
-          <h2 className="text-xl font-mono text-white mb-4">Automation</h2>
-          <div className="space-y-2">
-            <div className="text-gray-400 font-mono text-sm">Browser Automation</div>
-            <div className="text-gray-400 font-mono text-sm">Workflow Automation</div>
-            <div className="text-gray-400 font-mono text-sm">Authentication</div>
-            <div className="text-gray-400 font-mono text-sm">Payment</div>
-          </div>
-        </div>
+    <PageLayout 
+      customFilters={filters} 
+      onToggleFilter={handleToggleFilter}
+      isToolsPage={true}
+    >
+      <div className="space-y-12">
+        <ToolsSection title="Inference & Data Processing" tools={filteredInferenceTools} />
+        <ToolsSection title="Observability & Monitoring" tools={filteredObservabilityTools} />
+        <ToolsSection title="Automation Tools" tools={filteredAutomationTools} />
       </div>
     </PageLayout>
   );

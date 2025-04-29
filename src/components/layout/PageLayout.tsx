@@ -9,12 +9,16 @@ interface PageLayoutProps {
   children: React.ReactNode;
   showHero?: boolean;
   customFilters?: FilterGroup[];
+  isToolsPage?: boolean;
+  onToggleFilter?: (category: string, id: string) => void;
 }
 
 const PageLayout: React.FC<PageLayoutProps> = ({ 
   children, 
   showHero = true,
-  customFilters
+  customFilters,
+  isToolsPage = false,
+  onToggleFilter
 }) => {
   const [theme, setTheme] = useState<ThemeMode>('dark');
   const [filters, setFilters] = useState<FilterGroup[]>(customFilters || filterGroups);
@@ -25,20 +29,24 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   };
 
   const toggleFilter = (category: string, id: string) => {
-    setFilters(prevFilters => 
-      prevFilters.map(group => 
-        group.category === category
-          ? {
-              ...group,
-              options: group.options.map(option => 
-                option.id === id
-                  ? { ...option, active: !option.active }
-                  : option
-              )
-            }
-          : group
-      )
-    );
+    if (onToggleFilter) {
+      onToggleFilter(category, id);
+    } else {
+      setFilters(prevFilters => 
+        prevFilters.map(group => 
+          group.category === category
+            ? {
+                ...group,
+                options: group.options.map(option => 
+                  option.id === id
+                    ? { ...option, active: !option.active }
+                    : option
+                )
+              }
+            : group
+        )
+      );
+    }
   };
 
   return (
@@ -48,8 +56,12 @@ const PageLayout: React.FC<PageLayoutProps> = ({
       {showHero && <HeroSection onSearch={() => {}} />}
 
       <div className="flex flex-1">
-        <div className="ml-24">
-          <Sidebar filters={filters} onToggleFilter={toggleFilter} />
+        <div>
+          <Sidebar 
+            filters={filters} 
+            onToggleFilter={toggleFilter}
+            isToolsPage={isToolsPage}
+          />
         </div>
         <div className="main-container">
           <main className="flex-1 overflow-auto p-4 lg:p-8">
