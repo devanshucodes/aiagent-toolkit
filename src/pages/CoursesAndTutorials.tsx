@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PageLayout from '../components/layout/PageLayout';
 import { Play } from 'lucide-react';
+import { courseFilters } from '../data/filterData';
+import { FilterGroup } from '../types';
+import '../styles/courses-tutorials.css';
 
 const CoursesAndTutorials: React.FC = () => {
-  const categories = [
-    'Customer Service & Support',
-    'Sales',
-    'Back Office',
-    'Operations',
-    'Growth Marketing',
-    'Writing & Editing',
-    'Technology & IT',
-    'Design & Creative',
-    'Web3 AI Agent SDKs'
-  ];
+  const [filters, setFilters] = useState<FilterGroup[]>(courseFilters);
+
+  const handleToggleFilter = (category: string, id: string) => {
+    setFilters(prevFilters =>
+      prevFilters.map(group =>
+        group.category === category
+          ? {
+              ...group,
+              options: group.options.map(option =>
+                option.id === id
+                  ? { ...option, active: !option.active }
+                  : option
+              )
+            }
+          : group
+      )
+    );
+  };
 
   const courses = [
     {
@@ -43,46 +53,36 @@ const CoursesAndTutorials: React.FC = () => {
   ];
 
   return (
-    <PageLayout>
+    <PageLayout 
+      customFilters={filters} 
+      onToggleFilter={handleToggleFilter}
+      isToolsPage={true}
+    >
       <div className="space-y-8">
-        <div>
-          <h2 className="text-xl font-mono text-white mb-4">Most Popular Categories</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {categories.slice(0, 3).map((category, index) => (
-              <div key={index} className="bg-gray-900/40 border border-gray-800 p-3">
-                <span className="text-gray-400 font-mono text-sm">{category}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-        
         <div className="space-y-6">
           {courses.map((course, index) => (
-            <div key={index} className="flex gap-6 bg-gray-900/40 border border-gray-800 p-4">
-              <div className="flex-1">
-                <div className="flex flex-wrap gap-2 mb-3">
+            <div key={index} className="course-card">
+              <div className="course-info">
+                <h3 className="course-title">{course.title}</h3>
+                <div className="mb-3">
                   {course.tags.map((tag, idx) => (
-                    <span key={idx} className="text-xs font-mono bg-gray-800 text-gray-400 px-2 py-1">
+                    <span key={idx} className="course-tag">
                       {tag}
                     </span>
                   ))}
                 </div>
-                
-                <h3 className="text-xl font-mono text-white mb-2">{course.title}</h3>
-                <p className="text-gray-400 font-mono text-sm mb-4">{course.description}</p>
-                
-                <div className="text-gray-500 font-mono text-sm">
-                  By {course.author}
-                </div>
+                <p className="course-desc">{course.description}</p>
+                <div className="course-author">By {course.author}</div>
               </div>
-              
-              <div className="relative w-64 h-36">
-                <img src={course.image} alt={course.title} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/50">
-                  <Play className="w-12 h-12 text-white" />
+              <div className="course-image-container">
+                <img src={course.image} alt={course.title} className="course-image" />
+                <div className="play-button-overlay">
+                  <div className="play-button">
+                    <Play size={24} />
+                  </div>
                 </div>
-                <div className="absolute top-2 right-2 bg-black/80 px-2 py-1">
-                  <span className="text-white font-mono text-xs">{course.lessons} LESSONS</span>
+                <div className="course-lessons-badge">
+                  <span>{course.lessons} LESSONS</span>
                 </div>
               </div>
             </div>

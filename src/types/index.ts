@@ -9,7 +9,7 @@ export interface Tool {
   url: string;
 }
 
-export type FilterCategory = 'Language' | 'Genre' | 'Subscription' | 'Categories' | 'Platform' | 'Focus';
+export type FilterCategory = 'Language' | 'Genre' | 'Subscription' | 'Categories' | 'Platform' | 'Focus' | 'Most Popular Categories';
 
 export interface FilterOption {
   id: string;

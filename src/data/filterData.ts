@@ -54,7 +54,7 @@ export const communityFilters: FilterGroup[] = [
 
 export const courseFilters: FilterGroup[] = [
   {
-    category: 'Categories',
+    category: 'Most Popular Categories',
     options: [
       { id: 'customer-service', label: 'Customer Service & Support', active: false },
       { id: 'sales', label: 'Sales', active: false },

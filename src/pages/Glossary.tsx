@@ -26,7 +26,7 @@ const Glossary: React.FC = () => {
   ];
 
   return (
-    <PageLayout>
+    <PageLayout showSidebar={false}>
       <div className="space-y-8">
         <div className="mb-8">
           <input
