@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import HeroSection from '../sections/HeroSection';
-import ToolsSection from '../sections/ToolsSection';
-import { aiTools, aiApps } from '../../data/toolsData';
+import SanityToolsSection from '../sections/SanityToolsSection';
 import { filterGroups } from '../../data/filterData';
 import { FilterGroup, ThemeMode } from '../../types';
 import { createPortal } from 'react-dom';
@@ -81,8 +80,14 @@ const MainLayout: React.FC = () => {
         <div className="flex-1">
           <main className="flex-1 overflow-auto p-4 lg:p-8">
             <div>
-              <ToolsSection title="AI Agent Tools" tools={aiTools} />
-              <ToolsSection title="Top AI Agent Apps" tools={aiApps} />
+              <SanityToolsSection 
+                title="AI Agent Tools" 
+                category="ai-agent-tools" 
+              />
+              <SanityToolsSection 
+                title="Top AI Agent Apps" 
+                category="top-ai-agent-apps" 
+              />
             </div>
           </main>
         </div>
