@@ -76,11 +76,11 @@ export default {
       media: 'logo',
       section: 'section',
     },
-    prepare({ title, media, section }: { title: string; media: any; section: string }) {
+    prepare(value: Record<string, any>) {
       return {
-        title,
-        media,
-        subtitle: section,
+        title: value.title,
+        media: value.media,
+        subtitle: value.section,
       };
     },
   },

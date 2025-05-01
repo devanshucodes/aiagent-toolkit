@@ -50,4 +50,38 @@ export async function getLibraryTools(section: 'inference' | 'observability' | '
     rating: tool.rating,
     url: tool.url,
   }));
+}
+
+export interface Community {
+  _id: string;
+  name: string;
+  logo: string;
+  description: string;
+  members: number;
+  url: string;
+  tags: string[];
+  socialLinks?: {
+    telegram?: string;
+    discord?: string;
+    x?: string;
+    github?: string;
+    discord2?: string;
+    instagram?: string;
+  };
+}
+
+export async function getCommunities(): Promise<Community[]> {
+  const query = `*[_type == "community"]{
+    _id,
+    name,
+    "logo": logo.asset->url,
+    description,
+    members,
+    url,
+    tags,
+    socialLinks
+  }`;
+
+  const communities = await client.fetch(query);
+  return communities;
 } 

@@ -62,10 +62,10 @@ export default {
       title: 'name',
       media: 'logo',
     },
-    prepare({ title, media }: { title: string; media: any }) {
+    prepare(value: Record<string, any>) {
       return {
-        title,
-        media,
+        title: value.title,
+        media: value.media,
       };
     },
   },

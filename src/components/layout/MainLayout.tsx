@@ -4,13 +4,12 @@ import Sidebar from './Sidebar';
 import HeroSection from '../sections/HeroSection';
 import SanityToolsSection from '../sections/SanityToolsSection';
 import { filterGroups } from '../../data/filterData';
-import { FilterGroup, ThemeMode } from '../../types';
+import { FilterGroup } from '../../types';
 import { createPortal } from 'react-dom';
 
 const MainLayout: React.FC = () => {
   const [filters, setFilters] = useState<FilterGroup[]>(filterGroups);
   const [searchQuery, setSearchQuery] = useState('');
-  const [theme, setTheme] = useState<ThemeMode>('dark');
   
   const toggleFilter = (category: string, id: string) => {
     setFilters(prevFilters => 
@@ -34,15 +33,6 @@ const MainLayout: React.FC = () => {
     // Implement search logic here
   };
   
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark');
-  };
-  
-  // Apply theme to document body
-  React.useEffect(() => {
-    document.body.className = theme === 'dark' ? 'bg-black text-white' : 'bg-white text-gray-900';
-  }, [theme]);
-  
   // Add special CSS for the pixel font effect
   React.useEffect(() => {
     const style = document.createElement('style');
@@ -56,7 +46,6 @@ const MainLayout: React.FC = () => {
       
       body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        transition: background-color 0.3s ease, color 0.3s ease;
       }
     `;
     document.head.appendChild(style);
@@ -67,8 +56,8 @@ const MainLayout: React.FC = () => {
   }, []);
 
   return (
-    <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
+    <div className="min-h-screen flex flex-col bg-black text-white">
+      <Navbar />
       
       <HeroSection onSearch={handleSearch} />
       
