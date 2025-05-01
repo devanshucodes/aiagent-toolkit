@@ -1,26 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PageLayout from '../components/layout/PageLayout';
 import '../styles/ecosystem-map.css'; // Import the custom CSS file
+import { getEcosystemMap, EcosystemMap } from '../lib/sanityQueries';
 
 const Map: React.FC = () => {
-  const frameworks = [
-    {
-      title: "Frameworks",
-      items: ["Name of Product", "Name of Product", "Name of Product", "Name of Product"]
-    },
-    {
-      title: "Infrastructure",
-      items: ["Name of Product", "Name of Product", "Name of Product"]
-    },
-    {
-      title: "Development Tools",
-      items: ["Name of Product", "Name of Product", "Name of Product", "Name of Product"]
-    },
-    {
-      title: "Deployment",
-      items: ["Name of Product", "Name of Product", "Name of Product"]
-    }
-  ];
+  const [ecosystemMap, setEcosystemMap] = useState<EcosystemMap | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchEcosystemMap = async () => {
+      try {
+        const data = await getEcosystemMap();
+        setEcosystemMap(data);
+        setError(null);
+      } catch (err) {
+        setError('Failed to load ecosystem map');
+        console.error('Error fetching ecosystem map:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEcosystemMap();
+  }, []);
 
   return (
     <PageLayout showSidebar={false} showHero={true}>
@@ -34,31 +37,70 @@ const Map: React.FC = () => {
       </div>
       <div className="ecosystem-map-section">
         <div className="ecosystem-map-inner">
-          <h1 className="ecosystem-map-title">Web3 AI Ecosystem Map</h1>
+          <h1 className="ecosystem-map-title">
+            {loading ? 'Loading...' : ecosystemMap?.title || 'Web3 AI Ecosystem Map'}
+          </h1>
           <p className="ecosystem-map-desc">
-            A curated collection of the best AI tools, frameworks, and resources for building intelligent agents
+            {loading ? 'Loading...' : ecosystemMap?.description || 'A curated collection of the best AI tools, frameworks, and resources for building intelligent agents'}
           </p>
+          {error && <div className="text-red-500 mb-4">{error}</div>}
           <div className="ecosystem-map-grid">
-            {frameworks.map((section, index) => (
-              <div key={index} className="ecosystem-card">
-                <div className="ecosystem-card-header">
-                  <span className="ecosystem-card-title">{section.title}</span>
-                  <span className="ecosystem-card-bars">
-                    {[...Array(4)].map((_, i) => (
-                      <span key={i} className="ecosystem-card-bar" />
+            {loading ? (
+              // Loading skeleton
+              [...Array(4)].map((_, index) => (
+                <div key={index} className="ecosystem-card">
+                  <div className="ecosystem-card-header">
+                    <span className="ecosystem-card-title">Loading...</span>
+                    <span className="ecosystem-card-bars">
+                      {[...Array(4)].map((_, i) => (
+                        <span key={i} className="ecosystem-card-bar" />
+                      ))}
+                    </span>
+                  </div>
+                  <div className="ecosystem-card-items">
+                    {[...Array(4)].map((_, idx) => (
+                      <div key={idx} className="ecosystem-card-item">
+                        <span className="ecosystem-card-icon" />
+                        <span className="ecosystem-card-item-text">Loading...</span>
+                      </div>
                     ))}
-                  </span>
+                  </div>
                 </div>
-                <div className="ecosystem-card-items">
-                  {section.items.map((item, idx) => (
-                    <div key={idx} className="ecosystem-card-item">
-                      <span className="ecosystem-card-icon" />
-                      <span className="ecosystem-card-item-text">{item}</span>
-                    </div>
-                  ))}
+              ))
+            ) : (
+              ecosystemMap?.categories.map((section, index) => (
+                <div key={index} className="ecosystem-card">
+                  <div className="ecosystem-card-header">
+                    <span className="ecosystem-card-title">{section.title}</span>
+                    <span className="ecosystem-card-bars">
+                      {[...Array(4)].map((_, i) => (
+                        <span key={i} className="ecosystem-card-bar" />
+                      ))}
+                    </span>
+                  </div>
+                  <div className="ecosystem-card-items">
+                    {section.items.map((item, idx) => (
+                      <div key={idx} className="ecosystem-card-item">
+                        <span className="ecosystem-card-icon" />
+                        {item.url ? (
+                          <a 
+                            href={item.url} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="ecosystem-card-item-text"
+                            style={{ color: '#b0b0b0', textDecoration: 'none' }}
+                          >
+                            {item.name}
+                          </a>
+                        ) : (
+                          <span className="ecosystem-card-item-text">{item.name}</span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </div>

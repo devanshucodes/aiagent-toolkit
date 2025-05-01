@@ -84,4 +84,35 @@ export async function getCommunities(): Promise<Community[]> {
 
   const communities = await client.fetch(query);
   return communities;
-} 
+}
+
+export interface EcosystemMap {
+  _id: string;
+  title: string;
+  description: string;
+  categories: {
+    title: string;
+    items: {
+      name: string;
+      url?: string;
+    }[];
+  }[];
+}
+
+export const getEcosystemMap = async (): Promise<EcosystemMap> => {
+  const query = `*[_type == "ecosystemMap"][0]{
+    _id,
+    title,
+    description,
+    categories[]{
+      title,
+      items[]{
+        name,
+        url
+      }
+    }
+  }`;
+  
+  const result = await client.fetch(query);
+  return result;
+}; 
