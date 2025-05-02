@@ -146,4 +146,23 @@ export const getCourses = async (): Promise<Course[]> => {
   
   const result = await client.fetch(query);
   return result;
+};
+
+export interface GlossaryTerm {
+  _id: string;
+  term: string;
+  definition: string;
+  firstLetter: string;
+}
+
+export const getGlossaryTerms = async (): Promise<GlossaryTerm[]> => {
+  const query = `*[_type == "glossary"] | order(term asc){
+    _id,
+    term,
+    definition,
+    firstLetter
+  }`;
+  
+  const result = await client.fetch(query);
+  return result;
 }; 
