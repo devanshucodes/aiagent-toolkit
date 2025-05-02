@@ -121,4 +121,29 @@ export const getEcosystemMap = async (): Promise<EcosystemMap> => {
   
   const result = await client.fetch(query);
   return result;
+};
+
+export interface Course {
+  _id: string;
+  title: string;
+  description: string;
+  url: string;
+  logo: string;
+  author: string;
+  tags: string[];
+}
+
+export const getCourses = async (): Promise<Course[]> => {
+  const query = `*[_type == "course"]{
+    _id,
+    title,
+    description,
+    url,
+    "logo": logo.asset->url,
+    author,
+    tags
+  }`;
+  
+  const result = await client.fetch(query);
+  return result;
 }; 
