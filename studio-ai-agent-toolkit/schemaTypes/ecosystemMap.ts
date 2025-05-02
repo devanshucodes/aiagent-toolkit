@@ -56,12 +56,22 @@ export default {
                       title: 'Product URL',
                       type: 'url',
                       description: 'Link to the product/tool website'
+                    },
+                    {
+                      name: 'logo',
+                      title: 'Product Logo',
+                      type: 'image',
+                      description: 'Logo of the product/tool',
+                      options: {
+                        hotspot: true
+                      }
                     }
                   ],
                   preview: {
                     select: {
                       title: 'name',
-                      subtitle: 'url'
+                      subtitle: 'url',
+                      media: 'logo'
                     }
                   }
                 }
@@ -72,7 +82,7 @@ export default {
             select: {
               title: 'title',
               subtitle: 'items',
-              media: 'items.0.name'
+              media: 'items.0.logo'
             },
             prepare({ title, subtitle }) {
               return {

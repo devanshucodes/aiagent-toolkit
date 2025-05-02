@@ -81,7 +81,16 @@ const Map: React.FC = () => {
                   <div className="ecosystem-card-items">
                     {section.items.map((item, idx) => (
                       <div key={idx} className="ecosystem-card-item">
-                        <span className="ecosystem-card-icon" />
+                        {item.logo ? (
+                          <img 
+                            src={item.logo} 
+                            alt={`${item.name} logo`} 
+                            className="ecosystem-card-icon"
+                            style={{ objectFit: 'cover', borderRadius: '4px' }}
+                          />
+                        ) : (
+                          <span className="ecosystem-card-icon" />
+                        )}
                         {item.url ? (
                           <a 
                             href={item.url} 

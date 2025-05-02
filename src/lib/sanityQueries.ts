@@ -95,6 +95,11 @@ export interface EcosystemMap {
     items: {
       name: string;
       url?: string;
+      logo?: {
+        asset: {
+          url: string;
+        };
+      };
     }[];
   }[];
 }
@@ -108,7 +113,8 @@ export const getEcosystemMap = async (): Promise<EcosystemMap> => {
       title,
       items[]{
         name,
-        url
+        url,
+        "logo": logo.asset->url
       }
     }
   }`;
