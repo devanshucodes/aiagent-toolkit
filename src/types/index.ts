@@ -2,7 +2,8 @@ export interface Tool {
   id: string;
   name: string;
   logo: string;
-  category: string[];
+  category: string;
+  tags: string[];
   description: string;
   type: 'Free' | 'Paid' | 'Freemium';
   rating: number;

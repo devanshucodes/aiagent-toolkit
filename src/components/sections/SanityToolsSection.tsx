@@ -21,10 +21,13 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({ title, category
   useEffect(() => {
     const fetchTools = async () => {
       try {
+        console.log(`Fetching tools for category: ${category}`);
         const fetchedTools = await getTools(category);
+        console.log(`Fetched tools:`, fetchedTools);
         setTools(fetchedTools);
         setLoading(false);
       } catch (err) {
+        console.error('Error fetching tools:', err);
         setError('Failed to fetch tools');
         setLoading(false);
       }
@@ -47,11 +50,15 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({ title, category
   );
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="text-white">Loading tools for {title}...</div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className="text-red-500">Error: {error}</div>;
+  }
+
+  if (tools.length === 0) {
+    return <div className="text-white">No tools found for {title}</div>;
   }
 
   return (

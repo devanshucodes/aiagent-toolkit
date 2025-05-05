@@ -19,6 +19,25 @@ export default {
       validation: (Rule: any) => Rule.required(),
     },
     {
+      name: 'category',
+      title: 'Category',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'AI Agent Tools', value: 'ai-agent-tools' },
+          { title: 'Top AI Agent Apps', value: 'top-ai-agent-apps' },
+          { title: 'Top LLMs', value: 'top-llms' },
+          { title: 'Web3 AI Agent SDKs', value: 'web3-ai-agent-sdks' },
+          { title: 'AI Agent Framework', value: 'ai-agent-framework' },
+          { title: 'AI Agent Infrastructure', value: 'ai-agent-infrastructure' },
+          { title: 'AI Agent Launchpads', value: 'ai-agent-launchpads' },
+          { title: 'Automation', value: 'automation' },
+          { title: 'Tech Stack', value: 'tech-stack' }
+        ],
+      },
+      validation: (Rule: any) => Rule.required(),
+    },
+    {
       name: 'tags',
       title: 'Tags',
       type: 'array',

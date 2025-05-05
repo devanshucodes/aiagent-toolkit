@@ -19,7 +19,8 @@ export async function getTools(category?: string): Promise<Tool[]> {
     id: tool._id,
     name: tool.name,
     logo: tool.logo,
-    category: tool.tags, // Using tags as categories for the UI
+    category: tool.category,
+    tags: tool.tags,
     description: tool.description,
     type: tool.type,
     rating: tool.rating,

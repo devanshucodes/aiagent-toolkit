@@ -77,6 +77,34 @@ const MainLayout: React.FC = () => {
                 title="Top AI Agent Apps" 
                 category="top-ai-agent-apps" 
               />
+              <SanityToolsSection 
+                title="Top LLMs" 
+                category="top-llms" 
+              />
+              <SanityToolsSection 
+                title="Web3 AI Agent SDKs" 
+                category="web3-ai-agent-sdks" 
+              />
+              <SanityToolsSection 
+                title="AI Agent Framework" 
+                category="ai-agent-framework" 
+              />
+              <SanityToolsSection 
+                title="AI Agent Infrastructure" 
+                category="ai-agent-infrastructure" 
+              />
+              <SanityToolsSection 
+                title="AI Agent Launchpads" 
+                category="ai-agent-launchpads" 
+              />
+              <SanityToolsSection 
+                title="Automation" 
+                category="automation" 
+              />
+              <SanityToolsSection 
+                title="Tech Stack" 
+                category="tech-stack" 
+              />
             </div>
           </main>
         </div>

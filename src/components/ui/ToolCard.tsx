@@ -39,14 +39,9 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
           </div>
         </div>
         <div className="tool-card-categories">
-          {tool.category.map((cat, index) => (
-            <span 
-              key={index} 
-              className="tool-card-category"
-            >
-              {cat}
-            </span>
-          ))}
+          <span className="tool-card-category">
+            {tool.category}
+          </span>
         </div>
         <p className="tool-card-desc">{tool.description}</p>
         <div className="tool-card-footer">
