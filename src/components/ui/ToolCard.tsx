@@ -38,12 +38,24 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
             <h3 className="tool-card-title">{tool.name}</h3>
           </div>
         </div>
-        <div className="tool-card-categories">
-          <span className="tool-card-category">
-            {tool.category}
-          </span>
+        <div className="tool-card-tags">
+          {tool.tags.map((tag, index) => (
+            <span key={index} className="tool-card-tag">
+              {tag}
+            </span>
+          ))}
         </div>
-        <p className="tool-card-desc">{tool.description}</p>
+        <p className="tool-card-desc" style={{
+          display: '-webkit-box',
+          WebkitLineClamp: 5,
+          WebkitBoxOrient: 'vertical',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          lineHeight: '1.5',
+          maxHeight: '7.5em'
+        }}>
+          {tool.description}
+        </p>
         <div className="tool-card-footer">
           <div className="tool-card-footer-row">
             <span className="tool-card-type-label">Type</span>

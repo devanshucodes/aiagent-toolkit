@@ -57,19 +57,46 @@
   margin-top: 20px;
 }
 .tool-card-category {
+  margin: 0.75rem 0;
+}
+.tool-card-category-label {
   font-size: 0.75rem;
+  font-family: 'Kode Mono', monospace;
+  background: #FF846C;
+  color: #ffffff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.tool-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  margin-top: 0.75rem;
+}
+.tool-card-tag {
+  font-size: 0.7rem;
   font-family: 'Kode Mono', monospace;
   background: #3d3c40;
   color: #ffffff;
-  padding: 0.25rem 0.5rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
 }
 .tool-card-desc {
-  color: inherit; /* Inherit from .tool-card-inner */
+  color: inherit;
   font-size: 0.75rem;
   font-family: 'Kode Mono', monospace;
   margin-bottom: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 0.75rem;
   line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 7.5em;
 }
 .tool-card-footer {
   display: flex;
