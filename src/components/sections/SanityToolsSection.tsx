@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SectionHeader from '../ui/SectionHeader';
 import ToolCard from '../ui/ToolCard';
+import TechStackCard from '../ui/TechStackCard';
 import { Tool } from '../../types';
 import { getTools } from '../../lib/sanityQueries';
 import './ToolsSection.css';
@@ -61,6 +62,8 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({ title, category
     return <div className="text-white">No tools found for {title}</div>;
   }
 
+  const isTechStack = category === 'tech-stack';
+
   return (
     <section className="pb-4" style={{paddingTop: 0, paddingBottom: '1rem'}}>
       <SectionHeader 
@@ -71,7 +74,11 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({ title, category
       
       <div className="tools-grid">
         {displayedTools.map((tool) => (
-          <ToolCard key={tool.id} tool={tool} />
+          isTechStack ? (
+            <TechStackCard key={tool.id} tool={tool} />
+          ) : (
+            <ToolCard key={tool.id} tool={tool} />
+          )
         ))}
       </div>
     </section>

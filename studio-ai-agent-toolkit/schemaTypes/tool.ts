@@ -10,15 +10,6 @@ export default {
       validation: (Rule: any) => Rule.required(),
     },
     {
-      name: 'logo',
-      title: 'Logo',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-      validation: (Rule: any) => Rule.required(),
-    },
-    {
       name: 'category',
       title: 'Category',
       type: 'string',
@@ -45,10 +36,31 @@ export default {
       validation: (Rule: any) => Rule.required(),
     },
     {
+      name: 'logo',
+      title: 'Logo',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      hidden: ({ document }: any) => document?.category === 'tech-stack',
+      validation: (Rule: any) => Rule.custom((field: any, context: any) => {
+        if (context.document.category !== 'tech-stack' && !field) {
+          return 'Logo is required for non-tech-stack items';
+        }
+        return true;
+      }),
+    },
+    {
       name: 'description',
       title: 'Description',
       type: 'text',
-      validation: (Rule: any) => Rule.required(),
+      hidden: ({ document }: any) => document?.category === 'tech-stack',
+      validation: (Rule: any) => Rule.custom((field: any, context: any) => {
+        if (context.document.category !== 'tech-stack' && !field) {
+          return 'Description is required for non-tech-stack items';
+        }
+        return true;
+      }),
     },
     {
       name: 'type',
@@ -61,30 +73,49 @@ export default {
           { title: 'Freemium', value: 'Freemium' },
         ],
       },
-      validation: (Rule: any) => Rule.required(),
+      hidden: ({ document }: any) => document?.category === 'tech-stack',
+      validation: (Rule: any) => Rule.custom((field: any, context: any) => {
+        if (context.document.category !== 'tech-stack' && !field) {
+          return 'Type is required for non-tech-stack items';
+        }
+        return true;
+      }),
     },
     {
       name: 'rating',
       title: 'Rating',
       type: 'number',
-      validation: (Rule: any) => Rule.required().min(0).max(5),
+      hidden: ({ document }: any) => document?.category === 'tech-stack',
+      validation: (Rule: any) => Rule.custom((field: any, context: any) => {
+        if (context.document.category !== 'tech-stack' && !field) {
+          return 'Rating is required for non-tech-stack items';
+        }
+        return true;
+      }).min(0).max(5),
     },
     {
       name: 'url',
       title: 'URL',
       type: 'url',
-      validation: (Rule: any) => Rule.required(),
+      hidden: ({ document }: any) => document?.category === 'tech-stack',
+      validation: (Rule: any) => Rule.custom((field: any, context: any) => {
+        if (context.document.category !== 'tech-stack' && !field) {
+          return 'URL is required for non-tech-stack items';
+        }
+        return true;
+      }),
     },
   ],
   preview: {
     select: {
       title: 'name',
       media: 'logo',
+      category: 'category'
     },
     prepare(value: Record<string, any>) {
       return {
         title: value.title,
-        media: value.media,
+        media: value.category === 'tech-stack' ? null : value.media,
       };
     },
   },
