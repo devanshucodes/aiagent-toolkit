@@ -67,11 +67,11 @@ export const CommunityCard: React.FC<CommunityCardProps> = ({
           </h3>
         </div>
         
-        <div className="tool-card-categories" style={{display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.5rem', marginTop: '0.5rem'}}>
+        <div className="community-tags" style={{display: 'flex', flexWrap: 'wrap', gap: '0.5rem'}}>
           {tags.map((tag, idx) => (
             <span 
               key={idx} 
-              className="tool-card-category"
+              className="community-tag"
               style={{
                 background: '#3d3c40',
                 color: '#ffffff',
@@ -92,7 +92,13 @@ export const CommunityCard: React.FC<CommunityCardProps> = ({
             fontSize: '0.75rem',
             fontFamily: 'Kode Mono, monospace',
             marginBottom: '1.5rem',
-            lineHeight: '1.5'
+            lineHeight: '1.5',
+            display: '-webkit-box',
+            WebkitLineClamp: 4,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            maxHeight: '6em'
           }}
         >
           {description}
