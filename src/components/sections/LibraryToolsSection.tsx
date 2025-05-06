@@ -5,9 +5,27 @@ import { Tool } from '../../types';
 import { getLibraryTools } from '../../lib/sanityQueries';
 import './ToolsSection.css';
 
+type LibrarySection = 
+  | 'inference-apis'
+  | 'rag'
+  | 'data-processing'
+  | 'memory'
+  | 'compute'
+  | 'observability'
+  | 'web-scraping'
+  | 'hosting'
+  | 'sandboxing'
+  | 'browser-automation'
+  | 'workflow-automation'
+  | 'authentication'
+  | 'payment'
+  | 'blockchain'
+  | 'reasoning'
+  | 'mcp';
+
 interface LibraryToolsSectionProps {
   title: string;
-  section: 'inference' | 'observability' | 'automation';
+  section: LibrarySection;
 }
 
 export const LibraryToolsSection: React.FC<LibraryToolsSectionProps> = ({ title, section }) => {

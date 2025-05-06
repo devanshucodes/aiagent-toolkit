@@ -28,8 +28,8 @@ export async function getTools(category?: string): Promise<Tool[]> {
   }))
 }
 
-export async function getLibraryTools(section: 'inference' | 'observability' | 'automation'): Promise<Tool[]> {
-  const query = `*[_type == "libraryTool" && section == "${section}"]{
+export const getLibraryTools = async (section: string): Promise<Tool[]> => {
+  const query = `*[_type == "libraryTool" && section == $section] {
     _id,
     name,
     "logo": logo.asset->url,
@@ -41,7 +41,9 @@ export async function getLibraryTools(section: 'inference' | 'observability' | '
     url
   }`;
 
-  const tools = await client.fetch(query);
+  const params = { section };
+  const tools = await client.fetch(query, params);
+
   return tools.map((tool: any) => ({
     id: tool._id,
     name: tool.name,
@@ -51,9 +53,9 @@ export async function getLibraryTools(section: 'inference' | 'observability' | '
     description: tool.description,
     type: tool.type,
     rating: tool.rating,
-    url: tool.url,
+    url: tool.url
   }));
-}
+};
 
 export interface Community {
   _id: string;

@@ -32,16 +32,68 @@ const ToolsLibraries: React.FC = () => {
     >
       <div className="space-y-12">
         <LibraryToolsSection 
-          title="Inference & Data Processing Tools" 
-          section="inference" 
+          title="Inference APIs" 
+          section="inference-apis" 
         />
         <LibraryToolsSection 
-          title="Observability & Monitoring Tools" 
+          title="RAG" 
+          section="rag" 
+        />
+        <LibraryToolsSection 
+          title="Data Processing" 
+          section="data-processing" 
+        />
+        <LibraryToolsSection 
+          title="Memory" 
+          section="memory" 
+        />
+        <LibraryToolsSection 
+          title="Compute" 
+          section="compute" 
+        />
+        <LibraryToolsSection 
+          title="Observability" 
           section="observability" 
         />
         <LibraryToolsSection 
-          title="Automation Tools" 
-          section="automation" 
+          title="Web Scraping" 
+          section="web-scraping" 
+        />
+        <LibraryToolsSection 
+          title="Hosting" 
+          section="hosting" 
+        />
+        <LibraryToolsSection 
+          title="Sandboxing" 
+          section="sandboxing" 
+        />
+        <LibraryToolsSection 
+          title="Browser Automation" 
+          section="browser-automation" 
+        />
+        <LibraryToolsSection 
+          title="Workflow Automation" 
+          section="workflow-automation" 
+        />
+        <LibraryToolsSection 
+          title="Authentication" 
+          section="authentication" 
+        />
+        <LibraryToolsSection 
+          title="Payment" 
+          section="payment" 
+        />
+        <LibraryToolsSection 
+          title="Blockchain" 
+          section="blockchain" 
+        />
+        <LibraryToolsSection 
+          title="Reasoning" 
+          section="reasoning" 
+        />
+        <LibraryToolsSection 
+          title="MCP" 
+          section="mcp" 
         />
       </div>
     </PageLayout>

@@ -24,9 +24,22 @@ export default {
       type: 'string',
       options: {
         list: [
-          { title: 'Inference & Data Processing', value: 'inference' },
-          { title: 'Observability & Monitoring', value: 'observability' },
-          { title: 'Automation Tools', value: 'automation' }
+          { title: 'Inference AP/s', value: 'inference-apis' },
+          { title: 'RAG', value: 'rag' },
+          { title: 'Data Processing', value: 'data-processing' },
+          { title: 'Memory', value: 'memory' },
+          { title: 'Compute', value: 'compute' },
+          { title: 'Observability', value: 'observability' },
+          { title: 'Web Scraping', value: 'web-scraping' },
+          { title: 'Hosting', value: 'hosting' },
+          { title: 'Sandboxing', value: 'sandboxing' },
+          { title: 'Browser Automation', value: 'browser-automation' },
+          { title: 'Workflow Automation', value: 'workflow-automation' },
+          { title: 'Authentication', value: 'authentication' },
+          { title: 'Payment', value: 'payment' },
+          { title: 'Blockchain', value: 'blockchain' },
+          { title: 'Reasoning', value: 'reasoning' },
+          { title: 'MCP', value: 'mcp' }
         ],
       },
       validation: (Rule: any) => Rule.required(),
