@@ -31,6 +31,13 @@
   width: 60%;
   margin-bottom: 1rem;
   font-family: 'Kode Mono', monospace;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 6em;
+  line-height: 1.5;
 }
 
 .course-tag {
