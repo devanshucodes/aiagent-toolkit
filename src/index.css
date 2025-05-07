@@ -67,8 +67,7 @@ body {
 .pentagon-search-btn {
   clip-path: polygon(0 0, 100% 0, 100% 80%, 90% 100%, 0 100%);
   border: 1px solid #FF846C;
-  border-left: none !important;
-  margin-left: 0 !important;
+  margin-left: 0.5rem;
   height: 100%;
   box-sizing: border-box;
   background: #7C2B22;
@@ -77,9 +76,32 @@ body {
   align-items: center;
   justify-content: center;
   font-family: 'Kode Mono', monospace;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
+  padding: 0.3rem 1.5rem 0.3rem 1.5rem;
+  min-width: 90px;
   transition: background 0.2s, border 0.2s;
+  position: relative;
+  z-index: 2;
+  overflow: visible;
+}
+
+.pentagon-search-btn::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  bottom: -4px;
+  width: 32px;
+  height: 2px;
+  background: #FF846C;
+  transform: rotate(-32deg);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Remove the :after border entirely */
+.pentagon-search-btn:after {
+  display: none;
 }
 
 .pentagon-search-btn:hover {

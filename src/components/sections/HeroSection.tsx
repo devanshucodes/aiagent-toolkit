@@ -35,10 +35,38 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
               />
               <button
                 type="submit"
-                className="px-5 py-2 bg-red-900/80 hover:bg-red-800 text-white font-mono text-sm border border-red-700 border-l-0 pentagon-search-btn transition-colors duration-200"
-                style={{flex: 'none', borderTopLeftRadius: 0, borderBottomLeftRadius: 0, marginLeft: 0, height: '100%'}}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  padding: 0,
+                  cursor: 'pointer',
+                  outline: 'none',
+                  marginLeft: '0.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  height: '32px'
+                }}
               >
-                Search
+                <svg width="96" height="32" viewBox="0 0 96 32" style={{ display: 'block' }}>
+                  <polygon
+                    points="0,0 96,0 96,25 80,32 0,32"
+                    fill="#7C2B22"
+                    stroke="#FF846C"
+                    strokeWidth="2"
+                  />
+                  <text
+                    x="48"
+                    y="20"
+                    textAnchor="middle"
+                    fill="#fff"
+                    fontFamily="'Kode Mono', monospace"
+                    fontSize="15"
+                    fontWeight="500"
+                    style={{ pointerEvents: 'none', userSelect: 'none' }}
+                  >
+                    Search
+                  </text>
+                </svg>
               </button>
             </form>
           </div>
