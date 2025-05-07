@@ -5,12 +5,12 @@ import '../styles/glossary.css';
 
 const Glossary: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [currentLetter, setCurrentLetter] = useState('#');
+  const [currentLetter, setCurrentLetter] = useState('A');
   const [glossaryItems, setGlossaryItems] = useState<GlossaryTerm[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   
-  const alphabet = '#ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
   useEffect(() => {
     const fetchGlossaryTerms = async () => {
@@ -30,9 +30,7 @@ const Glossary: React.FC = () => {
   }, []);
 
   const filteredItems = glossaryItems.filter(item => {
-    const matchesLetter = currentLetter === '#' 
-      ? !isNaN(Number(item.firstLetter))
-      : item.firstLetter === currentLetter;
+    const matchesLetter = item.firstLetter === currentLetter;
     
     if (searchTerm) {
       return item.term.toLowerCase().includes(searchTerm.toLowerCase());
