@@ -56,7 +56,7 @@ const MainLayout: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white">
+    <div className="min-h-screen flex flex-col bg-black text-white pt-14">
       <Navbar />
       
       <HeroSection onSearch={handleSearch} />

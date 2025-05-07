@@ -52,8 +52,8 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   };
 
   return (
-    <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
+    <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-gray-900'} pt-14`}>
+      <Navbar />
       
       {showHero && <HeroSection onSearch={() => {}} />}
 
