@@ -141,6 +141,23 @@ body {
   background: #27262b;
   color: #9ca3af;
   border: 1px solid #1f2937;
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-option::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 1;
+}
+
+.filter-option:hover::after {
+  opacity: 1;
 }
 
 .filter-option.active {
