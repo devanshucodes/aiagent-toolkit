@@ -34,12 +34,6 @@ const Navbar: React.FC = () => {
               </div>
             </div>
           </div>
-          
-          <div className="flex items-center gap-4">
-            <button className="bg-red-900/80 hover:bg-red-800 text-white px-4 py-1.5 text-xs font-mono uppercase tracking-wider transition-colors duration-200">
-              Submit
-            </button>
-          </div>
         </div>
       </div>
     </nav>

@@ -22,6 +22,19 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
     return <div className="tool-card-rating-lines">{lines}</div>;
   };
 
+  const getTypeClassName = (type: string) => {
+    switch (type.toLowerCase()) {
+      case 'free':
+        return 'tool-card-type-free';
+      case 'paid':
+        return 'tool-card-type-paid';
+      case 'freemium':
+        return 'tool-card-type-freemium';
+      default:
+        return 'tool-card-type-free';
+    }
+  };
+
   return (
     <a 
       href={tool.url} 
@@ -62,7 +75,9 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
         <div className="tool-card-footer">
           <div className="tool-card-footer-row">
             <span className="tool-card-type-label">Type</span>
-            <span className="tool-card-type tool-card-type-free">Free</span>
+            <span className={`tool-card-type ${getTypeClassName(tool.type)}`}>
+              {tool.type}
+            </span>
           </div>
           <div className="tool-card-footer-row">
             <span className="tool-card-rating-label">Rating</span>
