@@ -3,16 +3,20 @@
   border: 1px solid #FF846C40;
   border-radius: 0;                   /* rounded-none */
   overflow: hidden;
-  transition: border-color 0.3s;
+  transition: all 0.3s ease;
   width: 19rem;
   height: 21rem;
   display: flex;
   flex-direction: column;
   justify-content: stretch;
   position: relative;
+  cursor: pointer;
+  text-decoration: none;
 }
 .tool-card:hover {
-  border-color: #FF846C40;
+  border-color: #FF846C;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 132, 108, 0.1);
 }
 .tool-card-inner {
   padding: 0.75rem; /* p-3 */

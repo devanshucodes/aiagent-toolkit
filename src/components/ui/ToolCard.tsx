@@ -23,10 +23,12 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
   };
 
   return (
-    <div className="tool-card">
-      <a href={tool.url} className="tool-card-link pentagon-corner-btn" style={{position: 'absolute', top: 0, right: 0, width: '30px', height: '30px', background: 'rgba(255,255,255,0.10)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2}}>
-        <ExternalLink size={16} color="#fff" />
-      </a>
+    <a 
+      href={tool.url} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className="tool-card"
+    >
       <div className="tool-card-inner" style={{position: 'relative'}}>
         <div className="tool-card-header">
           <div className="tool-card-title-row">
@@ -37,6 +39,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
             />
             <h3 className="tool-card-title">{tool.name}</h3>
           </div>
+          <ExternalLink size={16} color="#fff" className="opacity-50" />
         </div>
         <div className="tool-card-tags">
           {tool.tags.map((tag, index) => (
@@ -67,7 +70,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
           </div>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 
