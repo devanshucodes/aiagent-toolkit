@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PageLayout from '../components/layout/PageLayout';
 import { Play } from 'lucide-react';
-import { courseFilters } from '../data/filterData';
-import { FilterGroup } from '../types';
 import { getCourses, Course } from '../lib/sanityQueries';
 import '../styles/courses-tutorials.css';
 
 const CoursesAndTutorials: React.FC = () => {
-  const [filters, setFilters] = useState<FilterGroup[]>(courseFilters);
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -29,29 +26,8 @@ const CoursesAndTutorials: React.FC = () => {
     fetchCourses();
   }, []);
 
-  const handleToggleFilter = (category: string, id: string) => {
-    setFilters(prevFilters =>
-      prevFilters.map(group =>
-        group.category === category
-          ? {
-              ...group,
-              options: group.options.map(option =>
-                option.id === id
-                  ? { ...option, active: !option.active }
-                  : option
-              )
-            }
-          : group
-      )
-    );
-  };
-
   return (
-    <PageLayout 
-      customFilters={filters} 
-      onToggleFilter={handleToggleFilter}
-      isToolsPage={true}
-    >
+    <PageLayout showSidebar={false}>
       <div className="space-y-8">
         <div className="space-y-6">
           {loading ? (
