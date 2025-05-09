@@ -107,8 +107,8 @@ export const filterGroups: FilterGroup[] = [
 ];
 
 export const navItems = [
-  { id: '', label: 'Agents' },
-  { id: 'tools-libraries', label: 'Tools & Libraries' },
+  { id: '', label: 'Tools & Libraries' },
+  { id: 'agents', label: 'Agents' },
   { id: 'communities', label: 'Communities' },
   { id: 'map', label: 'Map' },
   { id: 'courses-tutorials', label: 'Courses & Tutorials' },

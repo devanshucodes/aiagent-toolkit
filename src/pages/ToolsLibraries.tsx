@@ -30,7 +30,7 @@ const ToolsLibraries: React.FC = () => {
       onToggleFilter={handleToggleFilter}
       isToolsPage={true}
     >
-      <div className="space-y-12">
+      <div className="space-y-4">
         <LibraryToolsSection 
           title="Inference APIs" 
           section="inference-apis" 

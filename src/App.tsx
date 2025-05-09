@@ -13,8 +13,8 @@ function App() {
     <ScreenSizeCheck>
       <Router>
         <Routes>
-          <Route path="/" element={<MainLayout />} />
-          <Route path="/tools-libraries" element={<ToolsLibraries />} />
+          <Route path="/" element={<ToolsLibraries />} />
+          <Route path="/agents" element={<MainLayout />} />
           <Route path="/communities" element={<Communities />} />
           <Route path="/map" element={<Map />} />
           <Route path="/courses-tutorials" element={<CoursesAndTutorials />} />

@@ -76,7 +76,7 @@ export const LibraryToolsSection: React.FC<LibraryToolsSectionProps> = ({ title,
   }
 
   return (
-    <section className="pb-4" style={{paddingTop: 0, paddingBottom: '1rem'}}>
+    <section>
       <SectionHeader 
         title={title} 
         onNext={nextPage} 
