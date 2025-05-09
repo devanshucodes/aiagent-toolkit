@@ -31,24 +31,24 @@ export const CommunityCard: React.FC<CommunityCardProps> = ({
     <div 
       className="tool-card"
       style={{
-        width: '19rem',
-        height: '20rem',
+        width: '100%',
+        height: '22rem',
         background: '#27262b',
         border: '1px solid #FF846C40',
         margin: '0'
       }}
     >
-      <div className="tool-card-inner" style={{padding: '1rem', height: '100%', position: 'relative'}}>
-        <div className="tool-card-header" style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginBottom: '0.5rem'}}>
+      <div className="tool-card-inner" style={{padding: '1.25rem', height: '100%', position: 'relative'}}>
+        <div className="tool-card-header" style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginBottom: '0.75rem'}}>
           <div 
             className="tool-card-logo"
             style={{
-              width: '3rem',
-              height: '3rem',
+              width: '3.5rem',
+              height: '3.5rem',
               background: '#3d3c40',
               borderRadius: '4px',
               overflow: 'hidden',
-              marginBottom: '0.75rem'
+              marginBottom: '1rem'
             }}
           >
             <img src={logo} alt={name} className="w-full h-full object-cover" />

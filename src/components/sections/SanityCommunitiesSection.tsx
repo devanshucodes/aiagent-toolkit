@@ -11,8 +11,6 @@ export const SanityCommunitiesSection: React.FC<SanityCommunitiesSectionProps> =
   const [communities, setCommunities] = useState<Community[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
 
   useEffect(() => {
     const fetchCommunities = async () => {
@@ -32,27 +30,10 @@ export const SanityCommunitiesSection: React.FC<SanityCommunitiesSectionProps> =
     fetchCommunities();
   }, []);
 
-  const totalPages = Math.ceil(communities.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentCommunities = communities.slice(startIndex, endIndex);
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(prev => prev + 1);
-    }
-  };
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(prev => prev - 1);
-    }
-  };
-
   if (loading) {
     return (
       <div>
-        <SectionHeader title={title} onNext={handleNextPage} onPrevious={handlePrevPage} />
+        <SectionHeader title={title} />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {[...Array(6)].map((_, index) => (
             <div key={index} className="animate-pulse">
@@ -67,7 +48,7 @@ export const SanityCommunitiesSection: React.FC<SanityCommunitiesSectionProps> =
   if (error) {
     return (
       <div>
-        <SectionHeader title={title} onNext={handleNextPage} onPrevious={handlePrevPage} />
+        <SectionHeader title={title} />
         <div className="text-red-500 text-center">{error}</div>
       </div>
     );
@@ -75,9 +56,9 @@ export const SanityCommunitiesSection: React.FC<SanityCommunitiesSectionProps> =
 
   return (
     <div>
-      <SectionHeader title={title} onNext={handleNextPage} onPrevious={handlePrevPage} />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-        {currentCommunities.map((community) => (
+      <SectionHeader title={title} />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+        {communities.map((community) => (
           <CommunityCard
             key={community._id}
             name={community.name}
