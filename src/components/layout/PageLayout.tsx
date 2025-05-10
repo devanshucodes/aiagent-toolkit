@@ -24,10 +24,34 @@ const PageLayout: React.FC<PageLayoutProps> = ({
 }) => {
   const [theme, setTheme] = useState<ThemeMode>('dark');
   const [filters, setFilters] = useState<FilterGroup[]>(customFilters || filterGroups);
-  const [searchQuery, setSearchQuery] = useState('');
   
   const toggleTheme = () => {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
+
+  const handleSearch = (query: string) => {
+    // Get the current page from the URL
+    const currentPath = window.location.pathname;
+    let currentPage = 'home';
+    
+    if (currentPath.includes('tools')) {
+      currentPage = 'tools';
+    } else if (currentPath.includes('agents')) {
+      currentPage = 'agents';
+    } else if (currentPath.includes('communities')) {
+      currentPage = 'communities';
+    } else if (currentPath.includes('courses')) {
+      currentPage = 'courses';
+    }
+
+    // Dispatch a custom event with the current page and search query
+    const searchEvent = new CustomEvent('globalSearch', {
+      detail: {
+        query,
+        page: currentPage
+      }
+    });
+    window.dispatchEvent(searchEvent);
   };
 
   const toggleFilter = (category: string, id: string) => {
@@ -55,7 +79,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
     <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-gray-900'} pt-14`}>
       <Navbar />
       
-      {showHero && <HeroSection onSearch={() => {}} />}
+      {showHero && <HeroSection onSearch={handleSearch} />}
 
       <div className="flex-1 flex flex-col lg:flex-row max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
         {showSidebar && (

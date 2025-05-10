@@ -26,15 +26,19 @@ type LibrarySection =
 interface LibraryToolsSectionProps {
   title: string;
   section: LibrarySection;
+  searchQuery?: string;
 }
 
-export const LibraryToolsSection: React.FC<LibraryToolsSectionProps> = ({ title, section }) => {
+export const LibraryToolsSection: React.FC<LibraryToolsSectionProps> = ({ 
+  title, 
+  section,
+  searchQuery = ''
+}) => {
   const [tools, setTools] = useState<Tool[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(0);
   const itemsPerPage = 3;
-  const totalPages = Math.ceil(tools.length / itemsPerPage);
   
   useEffect(() => {
     const fetchTools = async () => {
@@ -54,25 +58,51 @@ export const LibraryToolsSection: React.FC<LibraryToolsSectionProps> = ({ title,
     fetchTools();
   }, [section]);
 
+  // Reset pagination when search query changes
+  useEffect(() => {
+    setPage(0);
+  }, [searchQuery]);
+
+  const filteredTools = tools.filter(tool => {
+    if (!searchQuery) return true;
+    
+    const searchLower = searchQuery.toLowerCase();
+    return (
+      tool.name.toLowerCase().includes(searchLower) ||
+      tool.description.toLowerCase().includes(searchLower) ||
+      tool.tags.some(tag => tag.toLowerCase().includes(searchLower))
+    );
+  });
+
+  const totalPages = Math.ceil(filteredTools.length / itemsPerPage);
+  
   const nextPage = () => {
-    setPage((prev) => (prev + 1) % totalPages);
+    if (totalPages > 0) {
+      setPage((prev) => (prev + 1) % totalPages);
+    }
   };
   
   const prevPage = () => {
-    setPage((prev) => (prev - 1 + totalPages) % totalPages);
+    if (totalPages > 0) {
+      setPage((prev) => (prev - 1 + totalPages) % totalPages);
+    }
   };
   
-  const displayedTools = tools.slice(
+  const displayedTools = filteredTools.slice(
     page * itemsPerPage, 
     (page + 1) * itemsPerPage
   );
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="text-white">Loading...</div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className="text-red-500">Error: {error}</div>;
+  }
+
+  if (filteredTools.length === 0) {
+    return null;
   }
 
   return (

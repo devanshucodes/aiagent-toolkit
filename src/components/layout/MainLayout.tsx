@@ -1,15 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import HeroSection from '../sections/HeroSection';
 import SanityToolsSection from '../sections/SanityToolsSection';
 import { filterGroups } from '../../data/filterData';
 import { FilterGroup } from '../../types';
-import { createPortal } from 'react-dom';
 
 const MainLayout: React.FC = () => {
   const [filters, setFilters] = useState<FilterGroup[]>(filterGroups);
   const [searchQuery, setSearchQuery] = useState('');
+  
+  // Initialize search from URL if present
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const query = searchParams.get('search');
+    if (query) {
+      setSearchQuery(query);
+    }
+  }, []);
+
+  // Listen for search events from the parent
+  useEffect(() => {
+    const handleGlobalSearch = (event: CustomEvent) => {
+      const { query } = event.detail;
+      setSearchQuery(query);
+    };
+
+    window.addEventListener('globalSearch' as any, handleGlobalSearch);
+    return () => {
+      window.removeEventListener('globalSearch' as any, handleGlobalSearch);
+    };
+  }, []);
   
   const toggleFilter = (category: string, id: string) => {
     setFilters(prevFilters => 
@@ -30,7 +51,25 @@ const MainLayout: React.FC = () => {
   
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    // Implement search logic here
+    
+    // Update URL with search query
+    const searchParams = new URLSearchParams(window.location.search);
+    if (query) {
+      searchParams.set('search', query);
+    } else {
+      searchParams.delete('search');
+    }
+    const newUrl = `${window.location.pathname}${searchParams.toString() ? '?' + searchParams.toString() : ''}`;
+    window.history.pushState({}, '', newUrl);
+
+    // Dispatch a custom event with the current page and search query
+    const searchEvent = new CustomEvent('globalSearch', {
+      detail: {
+        query,
+        page: 'agents'
+      }
+    });
+    window.dispatchEvent(searchEvent);
   };
   
   // Add special CSS for the pixel font effect
@@ -71,39 +110,48 @@ const MainLayout: React.FC = () => {
             <div>
               <SanityToolsSection 
                 title="AI Agent Tools" 
-                category="ai-agent-tools" 
+                category="ai-agent-tools"
+                searchQuery={searchQuery}
               />
               <SanityToolsSection 
                 title="Top AI Agent Apps" 
-                category="top-ai-agent-apps" 
+                category="top-ai-agent-apps"
+                searchQuery={searchQuery}
               />
               <SanityToolsSection 
                 title="Top LLMs" 
-                category="top-llms" 
+                category="top-llms"
+                searchQuery={searchQuery}
               />
               <SanityToolsSection 
                 title="Web3 AI Agent SDKs" 
-                category="web3-ai-agent-sdks" 
+                category="web3-ai-agent-sdks"
+                searchQuery={searchQuery}
               />
               <SanityToolsSection 
                 title="AI Agent Framework" 
-                category="ai-agent-framework" 
+                category="ai-agent-framework"
+                searchQuery={searchQuery}
               />
               <SanityToolsSection 
                 title="AI Agent Infrastructure" 
-                category="ai-agent-infrastructure" 
+                category="ai-agent-infrastructure"
+                searchQuery={searchQuery}
               />
               <SanityToolsSection 
                 title="AI Agent Launchpads" 
-                category="ai-agent-launchpads" 
+                category="ai-agent-launchpads"
+                searchQuery={searchQuery}
               />
               <SanityToolsSection 
                 title="Automation" 
-                category="automation" 
+                category="automation"
+                searchQuery={searchQuery}
               />
               <SanityToolsSection 
                 title="Tech Stack" 
-                category="tech-stack" 
+                category="tech-stack"
+                searchQuery={searchQuery}
               />
             </div>
           </main>

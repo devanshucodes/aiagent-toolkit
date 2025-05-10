@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchBar from '../ui/SearchBar';
 import heroImage from '../../assets/images/ea4a31389d4a5701e70735cf16c0c5bf5de76482.png';
 
@@ -7,6 +7,19 @@ interface HeroSectionProps {
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
+  const [searchInput, setSearchInput] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchInput.trim()) {
+      onSearch(searchInput.trim());
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(e.target.value);
+  };
+
   return (
     <div className="relative bg-black overflow-hidden" style={{border: 'none'}}>
       <div className="absolute inset-0 z-0">
@@ -26,12 +39,23 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
               A curated collection of the best AI tools, frameworks, and resources
               for building intelligent agents
             </p>
-            <form style={{display: 'flex', width: '100%', maxWidth: 600, margin: '0 auto', alignItems: 'stretch'}}>
+            <form onSubmit={handleSubmit} style={{display: 'flex', width: '100%', maxWidth: 600, margin: '0 auto', alignItems: 'stretch'}}>
               <input
                 type="text"
+                value={searchInput}
+                onChange={handleInputChange}
                 placeholder="Search tools, frameworks, resources ..."
                 className="search-box font-mono text-sm focus:outline-none focus:ring-0"
-                style={{flex: 1, borderTopRightRadius: 0, borderBottomRightRadius: 0, borderRight: 'none'}}
+                style={{
+                  flex: 1,
+                  borderTopRightRadius: 0,
+                  borderBottomRightRadius: 0,
+                  borderRight: 'none',
+                  padding: '0.5rem 1rem',
+                  backgroundColor: '#1a1a1a',
+                  color: 'white',
+                  border: '1px solid #333'
+                }}
               />
               <button
                 type="submit"

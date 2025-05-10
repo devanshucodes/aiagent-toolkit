@@ -9,27 +9,31 @@ import './ToolsSection.css';
 interface SanityToolsSectionProps {
   title: string;
   category?: string;
+  searchQuery?: string;
 }
 
-const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({ title, category }) => {
+const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({ 
+  title, 
+  category,
+  searchQuery = ''
+}) => {
   const [tools, setTools] = useState<Tool[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(0);
   const itemsPerPage = 3;
-  const totalPages = Math.ceil(tools.length / itemsPerPage);
   
   useEffect(() => {
     const fetchTools = async () => {
       try {
-        console.log(`Fetching tools for category: ${category}`);
+        setLoading(true);
         const fetchedTools = await getTools(category);
-        console.log(`Fetched tools:`, fetchedTools);
         setTools(fetchedTools);
-        setLoading(false);
+        setError(null);
       } catch (err) {
         console.error('Error fetching tools:', err);
         setError('Failed to fetch tools');
+      } finally {
         setLoading(false);
       }
     };
@@ -37,15 +41,37 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({ title, category
     fetchTools();
   }, [category]);
 
+  // Reset pagination when search query changes
+  useEffect(() => {
+    setPage(0);
+  }, [searchQuery]);
+
+  const filteredTools = tools.filter(tool => {
+    if (!searchQuery) return true;
+    
+    const searchLower = searchQuery.toLowerCase();
+    return (
+      (tool.name && tool.name.toLowerCase().includes(searchLower)) ||
+      (tool.description && tool.description.toLowerCase().includes(searchLower)) ||
+      (Array.isArray(tool.tags) && tool.tags.some(tag => tag && tag.toLowerCase().includes(searchLower)))
+    );
+  });
+
+  const totalPages = Math.ceil(filteredTools.length / itemsPerPage);
+  
   const nextPage = () => {
-    setPage((prev) => (prev + 1) % totalPages);
+    if (totalPages > 0) {
+      setPage((prev) => (prev + 1) % totalPages);
+    }
   };
   
   const prevPage = () => {
-    setPage((prev) => (prev - 1 + totalPages) % totalPages);
+    if (totalPages > 0) {
+      setPage((prev) => (prev - 1 + totalPages) % totalPages);
+    }
   };
   
-  const displayedTools = tools.slice(
+  const displayedTools = filteredTools.slice(
     page * itemsPerPage, 
     (page + 1) * itemsPerPage
   );
@@ -58,8 +84,8 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({ title, category
     return <div className="text-red-500">Error: {error}</div>;
   }
 
-  if (tools.length === 0) {
-    return <div className="text-white">No tools found for {title}</div>;
+  if (filteredTools.length === 0) {
+    return null;
   }
 
   const isTechStack = category === 'tech-stack';
