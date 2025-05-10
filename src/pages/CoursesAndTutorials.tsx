@@ -8,6 +8,7 @@ const CoursesAndTutorials: React.FC = () => {
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -25,6 +26,41 @@ const CoursesAndTutorials: React.FC = () => {
 
     fetchCourses();
   }, []);
+
+  // Initialize search from URL if present
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get('q');
+    if (query) {
+      setSearchQuery(query);
+    }
+  }, []);
+
+  // Listen for global search events
+  useEffect(() => {
+    const handleGlobalSearch = (event: CustomEvent) => {
+      if (event.detail.page === 'courses') {
+        setSearchQuery(event.detail.query);
+      }
+    };
+
+    window.addEventListener('globalSearch', handleGlobalSearch as EventListener);
+    return () => {
+      window.removeEventListener('globalSearch', handleGlobalSearch as EventListener);
+    };
+  }, []);
+
+  const filteredCourses = courses.filter(course => {
+    if (!searchQuery) return true;
+    
+    const searchLower = searchQuery.toLowerCase();
+    return (
+      course.title.toLowerCase().includes(searchLower) ||
+      course.description.toLowerCase().includes(searchLower) ||
+      course.author.toLowerCase().includes(searchLower) ||
+      course.tags.some(tag => tag.toLowerCase().includes(searchLower))
+    );
+  });
 
   return (
     <PageLayout showSidebar={false}>
@@ -57,8 +93,10 @@ const CoursesAndTutorials: React.FC = () => {
                 </div>
               </div>
             ))
+          ) : filteredCourses.length === 0 ? (
+            null
           ) : (
-            courses.map((course) => (
+            filteredCourses.map((course) => (
               <div key={course._id} className="course-card">
                 <div className="course-info">
                   <h3 className="course-title">{course.title}</h3>

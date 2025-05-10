@@ -27,14 +27,6 @@ const Map: React.FC = () => {
 
   return (
     <PageLayout showSidebar={false} showHero={true}>
-      <div style={{ width: '100%', marginBottom: '2.5rem' }}>
-        <input
-          type="text"
-          placeholder="Search Ecosystem"
-          className="search-box font-mono text-sm focus:outline-none focus:ring-0"
-          style={{ width: '420px', background: '#0F0E14', color: '#b0b0b0', border: '1px solid #35343a', padding: '0.75rem 1.2rem', fontFamily: 'Kode Mono, monospace' }}
-        />
-      </div>
       <div className="ecosystem-map-section">
         <div className="ecosystem-map-inner">
           <h1 className="ecosystem-map-title">
