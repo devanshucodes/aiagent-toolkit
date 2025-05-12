@@ -52,6 +52,8 @@ const Agents: React.FC = () => {
       customFilters={filters} 
       onToggleFilter={handleToggleFilter}
     >
+      {/* Filter section and tool cards below */}
+      {/** The filter section is rendered by the Sidebar in PageLayout, so no need to move it here. The bar will now appear above the filters visually. */}
       <div className="space-y-4">
         <SanityToolsSection 
           title="AI Agent Tools" 
