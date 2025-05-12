@@ -129,7 +129,7 @@ const ToolsLibraries: React.FC = () => {
             {/* Headline and category bar */}
             <div className="flex items-stretch gap-6 w-full">
               {/* Left: Headline */}
-              <div className="flex items-start min-w-[160px] pr-2">
+              <div className="flex items-start min-w-[160px] pl-8 pr-6">
                 <span className="text-gray-300 font-mono text-lg font-medium">Agent<br />Categories</span>
               </div>
               {/* Spacer for divider */}

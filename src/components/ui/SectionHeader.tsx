@@ -18,7 +18,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 }) => {
   return (
     <div className="flex items-center mb-2 justify-between">
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 pl-4">
         <h2 className="text-2xl font-bold text-white" style={{fontFamily: 'Kode Mono, monospace'}}>{title}</h2>
         {onShowMore && (
           <button
