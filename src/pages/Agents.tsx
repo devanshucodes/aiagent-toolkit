@@ -112,14 +112,9 @@ const Agents: React.FC = () => {
       aboveContent={
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 relative">
           <hr className="border-t border-gray-700 opacity-70 mb-0" />
-          <div className="w-full py-2 mb-1 relative flex">
-            <div className="absolute left-[180px] top-0 bottom-0 w-px bg-gray-700 opacity-70 z-10" />
-            <div className="flex items-stretch gap-6 w-full">
-              <div className="flex items-start min-w-[160px] pr-2">
-                <span className="text-gray-300 font-mono text-lg font-medium">Agent<br />Categories</span>
-              </div>
-              <div style={{ width: '1.5px' }} />
-              <div className="flex flex-wrap gap-2 justify-end flex-1">
+          <div className="w-full py-2 mb-1 relative">
+            <div className="flex items-center justify-center">
+              <div className="flex flex-wrap gap-2 justify-center">
                 {AGENT_CATEGORIES.map((cat) => (
                   <button
                     key={cat}
