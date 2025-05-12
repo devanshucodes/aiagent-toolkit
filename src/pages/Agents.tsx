@@ -18,10 +18,22 @@ const AGENT_CATEGORIES = [
 
 type AgentCategory = typeof AGENT_CATEGORIES[number];
 
+// Map category buttons to section IDs
+const CATEGORY_TO_SECTION = {
+  'Agent Tools': 'ai-agent-tools',
+  'Top LLMs': 'top-llms',
+  'Web3 AI Agent SDKs': 'web3-ai-agent-sdks',
+  'Agent Framework': 'ai-agent-framework',
+  'Agent Infrastructure': 'ai-agent-infrastructure',
+  'Agent Launchpads': 'ai-agent-launchpads',
+  'Automation': 'automation',
+  'Tech Stack': 'tech-stack',
+} as const;
+
 const Agents: React.FC = () => {
   const [filters, setFilters] = useState<FilterGroup[]>(filterGroups);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   // Initialize search from URL if present
   useEffect(() => {
@@ -63,8 +75,27 @@ const Agents: React.FC = () => {
   };
 
   const handleCategoryClick = (category: string) => {
-    setSelectedCategory(category);
+    setSelectedCategories(prev => {
+      const isSelected = prev.includes(category);
+      if (isSelected) {
+        return prev.filter(cat => cat !== category);
+      } else {
+        return [...prev, category];
+      }
+    });
   };
+
+  const sections = [
+    { title: "AI Agent Tools", category: "ai-agent-tools" },
+    { title: "Top AI Agent Apps", category: "top-ai-agent-apps" },
+    { title: "Top LLMs", category: "top-llms" },
+    { title: "Web3 AI Agent SDKs", category: "web3-ai-agent-sdks" },
+    { title: "AI Agent Framework", category: "ai-agent-framework" },
+    { title: "AI Agent Infrastructure", category: "ai-agent-infrastructure" },
+    { title: "AI Agent Launchpads", category: "ai-agent-launchpads" },
+    { title: "Automation", category: "automation" },
+    { title: "Tech Stack", category: "tech-stack" },
+  ];
 
   return (
     <PageLayout 
@@ -86,7 +117,7 @@ const Agents: React.FC = () => {
                     key={cat}
                     onClick={() => handleCategoryClick(cat)}
                     className={`agents-btn px-4 py-2 text-sm font-mono whitespace-nowrap ${
-                      selectedCategory === cat ? 'active' : ''
+                      selectedCategories.includes(cat) ? 'active' : ''
                     }`}
                   >
                     {cat}
@@ -101,51 +132,20 @@ const Agents: React.FC = () => {
     >
       {/* Main content: filters and cards */}
       <div className="space-y-4">
-        <SanityToolsSection 
-          title="AI Agent Tools" 
-          category="ai-agent-tools"
-          searchQuery={searchQuery}
-        />
-        <SanityToolsSection 
-          title="Top AI Agent Apps" 
-          category="top-ai-agent-apps"
-          searchQuery={searchQuery}
-        />
-        <SanityToolsSection 
-          title="Top LLMs" 
-          category="top-llms"
-          searchQuery={searchQuery}
-        />
-        <SanityToolsSection 
-          title="Web3 AI Agent SDKs" 
-          category="web3-ai-agent-sdks"
-          searchQuery={searchQuery}
-        />
-        <SanityToolsSection 
-          title="AI Agent Framework" 
-          category="ai-agent-framework"
-          searchQuery={searchQuery}
-        />
-        <SanityToolsSection 
-          title="AI Agent Infrastructure" 
-          category="ai-agent-infrastructure"
-          searchQuery={searchQuery}
-        />
-        <SanityToolsSection 
-          title="AI Agent Launchpads" 
-          category="ai-agent-launchpads"
-          searchQuery={searchQuery}
-        />
-        <SanityToolsSection 
-          title="Automation" 
-          category="automation"
-          searchQuery={searchQuery}
-        />
-        <SanityToolsSection 
-          title="Tech Stack" 
-          category="tech-stack"
-          searchQuery={searchQuery}
-        />
+        {sections
+          .filter(section => 
+            selectedCategories.length === 0 || 
+            selectedCategories.some(cat => CATEGORY_TO_SECTION[cat as AgentCategory] === section.category)
+          )
+          .map(section => (
+            <SanityToolsSection 
+              key={section.category}
+              title={section.title}
+              category={section.category}
+              searchQuery={searchQuery}
+            />
+          ))
+        }
       </div>
     </PageLayout>
   );
