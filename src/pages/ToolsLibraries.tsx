@@ -53,37 +53,52 @@ const ToolsLibraries: React.FC = () => {
       onToggleFilter={handleToggleFilter}
       isToolsPage={true}
       aboveContent={
-        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
-          <div className="w-full py-2 mb-1">
-            <div className="flex flex-wrap gap-2 justify-end">
-              {[
-                'Inference APIs',
-                'RAG',
-                'Data Processing',
-                'Memory',
-                'Compute',
-                'Observability',
-                'Web Scraping',
-                'Hosting',
-                'Sandboxing',
-                'Browser Automation',
-                'Workflow Automation',
-                'Authentication',
-                'Payment',
-                'Blockchain',
-                'Reasoning',
-                'MCP',
-              ].map((cat) => (
-                <button
-                  key={cat}
-                  className="filter-option px-4 py-2 text-sm font-mono whitespace-nowrap"
-                >
-                  {cat}
-                </button>
-              ))}
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 relative">
+          {/* Top horizontal line */}
+          <hr className="border-t border-gray-700 opacity-70 mb-0" />
+          <div className="w-full py-2 mb-1 relative flex">
+            {/* Vertical divider (absolute, full height) */}
+            <div className="absolute left-[180px] top-0 bottom-0 w-px bg-gray-700 opacity-70 z-10" />
+            {/* Headline and category bar */}
+            <div className="flex items-stretch gap-6 w-full">
+              {/* Left: Headline */}
+              <div className="flex items-start min-w-[160px] pr-2">
+                <span className="text-gray-300 font-mono text-lg font-medium">Agent<br />Categories</span>
+              </div>
+              {/* Spacer for divider */}
+              <div style={{ width: '1.5px' }} />
+              {/* Right: Category buttons */}
+              <div className="flex flex-wrap gap-2 justify-end flex-1">
+                {[
+                  'Inference APIs',
+                  'RAG',
+                  'Data Processing',
+                  'Memory',
+                  'Compute',
+                  'Observability',
+                  'Web Scraping',
+                  'Hosting',
+                  'Sandboxing',
+                  'Browser Automation',
+                  'Workflow Automation',
+                  'Authentication',
+                  'Payment',
+                  'Blockchain',
+                  'Reasoning',
+                  'MCP',
+                ].map((cat) => (
+                  <button
+                    key={cat}
+                    className="filter-option px-4 py-2 text-sm font-mono whitespace-nowrap"
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
-          <hr className="border-t border-gray-700 opacity-70 mb-2" />
+          {/* Bottom horizontal line */}
+          <hr className="border-t border-gray-700 opacity-70 mt-0 mb-2" />
         </div>
       }
     >
