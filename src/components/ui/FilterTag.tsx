@@ -9,7 +9,7 @@ interface FilterTagProps {
 const FilterTag: React.FC<FilterTagProps> = ({ option, onToggle }) => {
   return (
     <button
-      className={`filter-option px-3 py-1 text-xs font-mono mr-2 mb-2 border transition-all duration-200 ${option.active ? 'active' : ''}`}
+      className={`agents-filter-tag px-3 py-1 text-xs font-mono mr-2 mb-2 ${option.active ? 'active' : ''}`}
       onClick={() => onToggle(option.id)}
     >
       {option.label}

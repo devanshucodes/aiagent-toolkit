@@ -22,6 +22,7 @@ const Map: React.FC = () => {
     const fetchEcosystemMap = async () => {
       try {
         setLoading(true);
+        console.log('Fetching data for category:', selectedCategory);
         const data = await getEcosystemMap(selectedCategory);
         console.log('Received map data:', data);
         
@@ -74,9 +75,14 @@ const Map: React.FC = () => {
                   <button
                     key={cat}
                     onClick={() => setSelectedCategory(cat)}
-                    className={`filter-option px-4 py-2 text-sm font-mono whitespace-nowrap ${
-                      selectedCategory === cat ? 'bg-[#3a2321] text-[#e07a6c]' : ''
+                    aria-pressed={selectedCategory === cat}
+                    className={`ecosystem-map-btn px-4 py-2 text-sm font-mono whitespace-nowrap ${
+                      selectedCategory === cat ? 'active' : ''
                     }`}
+                    style={{
+                      transition: 'all 0.2s ease',
+                      position: 'relative',
+                    }}
                   >
                     {cat}
                   </button>

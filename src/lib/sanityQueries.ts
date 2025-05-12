@@ -134,6 +134,9 @@ export const getEcosystemMap = async (category: string = 'AI x Crypto Map'): Pro
   const params = { mapTitle };
   console.log('Fetching map for category:', category);
   console.log('Looking for map with title:', mapTitle);
+  console.log('Query:', query);
+  console.log('Params:', params);
+  
   const result = await client.fetch(query, params);
   console.log('Raw Sanity result:', result);
   

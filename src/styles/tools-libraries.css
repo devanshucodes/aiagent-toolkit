@@ -1,0 +1,27 @@
+.tools-library-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.tools-library-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 1;
+}
+
+.tools-library-btn:hover::after {
+  opacity: 1;
+}
+
+.tools-library-btn.active {
+  background: #3a2323;
+  color: #fff;
+  border: 1.5px solid #a15a4a;
+  box-shadow: 0 0 0 2px #a15a4a33;
+} 

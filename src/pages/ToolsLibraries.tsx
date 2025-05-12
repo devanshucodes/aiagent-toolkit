@@ -3,6 +3,7 @@ import PageLayout from '../components/layout/PageLayout';
 import { LibraryToolsSection } from '../components/sections/LibraryToolsSection';
 import { toolsFilters } from '../data/filterData';
 import { FilterGroup } from '../types';
+import '../styles/tools-libraries.css';
 
 const ToolsLibraries: React.FC = () => {
   const [filters, setFilters] = useState<FilterGroup[]>(toolsFilters);
@@ -89,7 +90,7 @@ const ToolsLibraries: React.FC = () => {
                 ].map((cat) => (
                   <button
                     key={cat}
-                    className="filter-option px-4 py-2 text-sm font-mono whitespace-nowrap"
+                    className="tools-library-btn px-4 py-2 text-sm font-mono whitespace-nowrap border border-[#1f2937] bg-[#27262b] text-[#9ca3af] hover:border-[#404040]"
                   >
                     {cat}
                   </button>

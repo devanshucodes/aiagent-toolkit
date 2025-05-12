@@ -1,0 +1,114 @@
+.agents-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  border: 1px solid #1f2937;
+  background: #27262b;
+  color: #9ca3af;
+}
+
+.agents-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 1;
+}
+
+.agents-btn:hover::after {
+  opacity: 1;
+}
+
+.agents-btn:hover {
+  border-color: #404040;
+}
+
+.agents-btn.active {
+  background: #3a2323;
+  color: #fff;
+  border: 1.5px solid #a15a4a;
+  box-shadow: 0 0 0 2px #a15a4a33;
+}
+
+/* Filter Tag Styles */
+.agents-filter-tag {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  border: 1px solid #1f2937;
+  background: #27262b;
+  color: #9ca3af;
+  display: inline-flex;
+  align-items: center;
+}
+
+.agents-filter-tag::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 1;
+}
+
+.agents-filter-tag:hover::after {
+  opacity: 1;
+}
+
+.agents-filter-tag:hover {
+  border-color: #404040;
+}
+
+.agents-filter-tag.active {
+  background: #3a2323;
+  color: #fff;
+  border: 1.5px solid #a15a4a;
+  box-shadow: 0 0 0 2px #a15a4a33;
+}
+
+/* Filter Sidebar Styles */
+.agents-filter-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  border: 1px solid #1f2937;
+  background: #27262b;
+  color: #9ca3af;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-family: 'Kode Mono', monospace;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+.agents-filter-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 1;
+}
+
+.agents-filter-btn:hover::after {
+  opacity: 1;
+}
+
+.agents-filter-btn:hover {
+  border-color: #404040;
+}
+
+.agents-filter-btn.active {
+  background: #3a2323;
+  color: #fff;
+  border: 1.5px solid #a15a4a;
+  box-shadow: 0 0 0 2px #a15a4a33;
+} 
