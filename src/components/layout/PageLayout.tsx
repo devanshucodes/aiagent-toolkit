@@ -96,7 +96,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
           </div>
         )}
         <div className="flex-1">
-          <main className="flex-1 overflow-auto p-4 lg:p-8">
+          <main className="flex-1 overflow-auto">
             {children}
           </main>
         </div>

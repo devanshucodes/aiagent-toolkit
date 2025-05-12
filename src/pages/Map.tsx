@@ -26,8 +26,38 @@ const Map: React.FC = () => {
   }, []);
 
   return (
-    <PageLayout showSidebar={false} showHero={true}>
-      <div className="ecosystem-map-section">
+    <PageLayout 
+      showSidebar={false} 
+      showHero={true}
+      aboveContent={
+        <div className="max-w-7xl mx-auto w-full relative">
+          <div className="w-full py-2 mb-1 relative flex">
+            {/* Headline and category bar */}
+            <div className="flex items-stretch gap-6 w-full">
+              {/* Spacer for divider (to align with other pages) */}
+              <div style={{ minWidth: '1.5px' }} />
+              {/* Right: Category buttons */}
+              <div className="flex flex-wrap gap-2 justify-center flex-1">
+                {[
+                  'AI x Crypto Map',
+                  'AI Agent Market Map',
+                  'AI Agent Infra Map',
+                  'MCP Market Map',
+                ].map((cat) => (
+                  <button
+                    key={cat}
+                    className="filter-option px-4 py-2 text-sm font-mono whitespace-nowrap"
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <div className="ecosystem-map-section" style={{ marginTop: '0rem' }}>
         <div className="ecosystem-map-inner">
           <h1 className="ecosystem-map-title">
             {loading ? 'Loading...' : ecosystemMap?.title || 'Web3 AI Ecosystem Map'}
@@ -75,7 +105,7 @@ const Map: React.FC = () => {
                       <div key={idx} className="ecosystem-card-item">
                         {item.logo ? (
                           <img 
-                            src={item.logo} 
+                            src={typeof item.logo === 'string' ? item.logo : item.logo?.asset?.url} 
                             alt={`${item.name} logo`} 
                             className="ecosystem-card-icon"
                             style={{ objectFit: 'cover', borderRadius: '4px' }}
