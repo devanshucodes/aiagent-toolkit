@@ -64,7 +64,7 @@ const CoursesAndTutorials: React.FC = () => {
 
   return (
     <PageLayout showSidebar={false}>
-      <div className="space-y-8">
+      <div className="space-y-8 mt-8">
         <div className="space-y-6">
           {loading ? (
             // Loading skeleton

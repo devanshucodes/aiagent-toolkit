@@ -29,10 +29,12 @@ const Communities: React.FC = () => {
 
   return (
     <PageLayout showSidebar={false}>
-      <SanityCommunitiesSection 
-        title="AI Agent Communities" 
-        searchQuery={searchQuery}
-      />
+      <div className="mt-8">
+        <SanityCommunitiesSection 
+          title="AI Agent Communities" 
+          searchQuery={searchQuery}
+        />
+      </div>
     </PageLayout>
   );
 };

@@ -12,6 +12,10 @@
   min-height: 200px;
 }
 
+.course-card:first-child {
+  margin-top: 1.5rem;
+}
+
 .course-card .course-info {
   flex: 1;
 }
