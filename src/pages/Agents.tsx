@@ -34,6 +34,7 @@ const Agents: React.FC = () => {
   const [filters, setFilters] = useState<FilterGroup[]>(filterGroups);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
   // Initialize search from URL if present
   useEffect(() => {
@@ -75,6 +76,9 @@ const Agents: React.FC = () => {
   };
 
   const handleCategoryClick = (category: string) => {
+    // Exit expanded state when selecting categories
+    setExpandedSection(null);
+    
     setSelectedCategories(prev => {
       const isSelected = prev.includes(category);
       if (isSelected) {
@@ -83,6 +87,10 @@ const Agents: React.FC = () => {
         return [...prev, category];
       }
     });
+  };
+
+  const handleShowMore = (category: string) => {
+    setExpandedSection(prev => prev === category ? null : category);
   };
 
   const sections = [
@@ -134,8 +142,8 @@ const Agents: React.FC = () => {
       <div className="space-y-4">
         {sections
           .filter(section => 
-            selectedCategories.length === 0 || 
-            selectedCategories.some(cat => CATEGORY_TO_SECTION[cat as AgentCategory] === section.category)
+            (!expandedSection && (selectedCategories.length === 0 || selectedCategories.some(cat => CATEGORY_TO_SECTION[cat as AgentCategory] === section.category))) ||
+            expandedSection === section.category
           )
           .map(section => (
             <SanityToolsSection 
@@ -143,6 +151,8 @@ const Agents: React.FC = () => {
               title={section.title}
               category={section.category}
               searchQuery={searchQuery}
+              isExpanded={expandedSection === section.category}
+              onShowMore={() => handleShowMore(section.category)}
             />
           ))
         }
