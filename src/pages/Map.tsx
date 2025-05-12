@@ -3,7 +3,17 @@ import PageLayout from '../components/layout/PageLayout';
 import '../styles/ecosystem-map.css'; // Import the custom CSS file
 import { getEcosystemMap, EcosystemMap } from '../lib/sanityQueries';
 
+const MAP_CATEGORIES = [
+  'AI x Crypto Map',
+  'AI Agent Market Map',
+  'AI Agent Infra Map',
+  'MCP Market Map',
+] as const;
+
+type MapCategory = typeof MAP_CATEGORIES[number];
+
 const Map: React.FC = () => {
+  const [selectedCategory, setSelectedCategory] = useState<MapCategory>('AI x Crypto Map');
   const [ecosystemMap, setEcosystemMap] = useState<EcosystemMap | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -11,19 +21,44 @@ const Map: React.FC = () => {
   useEffect(() => {
     const fetchEcosystemMap = async () => {
       try {
-        const data = await getEcosystemMap();
-        setEcosystemMap(data);
+        setLoading(true);
+        const data = await getEcosystemMap(selectedCategory);
+        console.log('Received map data:', data);
+        
+        if (data && data.categories && data.categories.length > 0) {
+          console.log('Setting ecosystem map with data:', data);
+          setEcosystemMap(data);
+        } else {
+          console.log('No valid data received, setting empty state');
+          setEcosystemMap({
+            title: selectedCategory,
+            description: 'No description available',
+            category: selectedCategory,
+            categories: []
+          });
+        }
         setError(null);
       } catch (err) {
-        setError('Failed to load ecosystem map');
         console.error('Error fetching ecosystem map:', err);
+        setError('Failed to load ecosystem map');
       } finally {
         setLoading(false);
       }
     };
 
     fetchEcosystemMap();
-  }, []);
+  }, [selectedCategory]);
+
+  // Debug logging
+  console.log('Current state:', {
+    selectedCategory,
+    loading,
+    error,
+    hasEcosystemMap: !!ecosystemMap,
+    categoriesCount: ecosystemMap?.categories?.length || 0,
+    firstCategory: ecosystemMap?.categories?.[0],
+    firstCategoryItems: ecosystemMap?.categories?.[0]?.items
+  });
 
   return (
     <PageLayout 
@@ -32,21 +67,16 @@ const Map: React.FC = () => {
       aboveContent={
         <div className="max-w-7xl mx-auto w-full relative">
           <div className="w-full py-2 mb-1 relative flex">
-            {/* Headline and category bar */}
             <div className="flex items-stretch gap-6 w-full">
-              {/* Spacer for divider (to align with other pages) */}
               <div style={{ minWidth: '1.5px' }} />
-              {/* Right: Category buttons */}
               <div className="flex flex-wrap gap-2 justify-center flex-1">
-                {[
-                  'AI x Crypto Map',
-                  'AI Agent Market Map',
-                  'AI Agent Infra Map',
-                  'MCP Market Map',
-                ].map((cat) => (
+                {MAP_CATEGORIES.map((cat) => (
                   <button
                     key={cat}
-                    className="filter-option px-4 py-2 text-sm font-mono whitespace-nowrap"
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`filter-option px-4 py-2 text-sm font-mono whitespace-nowrap ${
+                      selectedCategory === cat ? 'bg-[#3a2321] text-[#e07a6c]' : ''
+                    }`}
                   >
                     {cat}
                   </button>
@@ -60,10 +90,10 @@ const Map: React.FC = () => {
       <div className="ecosystem-map-section" style={{ marginTop: '0rem' }}>
         <div className="ecosystem-map-inner">
           <h1 className="ecosystem-map-title">
-            {loading ? 'Loading...' : ecosystemMap?.title || 'Web3 AI Ecosystem Map'}
+            {loading ? 'Loading...' : ecosystemMap?.title || selectedCategory}
           </h1>
           <p className="ecosystem-map-desc">
-            {loading ? 'Loading...' : ecosystemMap?.description || 'A curated collection of the best AI tools, frameworks, and resources for building intelligent agents'}
+            {loading ? 'Loading...' : ecosystemMap?.description || 'No description available'}
           </p>
           {error && <div className="text-red-500 mb-4">{error}</div>}
           <div className="ecosystem-map-grid">
@@ -89,8 +119,8 @@ const Map: React.FC = () => {
                   </div>
                 </div>
               ))
-            ) : (
-              ecosystemMap?.categories.map((section, index) => (
+            ) : ecosystemMap && ecosystemMap.categories && ecosystemMap.categories.length > 0 ? (
+              ecosystemMap.categories.map((section, index) => (
                 <div key={index} className="ecosystem-card">
                   <div className="ecosystem-card-header">
                     <span className="ecosystem-card-title">{section.title}</span>
@@ -105,7 +135,7 @@ const Map: React.FC = () => {
                       <div key={idx} className="ecosystem-card-item">
                         {item.logo ? (
                           <img 
-                            src={typeof item.logo === 'string' ? item.logo : item.logo?.asset?.url} 
+                            src={item.logo} 
                             alt={`${item.name} logo`} 
                             className="ecosystem-card-icon"
                             style={{ objectFit: 'cover', borderRadius: '4px' }}
@@ -131,6 +161,17 @@ const Map: React.FC = () => {
                   </div>
                 </div>
               ))
+            ) : (
+              <div className="ecosystem-card">
+                <div className="ecosystem-card-header">
+                  <span className="ecosystem-card-title">No Data Available</span>
+                </div>
+                <div className="ecosystem-card-items">
+                  <div className="ecosystem-card-item">
+                    <span className="ecosystem-card-item-text">This map is coming soon</span>
+                  </div>
+                </div>
+              </div>
             )}
           </div>
         </div>

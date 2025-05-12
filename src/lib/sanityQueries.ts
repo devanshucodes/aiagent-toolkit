@@ -92,40 +92,65 @@ export async function getCommunities(): Promise<Community[]> {
 }
 
 export interface EcosystemMap {
-  _id: string;
+  _id?: string;
   title: string;
   description: string;
+  category: string;
   categories: {
     title: string;
     items: {
       name: string;
+      logo?: any;
       url?: string;
-      logo?: {
-        asset: {
-          url: string;
-        };
-      };
     }[];
   }[];
 }
 
-export const getEcosystemMap = async (): Promise<EcosystemMap> => {
-  const query = `*[_type == "ecosystemMap"][0]{
+export const getEcosystemMap = async (category: string = 'AI x Crypto Map'): Promise<EcosystemMap> => {
+  // Map category names to their corresponding map titles in Sanity
+  const mapTitles = {
+    'AI x Crypto Map': 'Web3 AI Ecosystem Map',
+    'AI Agent Market Map': 'AI Agent Market Map',
+    'AI Agent Infra Map': 'AI Agent Infra Map',
+    'MCP Market Map': 'MCP Market Map'
+  };
+
+  const mapTitle = mapTitles[category as keyof typeof mapTitles];
+  
+  const query = `*[_type == "ecosystemMap" && title == $mapTitle][0] {
     _id,
     title,
     description,
-    categories[]{
+    categories[] {
       title,
-      items[]{
+      items[] {
         name,
-        url,
-        "logo": logo.asset->url
+        "logo": logo.asset->url,
+        url
       }
     }
   }`;
+
+  const params = { mapTitle };
+  console.log('Fetching map for category:', category);
+  console.log('Looking for map with title:', mapTitle);
+  const result = await client.fetch(query, params);
+  console.log('Raw Sanity result:', result);
   
-  const result = await client.fetch(query);
-  return result;
+  if (!result) {
+    console.log('No map found for category:', category);
+    return {
+      title: category,
+      description: 'No description available',
+      category,
+      categories: []
+    };
+  }
+
+  return {
+    ...result,
+    category
+  };
 };
 
 export interface Course {
