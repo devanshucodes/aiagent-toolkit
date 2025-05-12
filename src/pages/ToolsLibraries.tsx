@@ -52,6 +52,40 @@ const ToolsLibraries: React.FC = () => {
       customFilters={filters} 
       onToggleFilter={handleToggleFilter}
       isToolsPage={true}
+      aboveContent={
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+          <div className="w-full py-2 mb-1">
+            <div className="flex flex-wrap gap-2 justify-end">
+              {[
+                'Inference APIs',
+                'RAG',
+                'Data Processing',
+                'Memory',
+                'Compute',
+                'Observability',
+                'Web Scraping',
+                'Hosting',
+                'Sandboxing',
+                'Browser Automation',
+                'Workflow Automation',
+                'Authentication',
+                'Payment',
+                'Blockchain',
+                'Reasoning',
+                'MCP',
+              ].map((cat) => (
+                <button
+                  key={cat}
+                  className="filter-option px-4 py-2 text-sm font-mono whitespace-nowrap"
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+          <hr className="border-t border-gray-700 opacity-70 mb-2" />
+        </div>
+      }
     >
       <div className="space-y-4">
         <LibraryToolsSection 
