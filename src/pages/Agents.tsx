@@ -51,9 +51,34 @@ const Agents: React.FC = () => {
     <PageLayout 
       customFilters={filters} 
       onToggleFilter={handleToggleFilter}
+      aboveContent={
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+          <div className="w-full overflow-x-auto py-2 mb-1">
+            <div className="flex space-x-2 min-w-max justify-center">
+              {[
+                'Agent Tools',
+                'Top LLMs',
+                'Web3 AI Agent SDKs',
+                'Agent Framework',
+                'Agent Infrastructure',
+                'Agent Launchpads',
+                'Automation',
+                'Tech Stack',
+              ].map((cat) => (
+                <button
+                  key={cat}
+                  className="filter-option px-4 py-2 text-sm font-mono whitespace-nowrap"
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+          <hr className="border-t border-gray-700 opacity-70 mb-2" />
+        </div>
+      }
     >
-      {/* Filter section and tool cards below */}
-      {/** The filter section is rendered by the Sidebar in PageLayout, so no need to move it here. The bar will now appear above the filters visually. */}
+      {/* Main content: filters and cards */}
       <div className="space-y-4">
         <SanityToolsSection 
           title="AI Agent Tools" 

@@ -12,6 +12,7 @@ interface PageLayoutProps {
   customFilters?: FilterGroup[];
   isToolsPage?: boolean;
   onToggleFilter?: (category: string, id: string) => void;
+  aboveContent?: React.ReactNode;
 }
 
 const PageLayout: React.FC<PageLayoutProps> = ({ 
@@ -20,7 +21,8 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   showSidebar = true,
   customFilters,
   isToolsPage = false,
-  onToggleFilter
+  onToggleFilter,
+  aboveContent
 }) => {
   const [theme, setTheme] = useState<ThemeMode>('dark');
   const [filters, setFilters] = useState<FilterGroup[]>(customFilters || filterGroups);
@@ -81,36 +83,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
       
       {showHero && <HeroSection onSearch={handleSearch} />}
 
-      {/* Category Bar centered above filters and main content */}
-      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
-        <div className="w-full overflow-x-auto py-2 mb-1">
-          <div className="flex space-x-2 min-w-max justify-center">
-            {[
-              'Agent Tools',
-              'Top LLMs',
-              'Web3 AI Agent SDKs',
-              'Agent Framework',
-              'Agent Infrastructure',
-              'Agent Launchpads',
-              'Automation',
-              'Tech Stack',
-            ].map((cat) => (
-              <button
-                key={cat}
-                className="filter-option px-4 py-2 text-sm font-mono whitespace-nowrap"
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-      {/* End Category Bar */}
-
-      {/* Divider line below category bar */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <hr className="border-t border-gray-700 opacity-70 mb-2" />
-      </div>
+      {aboveContent}
 
       <div className="flex-1 flex flex-col lg:flex-row max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
         {showSidebar && (
