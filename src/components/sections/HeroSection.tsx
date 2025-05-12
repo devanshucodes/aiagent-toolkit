@@ -39,7 +39,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
               A curated collection of the best AI tools, frameworks, and resources
               for building intelligent agents
             </p>
-            <form onSubmit={handleSubmit} style={{display: 'flex', width: '100%', maxWidth: 600, margin: '0 auto', alignItems: 'stretch'}}>
+            <form onSubmit={handleSubmit} style={{display: 'flex', width: '100%', maxWidth: 600, margin: '0 auto', alignItems: 'center'}}>
               <input
                 type="text"
                 value={searchInput}
@@ -51,10 +51,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
                   borderTopRightRadius: 0,
                   borderBottomRightRadius: 0,
                   borderRight: 'none',
-                  padding: '0.5rem 1rem',
+                  padding: '0.75rem 1rem',
                   backgroundColor: '#1a1a1a',
                   color: 'white',
-                  border: '1px solid #333'
+                  border: '1px solid #333',
+                  height: '40px',
+                  boxSizing: 'border-box'
                 }}
               />
               <button
@@ -65,22 +67,22 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
                   padding: 0,
                   cursor: 'pointer',
                   outline: 'none',
-                  marginLeft: '0.5rem',
+                  marginLeft: '0.25rem',
                   display: 'flex',
                   alignItems: 'center',
-                  height: '32px'
+                  height: '40px'
                 }}
               >
-                <svg width="96" height="32" viewBox="0 0 96 32" style={{ display: 'block' }}>
+                <svg width="96" height="40" viewBox="0 0 96 40" style={{ display: 'block' }}>
                   <polygon
-                    points="0,0 96,0 96,25 80,32 0,32"
+                    points="0,0 96,0 96,32 80,40 0,40"
                     fill="#7C2B22"
                     stroke="#FF846C"
                     strokeWidth="2"
                   />
                   <text
                     x="48"
-                    y="20"
+                    y="25"
                     textAnchor="middle"
                     fill="#fff"
                     fontFamily="'Kode Mono', monospace"
