@@ -5,9 +5,52 @@ import { toolsFilters } from '../data/filterData';
 import { FilterGroup } from '../types';
 import '../styles/tools-libraries.css';
 
+const TOOLS_CATEGORIES = [
+  'Inference APIs',
+  'RAG',
+  'Data Processing',
+  'Memory',
+  'Compute',
+  'Observability',
+  'Web Scraping',
+  'Hosting',
+  'Sandboxing',
+  'Browser Automation',
+  'Workflow Automation',
+  'Authentication',
+  'Payment',
+  'Blockchain',
+  'Reasoning',
+  'MCP',
+] as const;
+
+type ToolCategory = typeof TOOLS_CATEGORIES[number];
+
+// Map category buttons to section IDs
+const CATEGORY_TO_SECTION = {
+  'Inference APIs': 'inference-apis',
+  'RAG': 'rag',
+  'Data Processing': 'data-processing',
+  'Memory': 'memory',
+  'Compute': 'compute',
+  'Observability': 'observability',
+  'Web Scraping': 'web-scraping',
+  'Hosting': 'hosting',
+  'Sandboxing': 'sandboxing',
+  'Browser Automation': 'browser-automation',
+  'Workflow Automation': 'workflow-automation',
+  'Authentication': 'authentication',
+  'Payment': 'payment',
+  'Blockchain': 'blockchain',
+  'Reasoning': 'reasoning',
+  'MCP': 'mcp',
+} as const;
+
 const ToolsLibraries: React.FC = () => {
   const [filters, setFilters] = useState<FilterGroup[]>(toolsFilters);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
   // Initialize search from URL if present
   useEffect(() => {
@@ -48,6 +91,29 @@ const ToolsLibraries: React.FC = () => {
     );
   };
 
+  const handleCategoryClick = (category: string) => {
+    // Exit expanded state when selecting categories
+    setExpandedSection(null);
+    
+    setSelectedCategories(prev => {
+      const isSelected = prev.includes(category);
+      if (isSelected) {
+        return prev.filter(cat => cat !== category);
+      } else {
+        return [...prev, category];
+      }
+    });
+  };
+
+  const handleShowMore = (section: string) => {
+    setExpandedSection(prev => prev === section ? null : section);
+  };
+
+  const sections = TOOLS_CATEGORIES.map(cat => ({
+    title: cat,
+    section: CATEGORY_TO_SECTION[cat as ToolCategory]
+  }));
+
   return (
     <PageLayout 
       customFilters={filters} 
@@ -70,27 +136,13 @@ const ToolsLibraries: React.FC = () => {
               <div style={{ width: '1.5px' }} />
               {/* Right: Category buttons */}
               <div className="flex flex-wrap gap-2 justify-end flex-1">
-                {[
-                  'Inference APIs',
-                  'RAG',
-                  'Data Processing',
-                  'Memory',
-                  'Compute',
-                  'Observability',
-                  'Web Scraping',
-                  'Hosting',
-                  'Sandboxing',
-                  'Browser Automation',
-                  'Workflow Automation',
-                  'Authentication',
-                  'Payment',
-                  'Blockchain',
-                  'Reasoning',
-                  'MCP',
-                ].map((cat) => (
+                {TOOLS_CATEGORIES.map((cat) => (
                   <button
                     key={cat}
-                    className="tools-library-btn px-4 py-2 text-sm font-mono whitespace-nowrap border border-[#1f2937] bg-[#27262b] text-[#9ca3af] hover:border-[#404040]"
+                    onClick={() => handleCategoryClick(cat)}
+                    className={`tools-library-btn px-4 py-2 text-sm font-mono whitespace-nowrap ${
+                      selectedCategories.includes(cat) ? 'active' : ''
+                    }`}
                   >
                     {cat}
                   </button>
@@ -104,86 +156,22 @@ const ToolsLibraries: React.FC = () => {
       }
     >
       <div className="space-y-4">
-        <LibraryToolsSection 
-          title="Inference APIs" 
-          section="inference-apis"
-          searchQuery={searchQuery}
-        />
-        <LibraryToolsSection 
-          title="RAG" 
-          section="rag"
-          searchQuery={searchQuery}
-        />
-        <LibraryToolsSection 
-          title="Data Processing" 
-          section="data-processing"
-          searchQuery={searchQuery}
-        />
-        <LibraryToolsSection 
-          title="Memory" 
-          section="memory"
-          searchQuery={searchQuery}
-        />
-        <LibraryToolsSection 
-          title="Compute" 
-          section="compute"
-          searchQuery={searchQuery}
-        />
-        <LibraryToolsSection 
-          title="Observability" 
-          section="observability"
-          searchQuery={searchQuery}
-        />
-        <LibraryToolsSection 
-          title="Web Scraping" 
-          section="web-scraping"
-          searchQuery={searchQuery}
-        />
-        <LibraryToolsSection 
-          title="Hosting" 
-          section="hosting"
-          searchQuery={searchQuery}
-        />
-        <LibraryToolsSection 
-          title="Sandboxing" 
-          section="sandboxing"
-          searchQuery={searchQuery}
-        />
-        <LibraryToolsSection 
-          title="Browser Automation" 
-          section="browser-automation"
-          searchQuery={searchQuery}
-        />
-        <LibraryToolsSection 
-          title="Workflow Automation" 
-          section="workflow-automation"
-          searchQuery={searchQuery}
-        />
-        <LibraryToolsSection 
-          title="Authentication" 
-          section="authentication"
-          searchQuery={searchQuery}
-        />
-        <LibraryToolsSection 
-          title="Payment" 
-          section="payment"
-          searchQuery={searchQuery}
-        />
-        <LibraryToolsSection 
-          title="Blockchain" 
-          section="blockchain"
-          searchQuery={searchQuery}
-        />
-        <LibraryToolsSection 
-          title="Reasoning" 
-          section="reasoning"
-          searchQuery={searchQuery}
-        />
-        <LibraryToolsSection 
-          title="MCP" 
-          section="mcp"
-          searchQuery={searchQuery}
-        />
+        {sections
+          .filter(section => 
+            (!expandedSection && (selectedCategories.length === 0 || selectedCategories.includes(section.title))) ||
+            expandedSection === section.section
+          )
+          .map(section => (
+            <LibraryToolsSection 
+              key={section.section}
+              title={section.title}
+              section={section.section}
+              searchQuery={searchQuery}
+              isExpanded={expandedSection === section.section}
+              onShowMore={() => handleShowMore(section.section)}
+            />
+          ))
+        }
       </div>
     </PageLayout>
   );

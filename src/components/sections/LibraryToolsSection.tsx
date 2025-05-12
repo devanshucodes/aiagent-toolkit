@@ -27,18 +27,21 @@ interface LibraryToolsSectionProps {
   title: string;
   section: LibrarySection;
   searchQuery?: string;
+  isExpanded?: boolean;
+  onShowMore?: () => void;
 }
 
 export const LibraryToolsSection: React.FC<LibraryToolsSectionProps> = ({ 
   title, 
   section,
-  searchQuery = ''
+  searchQuery = '',
+  isExpanded = false,
+  onShowMore
 }) => {
   const [tools, setTools] = useState<Tool[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(0);
-  const itemsPerPage = 3;
   
   useEffect(() => {
     const fetchTools = async () => {
@@ -58,10 +61,10 @@ export const LibraryToolsSection: React.FC<LibraryToolsSectionProps> = ({
     fetchTools();
   }, [section]);
 
-  // Reset pagination when search query changes
+  // Reset pagination when search query changes or expansion state changes
   useEffect(() => {
     setPage(0);
-  }, [searchQuery]);
+  }, [searchQuery, isExpanded]);
 
   const filteredTools = tools.filter(tool => {
     if (!searchQuery) return true;
@@ -74,16 +77,17 @@ export const LibraryToolsSection: React.FC<LibraryToolsSectionProps> = ({
     );
   });
 
+  const itemsPerPage = isExpanded ? filteredTools.length : 3;
   const totalPages = Math.ceil(filteredTools.length / itemsPerPage);
   
   const nextPage = () => {
-    if (totalPages > 0) {
+    if (totalPages > 0 && !isExpanded) {
       setPage((prev) => (prev + 1) % totalPages);
     }
   };
   
   const prevPage = () => {
-    if (totalPages > 0) {
+    if (totalPages > 0 && !isExpanded) {
       setPage((prev) => (prev - 1 + totalPages) % totalPages);
     }
   };
@@ -109,11 +113,13 @@ export const LibraryToolsSection: React.FC<LibraryToolsSectionProps> = ({
     <section>
       <SectionHeader 
         title={title} 
-        onNext={nextPage} 
-        onPrevious={prevPage} 
+        onNext={!isExpanded ? nextPage : undefined} 
+        onPrevious={!isExpanded ? prevPage : undefined}
+        onShowMore={onShowMore}
+        showMoreText={isExpanded ? "Show Less" : "Show More"}
       />
       
-      <div className="tools-grid">
+      <div className={`tools-grid ${isExpanded ? 'expanded' : ''}`}>
         {displayedTools.map((tool) => (
           <ToolCard key={tool.id} tool={tool} />
         ))}
