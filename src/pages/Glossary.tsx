@@ -39,7 +39,7 @@ const Glossary: React.FC = () => {
   });
 
   return (
-    <PageLayout showSidebar={false}>
+    <PageLayout showSidebar={false} hideHeroSearch={true}>
       <div className="glossary-container">
         <div className="glossary-header">
           <input

@@ -65,6 +65,7 @@ const Map: React.FC = () => {
     <PageLayout 
       showSidebar={false} 
       showHero={true}
+      hideHeroSearch={true}
       aboveContent={
         <div className="max-w-7xl mx-auto w-full relative">
           <div className="w-full py-2 mb-1 relative flex">

@@ -4,9 +4,10 @@ import heroImage from '../../assets/images/ea4a31389d4a5701e70735cf16c0c5bf5de76
 
 interface HeroSectionProps {
   onSearch: (query: string) => void;
+  showSearch?: boolean;
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, showSearch = true }) => {
   const [searchInput, setSearchInput] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -39,62 +40,64 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
               A curated collection of the best AI tools, frameworks, and resources
               for building intelligent agents
             </p>
-            <form onSubmit={handleSubmit} style={{display: 'flex', width: '100%', maxWidth: 600, margin: '0 auto', alignItems: 'center'}}>
-              <input
-                type="text"
-                value={searchInput}
-                onChange={handleInputChange}
-                placeholder="Search tools, frameworks, resources ..."
-                className="search-box font-mono text-sm focus:outline-none focus:ring-0"
-                style={{
-                  flex: 1,
-                  borderTopRightRadius: 0,
-                  borderBottomRightRadius: 0,
-                  borderRight: 'none',
-                  padding: '0.75rem 1rem',
-                  backgroundColor: '#1a1a1a',
-                  color: 'white',
-                  border: '1px solid #333',
-                  height: '40px',
-                  boxSizing: 'border-box'
-                }}
-              />
-              <button
-                type="submit"
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  padding: 0,
-                  cursor: 'pointer',
-                  outline: 'none',
-                  marginLeft: '0.25rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  height: '40px'
-                }}
-              >
-                <svg width="96" height="40" viewBox="0 0 96 40" style={{ display: 'block' }}>
-                  <polygon
-                    points="0,0 96,0 96,32 80,40 0,40"
-                    fill="#7C2B22"
-                    stroke="#FF846C"
-                    strokeWidth="2"
-                  />
-                  <text
-                    x="48"
-                    y="25"
-                    textAnchor="middle"
-                    fill="#fff"
-                    fontFamily="'Kode Mono', monospace"
-                    fontSize="15"
-                    fontWeight="500"
-                    style={{ pointerEvents: 'none', userSelect: 'none' }}
-                  >
-                    Search
-                  </text>
-                </svg>
-              </button>
-            </form>
+            {showSearch && (
+              <form onSubmit={handleSubmit} style={{display: 'flex', width: '100%', maxWidth: 600, margin: '0 auto', alignItems: 'center'}}>
+                <input
+                  type="text"
+                  value={searchInput}
+                  onChange={handleInputChange}
+                  placeholder="Search tools, frameworks, resources ..."
+                  className="search-box font-mono text-sm focus:outline-none focus:ring-0"
+                  style={{
+                    flex: 1,
+                    borderTopRightRadius: 0,
+                    borderBottomRightRadius: 0,
+                    borderRight: 'none',
+                    padding: '0.75rem 1rem',
+                    backgroundColor: '#1a1a1a',
+                    color: 'white',
+                    border: '1px solid #333',
+                    height: '40px',
+                    boxSizing: 'border-box'
+                  }}
+                />
+                <button
+                  type="submit"
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    outline: 'none',
+                    marginLeft: '0.25rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    height: '40px'
+                  }}
+                >
+                  <svg width="96" height="40" viewBox="0 0 96 40" style={{ display: 'block' }}>
+                    <polygon
+                      points="0,0 96,0 96,32 80,40 0,40"
+                      fill="#7C2B22"
+                      stroke="#FF846C"
+                      strokeWidth="2"
+                    />
+                    <text
+                      x="48"
+                      y="25"
+                      textAnchor="middle"
+                      fill="#fff"
+                      fontFamily="'Kode Mono', monospace"
+                      fontSize="15"
+                      fontWeight="500"
+                      style={{ pointerEvents: 'none', userSelect: 'none' }}
+                    >
+                      Search
+                    </text>
+                  </svg>
+                </button>
+              </form>
+            )}
           </div>
         </div>
         <img 

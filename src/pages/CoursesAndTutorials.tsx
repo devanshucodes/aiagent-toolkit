@@ -63,7 +63,7 @@ const CoursesAndTutorials: React.FC = () => {
   });
 
   return (
-    <PageLayout showSidebar={false}>
+    <PageLayout showSidebar={false} hideHeroSearch={true}>
       <div className="space-y-8 mt-8">
         <div className="space-y-6">
           {loading ? (
