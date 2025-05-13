@@ -31,4 +31,42 @@
   color: #fff;
   border: 1.5px solid #a15a4a;
   box-shadow: 0 0 0 2px #a15a4a33;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari and Opera */
+}
+
+/* Prevent parent scroll when child is being scrolled */
+.overflow-x-auto {
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.overflow-y-auto {
+  overscroll-behavior-y: contain;
+}
+
+/* Synchronized scrolling for category containers */
+.category-scroll-container {
+  scroll-snap-align: start;
+}
+
+.category-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.category-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Add JavaScript-free scroll synchronization */
+.category-scroll {
+  scroll-behavior: smooth;
 } 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PageLayout from '../components/layout/PageLayout';
 import { LibraryToolsSection } from '../components/sections/LibraryToolsSection';
 import { toolsFilters } from '../data/filterData';
@@ -53,6 +53,7 @@ const ToolsLibraries: React.FC = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const scrollContainersRef = useRef<(HTMLDivElement | null)[]>([]);
 
   // Initialize search from URL if present
   useEffect(() => {
@@ -73,6 +74,32 @@ const ToolsLibraries: React.FC = () => {
     window.addEventListener('globalSearch' as any, handleGlobalSearch);
     return () => {
       window.removeEventListener('globalSearch' as any, handleGlobalSearch);
+    };
+  }, []);
+
+  // Add scroll synchronization effect
+  useEffect(() => {
+    const containers = scrollContainersRef.current.filter((el): el is HTMLDivElement => el !== null);
+    
+    const handleScroll = (event: Event) => {
+      const scrolledContainer = event.target as HTMLDivElement;
+      const scrollLeft = scrolledContainer.scrollLeft;
+      
+      containers.forEach(container => {
+        if (container !== scrolledContainer) {
+          container.scrollLeft = scrollLeft;
+        }
+      });
+    };
+
+    containers.forEach(container => {
+      container.addEventListener('scroll', handleScroll);
+    });
+
+    return () => {
+      containers.forEach(container => {
+        container.removeEventListener('scroll', handleScroll);
+      });
     };
   }, []);
 
@@ -154,18 +181,91 @@ const ToolsLibraries: React.FC = () => {
                 {/* Spacer for divider */}
                 <div className="hidden lg:block" style={{ width: '1.5px' }} />
                 {/* Right: Category buttons */}
-                <div className="flex flex-wrap gap-2 justify-end flex-1">
-                  {TOOLS_CATEGORIES.map((cat) => (
-                    <button
-                      key={cat}
-                      onClick={() => handleCategoryClick(cat)}
-                      className={`tools-library-btn px-4 py-2 text-sm font-mono whitespace-nowrap ${
-                        selectedCategories.includes(cat) ? 'active' : ''
-                      }`}
-                    >
-                      {cat}
-                    </button>
-                  ))}
+                <div className="flex-1">
+                  <div className="lg:flex lg:flex-wrap lg:gap-2 lg:justify-end">
+                    {/* Mobile view: 3 lines with horizontal scroll */}
+                    <div className="lg:hidden">
+                      <div className="flex flex-col gap-1">
+                        <div className="relative w-screen -ml-4 px-4">
+                          <div 
+                            className="overflow-x-auto hide-scrollbar"
+                            ref={el => scrollContainersRef.current[0] = el}
+                            style={{ WebkitOverflowScrolling: 'touch' }}
+                          >
+                            <div className="flex gap-2 pb-1 min-w-max">
+                              {TOOLS_CATEGORIES.slice(0, Math.ceil(TOOLS_CATEGORIES.length / 3)).map((cat) => (
+                                <button
+                                  key={cat}
+                                  onClick={() => handleCategoryClick(cat)}
+                                  className={`tools-library-btn flex-none px-4 py-2 text-sm font-mono ${
+                                    selectedCategories.includes(cat) ? 'active' : ''
+                                  }`}
+                                >
+                                  {cat}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="relative w-screen -ml-4 px-4">
+                          <div 
+                            className="overflow-x-auto hide-scrollbar"
+                            ref={el => scrollContainersRef.current[1] = el}
+                            style={{ WebkitOverflowScrolling: 'touch' }}
+                          >
+                            <div className="flex gap-2 pb-1 min-w-max">
+                              {TOOLS_CATEGORIES.slice(Math.ceil(TOOLS_CATEGORIES.length / 3), Math.ceil(2 * TOOLS_CATEGORIES.length / 3)).map((cat) => (
+                                <button
+                                  key={cat}
+                                  onClick={() => handleCategoryClick(cat)}
+                                  className={`tools-library-btn flex-none px-4 py-2 text-sm font-mono ${
+                                    selectedCategories.includes(cat) ? 'active' : ''
+                                  }`}
+                                >
+                                  {cat}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="relative w-screen -ml-4 px-4">
+                          <div 
+                            className="overflow-x-auto hide-scrollbar"
+                            ref={el => scrollContainersRef.current[2] = el}
+                            style={{ WebkitOverflowScrolling: 'touch' }}
+                          >
+                            <div className="flex gap-2 pb-1 min-w-max">
+                              {TOOLS_CATEGORIES.slice(Math.ceil(2 * TOOLS_CATEGORIES.length / 3)).map((cat) => (
+                                <button
+                                  key={cat}
+                                  onClick={() => handleCategoryClick(cat)}
+                                  className={`tools-library-btn flex-none px-4 py-2 text-sm font-mono ${
+                                    selectedCategories.includes(cat) ? 'active' : ''
+                                  }`}
+                                >
+                                  {cat}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Desktop view: Wrapped layout */}
+                    <div className="hidden lg:flex lg:flex-wrap lg:gap-2 lg:justify-end">
+                      {TOOLS_CATEGORIES.map((cat) => (
+                        <button
+                          key={cat}
+                          onClick={() => handleCategoryClick(cat)}
+                          className={`tools-library-btn px-4 py-2 text-sm font-mono whitespace-nowrap ${
+                            selectedCategories.includes(cat) ? 'active' : ''
+                          }`}
+                        >
+                          {cat}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
