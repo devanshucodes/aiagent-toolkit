@@ -125,15 +125,15 @@ const ToolsLibraries: React.FC = () => {
           <hr className="border-t border-gray-700 opacity-70 mb-0" />
           <div className="w-full py-2 mb-1 relative flex">
             {/* Vertical divider (absolute, full height) */}
-            <div className="absolute left-[180px] top-0 bottom-0 w-px bg-gray-700 opacity-70 z-10" />
+            <div className="absolute left-[180px] top-0 bottom-0 w-px bg-gray-700 opacity-70 z-10 hidden lg:block" />
             {/* Headline and category bar */}
             <div className="flex items-stretch gap-6 w-full">
               {/* Left: Headline */}
-              <div className="flex items-start min-w-[160px] pl-8 pr-6">
+              <div className="hidden lg:flex items-start min-w-[160px] pl-8 pr-6">
                 <span className="text-gray-300 font-mono text-lg font-medium">Agent<br />Categories</span>
               </div>
               {/* Spacer for divider */}
-              <div style={{ width: '1.5px' }} />
+              <div className="hidden lg:block" style={{ width: '1.5px' }} />
               {/* Right: Category buttons */}
               <div className="flex flex-wrap gap-2 justify-end flex-1">
                 {TOOLS_CATEGORIES.map((cat) => (
