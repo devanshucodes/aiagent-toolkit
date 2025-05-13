@@ -132,16 +132,21 @@ export const getEcosystemMap = async (category: string = 'AI x Crypto Map'): Pro
   }`;
 
   const params = { mapTitle };
-  console.log('Fetching map for category:', category);
-  console.log('Looking for map with title:', mapTitle);
-  console.log('Query:', query);
-  console.log('Params:', params);
+  console.log('Fetching ecosystem map with params:', {
+    category,
+    mapTitle,
+    query
+  });
   
   const result = await client.fetch(query, params);
-  console.log('Raw Sanity result:', result);
+  console.log('Ecosystem map fetch result:', result);
   
   if (!result) {
-    console.log('No map found for category:', category);
+    console.warn('No ecosystem map found for:', {
+      category,
+      mapTitle,
+      availableMaps: await client.fetch('*[_type == "ecosystemMap"].title')
+    });
     return {
       title: category,
       description: 'No description available',

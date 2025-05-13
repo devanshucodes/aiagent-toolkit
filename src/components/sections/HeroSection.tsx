@@ -36,10 +36,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center">
         <div className="flex-1 relative py-8">
-          <div className="absolute left-6 top-9 h-[160px] flex items-start">
+          <div className="absolute left-6 top-9 h-[160px] hidden lg:flex items-start">
             <div className="w-px bg-gray-600 opacity-40 h-full"></div>
           </div>
-          <div className="max-w-xl text-left ml-12">
+          <div className="max-w-xl text-left lg:ml-12 px-5">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-3 font-mono">
               AI Agent Toolkit
             </h1>
@@ -47,7 +47,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               {customDescription || defaultDescription}
             </p>
             {showSearch && (
-              <form onSubmit={handleSubmit} style={{display: 'flex', width: '100%', maxWidth: 600, margin: '0 auto', alignItems: 'center'}}>
+              <form onSubmit={handleSubmit} style={{display: 'flex', width: '100%', maxWidth: 500, alignItems: 'center'}}>
                 <input
                   type="text"
                   value={searchInput}
@@ -63,7 +63,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     backgroundColor: '#1a1a1a',
                     color: 'white',
                     border: '1px solid #333',
-                    height: '40px',
+                    height: '36px',
                     boxSizing: 'border-box'
                   }}
                 />
