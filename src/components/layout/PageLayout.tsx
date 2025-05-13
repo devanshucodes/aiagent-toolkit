@@ -97,7 +97,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
 
       <div className="flex-1 flex flex-col lg:flex-row max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
         {showSidebar && (
-          <div className="lg:w-64 lg:flex-shrink-0">
+          <div className={`${isToolsPage ? 'hidden lg:block' : ''} lg:w-64 lg:flex-shrink-0`}>
             <Sidebar 
               filters={filters} 
               onToggleFilter={toggleFilter}
