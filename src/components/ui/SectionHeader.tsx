@@ -7,6 +7,9 @@ interface SectionHeaderProps {
   onPrevious?: () => void;
   onShowMore?: () => void;
   showMoreText?: string;
+  currentPage?: number;
+  itemsPerPage?: number;
+  totalItems?: number;
 }
 
 const SectionHeader: React.FC<SectionHeaderProps> = ({ 
@@ -14,8 +17,15 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   onNext, 
   onPrevious, 
   onShowMore,
-  showMoreText = "Show More"
+  showMoreText = "Show More",
+  currentPage = 0,
+  itemsPerPage = 3,
+  totalItems = 0
 }) => {
+  const startItem = currentPage * itemsPerPage + 1;
+  const endItem = Math.min((currentPage + 1) * itemsPerPage, totalItems);
+  const showPagination = onNext || onPrevious;
+
   return (
     <div className="flex items-center mb-2 justify-between">
       <div className="flex items-center gap-4 pl-4">
@@ -24,15 +34,15 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
           <button
             onClick={onShowMore}
             className="text-sm text-gray-400 hover:text-gray-300 transition-colors duration-200 underline"
-            style={{fontFamily: 'Kode Mono, monospace'}}
+            style={{fontFamily: "'Kode Mono', monospace"}}
           >
             {showMoreText}
           </button>
         )}
       </div>
       
-      {(onNext || onPrevious) && (
-        <div className="flex space-x-0.5" style={{ marginRight: '0.3rem' }}>
+      {showPagination && (
+        <div className="flex items-center space-x-2" style={{ marginRight: '0.3rem' }}>
           <button 
             onClick={onPrevious}
             className="p-0.5 hover:bg-gray-700 transition-colors duration-200"
@@ -41,6 +51,13 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
           >
             <ChevronLeft size={16} className="text-gray-400" />
           </button>
+          
+          {totalItems > 0 && (
+            <span className="text-xs text-gray-400 font-mono px-1">
+              {startItem} - {endItem} of {totalItems}
+            </span>
+          )}
+          
           <button 
             onClick={onNext}
             className="p-0.5 hover:bg-gray-700 transition-colors duration-200"

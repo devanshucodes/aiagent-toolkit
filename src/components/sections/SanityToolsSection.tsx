@@ -102,6 +102,9 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({
         onPrevious={!isExpanded ? prevPage : undefined}
         onShowMore={onShowMore}
         showMoreText={isExpanded ? "Show Less" : "Show More"}
+        currentPage={page}
+        itemsPerPage={itemsPerPage}
+        totalItems={filteredTools.length}
       />
       
       <div className={`tools-grid ${isExpanded ? 'expanded' : ''}`}>
