@@ -28,7 +28,11 @@ const Communities: React.FC = () => {
   }, []);
 
   return (
-    <PageLayout showSidebar={false}>
+    <PageLayout 
+      showSidebar={false} 
+      hideHeroSearch={true}
+      heroDescription="A list of the most active and helpful communities where AI agent builders hang out, share ideas, and support each other"
+    >
       <div className="mt-8">
         <SanityCommunitiesSection 
           title="AI Agent Communities" 

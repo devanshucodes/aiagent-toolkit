@@ -5,9 +5,14 @@ import heroImage from '../../assets/images/ea4a31389d4a5701e70735cf16c0c5bf5de76
 interface HeroSectionProps {
   onSearch: (query: string) => void;
   showSearch?: boolean;
+  customDescription?: string;
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, showSearch = true }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ 
+  onSearch, 
+  showSearch = true,
+  customDescription
+}) => {
   const [searchInput, setSearchInput] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -20,6 +25,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, showSearch = true }
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
   };
+
+  const defaultDescription = "A curated collection of the best AI tools, frameworks, and resources for building intelligent agents";
 
   return (
     <div className="relative bg-black overflow-hidden" style={{border: 'none'}}>
@@ -37,8 +44,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, showSearch = true }
               AI Agent Toolkit
             </h1>
             <p className="text-sm text-gray-400 mb-5 max-w-2xl font-mono">
-              A curated collection of the best AI tools, frameworks, and resources
-              for building intelligent agents
+              {customDescription || defaultDescription}
             </p>
             {showSearch && (
               <form onSubmit={handleSubmit} style={{display: 'flex', width: '100%', maxWidth: 600, margin: '0 auto', alignItems: 'center'}}>

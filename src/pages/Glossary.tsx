@@ -39,7 +39,11 @@ const Glossary: React.FC = () => {
   });
 
   return (
-    <PageLayout showSidebar={false} hideHeroSearch={true}>
+    <PageLayout 
+      showSidebar={false} 
+      hideHeroSearch={true}
+      heroDescription="A simple glossary of key terms, concepts, and jargon every AI agent builder should know"
+    >
       <div className="glossary-container">
         <div className="glossary-header">
           <input

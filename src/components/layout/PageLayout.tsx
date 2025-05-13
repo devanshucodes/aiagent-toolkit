@@ -14,6 +14,7 @@ interface PageLayoutProps {
   onToggleFilter?: (category: string, id: string) => void;
   aboveContent?: React.ReactNode;
   hideHeroSearch?: boolean;
+  heroDescription?: string;
 }
 
 const PageLayout: React.FC<PageLayoutProps> = ({ 
@@ -24,7 +25,8 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   isToolsPage = false,
   onToggleFilter,
   aboveContent,
-  hideHeroSearch = false
+  hideHeroSearch = false,
+  heroDescription
 }) => {
   const [theme, setTheme] = useState<ThemeMode>('dark');
   const [filters, setFilters] = useState<FilterGroup[]>(customFilters || filterGroups);
@@ -83,7 +85,13 @@ const PageLayout: React.FC<PageLayoutProps> = ({
     <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-gray-900'} pt-14`}>
       <Navbar />
       
-      {showHero && <HeroSection onSearch={handleSearch} showSearch={!hideHeroSearch} />}
+      {showHero && (
+        <HeroSection 
+          onSearch={handleSearch} 
+          showSearch={!hideHeroSearch} 
+          customDescription={heroDescription}
+        />
+      )}
 
       {aboveContent}
 
