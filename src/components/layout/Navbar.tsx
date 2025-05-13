@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
                         [
                           'px-3 py-2 text-xs font-mono whitespace-nowrap transition-colors duration-200',
                           isActive
-                            ? 'bg-[#3a2321] text-[#e07a6c]'
+                            ? 'bg-[#3a2321] text-[#FF846C]'
                             : 'text-gray-400 hover:text-white hover:bg-red-900/20'
                         ].join(' ')
                       }
@@ -71,11 +71,11 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Navigation Menu - Slide from right */}
       <div 
-        className={`fixed top-0 right-0 h-full w-[70%] bg-black transform transition-transform duration-300 ease-in-out z-50 lg:hidden ${
+        className={`fixed top-14 right-0 h-[calc(100%-3.5rem)] w-[70%] bg-black transform transition-transform duration-300 ease-in-out z-40 lg:hidden ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="pt-20 px-4">
+        <div className="pt-4 px-4">
           {navItems.map((item) => (
             <NavLink
               key={item.id}
@@ -86,7 +86,7 @@ const Navbar: React.FC = () => {
                 [
                   'block py-3 text-base font-mono whitespace-nowrap transition-colors duration-200 pl-5',
                   isActive
-                    ? 'bg-[#3a2321] text-white'
+                    ? 'bg-[#3a2321] text-[#FF846C]'
                     : 'text-gray-400 hover:text-white'
                 ].join(' ')
               }
@@ -100,7 +100,7 @@ const Navbar: React.FC = () => {
       {/* Overlay */}
       {isMenuOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          className="fixed inset-0 top-14 bg-black bg-opacity-50 z-30 lg:hidden"
           onClick={() => setIsMenuOpen(false)}
         />
       )}
