@@ -4,6 +4,7 @@ import SanityToolsSection from '../components/sections/SanityToolsSection';
 import { filterGroups } from '../data/filterData';
 import { FilterGroup } from '../types';
 import '../styles/agents.css';
+import filterIcon from '../assets/images/Icon.png';
 
 const AGENT_CATEGORIES = [
   'Agent Tools',
@@ -112,22 +113,18 @@ const Agents: React.FC = () => {
       onToggleFilter={handleToggleFilter}
       hideFiltersOnMobile={true}
       aboveContent={
-        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 relative">
-          <hr className="border-t border-gray-700 opacity-70 mb-0" />
-          <div className="w-full py-2 mb-1 relative">
-            {/* Mobile view with filter button */}
-            <div className="md:hidden flex items-center w-full">
-              <button
+        <div className="relative">
+          <hr className="border-t border-gray-700 opacity-70 mb-0 w-full" />
+          <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+            {/* Mobile view with filter section */}
+            <div className="md:hidden flex items-stretch w-full">
+              <div 
                 onClick={() => setIsFilterOpen(true)}
-                className="flex-shrink-0 mr-4 p-2 rounded-none bg-[#27262b] border border-[#1f2937]"
-                style={{ width: '32px', height: '32px' }}
+                className="w-[15%] border-r border-gray-700 flex items-center justify-center cursor-pointer"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-400">
-                  <line x1="4" y1="8" x2="20" y2="8" strokeLinecap="round" />
-                  <line x1="8" y1="16" x2="16" y2="16" strokeLinecap="round" />
-                </svg>
-              </button>
-              <div className="agents-categories-container">
+                <img src={filterIcon} alt="Filter" width="16" height="16" className="text-gray-400" />
+              </div>
+              <div className="w-[85%] pl-4 agents-categories-container ml-1 py-2">
                 {AGENT_CATEGORIES.map((cat) => (
                   <button
                     key={cat}
@@ -159,7 +156,7 @@ const Agents: React.FC = () => {
               </div>
             </div>
           </div>
-          <hr className="border-t border-gray-700 opacity-70 mt-0 mb-2" />
+          <hr className="border-t border-gray-700 opacity-70 mt-0 mb-2 w-full" />
 
           {/* Mobile Filters Panel */}
           <div 

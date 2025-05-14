@@ -5,6 +5,7 @@ import { toolsFilters } from '../data/filterData';
 import { FilterGroup as FilterGroupType } from '../types';
 import '../styles/tools-libraries.css';
 import FilterGroupComponent from '../components/ui/FilterGroup';
+import filterIcon from '../assets/images/Icon.png';
 
 const TOOLS_CATEGORIES = [
   'Inference APIs',
@@ -157,10 +158,7 @@ const ToolsLibraries: React.FC = () => {
               className="w-full bg-[#1a1a1a] border-t border-[#333] py-3 px-4 flex items-center justify-center gap-3 text-white font-mono text-base tools-library-btn"
               style={{ height: '36px', background: '#1a1a1a' }}
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="4" y1="8" x2="20" y2="8" strokeLinecap="round" />
-                <line x1="8" y1="16" x2="16" y2="16" strokeLinecap="round" />
-              </svg>
+              <img src={filterIcon} alt="Filter" width="20" height="20" />
               Filters
             </button>
           </div>
