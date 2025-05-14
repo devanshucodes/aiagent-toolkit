@@ -35,6 +35,7 @@ const Agents: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   // Initialize search from URL if present
   useEffect(() => {
@@ -109,11 +110,40 @@ const Agents: React.FC = () => {
     <PageLayout 
       customFilters={filters} 
       onToggleFilter={handleToggleFilter}
+      hideFiltersOnMobile={true}
       aboveContent={
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 relative">
           <hr className="border-t border-gray-700 opacity-70 mb-0" />
           <div className="w-full py-2 mb-1 relative">
-            <div className="flex items-center justify-center">
+            {/* Mobile view with filter button */}
+            <div className="md:hidden flex items-center w-full">
+              <button
+                onClick={() => setIsFilterOpen(true)}
+                className="flex-shrink-0 mr-4 p-2 rounded-none bg-[#27262b] border border-[#1f2937]"
+                style={{ width: '32px', height: '32px' }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-400">
+                  <line x1="4" y1="8" x2="20" y2="8" strokeLinecap="round" />
+                  <line x1="8" y1="16" x2="16" y2="16" strokeLinecap="round" />
+                </svg>
+              </button>
+              <div className="agents-categories-container">
+                {AGENT_CATEGORIES.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => handleCategoryClick(cat)}
+                    className={`agents-btn px-4 py-2 text-sm font-mono whitespace-nowrap ${
+                      selectedCategories.includes(cat) ? 'active' : ''
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Desktop view */}
+            <div className="hidden md:flex items-center justify-center">
               <div className="flex flex-wrap gap-2 justify-center">
                 {AGENT_CATEGORIES.map((cat) => (
                   <button
@@ -130,6 +160,50 @@ const Agents: React.FC = () => {
             </div>
           </div>
           <hr className="border-t border-gray-700 opacity-70 mt-0 mb-2" />
+
+          {/* Mobile Filters Panel */}
+          <div 
+            className={`fixed top-0 left-0 h-full w-full bg-black transform transition-transform duration-300 ease-in-out z-50 lg:hidden ${
+              isFilterOpen ? 'translate-x-0' : '-translate-x-full'
+            }`}
+          >
+            <div className="p-6">
+              {/* Close button */}
+              <div className="flex flex-col gap-6 mb-8">
+                <button 
+                  onClick={() => setIsFilterOpen(false)}
+                  className="text-gray-400 hover:text-white w-fit"
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+                <h2 className="text-gray-400 font-mono text-lg">Filters</h2>
+              </div>
+
+              {/* Filter groups */}
+              <div className="space-y-6">
+                {filters.map((filterGroup) => (
+                  <div key={filterGroup.category} className="border-b border-gray-800 pb-6">
+                    <h3 className="text-white font-mono text-xl mb-4">{filterGroup.category}</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {filterGroup.options.map((option) => (
+                        <button
+                          key={option.id}
+                          onClick={() => handleToggleFilter(filterGroup.category, option.id)}
+                          className={`agents-btn px-4 py-2 text-sm font-mono whitespace-nowrap ${
+                            option.active ? 'active' : ''
+                          }`}
+                        >
+                          {option.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       }
     >

@@ -33,6 +33,49 @@
   box-shadow: 0 0 0 2px #a15a4a33;
 }
 
+/* Mobile view category scroll */
+@media (max-width: 767px) {
+  .agents-categories-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 4px;
+    padding-bottom: 4px;
+    margin: 0 -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scroll-snap-type: none;
+    position: relative;
+    left: 0;
+    overscroll-behavior-x: none;
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
+  .agents-categories-container::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+  }
+
+  .agents-categories-container > * {
+    flex: 0 0 auto;
+    margin-right: 2px;
+  }
+
+  .agents-categories-container > *:last-child {
+    margin-right: 8px;
+  }
+
+  /* Adjust button padding in mobile view */
+  .agents-btn {
+    padding: 6px 12px;
+  }
+}
+
 /* Filter Tag Styles */
 .agents-filter-tag {
   position: relative;

@@ -4,7 +4,27 @@
   gap: 1px;
 }
 
+/* Hide scrollbars globally for mobile */
 @media (max-width: 767px) {
+  /* Hide scrollbar for the main container and all its parents */
+  .tools-grid:not(.expanded),
+  .tools-grid:not(.expanded) *,
+  section,
+  div {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
+  .tools-grid:not(.expanded)::-webkit-scrollbar,
+  .tools-grid:not(.expanded) *::-webkit-scrollbar,
+  section::-webkit-scrollbar,
+  div::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+  }
+
   .tools-grid:not(.expanded) {
     display: flex;
     overflow-x: auto;
@@ -14,18 +34,12 @@
     margin: 0 -16px;
     padding-left: 24px;
     padding-right: 16px;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
     scroll-snap-type: none;
     position: relative;
     left: 0;
     overscroll-behavior-x: none;
-  }
-
-  .tools-grid:not(.expanded)::-webkit-scrollbar {
-    display: none;
   }
 
   .tools-grid:not(.expanded) > * {
@@ -35,7 +49,6 @@
     scroll-snap-align: none;
   }
 
-  /* Remove margin from last card */
   .tools-grid:not(.expanded) > *:last-child {
     margin-right: 16px;
   }
