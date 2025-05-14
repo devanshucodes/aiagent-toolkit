@@ -73,9 +73,11 @@ const Glossary: React.FC = () => {
         </div>
         
         <div className="glossary-content">
-          <div className="current-letter">
-            {currentLetter}
-          </div>
+          {!searchTerm && (
+            <div className="current-letter">
+              {currentLetter}
+            </div>
+          )}
           
           <div className="glossary-items">
             {loading ? (
