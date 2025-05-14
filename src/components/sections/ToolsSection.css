@@ -3,11 +3,52 @@
   grid-template-columns: 1fr;
   gap: 1px;
 }
+
+@media (max-width: 767px) {
+  .tools-grid:not(.expanded) {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding: 8px;
+    padding-bottom: 10px;
+    margin: 0 -16px;
+    padding-left: 24px;
+    padding-right: 16px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scroll-snap-type: none;
+    position: relative;
+    left: 0;
+    overscroll-behavior-x: none;
+  }
+
+  .tools-grid:not(.expanded)::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tools-grid:not(.expanded) > * {
+    flex: 0 0 300px;
+    min-width: 300px;
+    margin-right: 4px;
+    scroll-snap-align: none;
+  }
+
+  /* Remove margin from last card */
+  .tools-grid:not(.expanded) > *:last-child {
+    margin-right: 16px;
+  }
+}
+
+/* Tablet view */
 @media (min-width: 768px) {
   .tools-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* Desktop view */
 @media (min-width: 1024px) {
   .tools-grid {
     grid-template-columns: 1fr 1fr 1fr;

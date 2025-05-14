@@ -28,7 +28,22 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 
   return (
     <div className="flex items-center mb-2 justify-between">
-      <div className="flex items-center gap-4 pl-4">
+      {/* Mobile view (show title and show more button with space between) */}
+      <div className="flex md:hidden w-full items-center justify-between pl-4 pr-4">
+        <h2 className="text-2xl font-bold text-white" style={{fontFamily: 'Kode Mono, monospace'}}>{title}</h2>
+        {onShowMore && (
+          <button
+            onClick={onShowMore}
+            className="text-sm text-gray-400 hover:text-gray-300 transition-colors duration-200 underline"
+            style={{fontFamily: "'Kode Mono', monospace"}}
+          >
+            {showMoreText}
+          </button>
+        )}
+      </div>
+
+      {/* Desktop view (original layout) */}
+      <div className="hidden md:flex items-center gap-4 pl-4">
         <h2 className="text-2xl font-bold text-white" style={{fontFamily: 'Kode Mono, monospace'}}>{title}</h2>
         {onShowMore && (
           <button
@@ -42,7 +57,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
       </div>
       
       {showPagination && (
-        <div className="flex items-center space-x-2" style={{ marginRight: '0.3rem' }}>
+        <div className="hidden md:flex items-center space-x-2" style={{ marginRight: '0.3rem' }}>
           <button 
             onClick={onPrevious}
             className="p-0.5 hover:bg-gray-700 transition-colors duration-200"
