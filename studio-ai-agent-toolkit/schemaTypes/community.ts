@@ -46,37 +46,50 @@ export default {
     {
       name: 'socialLinks',
       title: 'Social Media Links',
+      description: 'Add only the social links that are available. Empty links will not be displayed.',
       type: 'object',
       fields: [
+        {
+          name: 'website',
+          title: 'Website',
+          type: 'url',
+          description: 'Optional: Leave empty if not available',
+        },
         {
           name: 'telegram',
           title: 'Telegram',
           type: 'url',
+          description: 'Optional: Leave empty if not available',
         },
         {
           name: 'discord',
           title: 'Discord',
           type: 'url',
+          description: 'Optional: Leave empty if not available',
         },
         {
           name: 'x',
           title: 'X (Twitter)',
           type: 'url',
+          description: 'Optional: Leave empty if not available',
         },
         {
           name: 'github',
           title: 'GitHub',
           type: 'url',
+          description: 'Optional: Leave empty if not available',
         },
         {
           name: 'replit',
           title: 'Replit',
           type: 'url',
+          description: 'Optional: Leave empty if not available',
         },
         {
           name: 'instagram',
           title: 'Instagram',
           type: 'url',
+          description: 'Optional: Leave empty if not available',
         },
       ],
     },

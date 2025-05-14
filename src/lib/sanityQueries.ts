@@ -66,13 +66,14 @@ export interface Community {
   url: string;
   tags: string[];
   socialLinks?: {
-    telegram?: string;
-    discord?: string;
-    x?: string;
-    github?: string;
-    discord2?: string;
-    instagram?: string;
-  };
+    website?: string | null;
+    telegram?: string | null;
+    discord?: string | null;
+    x?: string | null;
+    github?: string | null;
+    replit?: string | null;
+    instagram?: string | null;
+  } | null;
 }
 
 export async function getCommunities(): Promise<Community[]> {
