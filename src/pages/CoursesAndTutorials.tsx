@@ -66,6 +66,7 @@ const CoursesAndTutorials: React.FC = () => {
     <PageLayout 
       showSidebar={false} 
       hideHeroSearch={true}
+      heroHeadline="AI Agent Courses and Tutorials"
       heroDescription="A handpicked list of the best courses and tutorials to help you learn, build, and level up your AI agent skills"
     >
       <div className="space-y-8 mt-8">

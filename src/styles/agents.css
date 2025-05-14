@@ -154,4 +154,12 @@
   color: #fff;
   border: 1.5px solid #a15a4a;
   box-shadow: 0 0 0 2px #a15a4a33;
+}
+
+/* Desktop view category buttons */
+@media (min-width: 768px) {
+  .agents-btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 } 

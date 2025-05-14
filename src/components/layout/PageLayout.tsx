@@ -15,6 +15,7 @@ interface PageLayoutProps {
   aboveContent?: React.ReactNode;
   hideHeroSearch?: boolean;
   heroDescription?: string;
+  heroHeadline?: string;
   hideFiltersOnMobile?: boolean;
 }
 
@@ -28,6 +29,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   aboveContent,
   hideHeroSearch = false,
   heroDescription,
+  heroHeadline,
   hideFiltersOnMobile = false
 }) => {
   const [theme, setTheme] = useState<ThemeMode>('dark');
@@ -92,6 +94,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
           onSearch={handleSearch} 
           showSearch={!hideHeroSearch} 
           customDescription={heroDescription}
+          customHeadline={heroHeadline}
         />
       )}
 

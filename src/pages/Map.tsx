@@ -66,6 +66,8 @@ const Map: React.FC = () => {
       showSidebar={false} 
       showHero={true}
       hideHeroSearch={true}
+      heroHeadline="AI Agent Maps"
+      heroDescription="A curated set of maps like AI x Crypto, Agent Infra, and Market Maps — to explore the agent ecosystem at a glance"
       aboveContent={
         <div className="max-w-7xl mx-auto w-full relative">
           <div className="w-full py-2 mb-1 relative flex">

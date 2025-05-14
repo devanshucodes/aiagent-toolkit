@@ -6,12 +6,14 @@ interface HeroSectionProps {
   onSearch: (query: string) => void;
   showSearch?: boolean;
   customDescription?: string;
+  customHeadline?: string;
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ 
   onSearch, 
   showSearch = true,
-  customDescription
+  customDescription,
+  customHeadline
 }) => {
   const [searchInput, setSearchInput] = useState('');
 
@@ -41,7 +43,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
           <div className="max-w-xl text-left lg:ml-12 px-5">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-3 font-mono">
-              AI Agent Toolkit
+              {customHeadline || "AI Agent Toolkit"}
             </h1>
             <p className="text-sm text-gray-400 mb-5 max-w-2xl font-mono">
               {customDescription || defaultDescription}

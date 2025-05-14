@@ -114,8 +114,8 @@ const Agents: React.FC = () => {
       hideFiltersOnMobile={true}
       aboveContent={
         <div className="relative">
-          <hr className="border-t border-gray-700 opacity-70 mb-0 w-full" />
           <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+            <hr className="border-t border-gray-700 opacity-70 mb-0 w-[100%] mx-auto" />
             {/* Mobile view with filter section */}
             <div className="md:hidden flex items-stretch w-full">
               <div 
@@ -156,7 +156,9 @@ const Agents: React.FC = () => {
               </div>
             </div>
           </div>
-          <hr className="border-t border-gray-700 opacity-70 mt-0 mb-2 w-full" />
+          <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+            <hr className="border-t border-gray-700 opacity-70 mt-0 mb-2 w-[100%] mx-auto" />
+          </div>
 
           {/* Mobile Filters Panel */}
           <div 
