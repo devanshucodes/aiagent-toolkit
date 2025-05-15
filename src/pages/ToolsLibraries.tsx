@@ -332,6 +332,7 @@ const ToolsLibraries: React.FC = () => {
               searchQuery={searchQuery}
               isExpanded={expandedSection === section.section}
               onShowMore={() => handleShowMore(section.section)}
+              activeFilters={filters}
             />
           ))
         }

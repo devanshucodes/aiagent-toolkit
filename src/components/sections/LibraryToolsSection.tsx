@@ -29,6 +29,10 @@ interface LibraryToolsSectionProps {
   searchQuery?: string;
   isExpanded?: boolean;
   onShowMore?: () => void;
+  activeFilters?: {
+    category: string;
+    options: { id: string; active: boolean; }[];
+  }[];
 }
 
 export const LibraryToolsSection: React.FC<LibraryToolsSectionProps> = ({ 
@@ -36,7 +40,8 @@ export const LibraryToolsSection: React.FC<LibraryToolsSectionProps> = ({
   section,
   searchQuery = '',
   isExpanded = false,
-  onShowMore
+  onShowMore,
+  activeFilters = []
 }) => {
   const [tools, setTools] = useState<Tool[]>([]);
   const [loading, setLoading] = useState(true);
@@ -84,14 +89,38 @@ export const LibraryToolsSection: React.FC<LibraryToolsSectionProps> = ({
   }, [searchQuery, isExpanded]);
 
   const filteredTools = tools.filter(tool => {
-    if (!searchQuery) return true;
-    
-    const searchLower = searchQuery.toLowerCase();
-    return (
-      tool.name.toLowerCase().includes(searchLower) ||
-      tool.description.toLowerCase().includes(searchLower) ||
-      tool.tags.some(tag => tag.toLowerCase().includes(searchLower))
-    );
+    // First apply search filter
+    if (searchQuery) {
+      const searchLower = searchQuery.toLowerCase();
+      const matchesSearch = 
+        tool.name.toLowerCase().includes(searchLower) ||
+        tool.description.toLowerCase().includes(searchLower) ||
+        tool.tags.some(tag => tag.toLowerCase().includes(searchLower));
+      
+      if (!matchesSearch) return false;
+    }
+
+    // Then apply subscription filter if any are active
+    const subscriptionFilter = activeFilters.find(filter => filter.category === 'Subscription');
+    if (subscriptionFilter) {
+      const activeSubscriptions = subscriptionFilter.options
+        .filter(option => option.active)
+        .map(option => {
+          // Map filter IDs to actual type values
+          switch (option.id) {
+            case 'free-to-use': return 'Free';
+            case 'paid': return 'Paid';
+            case 'freemium': return 'Freemium';
+            default: return '';
+          }
+        });
+
+      if (activeSubscriptions.length > 0) {
+        return activeSubscriptions.includes(tool.type);
+      }
+    }
+
+    return true;
   });
 
   const itemsPerPage = isExpanded ? filteredTools.length : (isMobile ? filteredTools.length : 3);
