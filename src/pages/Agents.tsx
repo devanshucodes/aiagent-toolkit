@@ -38,6 +38,7 @@ const Agents: React.FC = () => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [hasResults, setHasResults] = useState(true);
+  const [sectionResults, setSectionResults] = useState<Record<string, boolean>>({});
 
   // Initialize search from URL if present
   useEffect(() => {
@@ -60,6 +61,26 @@ const Agents: React.FC = () => {
       window.removeEventListener('globalSearch' as any, handleGlobalSearch);
     };
   }, []);
+
+  // Reset hasResults when search query changes
+  useEffect(() => {
+    setHasResults(false);
+    setSectionResults({});
+  }, [searchQuery]);
+
+  // Add a function to track if any section has results
+  const handleSectionHasResults = (hasTools: boolean, sectionId: string) => {
+    setSectionResults(prev => ({
+      ...prev,
+      [sectionId]: hasTools
+    }));
+  };
+
+  // Update hasResults whenever sectionResults changes
+  useEffect(() => {
+    const anyResults = Object.values(sectionResults).some(hasTools => hasTools);
+    setHasResults(anyResults);
+  }, [sectionResults]);
 
   const handleToggleFilter = (category: string, id: string) => {
     setFilters(prevFilters => 
@@ -95,16 +116,6 @@ const Agents: React.FC = () => {
   const handleShowMore = (category: string) => {
     setExpandedSection(prev => prev === category ? null : category);
   };
-
-  // Add a function to track if any section has results
-  const handleSectionHasResults = (hasTools: boolean) => {
-    setHasResults(prev => prev || hasTools);
-  };
-
-  // Reset hasResults when search query changes
-  useEffect(() => {
-    setHasResults(false);
-  }, [searchQuery]);
 
   const sections = [
     { title: "Agent Tools", category: "ai-agent-tools" },
@@ -259,7 +270,7 @@ const Agents: React.FC = () => {
               searchQuery={searchQuery}
               isExpanded={expandedSection === section.category}
               onShowMore={() => handleShowMore(section.category)}
-              onHasResults={handleSectionHasResults}
+              onHasResults={(hasTools) => handleSectionHasResults(hasTools, section.category)}
             />
           ))
         }

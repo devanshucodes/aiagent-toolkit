@@ -16,6 +16,55 @@
   .glossary-search {
     width: 275px;
   }
+
+  .glossary-content {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 40px;
+  }
+
+  .glossary-items {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .glossary-item {
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+  }
+
+  .glossary-item:last-child {
+    border-bottom: none;
+  }
+
+  .glossary-term {
+    font-family: 'Kode Mono', monospace;
+    font-size: 24px;
+    color: white;
+    margin-bottom: 16px;
+  }
+
+  .glossary-definition {
+    font-family: 'Kode Mono', monospace;
+    font-size: 14px;
+    color: #b0b0b0;
+    line-height: 1.6;
+  }
+
+  /* Ensure the current letter and items maintain grid alignment */
+  .current-letter {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .glossary-items {
+    grid-column: 2;
+    grid-row: 1;
+  }
 }
 
 /* Mobile styles */
@@ -36,6 +85,39 @@
   .glossary-search {
     width: 100%;
     margin-top: 20px;
+  }
+
+  .glossary-container {
+    padding: 16px;
+  }
+
+  .glossary-content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .current-letter {
+    font-family: 'Kode Mono', monospace;
+    font-size: 72px;
+    color: white;
+    padding: 24px 0;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+  }
+
+  .glossary-items {
+    width: 100%;
+  }
+
+  .glossary-item {
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glossary-item:last-child {
+    border-bottom: none;
   }
 }
 
@@ -78,83 +160,9 @@
   padding-top: 40px;
 }
 
-/* Desktop styles */
-@media (min-width: 769px) {
-  .glossary-content {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 40px;
-  }
-}
-
-/* Mobile styles */
-@media (max-width: 768px) {
-  .glossary-container {
-    padding: 16px;
-  }
-
-  .glossary-content {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-  }
-
-  .current-letter {
-    font-family: 'Kode Mono', monospace;
-    font-size: 72px;
-    color: white;
-    padding: 24px 0;
-    margin-bottom: 24px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    width: 100%;
-  }
-
-  .glossary-items {
-    width: 100%;
-  }
-
-  .glossary-item {
-    padding: 24px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .glossary-item:last-child {
-    border-bottom: none;
-  }
-}
-
 .current-letter {
   font-family: 'Kode Mono', monospace;
   font-size: 64px;
   color: white;
   opacity: 0.8;
-}
-
-.glossary-items {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-.glossary-item {
-  padding-bottom: 40px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.glossary-item:last-child {
-  border-bottom: none;
-}
-
-.glossary-term {
-  font-family: 'Kode Mono', monospace;
-  font-size: 24px;
-  color: white;
-  margin-bottom: 16px;
-}
-
-.glossary-definition {
-  font-family: 'Kode Mono', monospace;
-  font-size: 14px;
-  color: #b0b0b0;
-  line-height: 1.6;
 } 

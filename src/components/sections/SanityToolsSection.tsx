@@ -87,9 +87,10 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({
   // Notify parent about search results
   useEffect(() => {
     if (onHasResults) {
-      onHasResults(filteredTools.length > 0);
+      const hasMatchingTools = filteredTools.length > 0;
+      onHasResults(hasMatchingTools);
     }
-  }, [filteredTools.length, onHasResults]);
+  }, [filteredTools, onHasResults, searchQuery]);
 
   if (loading) {
     return <div className="text-white">Loading tools for {title}...</div>;
