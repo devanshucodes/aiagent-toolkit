@@ -33,6 +33,7 @@ interface LibraryToolsSectionProps {
     category: string;
     options: { id: string; active: boolean; }[];
   }[];
+  onHasResults?: (hasTools: boolean) => void;
 }
 
 export const LibraryToolsSection: React.FC<LibraryToolsSectionProps> = ({ 
@@ -41,7 +42,8 @@ export const LibraryToolsSection: React.FC<LibraryToolsSectionProps> = ({
   searchQuery = '',
   isExpanded = false,
   onShowMore,
-  activeFilters = []
+  activeFilters = [],
+  onHasResults
 }) => {
   const [tools, setTools] = useState<Tool[]>([]);
   const [loading, setLoading] = useState(true);
@@ -145,6 +147,13 @@ export const LibraryToolsSection: React.FC<LibraryToolsSectionProps> = ({
         (page + 1) * itemsPerPage
       );
 
+  // Notify parent about search results
+  useEffect(() => {
+    if (onHasResults) {
+      onHasResults(filteredTools.length > 0);
+    }
+  }, [filteredTools.length, onHasResults]);
+
   if (loading) {
     return <div className="text-white">Loading...</div>;
   }
@@ -153,6 +162,7 @@ export const LibraryToolsSection: React.FC<LibraryToolsSectionProps> = ({
     return <div className="text-red-500">Error: {error}</div>;
   }
 
+  // Don't render anything if no tools match the filters
   if (filteredTools.length === 0) {
     return null;
   }

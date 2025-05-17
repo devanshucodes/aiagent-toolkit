@@ -55,6 +55,7 @@ const ToolsLibraries: React.FC = () => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const scrollContainersRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [hasResults, setHasResults] = useState(true);
 
   // Initialize search from URL if present
   useEffect(() => {
@@ -143,6 +144,16 @@ const ToolsLibraries: React.FC = () => {
     title: cat,
     section: CATEGORY_TO_SECTION[cat as ToolCategory]
   }));
+
+  // Add a function to track if any section has results
+  const handleSectionHasResults = (hasTools: boolean) => {
+    setHasResults(prev => prev || hasTools);
+  };
+
+  // Reset hasResults when search query changes
+  useEffect(() => {
+    setHasResults(false);
+  }, [searchQuery]);
 
   return (
     <PageLayout 
@@ -319,6 +330,13 @@ const ToolsLibraries: React.FC = () => {
       }
     >
       <div className="space-y-4">
+        {/* Show global "No results found" message when search has no results */}
+        {searchQuery && !hasResults && (
+          <div className="text-gray-400 font-mono text-base py-8 text-center">
+            No results found for "{searchQuery}"
+          </div>
+        )}
+        
         {sections
           .filter(section => 
             (!expandedSection && (selectedCategories.length === 0 || selectedCategories.includes(section.title))) ||
@@ -333,6 +351,7 @@ const ToolsLibraries: React.FC = () => {
               isExpanded={expandedSection === section.section}
               onShowMore={() => handleShowMore(section.section)}
               activeFilters={filters}
+              onHasResults={handleSectionHasResults}
             />
           ))
         }

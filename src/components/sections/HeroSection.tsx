@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchBar from '../ui/SearchBar';
 import heroImage from '../../assets/images/ea4a31389d4a5701e70735cf16c0c5bf5de76482.png';
 
@@ -19,13 +19,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (searchInput.trim()) {
-      onSearch(searchInput.trim());
-    }
+    onSearch(searchInput.trim());
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value);
+    const value = e.target.value;
+    setSearchInput(value);
+    // Trigger search on every input change
+    onSearch(value.trim());
   };
 
   const defaultDescription = "A curated collection of the best AI tools, frameworks, and resources for building intelligent agents";

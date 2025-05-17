@@ -12,6 +12,7 @@ interface SanityToolsSectionProps {
   searchQuery?: string;
   isExpanded?: boolean;
   onShowMore?: () => void;
+  onHasResults?: (hasTools: boolean) => void;
 }
 
 const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({ 
@@ -19,7 +20,8 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({
   category,
   searchQuery = '',
   isExpanded = false,
-  onShowMore
+  onShowMore,
+  onHasResults
 }) => {
   const [tools, setTools] = useState<Tool[]>([]);
   const [loading, setLoading] = useState(true);
@@ -30,7 +32,9 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({
     const fetchTools = async () => {
       try {
         setLoading(true);
+        console.log('Fetching tools for category:', category);
         const fetchedTools = await getTools(category);
+        console.log('Fetched tools:', fetchedTools);
         setTools(fetchedTools);
         setError(null);
       } catch (err) {
@@ -80,6 +84,13 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({
     (page + 1) * itemsPerPage
   );
 
+  // Notify parent about search results
+  useEffect(() => {
+    if (onHasResults) {
+      onHasResults(filteredTools.length > 0);
+    }
+  }, [filteredTools.length, onHasResults]);
+
   if (loading) {
     return <div className="text-white">Loading tools for {title}...</div>;
   }
@@ -88,6 +99,7 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({
     return <div className="text-red-500">Error: {error}</div>;
   }
 
+  // Show a message when no tools match the filters
   if (filteredTools.length === 0) {
     return null;
   }

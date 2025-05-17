@@ -37,6 +37,7 @@ const Agents: React.FC = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [hasResults, setHasResults] = useState(true);
 
   // Initialize search from URL if present
   useEffect(() => {
@@ -95,23 +96,43 @@ const Agents: React.FC = () => {
     setExpandedSection(prev => prev === category ? null : category);
   };
 
+  // Add a function to track if any section has results
+  const handleSectionHasResults = (hasTools: boolean) => {
+    setHasResults(prev => prev || hasTools);
+  };
+
+  // Reset hasResults when search query changes
+  useEffect(() => {
+    setHasResults(false);
+  }, [searchQuery]);
+
   const sections = [
-    { title: "AI Agent Tools", category: "ai-agent-tools" },
-    { title: "Top AI Agent Apps", category: "top-ai-agent-apps" },
+    { title: "Agent Tools", category: "ai-agent-tools" },
     { title: "Top LLMs", category: "top-llms" },
     { title: "Web3 AI Agent SDKs", category: "web3-ai-agent-sdks" },
-    { title: "AI Agent Framework", category: "ai-agent-framework" },
-    { title: "AI Agent Infrastructure", category: "ai-agent-infrastructure" },
-    { title: "AI Agent Launchpads", category: "ai-agent-launchpads" },
+    { title: "Agent Framework", category: "ai-agent-framework" },
+    { title: "Agent Infrastructure", category: "ai-agent-infrastructure" },
+    { title: "Agent Launchpads", category: "ai-agent-launchpads" },
     { title: "Automation", category: "automation" },
-    { title: "Tech Stack", category: "tech-stack" },
+    { title: "Tech Stack", category: "tech-stack" }
   ];
+
+  // Add debug logging
+  useEffect(() => {
+    console.log('Current state:', {
+      searchQuery,
+      selectedCategories,
+      expandedSection,
+      hasResults
+    });
+  }, [searchQuery, selectedCategories, expandedSection, hasResults]);
 
   return (
     <PageLayout 
       customFilters={filters} 
       onToggleFilter={handleToggleFilter}
       hideFiltersOnMobile={true}
+      showHero={true}
       aboveContent={
         <div className="relative">
           <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
@@ -208,11 +229,28 @@ const Agents: React.FC = () => {
     >
       {/* Main content: filters and cards */}
       <div className="space-y-4">
+        {/* Show global "No results found" message when search has no results */}
+        {searchQuery && !hasResults && (
+          <div className="text-gray-400 font-mono text-base py-8 text-center">
+            No results found for "{searchQuery}"
+          </div>
+        )}
+        
         {sections
-          .filter(section => 
-            (!expandedSection && (selectedCategories.length === 0 || selectedCategories.some(cat => CATEGORY_TO_SECTION[cat as AgentCategory] === section.category))) ||
-            expandedSection === section.category
-          )
+          .filter(section => {
+            // If a section is expanded, only show that section
+            if (expandedSection) {
+              return section.category === expandedSection;
+            }
+            
+            // If categories are selected, only show those categories
+            if (selectedCategories.length > 0) {
+              return selectedCategories.some(cat => CATEGORY_TO_SECTION[cat as AgentCategory] === section.category);
+            }
+            
+            // Otherwise show all sections
+            return true;
+          })
           .map(section => (
             <SanityToolsSection 
               key={section.category}
@@ -221,6 +259,7 @@ const Agents: React.FC = () => {
               searchQuery={searchQuery}
               isExpanded={expandedSection === section.category}
               onShowMore={() => handleShowMore(section.category)}
+              onHasResults={handleSectionHasResults}
             />
           ))
         }
