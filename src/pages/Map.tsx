@@ -141,31 +141,44 @@ const Map: React.FC = () => {
                   </div>
                   <div className="ecosystem-card-items">
                     {section.items.map((item, idx) => (
-                      <div key={idx} className="ecosystem-card-item">
-                        {item.logo ? (
-                          <img 
-                            src={item.logo} 
-                            alt={`${item.name} logo`} 
-                            className="ecosystem-card-icon"
-                            style={{ objectFit: 'cover', borderRadius: '4px' }}
-                          />
-                        ) : (
-                          <span className="ecosystem-card-icon" />
-                        )}
-                        {item.url ? (
-                          <a 
-                            href={item.url} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="ecosystem-card-item-text"
-                            style={{ color: '#b0b0b0', textDecoration: 'none' }}
-                          >
+                      item.url ? (
+                        <a 
+                          key={idx}
+                          href={item.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="ecosystem-card-item"
+                          style={{ textDecoration: 'none' }}
+                        >
+                          {item.logo ? (
+                            <img 
+                              src={item.logo} 
+                              alt={`${item.name} logo`} 
+                              className="ecosystem-card-icon"
+                              style={{ objectFit: 'cover', borderRadius: '4px' }}
+                            />
+                          ) : (
+                            <span className="ecosystem-card-icon" />
+                          )}
+                          <span className="ecosystem-card-item-text" style={{ color: '#b0b0b0' }}>
                             {item.name}
-                          </a>
-                        ) : (
+                          </span>
+                        </a>
+                      ) : (
+                        <div key={idx} className="ecosystem-card-item">
+                          {item.logo ? (
+                            <img 
+                              src={item.logo} 
+                              alt={`${item.name} logo`} 
+                              className="ecosystem-card-icon"
+                              style={{ objectFit: 'cover', borderRadius: '4px' }}
+                            />
+                          ) : (
+                            <span className="ecosystem-card-icon" />
+                          )}
                           <span className="ecosystem-card-item-text">{item.name}</span>
-                        )}
-                      </div>
+                        </div>
+                      )
                     ))}
                   </div>
                 </div>

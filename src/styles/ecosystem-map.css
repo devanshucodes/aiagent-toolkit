@@ -99,6 +99,20 @@
   border-radius: 0;
   gap: 0.7rem;
   min-height: 45px;
+  transition: background-color 0.2s ease;
+}
+
+.ecosystem-card-item:hover {
+  background: #404040;
+  cursor: pointer;
+}
+
+.ecosystem-card-item a {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  text-decoration: none;
 }
 
 .ecosystem-card-icon {
