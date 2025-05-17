@@ -60,7 +60,7 @@ const CoursesAndTutorials: React.FC = () => {
       course.author.toLowerCase().includes(searchLower) ||
       course.tags.some(tag => tag.toLowerCase().includes(searchLower))
     );
-  });
+  }).sort((a, b) => a.title.localeCompare(b.title));
 
   return (
     <PageLayout 
