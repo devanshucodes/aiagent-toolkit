@@ -56,6 +56,7 @@ const ToolsLibraries: React.FC = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const scrollContainersRef = useRef<(HTMLDivElement | null)[]>([]);
   const [hasResults, setHasResults] = useState(true);
+  const [sectionResults, setSectionResults] = useState<{ [key: string]: boolean }>({});
 
   // Initialize search from URL if present
   useEffect(() => {
@@ -71,6 +72,8 @@ const ToolsLibraries: React.FC = () => {
     const handleGlobalSearch = (event: CustomEvent) => {
       const { query } = event.detail;
       setSearchQuery(query);
+      // Reset section results when search changes
+      setSectionResults({});
     };
 
     window.addEventListener('globalSearch' as any, handleGlobalSearch);
@@ -146,13 +149,23 @@ const ToolsLibraries: React.FC = () => {
   }));
 
   // Add a function to track if any section has results
-  const handleSectionHasResults = (hasTools: boolean) => {
-    setHasResults(prev => prev || hasTools);
+  const handleSectionHasResults = (hasTools: boolean, sectionId: string) => {
+    setSectionResults(prev => ({
+      ...prev,
+      [sectionId]: hasTools
+    }));
   };
+
+  // Update hasResults whenever sectionResults changes
+  useEffect(() => {
+    const anySectionHasResults = Object.values(sectionResults).some(hasResults => hasResults);
+    setHasResults(anySectionHasResults);
+  }, [sectionResults]);
 
   // Reset hasResults when search query changes
   useEffect(() => {
     setHasResults(false);
+    setSectionResults({});
   }, [searchQuery]);
 
   return (
@@ -351,7 +364,7 @@ const ToolsLibraries: React.FC = () => {
               isExpanded={expandedSection === section.section}
               onShowMore={() => handleShowMore(section.section)}
               activeFilters={filters}
-              onHasResults={handleSectionHasResults}
+              onHasResults={(hasTools) => handleSectionHasResults(hasTools, section.section)}
             />
           ))
         }
