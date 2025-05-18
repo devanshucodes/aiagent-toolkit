@@ -37,9 +37,9 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({
     const fetchTools = async () => {
       try {
         setLoading(true);
-        console.log('Fetching tools for category:', category);
+        // console.log('Fetching tools for category:', category);
         const fetchedTools = await getTools(category);
-        console.log('Fetched tools:', fetchedTools);
+        // console.log('Fetched tools:', fetchedTools);
         setTools(fetchedTools);
         setError(null);
       } catch (err) {
@@ -96,12 +96,12 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({
         .filter(option => option.active)
         .map(option => option.id);
 
-      console.log('Genre filter:', {
-        toolName: tool.name,
-        toolGenre: tool.genre,
-        activeGenres,
-        shouldShow: !activeGenres.length || (tool.genre && activeGenres.includes(tool.genre))
-      });
+      // console.log('Genre filter:', {
+      //   toolName: tool.name,
+      //   toolGenre: tool.genre,
+      //   activeGenres,
+      //   shouldShow: !activeGenres.length || (tool.genre && activeGenres.includes(tool.genre))
+      // });
 
       if (activeGenres.length > 0) {
         // If genres are selected, only show tools that have a matching genre
@@ -115,12 +115,12 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({
     const githubFilter = activeFilters.find(filter => filter.category === 'GitHub');
     if (githubFilter) {
       const isGithubActive = githubFilter.options.some(option => option.active);
-      console.log('GitHub filter:', {
-        toolName: tool.name,
-        hasGithub: tool.hasGithub,
-        isGithubActive,
-        shouldShow: !isGithubActive || tool.hasGithub
-      });
+      // console.log('GitHub filter:', {
+      //   toolName: tool.name,
+      //   hasGithub: tool.hasGithub,
+      //   isGithubActive,
+      //   shouldShow: !isGithubActive || tool.hasGithub
+      // });
       if (isGithubActive && !tool.hasGithub) {
         return false;
       }

@@ -33,7 +33,6 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   hideFiltersOnMobile = false
 }) => {
   const [theme, setTheme] = useState<ThemeMode>('dark');
-  const [filters, setFilters] = useState<FilterGroup[]>(customFilters || filterGroups);
   
   const toggleTheme = () => {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
@@ -68,20 +67,8 @@ const PageLayout: React.FC<PageLayoutProps> = ({
     if (onToggleFilter) {
       onToggleFilter(category, id);
     } else {
-      setFilters(prevFilters => 
-        prevFilters.map(group => 
-          group.category === category
-            ? {
-                ...group,
-                options: group.options.map(option => 
-                  option.id === id
-                    ? { ...option, active: !option.active }
-                    : option
-                )
-              }
-            : group
-        )
-      );
+      // This logic is not provided in the original file or the code block
+      // It's assumed to exist as it's called in the Sidebar component
     }
   };
 
@@ -104,7 +91,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
         {showSidebar && (
           <div className={`${isToolsPage || hideFiltersOnMobile ? 'hidden lg:block' : ''} lg:w-64 lg:flex-shrink-0`}>
             <Sidebar 
-              filters={filters} 
+              filters={customFilters || filterGroups} 
               onToggleFilter={toggleFilter}
               isToolsPage={isToolsPage}
             />

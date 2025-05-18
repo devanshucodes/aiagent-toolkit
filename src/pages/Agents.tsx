@@ -100,9 +100,9 @@ const Agents: React.FC = () => {
   };
 
   const handleCategoryClick = (category: string) => {
+    console.log('Clicked category:', category);
     // Exit expanded state when selecting categories
     setExpandedSection(null);
-    
     setSelectedCategories(prev => {
       const isSelected = prev.includes(category);
       if (isSelected) {
@@ -137,6 +137,11 @@ const Agents: React.FC = () => {
       hasResults
     });
   }, [searchQuery, selectedCategories, expandedSection, hasResults]);
+
+  useEffect(() => {
+    const status = AGENT_CATEGORIES.map(cat => `${cat}: ${selectedCategories.includes(cat)}`);
+    console.log('Category active status:', status.join(' | '));
+  }, [selectedCategories]);
 
   return (
     <PageLayout 
