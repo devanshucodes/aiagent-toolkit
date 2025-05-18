@@ -73,7 +73,7 @@ export const filterGroups: FilterGroup[] = [
   {
     category: 'Genre',
     options: [
-      { id: 'web3', label: 'Web3', active: false },
+      { id: 'offchain', label: 'Offchain', active: false },
       { id: 'onchain', label: 'Onchain', active: false }
     ]
   },
