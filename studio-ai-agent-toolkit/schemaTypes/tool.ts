@@ -29,6 +29,23 @@ export default {
       validation: (Rule: any) => Rule.required(),
     },
     {
+      name: 'genre',
+      title: 'Genre',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Offchain', value: 'offchain' },
+          { title: 'Onchain', value: 'onchain' }
+        ],
+      },
+    },
+    {
+      name: 'hasGithub',
+      title: 'Has GitHub',
+      type: 'boolean',
+      description: 'Whether the tool has a GitHub repository',
+    },
+    {
       name: 'tags',
       title: 'Tags',
       type: 'array',

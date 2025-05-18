@@ -59,7 +59,18 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({
   }, [searchQuery, isExpanded]);
 
   const filteredTools = tools.filter(tool => {
-    // Subscription filter logic
+    // First apply search filter
+    if (searchQuery) {
+      const searchLower = searchQuery.toLowerCase();
+      const matchesSearch = 
+        tool.name.toLowerCase().includes(searchLower) ||
+        tool.description.toLowerCase().includes(searchLower) ||
+        tool.tags.some(tag => tag.toLowerCase().includes(searchLower));
+      
+      if (!matchesSearch) return false;
+    }
+
+    // Then apply subscription filter if any are active
     const subscriptionFilter = activeFilters.find(filter => filter.category === 'Subscription');
     if (subscriptionFilter) {
       const activeSubscriptions = subscriptionFilter.options
@@ -72,18 +83,50 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({
             default: return '';
           }
         });
+
       if (activeSubscriptions.length > 0 && !activeSubscriptions.includes(tool.type)) {
         return false;
       }
     }
-    // Search filter (existing logic)
-    if (!searchQuery) return true;
-    const searchLower = searchQuery.toLowerCase();
-    return (
-      (tool.name && tool.name.toLowerCase().includes(searchLower)) ||
-      (tool.description && tool.description.toLowerCase().includes(searchLower)) ||
-      (Array.isArray(tool.tags) && tool.tags.some(tag => tag && tag.toLowerCase().includes(searchLower)))
-    );
+
+    // Apply genre filter if any are active
+    const genreFilter = activeFilters.find(filter => filter.category === 'Genre');
+    if (genreFilter) {
+      const activeGenres = genreFilter.options
+        .filter(option => option.active)
+        .map(option => option.id);
+
+      console.log('Genre filter:', {
+        toolName: tool.name,
+        toolGenre: tool.genre,
+        activeGenres,
+        shouldShow: !activeGenres.length || (tool.genre && activeGenres.includes(tool.genre))
+      });
+
+      if (activeGenres.length > 0) {
+        // If genres are selected, only show tools that have a matching genre
+        if (!tool.genre || !activeGenres.includes(tool.genre)) {
+          return false;
+        }
+      }
+    }
+
+    // Apply github filter if active
+    const githubFilter = activeFilters.find(filter => filter.category === 'GitHub');
+    if (githubFilter) {
+      const isGithubActive = githubFilter.options.some(option => option.active);
+      console.log('GitHub filter:', {
+        toolName: tool.name,
+        hasGithub: tool.hasGithub,
+        isGithubActive,
+        shouldShow: !isGithubActive || tool.hasGithub
+      });
+      if (isGithubActive && !tool.hasGithub) {
+        return false;
+      }
+    }
+
+    return true;
   });
 
   const itemsPerPage = isExpanded ? filteredTools.length : 3;

@@ -78,6 +78,12 @@ export const filterGroups: FilterGroup[] = [
     ]
   },
   {
+    category: 'GitHub',
+    options: [
+      { id: 'has-github', label: 'Has GitHub', active: false }
+    ]
+  },
+  {
     category: 'Subscription',
     options: [
       { id: 'free-to-use', label: 'Free to Use', active: false },

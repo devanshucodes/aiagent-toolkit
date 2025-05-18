@@ -3,6 +3,8 @@ export interface Tool {
   name: string;
   logo: string;
   category: string;
+  genre?: 'offchain' | 'onchain';
+  hasGithub?: boolean;
   tags: string[];
   description: string;
   type: 'Free' | 'Paid' | 'Freemium';
@@ -24,7 +26,7 @@ export interface LibraryTool {
   filter_categories?: string[];
 }
 
-export type FilterCategory = 'Language' | 'Genre' | 'Subscription' | 'Categories' | 'Platform' | 'Focus' | 'Most Popular Categories';
+export type FilterCategory = 'Language' | 'Genre' | 'Subscription' | 'Categories' | 'Platform' | 'Focus' | 'Most Popular Categories' | 'GitHub';
 
 export interface FilterOption {
   id: string;
