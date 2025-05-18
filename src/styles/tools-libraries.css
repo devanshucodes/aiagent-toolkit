@@ -27,10 +27,10 @@
 }
 
 .tools-library-btn.active {
-  background: #3a2323;
-  color: #fff;
-  border: 1.5px solid #a15a4a;
-  box-shadow: 0 0 0 2px #a15a4a33;
+  background: #3a2324 !important;
+  color: #fff !important;
+  border: 2px solid #a1594a !important;
+  box-shadow: 0 0 0 4px #a1594a33 !important;
 }
 
 .hide-scrollbar {
