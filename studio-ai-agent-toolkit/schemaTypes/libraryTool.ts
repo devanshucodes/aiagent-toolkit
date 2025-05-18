@@ -82,6 +82,33 @@ export default {
       type: 'url',
       validation: (Rule: any) => Rule.required(),
     },
+    {
+      name: 'filter_categories',
+      title: 'Filter Categories',
+      type: 'array',
+      of: [{ type: 'string' }],
+      options: {
+        list: [
+          { title: 'Data Processing', value: 'data-processing' },
+          { title: 'RAG', value: 'rag' },
+          { title: 'Memory', value: 'memory' },
+          { title: 'Compute', value: 'compute' },
+          { title: 'Vector Database', value: 'vector-database' },
+          { title: 'Embeddings', value: 'embeddings' },
+          { title: 'Web Scraping', value: 'web-scraping' },
+          { title: 'Hosting', value: 'hosting' },
+          { title: 'Sandboxing', value: 'sandboxing' },
+          { title: 'Security', value: 'security' },
+          { title: 'Monitoring', value: 'monitoring' },
+          { title: 'Analytics', value: 'analytics' },
+          { title: 'Browser Automation', value: 'browser-automation' },
+          { title: 'Workflow', value: 'workflow' },
+          { title: 'Authentication', value: 'authentication' },
+          { title: 'Payment', value: 'payment' },
+          { title: 'Task Automation', value: 'task-automation' }
+        ]
+      }
+    },
   ],
   preview: {
     select: {

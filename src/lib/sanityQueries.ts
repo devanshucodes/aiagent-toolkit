@@ -1,5 +1,5 @@
 import { client } from './sanity'
-import { Tool } from '../types'
+import { Tool, LibraryTool } from '../types'
 
 export async function getTools(category?: string): Promise<Tool[]> {
   const query = `*[_type == "tool"${category ? ` && category == "${category}"` : ''}]{
@@ -28,7 +28,7 @@ export async function getTools(category?: string): Promise<Tool[]> {
   }))
 }
 
-export const getLibraryTools = async (section: string): Promise<Tool[]> => {
+export const getLibraryTools = async (section: string): Promise<LibraryTool[]> => {
   const query = `*[_type == "libraryTool" && section == $section] {
     _id,
     name,
@@ -38,7 +38,8 @@ export const getLibraryTools = async (section: string): Promise<Tool[]> => {
     description,
     type,
     rating,
-    url
+    url,
+    filter_categories
   }`;
 
   const params = { section };
@@ -48,12 +49,13 @@ export const getLibraryTools = async (section: string): Promise<Tool[]> => {
     id: tool._id,
     name: tool.name,
     logo: tool.logo,
-    category: tool.section,
+    section: tool.section,
     tags: tool.tags,
     description: tool.description,
     type: tool.type,
     rating: tool.rating,
-    url: tool.url
+    url: tool.url,
+    filter_categories: tool.filter_categories || []
   }));
 };
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SectionHeader from '../ui/SectionHeader';
 import ToolCard from '../ui/ToolCard';
-import { Tool } from '../../types';
+import { LibraryTool } from '../../types';
 import { getLibraryTools } from '../../lib/sanityQueries';
 import './ToolsSection.css';
 
@@ -45,7 +45,7 @@ export const LibraryToolsSection: React.FC<LibraryToolsSectionProps> = ({
   activeFilters = [],
   onHasResults
 }) => {
-  const [tools, setTools] = useState<Tool[]>([]);
+  const [tools, setTools] = useState<LibraryTool[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(0);
@@ -119,6 +119,18 @@ export const LibraryToolsSection: React.FC<LibraryToolsSectionProps> = ({
 
       if (activeSubscriptions.length > 0) {
         return activeSubscriptions.includes(tool.type);
+      }
+    }
+
+    // Apply filter-categories filter if any are active
+    const categoryFilter = activeFilters.find(filter => filter.category === 'Categories');
+    if (categoryFilter) {
+      const activeCategories = categoryFilter.options
+        .filter(option => option.active)
+        .map(option => option.id);
+
+      if (activeCategories.length > 0) {
+        return tool.filter_categories?.some(category => activeCategories.includes(category)) ?? false;
       }
     }
 

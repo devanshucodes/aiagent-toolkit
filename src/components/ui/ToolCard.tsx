@@ -1,11 +1,11 @@
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
-import { Tool } from '../../types';
+import { Tool, LibraryTool } from '../../types';
 import Rating from './Rating';
 import './ToolCard.css';
 
 interface ToolCardProps {
-  tool: Tool;
+  tool: Tool | LibraryTool;
 }
 
 const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
