@@ -71,13 +71,6 @@ export const courseFilters: FilterGroup[] = [
 
 export const filterGroups: FilterGroup[] = [
   {
-    category: 'Language',
-    options: [
-      { id: 'python', label: 'Python', active: false },
-      { id: 'rust', label: 'Rust', active: false }
-    ]
-  },
-  {
     category: 'Genre',
     options: [
       { id: 'web3', label: 'Web3', active: false },
