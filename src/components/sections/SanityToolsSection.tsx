@@ -63,10 +63,9 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({
     if (searchQuery) {
       const searchLower = searchQuery.toLowerCase();
       const matchesSearch = 
-        tool.name.toLowerCase().includes(searchLower) ||
-        tool.description.toLowerCase().includes(searchLower) ||
-        tool.tags.some(tag => tag.toLowerCase().includes(searchLower));
-      
+        (tool.name && tool.name.toLowerCase().includes(searchLower)) ||
+        (tool.description && tool.description.toLowerCase().includes(searchLower)) ||
+        (Array.isArray(tool.tags) && tool.tags.some(tag => tag && tag.toLowerCase().includes(searchLower)));
       if (!matchesSearch) return false;
     }
 
@@ -156,6 +155,12 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({
       onHasResults(hasMatchingTools);
     }
   }, [filteredTools, onHasResults, searchQuery]);
+
+  useEffect(() => {
+    if (!loading && !error) {
+      console.log('SanityToolsSection:', { title, category, tools, filteredTools, searchQuery });
+    }
+  }, [loading, error, tools, filteredTools, searchQuery]);
 
   if (loading) {
     return <div className="text-white">Loading tools for {title}...</div>;

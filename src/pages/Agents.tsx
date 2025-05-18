@@ -255,41 +255,38 @@ const Agents: React.FC = () => {
     >
       {/* Main content: filters and cards */}
       <div className="space-y-4">
-        {/* Show global "No results found" message when search has no results */}
-        {searchQuery && !hasResults && (
-          <div className="text-gray-400 font-mono text-base py-8 text-center">
-            No results found for "{searchQuery}"
-          </div>
-        )}
-        
-        {sections
-          .filter(section => {
-            // If a section is expanded, only show that section
-            if (expandedSection) {
-              return section.category === expandedSection;
-            }
-            
-            // If categories are selected, only show those categories
-            if (selectedCategories.length > 0) {
-              return selectedCategories.some(cat => CATEGORY_TO_SECTION[cat as AgentCategory] === section.category);
-            }
-            
-            // Otherwise show all sections
-            return true;
-          })
-          .map(section => (
-            <SanityToolsSection 
-              key={section.category}
-              title={section.title}
-              category={section.category}
-              searchQuery={searchQuery}
-              isExpanded={expandedSection === section.category}
-              onShowMore={() => handleShowMore(section.category)}
-              onHasResults={hasTools => handleSectionHasResults(hasTools, section.category)}
-              activeFilters={filters}
-            />
-          ))
-        }
+        {(() => {
+          const visibleSections = sections
+            .filter(section => {
+              if (expandedSection) {
+                return section.category === expandedSection;
+              }
+              if (selectedCategories.length > 0) {
+                return selectedCategories.some(cat => CATEGORY_TO_SECTION[cat as AgentCategory] === section.category);
+              }
+              return true;
+            })
+            .map(section => (
+              <SanityToolsSection 
+                key={section.category}
+                title={section.title}
+                category={section.category}
+                searchQuery={searchQuery}
+                isExpanded={expandedSection === section.category}
+                onShowMore={() => handleShowMore(section.category)}
+                onHasResults={hasTools => handleSectionHasResults(hasTools, section.category)}
+                activeFilters={filters}
+              />
+            ));
+          if (visibleSections.filter(Boolean).length === 0 && searchQuery) {
+            return [
+              <div key="no-results" className="text-gray-400 font-mono text-base py-8 text-center">
+                No results found for "{searchQuery}"
+              </div>
+            ];
+          }
+          return visibleSections;
+        })()}
       </div>
     </PageLayout>
   );
