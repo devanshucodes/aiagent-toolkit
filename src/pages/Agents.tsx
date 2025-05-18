@@ -223,17 +223,27 @@ const Agents: React.FC = () => {
                   <div key={filterGroup.category} className="border-b border-gray-800 pb-6">
                     <h3 className="text-white font-mono text-xl mb-4">{filterGroup.category}</h3>
                     <div className="flex flex-wrap gap-2">
-                      {filterGroup.options.map((option) => (
-                        <button
-                          key={option.id}
-                          onClick={() => handleToggleFilter(filterGroup.category, option.id)}
-                          className={`agents-btn px-4 py-2 text-sm font-mono whitespace-nowrap ${
-                            option.active ? 'active' : ''
-                          }`}
-                        >
-                          {option.label}
-                        </button>
-                      ))}
+                      {filterGroup.category === 'GitHub' ? (
+                        <label className="relative inline-flex items-center cursor-pointer">
+                          <input
+                            type="checkbox"
+                            className="sr-only peer"
+                            checked={filterGroup.options[0].active}
+                            onChange={() => handleToggleFilter(filterGroup.category, filterGroup.options[0].id)}
+                          />
+                          <div className="w-11 h-6 bg-gray-800 peer-focus:outline-none peer-focus:ring-1 peer-focus:ring-red-900 rounded-none peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-gray-400 after:border-gray-600 after:border after:h-5 after:w-5 after:transition-all peer-checked:bg-red-900/40"></div>
+                        </label>
+                      ) : (
+                        filterGroup.options.map((option) => (
+                          <button
+                            key={option.id}
+                            onClick={() => handleToggleFilter(filterGroup.category, option.id)}
+                            className={`agents-btn px-4 py-2 text-sm font-mono whitespace-nowrap ${option.active ? 'active' : ''}`}
+                          >
+                            {option.label}
+                          </button>
+                        ))
+                      )}
                     </div>
                   </div>
                 ))}
