@@ -32,7 +32,7 @@ const CATEGORY_TO_SECTION = {
 } as const;
 
 const Agents: React.FC = () => {
-  const [filters, setFilters] = useState<FilterGroup[]>(filterGroups);
+  const [filters, setFilters] = useState<FilterGroup[]>(filterGroups.filter(group => group.category !== 'Categories'));
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
