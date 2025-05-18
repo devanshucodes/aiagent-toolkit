@@ -13,6 +13,10 @@ interface SanityToolsSectionProps {
   isExpanded?: boolean;
   onShowMore?: () => void;
   onHasResults?: (hasTools: boolean) => void;
+  activeFilters?: {
+    category: string;
+    options: { id: string; active: boolean }[];
+  }[];
 }
 
 const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({ 
@@ -21,7 +25,8 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({
   searchQuery = '',
   isExpanded = false,
   onShowMore,
-  onHasResults
+  onHasResults,
+  activeFilters = []
 }) => {
   const [tools, setTools] = useState<Tool[]>([]);
   const [loading, setLoading] = useState(true);
@@ -54,8 +59,25 @@ const SanityToolsSection: React.FC<SanityToolsSectionProps> = ({
   }, [searchQuery, isExpanded]);
 
   const filteredTools = tools.filter(tool => {
+    // Subscription filter logic
+    const subscriptionFilter = activeFilters.find(filter => filter.category === 'Subscription');
+    if (subscriptionFilter) {
+      const activeSubscriptions = subscriptionFilter.options
+        .filter(option => option.active)
+        .map(option => {
+          switch (option.id) {
+            case 'free-to-use': return 'Free';
+            case 'paid': return 'Paid';
+            case 'freemium': return 'Freemium';
+            default: return '';
+          }
+        });
+      if (activeSubscriptions.length > 0 && !activeSubscriptions.includes(tool.type)) {
+        return false;
+      }
+    }
+    // Search filter (existing logic)
     if (!searchQuery) return true;
-    
     const searchLower = searchQuery.toLowerCase();
     return (
       (tool.name && tool.name.toLowerCase().includes(searchLower)) ||

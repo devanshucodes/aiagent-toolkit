@@ -270,7 +270,8 @@ const Agents: React.FC = () => {
               searchQuery={searchQuery}
               isExpanded={expandedSection === section.category}
               onShowMore={() => handleShowMore(section.category)}
-              onHasResults={(hasTools) => handleSectionHasResults(hasTools, section.category)}
+              onHasResults={hasTools => handleSectionHasResults(hasTools, section.category)}
+              activeFilters={filters.filter(f => f.category === 'Subscription')}
             />
           ))
         }
