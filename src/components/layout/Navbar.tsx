@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { navItems } from '../../data/filterData';
+import logoImage from '../../assets/images/photo_2025-05-19 15.28.48.jpeg';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,7 +18,7 @@ const Navbar: React.FC = () => {
             {/* Desktop View - Exactly as before */}
             <div className="hidden lg:flex lg:items-center">
               <NavLink to="/" className="flex-shrink-0 w-32">
-                <span className="text-lg font-mono tracking-wider text-white">LOGO</span>
+                <img src={logoImage} alt="Logo" className="h-8 w-auto" />
               </NavLink>
               
               <div className="ml-16">
@@ -46,7 +47,7 @@ const Navbar: React.FC = () => {
             {/* Mobile View */}
             <div className="flex lg:hidden items-center w-full relative">
               <NavLink to="/" className="flex-shrink-0">
-                <span className="text-lg font-mono tracking-wider text-white">LOGO</span>
+                <img src={logoImage} alt="Logo" className="h-8 w-auto" />
               </NavLink>
               
               {/* Vertical Line */}
