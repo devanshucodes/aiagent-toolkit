@@ -33,7 +33,7 @@ export async function getTools(category?: string): Promise<Tool[]> {
 }
 
 export const getLibraryTools = async (section: string): Promise<LibraryTool[]> => {
-  const query = `*[_type == "libraryTool" && section == $section] {
+  const query = `*[_type == "libraryTool" && section == $section] | order(_updatedAt desc) {
     _id,
     name,
     "logo": logo.asset->url,
