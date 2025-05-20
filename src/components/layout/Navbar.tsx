@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { navItems } from '../../data/filterData';
-import logoImage from '../../assets/images/photo_2025-05-19 15.28.48.jpeg';
+import logoImage from '/photo_2025-05-20 22.09.06.jpeg';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,11 +17,11 @@ const Navbar: React.FC = () => {
           <div className="flex items-center justify-between h-14">
             {/* Desktop View - Exactly as before */}
             <div className="hidden lg:flex lg:items-center">
-              <NavLink to="/" className="flex-shrink-0 w-32">
-                <img src={logoImage} alt="Logo" className="h-8 w-auto" />
+              <NavLink to="/" className="flex-shrink-0 w-60">
+                <img src={logoImage} alt="Logo" className="h-10 w-auto" />
               </NavLink>
               
-              <div className="ml-16">
+              <div className="ml-8">
                 <div className="flex items-center gap-2">
                   {navItems.map((item) => (
                     <NavLink
@@ -46,12 +46,12 @@ const Navbar: React.FC = () => {
 
             {/* Mobile View */}
             <div className="flex lg:hidden items-center w-full relative">
-              <NavLink to="/" className="flex-shrink-0">
-                <img src={logoImage} alt="Logo" className="h-8 w-auto" />
+              <NavLink to="/" className="flex-shrink-0 w-60">
+                <img src={logoImage} alt="Logo" className="h-10 w-auto" />
               </NavLink>
               
               {/* Vertical Line */}
-              <div className="absolute left-[40%] h-6 w-[1px] bg-gray-700" />
+              <div className="absolute left-[55%] h-6 w-[1px] bg-gray-700" />
               
               {/* Mobile Hamburger Button */}
               <button
