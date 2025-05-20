@@ -50,9 +50,6 @@ const Navbar: React.FC = () => {
                 <img src={logoImage} alt="Logo" className="h-10 w-auto" />
               </NavLink>
               
-              {/* Vertical Line */}
-              <div className="absolute left-[55%] h-6 w-[1px] bg-gray-700" />
-              
               {/* Mobile Hamburger Button */}
               <button
                 onClick={toggleMenu}
