@@ -2,7 +2,7 @@ import { client } from './sanity'
 import { Tool, LibraryTool } from '../types'
 
 export async function getTools(category?: string): Promise<Tool[]> {
-  const query = `*[_type == "tool"${category ? ` && category == "${category}"` : ''}]{
+  const query = `*[_type == "tool"${category ? ` && category == "${category}"` : ''}] | order(_updatedAt desc){
     _id,
     name,
     "logo": logo.asset->url,
